@@ -91,7 +91,7 @@
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status<=0) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [Dialog simpleToast:@"网络未连接"];
+                [Dialog simpleToast:@"network not connect!"];
                 [SVProgressHUD dismiss];
             });
         }

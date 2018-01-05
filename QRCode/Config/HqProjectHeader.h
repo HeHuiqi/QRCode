@@ -21,6 +21,11 @@
 #import <MJExtension.h>
 
 #import "NSDictionary+isNULL.h"
+#import "SuperNavigationVC.h"
+#import "SuperVC.h"
+#import "AppDelegate.h"
+#import "HqAFHttpClient.h"
+#import "HqString.h"
 
 
 #endif /* HqProjectHeader_h */

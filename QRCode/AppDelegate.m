@@ -7,16 +7,66 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginVC.h"
+#import "WecomeVC.h"
+#import "HqRootVC.h"
 
+#import "RegistVC.h"
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
++ (void)setRootVC:(HqSetRootVC)type{
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [app _setRootVC:type];
+}
+- (void)_setRootVC:(HqSetRootVC)type{
+    
+    
+    switch (type) {
+            case HqSetRootVCLogin:{
+            LoginVC *loginVC = [[LoginVC alloc] init];
+            self.window.rootViewController = loginVC;
+              ;
+                
+            }
+            break;
+            case HqSetRootVCWecome:{
+                
+                WecomeVC *welcomVC = [[WecomeVC alloc] init];
+                 SuperNavigationVC *navRootVC = [[SuperNavigationVC alloc] initWithRootViewController:welcomVC];
+                self.window.rootViewController = navRootVC;
+                
+//                RegistVC *loginVC = [[RegistVC alloc] init];
+//                self.window.rootViewController = loginVC;
+            }
+            break;
+            case HqSetRootVCHome:{
+                HqRootVC *rootVC = [[HqRootVC alloc] init];
+                SuperNavigationVC *navRootVC = [[SuperNavigationVC alloc] initWithRootViewController:rootVC];
+                self.window.rootViewController = navRootVC;
+            }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    NSString *token = GetUserDefault(kToken);
+    if(!token.length){
+        [AppDelegate setRootVC:HqSetRootVCHome];
+    }else{
+        [AppDelegate setRootVC:HqSetRootVCWecome];
+    }
     return YES;
 }
 
@@ -49,3 +99,4 @@
 
 
 @end
+
