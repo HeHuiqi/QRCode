@@ -20,6 +20,7 @@
     
     UIView *bgView = [[UIView alloc] init];
     bgView.backgroundColor = AppMainColor;
+    bgView.layer.cornerRadius = 2.0;
     [self.contentView addSubview:bgView];
     
     [bgView mas_makeConstraints:^(MASConstraintMaker *make) {

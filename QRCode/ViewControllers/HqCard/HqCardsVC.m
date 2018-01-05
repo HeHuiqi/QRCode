@@ -38,26 +38,13 @@
      *画虚线
      */
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20, kZoomValue(185)-40)];
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, kZoomValue(185)-40)];
     contentView.layer.cornerRadius = 2.0;
+    [footer addSubview:contentView];
     CAShapeLayer *subLayer = [self dotteShapeLayer:contentView.bounds];
     [contentView.layer addSublayer:subLayer];
     
-    /*
-    CAShapeLayer *dotteShapeLayer = [CAShapeLayer layer];
-    dotteShapeLayer.fillColor = [UIColor clearColor].CGColor;
-    dotteShapeLayer.strokeColor = [UIColor grayColor].CGColor;
-    dotteShapeLayer.lineWidth = LineHeight ;
-    dotteShapeLayer.lineCap = kCALineCapRound;
-    dotteShapeLayer.lineJoin = kCALineJoinRound;
-
-    NSArray *lineDashPattern = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:3],[NSNumber numberWithInt:2], nil];
-    dotteShapeLayer.lineDashPattern = lineDashPattern;
     
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:contentView.bounds cornerRadius:2.0];
-    dotteShapeLayer.path = path.CGPath;
-    [contentView.layer addSublayer:dotteShapeLayer];
-    */
     
     return footer;
 }
@@ -66,8 +53,8 @@
     /*
      *画虚线
      */
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20, kZoomValue(185)-40)];
-    contentView.layer.cornerRadius = 2.0;
+//    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20, kZoomValue(185)-40)];
+//    contentView.layer.cornerRadius = 2.0;
     
     CAShapeLayer *dotteShapeLayer = [CAShapeLayer layer];
     dotteShapeLayer.fillColor = [UIColor clearColor].CGColor;
@@ -97,6 +84,7 @@
     if (!cell) {
         cell = [[HqCardCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentfier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.bankNameLab.text = @"Bla Bank";
     cell.cardTypeLab.text = @"Debit Card";
     cell.cardNumberLab.text = @"1234 5678 8888 9890";
