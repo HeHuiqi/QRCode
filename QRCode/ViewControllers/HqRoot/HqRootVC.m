@@ -8,16 +8,21 @@
 
 #import "HqRootVC.h"
 #import "HqLeftView.h"
-
-#define LeftWidth SCREEN_WIDTH - kZoomValue(100)
+#import "HqButton.h"
+#import "HqHomeCell.h"
+#import "HqScanPayVC.h"
+#import "HqCardsVC.h"
+#define LeftWidth (SCREEN_WIDTH - kZoomValue(100))
 #define LeftAlpha 0.7
 @interface HqRootVC ()<UITableViewDelegate,UITableViewDataSource,HqLeftViewDelegate>
 
 @property (nonatomic,strong) HqLeftView *leftView;//左侧视图
 @property (nonatomic,strong) UIView *mainOverView;//覆盖视图
 @property (nonatomic,assign) BOOL isOpen;//左侧视图是否打开
+@property (nonatomic,strong) UIImageView *tableHeaderView;
 
 @property (nonatomic,strong) UITableView *tableView;
+
 
 
 @end
@@ -28,7 +33,11 @@
     
     [super viewDidLoad];
     [self initData];
+    self.title = @"Home";
+    [self headerView];
     [self.view addSubview:self.tableView];
+    self.tableView.tableHeaderView = self.tableHeaderView;
+    
     [self.view addSubview:self.mainOverView];
     [self.view addSubview:self.leftView];
     [self addGesture];
@@ -36,6 +45,47 @@
 }
 - (void)initData{
     self.isOpen = NO;
+}
+- (void)headerView{
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
+    header.backgroundColor = AppMainColor;
+    NSArray *titles = @[@"Scan",@"Pay",@"Collect",@"Cards"];
+    for (int i = 0; i<titles.count; i++) {
+        CGFloat width = SCREEN_WIDTH/titles.count;
+        HqButton *button = [[HqButton alloc] initWithFrame:CGRectMake(i*width, 0, width, kZoomValue(70))];
+//        button.backgroundColor = [UIColor clearColor];
+        button.titleLab.text = titles[i];
+        [button addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
+        button.tag = i+1;
+        [header addSubview:button];
+    }
+    [self.view addSubview:header];
+}
+#pragma mark - 头部点击事件
+- (void)headerClick:(HqButton *)btn{
+    NSLog(@"btn= %@",@(btn.tag));
+    switch (btn.tag) {
+            case 1:
+            {
+                HqScanPayVC *scanVC = [[HqScanPayVC alloc] init];
+                Push(scanVC);
+            }
+            break;
+            case 2:
+            {
+                [Dialog simpleToast:@"This feature is not complete yet"];
+            }
+            break;
+            case 4:
+            {
+                HqCardsVC *cardsVC = [[HqCardsVC alloc] init];
+                Push(cardsVC);
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 - (void)addGesture{
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
@@ -60,6 +110,7 @@
         self.isOpen = YES;
     }];
 }
+#pragma mark -  处理Pan手势
 - (void)panView:(UIPanGestureRecognizer *)panGesture{
     
     CGPoint point = [panGesture translationInView:self.view];
@@ -120,6 +171,12 @@
     
     
 }
+- (UIImageView *)tableHeaderView{
+    if(!_tableHeaderView){
+        _tableHeaderView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+    }
+    return _tableHeaderView;
+}
 - (HqLeftView *)leftView{
     if (!_leftView) {
         _leftView = [[HqLeftView alloc] initWithFrame:CGRectMake(-LeftWidth, 0, LeftWidth, self.view.bounds.size.height)];
@@ -138,7 +195,8 @@
 }
 - (UITableView *)tableView{
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-64) style:UITableViewStyleGrouped];
+        CGFloat  y = kZoomValue(70)+64;
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, y, self.view.bounds.size.width, self.view.bounds.size.height-y) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }
@@ -148,19 +206,22 @@
     return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    return kZoomValue(137);
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIndentfier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentfier];
+    static NSString *cellIndentfier = @"HqHomeCell";
+    HqHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentfier];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentfier];
+        cell = [[HqHomeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentfier];
     }
+    cell.titleLab.text = @"Main Bank";
+    cell.dateLab.text  = @"September, 19";
+    cell.contentLab.text = @"Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cra";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
 }
 - (void)backClick{
     

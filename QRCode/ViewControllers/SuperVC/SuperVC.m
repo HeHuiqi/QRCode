@@ -22,6 +22,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.navBarView];
+    self.navBarView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self titelLab];
     
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];;
@@ -34,10 +35,11 @@
 - (UILabel *)titelLab{
     if (!_titelLab) {
         _titelLab = [[UILabel alloc]init];
-        _titelLab.font = [UIFont systemFontOfSize:18.0];
+        _titelLab.font = [UIFont boldSystemFontOfSize:kZoomValue(18)];
         [self.navBarView addSubview:_titelLab];
         [_titelLab mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.navBarView.mas_centerX);
+//            make.centerX.equalTo(self.navBarView.mas_centerX);
+            make.left.equalTo(self.navBarView).offset(kZoomValue(50));
             make.top.equalTo(_navBarView).offset(20);
             make.height.mas_equalTo(44);
         }];

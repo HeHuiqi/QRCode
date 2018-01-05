@@ -70,6 +70,12 @@
 		8EDE17291FFF38C80013DD41 /* RegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE17281FFF38C80013DD41 /* RegistVC.m */; };
 		8EDE172D1FFF38EC0013DD41 /* WecomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE172C1FFF38EC0013DD41 /* WecomeVC.m */; };
 		8EDE17301FFF41F70013DD41 /* HqInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE172F1FFF41F70013DD41 /* HqInputView.m */; };
+		8EDE17351FFF64450013DD41 /* HqButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE17341FFF64450013DD41 /* HqButton.m */; };
+		8EDE17391FFF718F0013DD41 /* HqLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE17371FFF718F0013DD41 /* HqLineCell.m */; };
+		8EDE173C1FFF72640013DD41 /* HqHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE173B1FFF72640013DD41 /* HqHomeCell.m */; };
+		8EDE17401FFF7A910013DD41 /* HqScanPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE173F1FFF7A910013DD41 /* HqScanPayVC.m */; };
+		8EDE17441FFF87080013DD41 /* HqCardsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE17431FFF87080013DD41 /* HqCardsVC.m */; };
+		8EDE17481FFF87A50013DD41 /* HqCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE17471FFF87A50013DD41 /* HqCardCell.m */; };
 		EEA5C3276F85C54EE3923D6E /* libPods-QRCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1F463273FB3E3E6DE6208B /* libPods-QRCode.a */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +206,18 @@
 		8EDE172C1FFF38EC0013DD41 /* WecomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WecomeVC.m; sourceTree = "<group>"; };
 		8EDE172E1FFF41F70013DD41 /* HqInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqInputView.h; sourceTree = "<group>"; };
 		8EDE172F1FFF41F70013DD41 /* HqInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqInputView.m; sourceTree = "<group>"; };
+		8EDE17331FFF64450013DD41 /* HqButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqButton.h; sourceTree = "<group>"; };
+		8EDE17341FFF64450013DD41 /* HqButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqButton.m; sourceTree = "<group>"; };
+		8EDE17371FFF718F0013DD41 /* HqLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HqLineCell.m; sourceTree = "<group>"; };
+		8EDE17381FFF718F0013DD41 /* HqLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HqLineCell.h; sourceTree = "<group>"; };
+		8EDE173A1FFF72640013DD41 /* HqHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqHomeCell.h; sourceTree = "<group>"; };
+		8EDE173B1FFF72640013DD41 /* HqHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqHomeCell.m; sourceTree = "<group>"; };
+		8EDE173E1FFF7A910013DD41 /* HqScanPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqScanPayVC.h; sourceTree = "<group>"; };
+		8EDE173F1FFF7A910013DD41 /* HqScanPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqScanPayVC.m; sourceTree = "<group>"; };
+		8EDE17421FFF87080013DD41 /* HqCardsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqCardsVC.h; sourceTree = "<group>"; };
+		8EDE17431FFF87080013DD41 /* HqCardsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardsVC.m; sourceTree = "<group>"; };
+		8EDE17461FFF87A50013DD41 /* HqCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqCardCell.h; sourceTree = "<group>"; };
+		8EDE17471FFF87A50013DD41 /* HqCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardCell.m; sourceTree = "<group>"; };
 		C227BA1B401DEABB839F3D8A /* Pods-QRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRCode/Pods-QRCode.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +271,7 @@
 		8EDE164B1FFF22FF0013DD41 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
+				8EDE17361FFF716D0013DD41 /* PublicViews */,
 				8EDE17131FFF27100013DD41 /* HqImages */,
 				8EDE16D11FFF23C30013DD41 /* Config */,
 				8EDE166B1FFF23C30013DD41 /* Libs */,
@@ -285,9 +304,11 @@
 		8EDE16651FFF23C30013DD41 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8EDE17411FFF86F30013DD41 /* HqCard */,
+				8EDE173D1FFF7A780013DD41 /* HqScanPay */,
+				8EDE17091FFF26830013DD41 /* SuperVC */,
 				8EDE172A1FFF38DA0013DD41 /* Welcome */,
 				8EDE17221FFF38840013DD41 /* Login&Regist */,
-				8EDE17091FFF26830013DD41 /* SuperVC */,
 				8EDE16661FFF23C30013DD41 /* HqRoot */,
 			);
 			path = ViewControllers;
@@ -563,6 +584,8 @@
 				8EDE171D1FFF2ED80013DD41 /* HqLeftView.m */,
 				8EDE171F1FFF31790013DD41 /* HqLeftViewCell.h */,
 				8EDE17201FFF31790013DD41 /* HqLeftViewCell.m */,
+				8EDE173A1FFF72640013DD41 /* HqHomeCell.h */,
+				8EDE173B1FFF72640013DD41 /* HqHomeCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -608,6 +631,45 @@
 		8EDE17321FFF62190013DD41 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8EDE17331FFF64450013DD41 /* HqButton.h */,
+				8EDE17341FFF64450013DD41 /* HqButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8EDE17361FFF716D0013DD41 /* PublicViews */ = {
+			isa = PBXGroup;
+			children = (
+				8EDE17381FFF718F0013DD41 /* HqLineCell.h */,
+				8EDE17371FFF718F0013DD41 /* HqLineCell.m */,
+			);
+			path = PublicViews;
+			sourceTree = "<group>";
+		};
+		8EDE173D1FFF7A780013DD41 /* HqScanPay */ = {
+			isa = PBXGroup;
+			children = (
+				8EDE173E1FFF7A910013DD41 /* HqScanPayVC.h */,
+				8EDE173F1FFF7A910013DD41 /* HqScanPayVC.m */,
+			);
+			path = HqScanPay;
+			sourceTree = "<group>";
+		};
+		8EDE17411FFF86F30013DD41 /* HqCard */ = {
+			isa = PBXGroup;
+			children = (
+				8EDE17451FFF874B0013DD41 /* Views */,
+				8EDE17421FFF87080013DD41 /* HqCardsVC.h */,
+				8EDE17431FFF87080013DD41 /* HqCardsVC.m */,
+			);
+			path = HqCard;
+			sourceTree = "<group>";
+		};
+		8EDE17451FFF874B0013DD41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EDE17461FFF87A50013DD41 /* HqCardCell.h */,
+				8EDE17471FFF87A50013DD41 /* HqCardCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -758,11 +820,15 @@
 				8EDE16DD1FFF23C30013DD41 /* UIImage+ImageSize.m in Sources */,
 				8EDE17301FFF41F70013DD41 /* HqInputView.m in Sources */,
 				8EDE16FE1FFF23C30013DD41 /* NSString+Public.m in Sources */,
+				8EDE17351FFF64450013DD41 /* HqButton.m in Sources */,
 				8EDE16E61FFF23C30013DD41 /* IQBarButtonItem.m in Sources */,
+				8EDE17481FFF87A50013DD41 /* HqCardCell.m in Sources */,
 				8EDE16EC1FFF23C30013DD41 /* IQUIWindow+Hierarchy.m in Sources */,
 				8EDE17041FFF23C30013DD41 /* UITextField+LimitInput.m in Sources */,
 				8EDE16EB1FFF23C30013DD41 /* IQNSArray+Sort.m in Sources */,
+				8EDE17401FFF7A910013DD41 /* HqScanPayVC.m in Sources */,
 				8EDE16511FFF22FF0013DD41 /* ViewController.m in Sources */,
+				8EDE173C1FFF72640013DD41 /* HqHomeCell.m in Sources */,
 				8EDE16F91FFF23C30013DD41 /* NSNumber+Extension.m in Sources */,
 				8EDE16F31FFF23C30013DD41 /* MBProgressHUD+Add.m in Sources */,
 				8EDE16E11FFF23C30013DD41 /* SGQRCodeGenerateManager.m in Sources */,
@@ -771,6 +837,7 @@
 				8EDE16DB1FFF23C30013DD41 /* UITextView+Placeholder.m in Sources */,
 				8EDE17031FFF23C30013DD41 /* NSString+HqString.m in Sources */,
 				8EDE17051FFF23C30013DD41 /* UIButton+EnlargeTouchArea.m in Sources */,
+				8EDE17441FFF87080013DD41 /* HqCardsVC.m in Sources */,
 				8EDE16EF1FFF23C30013DD41 /* IQUIView+Hierarchy.m in Sources */,
 				8EDE16E41FFF23C30013DD41 /* IQToolbar.m in Sources */,
 				8EDE16E71FFF23C30013DD41 /* IQUIView+IQKeyboardToolbar.m in Sources */,
@@ -785,6 +852,7 @@
 				8EDE17121FFF26830013DD41 /* SuperVC.m in Sources */,
 				8EDE16F41FFF23C30013DD41 /* SVProgressHUD.m in Sources */,
 				8EDE16DF1FFF23C30013DD41 /* SGQRCodeScanningView.m in Sources */,
+				8EDE17391FFF718F0013DD41 /* HqLineCell.m in Sources */,
 				8EDE16F61FFF23C30013DD41 /* Dialog.m in Sources */,
 				8EDE17021FFF23C30013DD41 /* NSDictionary+isNULL.m in Sources */,
 				8EDE165C1FFF22FF0013DD41 /* main.m in Sources */,
