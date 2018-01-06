@@ -30,6 +30,8 @@
     [self.view addSubview:contentView];
     
     CGFloat inputHeight = 45;
+    CGFloat leftSpace = 20;
+
 
     _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@""];
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
@@ -47,9 +49,9 @@
     [contentView addSubview:loginBtn];
     
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(kZoomValue(30));
+        make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
         make.bottom.equalTo(contentView).offset(-kZoomValue(100));
-        make.right.equalTo(contentView).offset(-kZoomValue(30));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     NSString *title = @"Forgot password?";
@@ -63,23 +65,23 @@
     [contentView addSubview:forgetBtn];
     
     [forgetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(kZoomValue(30));
+        make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
         make.top.equalTo(loginBtn.mas_bottom).offset(kZoomValue(20));
-        make.right.equalTo(contentView).offset(-kZoomValue(30));
-        make.height.mas_equalTo(kZoomValue(30));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
+        make.height.mas_equalTo(kZoomValue(leftSpace));
     }];
     
    
     [_passwordTf mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(kZoomValue(30));
-        make.right.equalTo(contentView).offset(-kZoomValue(30));
-        make.bottom.equalTo(loginBtn.mas_top).offset(-kZoomValue(30));
+        make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
+        make.bottom.equalTo(loginBtn.mas_top).offset(-kZoomValue(leftSpace));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     
     [_mobileTf mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(kZoomValue(30));
-        make.right.equalTo(contentView).offset(-kZoomValue(30));
+        make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
         make.bottom.equalTo(_passwordTf.mas_top).offset(-kZoomValue(20));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
@@ -87,6 +89,7 @@
 }
 - (void)loginApp:(UIButton *)btn{
     
+    /*
     if(_mobileTf.text.length==0){
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
@@ -106,7 +109,8 @@
     [HqAFHttpClient starRequestWithHeaders:nil withURLString:@"" withParam:@{} requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Post requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
         
     }];
-//    [AppDelegate setRootVC:HqSetRootVCHome];
+    */
+    [AppDelegate setRootVC:HqSetRootVCHome];
 
 }
 - (void)forgotPassword:(UIButton *)btn{

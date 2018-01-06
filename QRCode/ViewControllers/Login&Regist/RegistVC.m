@@ -61,7 +61,7 @@
     [self.view addSubview:contentView];
     
     CGFloat inputHeight = 45;
-    
+    CGFloat leftSpace = 20;
     _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@""];
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
     [contentView addSubview:_mobileTf];
@@ -85,20 +85,20 @@
     
     
     [_mobileTf mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(kZoomValue(30));
-        make.right.equalTo(contentView).offset(-kZoomValue(30));
+        make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
         make.top.equalTo(contentView.mas_centerY).offset(kZoomValue(20));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     
     [checkCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_mobileTf.mas_bottom).offset(kZoomValue(20));
-        make.right.equalTo(contentView).offset(-kZoomValue(30));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
         make.size.mas_equalTo(CGSizeMake(kZoomValue(80), kZoomValue(inputHeight)));
     }];
     
     [_checkCodeTf mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(kZoomValue(30));
+        make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
         make.right.equalTo(checkCodeBtn.mas_left).offset(-kZoomValue(10));
         make.top.equalTo(_mobileTf.mas_bottom).offset(kZoomValue(20));
         make.height.mas_equalTo(kZoomValue(inputHeight));
@@ -112,9 +112,9 @@
     [contentView addSubview:registBtn];
     
     [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(kZoomValue(30));
-        make.top.equalTo(_checkCodeTf.mas_bottom).offset(kZoomValue(30));
-        make.right.equalTo(contentView).offset(-kZoomValue(30));
+        make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
+        make.top.equalTo(_checkCodeTf.mas_bottom).offset(kZoomValue(leftSpace));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     

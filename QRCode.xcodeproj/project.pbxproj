@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3334CD622000630000C5EED8 /* HqUserIdInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD612000630000C5EED8 /* HqUserIdInfoVC.m */; };
+		3334CD652000650300C5EED8 /* HqIdInfoInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD642000650300C5EED8 /* HqIdInfoInputView.m */; };
+		3334CD682000743600C5EED8 /* HqAddCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD672000743600C5EED8 /* HqAddCardVC.m */; };
+		3334CD742000AE7D00C5EED8 /* HqPassWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD732000AE7D00C5EED8 /* HqPassWordView.m */; };
+		3334CD792000AF3B00C5EED8 /* HqPayPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */; };
+		3334CD7C2000C69500C5EED8 /* HqAddCardInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */; };
 		8EDE164E1FFF22FF0013DD41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE164D1FFF22FF0013DD41 /* AppDelegate.m */; };
 		8EDE16511FFF22FF0013DD41 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16501FFF22FF0013DD41 /* ViewController.m */; };
 		8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16521FFF22FF0013DD41 /* Main.storyboard */; };
@@ -80,6 +86,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3334CD602000630000C5EED8 /* HqUserIdInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqUserIdInfoVC.h; sourceTree = "<group>"; };
+		3334CD612000630000C5EED8 /* HqUserIdInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqUserIdInfoVC.m; sourceTree = "<group>"; };
+		3334CD632000650300C5EED8 /* HqIdInfoInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqIdInfoInputView.h; sourceTree = "<group>"; };
+		3334CD642000650300C5EED8 /* HqIdInfoInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqIdInfoInputView.m; sourceTree = "<group>"; };
+		3334CD662000743600C5EED8 /* HqAddCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqAddCardVC.h; sourceTree = "<group>"; };
+		3334CD672000743600C5EED8 /* HqAddCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqAddCardVC.m; sourceTree = "<group>"; };
+		3334CD722000AE7D00C5EED8 /* HqPassWordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HqPassWordView.h; sourceTree = "<group>"; };
+		3334CD732000AE7D00C5EED8 /* HqPassWordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HqPassWordView.m; sourceTree = "<group>"; };
+		3334CD772000AF3B00C5EED8 /* HqPayPasswordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqPayPasswordVC.h; sourceTree = "<group>"; };
+		3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqPayPasswordVC.m; sourceTree = "<group>"; };
+		3334CD7A2000C69400C5EED8 /* HqAddCardInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqAddCardInfoVC.h; sourceTree = "<group>"; };
+		3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqAddCardInfoVC.m; sourceTree = "<group>"; };
 		4BD802C28DBA1070B041B7DF /* Pods-QRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCode/Pods-QRCode.release.xcconfig"; sourceTree = "<group>"; };
 		8A1F463273FB3E3E6DE6208B /* libPods-QRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDE16491FFF22FF0013DD41 /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +251,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3334CD712000AE7D00C5EED8 /* HqPassWordView */ = {
+			isa = PBXGroup;
+			children = (
+				3334CD722000AE7D00C5EED8 /* HqPassWordView.h */,
+				3334CD732000AE7D00C5EED8 /* HqPassWordView.m */,
+			);
+			path = HqPassWordView;
+			sourceTree = "<group>";
+		};
+		3334CD752000AF0200C5EED8 /* HqPayPassword */ = {
+			isa = PBXGroup;
+			children = (
+				3334CD762000AF2500C5EED8 /* Views */,
+				3334CD772000AF3B00C5EED8 /* HqPayPasswordVC.h */,
+				3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */,
+			);
+			path = HqPayPassword;
+			sourceTree = "<group>";
+		};
+		3334CD762000AF2500C5EED8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		69FB2DBCE36FD642F2C00913 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +684,7 @@
 		8EDE17361FFF716D0013DD41 /* PublicViews */ = {
 			isa = PBXGroup;
 			children = (
+				3334CD712000AE7D00C5EED8 /* HqPassWordView */,
 				8EDE17381FFF718F0013DD41 /* HqLineCell.h */,
 				8EDE17371FFF718F0013DD41 /* HqLineCell.m */,
 			);
@@ -658,9 +703,16 @@
 		8EDE17411FFF86F30013DD41 /* HqCard */ = {
 			isa = PBXGroup;
 			children = (
+				3334CD752000AF0200C5EED8 /* HqPayPassword */,
 				8EDE17451FFF874B0013DD41 /* Views */,
 				8EDE17421FFF87080013DD41 /* HqCardsVC.h */,
 				8EDE17431FFF87080013DD41 /* HqCardsVC.m */,
+				3334CD602000630000C5EED8 /* HqUserIdInfoVC.h */,
+				3334CD612000630000C5EED8 /* HqUserIdInfoVC.m */,
+				3334CD662000743600C5EED8 /* HqAddCardVC.h */,
+				3334CD672000743600C5EED8 /* HqAddCardVC.m */,
+				3334CD7A2000C69400C5EED8 /* HqAddCardInfoVC.h */,
+				3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */,
 			);
 			path = HqCard;
 			sourceTree = "<group>";
@@ -670,6 +722,8 @@
 			children = (
 				8EDE17461FFF87A50013DD41 /* HqCardCell.h */,
 				8EDE17471FFF87A50013DD41 /* HqCardCell.m */,
+				3334CD632000650300C5EED8 /* HqIdInfoInputView.h */,
+				3334CD642000650300C5EED8 /* HqIdInfoInputView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -824,6 +878,7 @@
 				8EDE16E61FFF23C30013DD41 /* IQBarButtonItem.m in Sources */,
 				8EDE17481FFF87A50013DD41 /* HqCardCell.m in Sources */,
 				8EDE16EC1FFF23C30013DD41 /* IQUIWindow+Hierarchy.m in Sources */,
+				3334CD682000743600C5EED8 /* HqAddCardVC.m in Sources */,
 				8EDE17041FFF23C30013DD41 /* UITextField+LimitInput.m in Sources */,
 				8EDE16EB1FFF23C30013DD41 /* IQNSArray+Sort.m in Sources */,
 				8EDE17401FFF7A910013DD41 /* HqScanPayVC.m in Sources */,
@@ -839,6 +894,8 @@
 				8EDE17051FFF23C30013DD41 /* UIButton+EnlargeTouchArea.m in Sources */,
 				8EDE17441FFF87080013DD41 /* HqCardsVC.m in Sources */,
 				8EDE16EF1FFF23C30013DD41 /* IQUIView+Hierarchy.m in Sources */,
+				3334CD742000AE7D00C5EED8 /* HqPassWordView.m in Sources */,
+				3334CD652000650300C5EED8 /* HqIdInfoInputView.m in Sources */,
 				8EDE16E41FFF23C30013DD41 /* IQToolbar.m in Sources */,
 				8EDE16E71FFF23C30013DD41 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				8EDE16F11FFF23C30013DD41 /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -859,7 +916,9 @@
 				8EDE171E1FFF2ED80013DD41 /* HqLeftView.m in Sources */,
 				8EDE16ED1FFF23C30013DD41 /* IQUITextFieldView+Additions.m in Sources */,
 				8EDE16D81FFF23C30013DD41 /* HqAFHttpClient.m in Sources */,
+				3334CD792000AF3B00C5EED8 /* HqPayPasswordVC.m in Sources */,
 				8EDE16E21FFF23C30013DD41 /* SGQRCodeAlbumManager.m in Sources */,
+				3334CD622000630000C5EED8 /* HqUserIdInfoVC.m in Sources */,
 				8EDE16E01FFF23C30013DD41 /* SGQRCodeScanManager.m in Sources */,
 				8EDE17011FFF23C30013DD41 /* UIImage+HqImageCategory.m in Sources */,
 				8EDE16E51FFF23C30013DD41 /* IQTitleBarButtonItem.m in Sources */,
@@ -868,6 +927,7 @@
 				8EDE16E31FFF23C30013DD41 /* IQTextView.m in Sources */,
 				8EDE16E81FFF23C30013DD41 /* IQPreviousNextView.m in Sources */,
 				8EDE16F21FFF23C30013DD41 /* MBProgressHUD.m in Sources */,
+				3334CD7C2000C69500C5EED8 /* HqAddCardInfoVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,7 +58,7 @@
 - (void)logout:(UIButton *)btn{
     NSLog(@"logout");
 //    SetUserDefault(nil, kToken);
-//    [AppDelegate setRootVC:HqSetRootVCLogin];
+    [AppDelegate setRootVC:HqSetRootVCLogin];
 }
 #pragma UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

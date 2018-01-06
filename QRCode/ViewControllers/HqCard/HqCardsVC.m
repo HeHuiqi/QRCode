@@ -8,6 +8,9 @@
 
 #import "HqCardsVC.h"
 #import "HqCardCell.h"
+#import "HqUserIdInfoVC.h"
+
+#import "HqPayPasswordVC.h"
 
 @interface HqCardsVC ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -37,14 +40,12 @@
     /*
      *画虚线
      */
-    
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, kZoomValue(185)-40)];
+    UIButton *contentView = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, kZoomValue(185)-40)];
+    [contentView addTarget:self action:@selector(addCards:) forControlEvents:UIControlEventTouchUpInside];
     contentView.layer.cornerRadius = 2.0;
     [footer addSubview:contentView];
     CAShapeLayer *subLayer = [self dotteShapeLayer:contentView.bounds];
     [contentView.layer addSublayer:subLayer];
-    
-    
     
     return footer;
 }
@@ -70,6 +71,14 @@
     dotteShapeLayer.path = path.CGPath;
     
     return dotteShapeLayer;
+}
+#pragma mark - 添加银行卡
+- (void)addCards:(UIButton *)btn{
+    
+    HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+    Push(passwordVC);
+//    HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
+//    Push(idUserVC);
 }
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
