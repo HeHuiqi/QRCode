@@ -277,6 +277,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		3375DFC020020EC200E35121 /* HqGesturePassword */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HqGesturePassword;
+			sourceTree = "<group>";
+		};
 		69FB2DBCE36FD642F2C00913 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +355,7 @@
 		8EDE16651FFF23C30013DD41 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3375DFC020020EC200E35121 /* HqGesturePassword */,
 				8EDE17411FFF86F30013DD41 /* HqCard */,
 				8EDE173D1FFF7A780013DD41 /* HqScanPay */,
 				8EDE17091FFF26830013DD41 /* SuperVC */,

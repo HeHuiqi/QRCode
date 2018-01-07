@@ -38,7 +38,10 @@
     CGFloat cellHeight = kZoomValue(65);
     CGFloat ySpace = 20;
     
-    _nameInputView = [[HqIdInfoInputView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(infoLab.frame)+kZoomValue(ySpace), SCREEN_WIDTH, cellHeight)];
+    CGFloat xInput = kZoomValue(ySpace);
+    CGFloat width = SCREEN_WIDTH  - 2*xInput;
+    
+    _nameInputView = [[HqIdInfoInputView alloc] initWithFrame:CGRectMake(xInput, CGRectGetMaxY(infoLab.frame)+kZoomValue(ySpace), width, cellHeight)];
     _nameInputView.titleLab.text = @"Name";
     [contentView addSubview:_nameInputView];
     
@@ -52,7 +55,7 @@
     [certChooseBtn addTarget:self action:@selector(chooseCert:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:certChooseBtn];
     
-    _certTypeView = [[HqIdInfoInputView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_nameInputView.frame)+kZoomValue(ySpace), SCREEN_WIDTH, cellHeight)];
+    _certTypeView = [[HqIdInfoInputView alloc] initWithFrame:CGRectMake(xInput, CGRectGetMaxY(_nameInputView.frame)+kZoomValue(ySpace), width, cellHeight)];
     _certTypeView.titleLab.text = @"Certificate Type";
     _certTypeView.inputView.placeholder = @"ID Card No.";
     _certTypeView.inputView.delegate = self;
@@ -60,7 +63,7 @@
     _certTypeView.inputView.rightView = certChooseBtn;
     [contentView addSubview:_certTypeView];
     
-    _idInputView = [[HqIdInfoInputView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_certTypeView.frame)+kZoomValue(ySpace), SCREEN_WIDTH, cellHeight)];
+    _idInputView = [[HqIdInfoInputView alloc] initWithFrame:CGRectMake(xInput, CGRectGetMaxY(_certTypeView.frame)+kZoomValue(ySpace), width, cellHeight)];
     _idInputView.titleLab.text = @"ID Number";
     _idInputView.inputView.placeholder = @"ID Number";
     _idInputView.inputView.delegate = self;
@@ -75,10 +78,10 @@
     [contentView addSubview:nextBtn];
     
     [nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(kZoomValue(ySpace));
-        make.top.equalTo(_idInputView.mas_bottom).offset(kZoomValue(ySpace));
-        make.right.equalTo(contentView).offset(-kZoomValue(ySpace));
-        make.height.mas_equalTo(kZoomValue(kZoomValue(45)));
+        make.left.equalTo(contentView).offset(xInput);
+        make.top.equalTo(_idInputView.mas_bottom).offset(xInput);
+        make.right.equalTo(contentView).offset(-xInput);
+        make.height.mas_equalTo(kZoomValue(45));
     }];
     
 }

@@ -62,7 +62,7 @@
     [self.window makeKeyAndVisible];
     
     NSString *token = GetUserDefault(kToken);
-    if(token.length){
+    if(!token.length){
         [AppDelegate setRootVC:HqSetRootVCHome];
     }else{
         [AppDelegate setRootVC:HqSetRootVCWecome];
