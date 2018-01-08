@@ -534,22 +534,22 @@
 		8EDE16B01FFF23C30013DD41 /* UItils */ = {
 			isa = PBXGroup;
 			children = (
-				8EDE16D01FFF23C30013DD41 /* NSString+Public.h */,
-				8EDE16BD1FFF23C30013DD41 /* NSString+Public.m */,
+				8EDE16B21FFF23C30013DD41 /* Category */,
+				8EDE16C61FFF23C30013DD41 /* HqString.h */,
+				8EDE16BB1FFF23C30013DD41 /* HqString.m */,
+				8EDE16C91FFF23C30013DD41 /* HqTextInputLimit */,
+				8EDE16BE1FFF23C30013DD41 /* HqTimerformatter */,
 				8EDE16B11FFF23C30013DD41 /* NSDictionary+isNULL.h */,
 				8EDE16C41FFF23C30013DD41 /* NSDictionary+isNULL.m */,
+				8EDE16D01FFF23C30013DD41 /* NSString+Public.h */,
+				8EDE16BD1FFF23C30013DD41 /* NSString+Public.m */,
+				8EDE16CC1FFF23C30013DD41 /* UIButton+EnlargeTouchArea */,
+				8EDE16CF1FFF23C30013DD41 /* UIFont+HqCustomFont.h */,
+				8EDE16C11FFF23C30013DD41 /* UIFont+HqCustomFont.m */,
 				8EDE16C71FFF23C30013DD41 /* UIImage+HqImageCategory.h */,
 				8EDE16C31FFF23C30013DD41 /* UIImage+HqImageCategory.m */,
 				8EDE16C51FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.h */,
 				8EDE16BC1FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.m */,
-				8EDE16CF1FFF23C30013DD41 /* UIFont+HqCustomFont.h */,
-				8EDE16C11FFF23C30013DD41 /* UIFont+HqCustomFont.m */,
-				8EDE16C61FFF23C30013DD41 /* HqString.h */,
-				8EDE16BB1FFF23C30013DD41 /* HqString.m */,
-				8EDE16B21FFF23C30013DD41 /* Category */,
-				8EDE16BE1FFF23C30013DD41 /* HqTimerformatter */,
-				8EDE16C91FFF23C30013DD41 /* HqTextInputLimit */,
-				8EDE16CC1FFF23C30013DD41 /* UIButton+EnlargeTouchArea */,
 			);
 			path = UItils;
 			sourceTree = "<group>";
