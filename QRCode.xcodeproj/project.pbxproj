@@ -13,6 +13,8 @@
 		3334CD742000AE7D00C5EED8 /* HqPassWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD732000AE7D00C5EED8 /* HqPassWordView.m */; };
 		3334CD792000AF3B00C5EED8 /* HqPayPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */; };
 		3334CD7C2000C69500C5EED8 /* HqAddCardInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */; };
+		8E5FCC3320034BF400B4740B /* HqHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC3220034BF400B4740B /* HqHttpUtil.m */; };
+		8E5FCC362003670A00B4740B /* HqSetLoginPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC352003670A00B4740B /* HqSetLoginPassword.m */; };
 		8EDE164E1FFF22FF0013DD41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE164D1FFF22FF0013DD41 /* AppDelegate.m */; };
 		8EDE16511FFF22FF0013DD41 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16501FFF22FF0013DD41 /* ViewController.m */; };
 		8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16521FFF22FF0013DD41 /* Main.storyboard */; };
@@ -52,7 +54,6 @@
 		8EDE16F81FFF23C30013DD41 /* NSData+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16B31FFF23C30013DD41 /* NSData+Extension.m */; };
 		8EDE16F91FFF23C30013DD41 /* NSNumber+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16B51FFF23C30013DD41 /* NSNumber+Extension.m */; };
 		8EDE16FA1FFF23C30013DD41 /* UITextField+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16B61FFF23C30013DD41 /* UITextField+EnlargeTouchArea.m */; };
-		8EDE16FB1FFF23C30013DD41 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16B71FFF23C30013DD41 /* NSString+Extension.m */; };
 		8EDE16FC1FFF23C30013DD41 /* HqString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16BB1FFF23C30013DD41 /* HqString.m */; };
 		8EDE16FD1FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16BC1FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
 		8EDE16FE1FFF23C30013DD41 /* NSString+Public.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16BD1FFF23C30013DD41 /* NSString+Public.m */; };
@@ -60,7 +61,6 @@
 		8EDE17001FFF23C30013DD41 /* UIFont+HqCustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16C11FFF23C30013DD41 /* UIFont+HqCustomFont.m */; };
 		8EDE17011FFF23C30013DD41 /* UIImage+HqImageCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16C31FFF23C30013DD41 /* UIImage+HqImageCategory.m */; };
 		8EDE17021FFF23C30013DD41 /* NSDictionary+isNULL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16C41FFF23C30013DD41 /* NSDictionary+isNULL.m */; };
-		8EDE17031FFF23C30013DD41 /* NSString+HqString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16C81FFF23C30013DD41 /* NSString+HqString.m */; };
 		8EDE17041FFF23C30013DD41 /* UITextField+LimitInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16CA1FFF23C30013DD41 /* UITextField+LimitInput.m */; };
 		8EDE17051FFF23C30013DD41 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16CE1FFF23C30013DD41 /* UIButton+EnlargeTouchArea.m */; };
 		8EDE17061FFF23C30013DD41 /* ProjectEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16D51FFF23C30013DD41 /* ProjectEnvironment.m */; };
@@ -100,6 +100,10 @@
 		3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqAddCardInfoVC.m; sourceTree = "<group>"; };
 		4BD802C28DBA1070B041B7DF /* Pods-QRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCode/Pods-QRCode.release.xcconfig"; sourceTree = "<group>"; };
 		8A1F463273FB3E3E6DE6208B /* libPods-QRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E5FCC3120034BF400B4740B /* HqHttpUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqHttpUtil.h; sourceTree = "<group>"; };
+		8E5FCC3220034BF400B4740B /* HqHttpUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqHttpUtil.m; sourceTree = "<group>"; };
+		8E5FCC342003670900B4740B /* HqSetLoginPassword.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqSetLoginPassword.h; sourceTree = "<group>"; };
+		8E5FCC352003670A00B4740B /* HqSetLoginPassword.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqSetLoginPassword.m; sourceTree = "<group>"; };
 		8EDE16491FFF22FF0013DD41 /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDE164C1FFF22FF0013DD41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EDE164D1FFF22FF0013DD41 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -171,10 +175,8 @@
 		8EDE16AF1FFF23C30013DD41 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		8EDE16B11FFF23C30013DD41 /* NSDictionary+isNULL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+isNULL.h"; sourceTree = "<group>"; };
 		8EDE16B31FFF23C30013DD41 /* NSData+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Extension.m"; sourceTree = "<group>"; };
-		8EDE16B41FFF23C30013DD41 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		8EDE16B51FFF23C30013DD41 /* NSNumber+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Extension.m"; sourceTree = "<group>"; };
 		8EDE16B61FFF23C30013DD41 /* UITextField+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+EnlargeTouchArea.m"; sourceTree = "<group>"; };
-		8EDE16B71FFF23C30013DD41 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		8EDE16B81FFF23C30013DD41 /* NSData+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Extension.h"; sourceTree = "<group>"; };
 		8EDE16B91FFF23C30013DD41 /* UITextField+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+EnlargeTouchArea.h"; sourceTree = "<group>"; };
 		8EDE16BA1FFF23C30013DD41 /* NSNumber+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Extension.h"; sourceTree = "<group>"; };
@@ -184,13 +186,11 @@
 		8EDE16BF1FFF23C30013DD41 /* HqDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HqDateFormatter.h; sourceTree = "<group>"; };
 		8EDE16C01FFF23C30013DD41 /* HqDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HqDateFormatter.m; sourceTree = "<group>"; };
 		8EDE16C11FFF23C30013DD41 /* UIFont+HqCustomFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+HqCustomFont.m"; sourceTree = "<group>"; };
-		8EDE16C21FFF23C30013DD41 /* NSString+HqString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HqString.h"; sourceTree = "<group>"; };
 		8EDE16C31FFF23C30013DD41 /* UIImage+HqImageCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HqImageCategory.m"; sourceTree = "<group>"; };
 		8EDE16C41FFF23C30013DD41 /* NSDictionary+isNULL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+isNULL.m"; sourceTree = "<group>"; };
 		8EDE16C51FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ChangeLineSpaceAndWordSpace.h"; sourceTree = "<group>"; };
 		8EDE16C61FFF23C30013DD41 /* HqString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HqString.h; sourceTree = "<group>"; };
 		8EDE16C71FFF23C30013DD41 /* UIImage+HqImageCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HqImageCategory.h"; sourceTree = "<group>"; };
-		8EDE16C81FFF23C30013DD41 /* NSString+HqString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HqString.m"; sourceTree = "<group>"; };
 		8EDE16CA1FFF23C30013DD41 /* UITextField+LimitInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+LimitInput.m"; sourceTree = "<group>"; };
 		8EDE16CB1FFF23C30013DD41 /* UITextField+LimitInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+LimitInput.h"; sourceTree = "<group>"; };
 		8EDE16CD1FFF23C30013DD41 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
@@ -348,6 +348,8 @@
 			children = (
 				8EDE16631FFF23C30013DD41 /* HqAFHttpClient.h */,
 				8EDE16641FFF23C30013DD41 /* HqAFHttpClient.m */,
+				8E5FCC3120034BF400B4740B /* HqHttpUtil.h */,
+				8E5FCC3220034BF400B4740B /* HqHttpUtil.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -532,24 +534,22 @@
 		8EDE16B01FFF23C30013DD41 /* UItils */ = {
 			isa = PBXGroup;
 			children = (
-				8EDE16B11FFF23C30013DD41 /* NSDictionary+isNULL.h */,
-				8EDE16B21FFF23C30013DD41 /* Category */,
-				8EDE16BB1FFF23C30013DD41 /* HqString.m */,
-				8EDE16BC1FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.m */,
+				8EDE16D01FFF23C30013DD41 /* NSString+Public.h */,
 				8EDE16BD1FFF23C30013DD41 /* NSString+Public.m */,
-				8EDE16BE1FFF23C30013DD41 /* HqTimerformatter */,
-				8EDE16C11FFF23C30013DD41 /* UIFont+HqCustomFont.m */,
-				8EDE16C21FFF23C30013DD41 /* NSString+HqString.h */,
-				8EDE16C31FFF23C30013DD41 /* UIImage+HqImageCategory.m */,
+				8EDE16B11FFF23C30013DD41 /* NSDictionary+isNULL.h */,
 				8EDE16C41FFF23C30013DD41 /* NSDictionary+isNULL.m */,
-				8EDE16C51FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.h */,
-				8EDE16C61FFF23C30013DD41 /* HqString.h */,
 				8EDE16C71FFF23C30013DD41 /* UIImage+HqImageCategory.h */,
-				8EDE16C81FFF23C30013DD41 /* NSString+HqString.m */,
+				8EDE16C31FFF23C30013DD41 /* UIImage+HqImageCategory.m */,
+				8EDE16C51FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.h */,
+				8EDE16BC1FFF23C30013DD41 /* UILabel+ChangeLineSpaceAndWordSpace.m */,
+				8EDE16CF1FFF23C30013DD41 /* UIFont+HqCustomFont.h */,
+				8EDE16C11FFF23C30013DD41 /* UIFont+HqCustomFont.m */,
+				8EDE16C61FFF23C30013DD41 /* HqString.h */,
+				8EDE16BB1FFF23C30013DD41 /* HqString.m */,
+				8EDE16B21FFF23C30013DD41 /* Category */,
+				8EDE16BE1FFF23C30013DD41 /* HqTimerformatter */,
 				8EDE16C91FFF23C30013DD41 /* HqTextInputLimit */,
 				8EDE16CC1FFF23C30013DD41 /* UIButton+EnlargeTouchArea */,
-				8EDE16CF1FFF23C30013DD41 /* UIFont+HqCustomFont.h */,
-				8EDE16D01FFF23C30013DD41 /* NSString+Public.h */,
 			);
 			path = UItils;
 			sourceTree = "<group>";
@@ -557,14 +557,12 @@
 		8EDE16B21FFF23C30013DD41 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				8EDE16B31FFF23C30013DD41 /* NSData+Extension.m */,
-				8EDE16B41FFF23C30013DD41 /* NSString+Extension.h */,
-				8EDE16B51FFF23C30013DD41 /* NSNumber+Extension.m */,
-				8EDE16B61FFF23C30013DD41 /* UITextField+EnlargeTouchArea.m */,
-				8EDE16B71FFF23C30013DD41 /* NSString+Extension.m */,
 				8EDE16B81FFF23C30013DD41 /* NSData+Extension.h */,
-				8EDE16B91FFF23C30013DD41 /* UITextField+EnlargeTouchArea.h */,
+				8EDE16B31FFF23C30013DD41 /* NSData+Extension.m */,
 				8EDE16BA1FFF23C30013DD41 /* NSNumber+Extension.h */,
+				8EDE16B51FFF23C30013DD41 /* NSNumber+Extension.m */,
+				8EDE16B91FFF23C30013DD41 /* UITextField+EnlargeTouchArea.h */,
+				8EDE16B61FFF23C30013DD41 /* UITextField+EnlargeTouchArea.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -650,6 +648,8 @@
 				8EDE17241FFF38A80013DD41 /* LoginVC.m */,
 				8EDE17271FFF38C80013DD41 /* RegistVC.h */,
 				8EDE17281FFF38C80013DD41 /* RegistVC.m */,
+				8E5FCC342003670900B4740B /* HqSetLoginPassword.h */,
+				8E5FCC352003670A00B4740B /* HqSetLoginPassword.m */,
 			);
 			path = "Login&Regist";
 			sourceTree = "<group>";
@@ -898,10 +898,11 @@
 				8EDE17071FFF23C30013DD41 /* ProjectConst.m in Sources */,
 				8EDE16FF1FFF23C30013DD41 /* HqDateFormatter.m in Sources */,
 				8EDE16DB1FFF23C30013DD41 /* UITextView+Placeholder.m in Sources */,
-				8EDE17031FFF23C30013DD41 /* NSString+HqString.m in Sources */,
 				8EDE17051FFF23C30013DD41 /* UIButton+EnlargeTouchArea.m in Sources */,
 				8EDE17441FFF87080013DD41 /* HqCardsVC.m in Sources */,
 				8EDE16EF1FFF23C30013DD41 /* IQUIView+Hierarchy.m in Sources */,
+				8E5FCC3320034BF400B4740B /* HqHttpUtil.m in Sources */,
+				8E5FCC362003670A00B4740B /* HqSetLoginPassword.m in Sources */,
 				3334CD742000AE7D00C5EED8 /* HqPassWordView.m in Sources */,
 				3334CD652000650300C5EED8 /* HqIdInfoInputView.m in Sources */,
 				8EDE16E41FFF23C30013DD41 /* IQToolbar.m in Sources */,
@@ -913,7 +914,6 @@
 				8EDE17211FFF31790013DD41 /* HqLeftViewCell.m in Sources */,
 				8EDE16F01FFF23C30013DD41 /* IQUIViewController+Additions.m in Sources */,
 				8EDE16FA1FFF23C30013DD41 /* UITextField+EnlargeTouchArea.m in Sources */,
-				8EDE16FB1FFF23C30013DD41 /* NSString+Extension.m in Sources */,
 				8EDE17121FFF26830013DD41 /* SuperVC.m in Sources */,
 				8EDE16F41FFF23C30013DD41 /* SVProgressHUD.m in Sources */,
 				8EDE16DF1FFF23C30013DD41 /* SGQRCodeScanningView.m in Sources */,

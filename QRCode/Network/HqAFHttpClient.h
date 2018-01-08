@@ -15,7 +15,6 @@ typedef NS_ENUM(int,RequestMethod){
     Put,
     Delete
 };
-typedef void (^HqHttpRequestCompleteBlock) (NSHTTPURLResponse *response, id responseObject);
 
 typedef void (^HqHttpRequestResultBlock) (NSHTTPURLResponse *response, id responseObject,NSError *error);
 

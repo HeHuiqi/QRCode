@@ -55,10 +55,24 @@
     }];
     
 }
+#pragma mark - 退出登录
 - (void)logout:(UIButton *)btn{
     NSLog(@"logout");
-//    SetUserDefault(nil, kToken);
-    [AppDelegate setRootVC:HqSetRootVCLogin];
+    [HqHttpUtil hqDeleteShowHudTitle:nil param:nil url:@"/users/sessions" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                SetUserDefault(nil, kToken);
+                [AppDelegate setRootVC:HqSetRootVCLogin];
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+
 }
 #pragma UITableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

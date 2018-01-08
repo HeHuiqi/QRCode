@@ -31,8 +31,8 @@
     
     CGFloat inputHeight = 45;
     CGFloat leftSpace = 20;
-
-
+    
+    
     _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@""];
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
     [contentView addSubview:_mobileTf];
@@ -71,7 +71,7 @@
         make.height.mas_equalTo(kZoomValue(leftSpace));
     }];
     
-   
+    
     [_passwordTf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
         make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
@@ -89,12 +89,12 @@
 }
 - (void)loginApp:(UIButton *)btn{
     
-    /*
+    
     if(_mobileTf.text.length==0){
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileTf.text.length<kPasswordMaxLength){
+    if(_mobileTf.text.length<kMobileNumberLength){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
     }
@@ -106,12 +106,27 @@
         [Dialog simpleToast:@"The password's length 6~14 "];
         return;
     }
-    [HqAFHttpClient starRequestWithHeaders:nil withURLString:@"" withParam:@{} requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Post requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
-        
+    NSString *password = [NSString sha1:_passwordTf.text];
+    NSDictionary *param = @{@"username": _mobileTf.text,
+                            @"password": password};
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/users/sessions" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                NSString *token = [responseObject hq_objectForKey:@"token"];
+                SetUserDefault(token, kToken);
+                [AppDelegate setRootVC:HqSetRootVCHome];
+                
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
     }];
-    */
-    [AppDelegate setRootVC:HqSetRootVCHome];
-
+    
+    
 }
 - (void)forgotPassword:(UIButton *)btn{
     
@@ -127,12 +142,12 @@
         return YES;
     }
     
-     if ([textField isEqual:_mobileTf]) {
-     if (textField.text.length >=kMobileNumberLength) {
-     return NO;
-     }
-     }
-
+    if ([textField isEqual:_mobileTf]) {
+        if (textField.text.length >=kMobileNumberLength) {
+            return NO;
+        }
+    }
+    
     if ([textField isEqual:_passwordTf]) {
         if (textField.text.length >=kPasswordMaxLength) {
             return NO;
@@ -150,13 +165,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
+

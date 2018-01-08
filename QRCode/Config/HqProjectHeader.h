@@ -25,7 +25,11 @@
 #import "SuperVC.h"
 #import "AppDelegate.h"
 #import "HqAFHttpClient.h"
+#import "HqHttpUtil.h"
 #import "HqString.h"
+#import "NSString+Public.h"
+
+
 
 
 #endif /* HqProjectHeader_h */

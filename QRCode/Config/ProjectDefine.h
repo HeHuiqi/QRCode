@@ -30,14 +30,18 @@
 #define COLORA(R, G, B)   [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]
 
 #define COLOR(R, G, B, A)   [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
-#define AppMainColor COLOR(17, 139, 226, 1)
 
 #define AppName [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]
+
+#define kRequestError @"Sorry,Request Fail!"
 
 #define kMobileNumberLength 11
 #define kPasswordMaxLength 14
 #define kPsswordMinLength 6
+#define kCheckCodeMaxLength 6
 
+
+#define AppMainColor COLOR(17, 139, 226, 1)
 #define HqRedColor COLOR(248, 89, 76, 1)
 #define HqGrayColor COLOR(212, 212, 212, 1)
 #define HqGreenColor COLOR(18, 124, 3, 1)

@@ -9,6 +9,7 @@
 #import "RegistVC.h"
 #import "HqInputView.h"
 #define Time 60
+#import "HqSetLoginPassword.h"
 @interface RegistVC ()<UITextFieldDelegate>
 
 @property (nonatomic,strong) HqInputView *mobileTf;
@@ -117,17 +118,15 @@
         make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
-    
-  
-    
 }
+
 - (void)signApp:(UIButton *)btn{
     
     if(_mobileTf.text.length==0){
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileTf.text.length<kPasswordMaxLength){
+    if(_mobileTf.text.length<kMobileNumberLength){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
     }
@@ -139,23 +138,38 @@
         [Dialog simpleToast:@"The verfication code length 6 "];
         return;
     }
-    [HqAFHttpClient starRequestWithHeaders:nil withURLString:@"" withParam:@{} requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Post requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
-        
+   
+    NSDictionary *param = @{@"mobile": _mobileTf.text,
+                            @"otp": _checkCodeTf.text,};
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/users/codes/checking" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                HqSetLoginPassword *setPasswordVC = [[HqSetLoginPassword alloc] init];
+                setPasswordVC.mobile = _mobileTf.text;
+                setPasswordVC.verficationCode = _checkCodeTf.text;
+                Push(setPasswordVC);
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
     }];
-    //    [AppDelegate setRootVC:HqSetRootVCHome];
     
 }
 - (void)geCheckCode:(UIButton *)btn{
     
-    /*
+    
     if(_mobileTf.text.length==0){
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileTf.text.length<kPasswordMaxLength){
+    if(_mobileTf.text.length<kMobileNumberLength){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
-    }*/
+    }
     
     [self destroyTimer];
     if (_checkCodeTimer == nil)
@@ -163,30 +177,25 @@
         btn.userInteractionEnabled = NO;
         _checkCodeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getCheckCodeTimer) userInfo:nil repeats:YES];
     }
-    /*
+    
     NSString *url = [NSString stringWithFormat:@"/users/codes/%@",_mobileTf.text];
-    [HqAFHttpClient starRequestWithHeaders:nil withURLString:url withParam:nil requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Get requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+    [HqHttpUtil hqGetShowHudTitle:nil param:nil url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
         NSLog(@"获取验证码 = =%@",responseObject)
-
         if (response.statusCode == 200) {
-            
             NSString *msg = [responseObject hq_objectForKey:@"message"];
-            int status = [[responseObject hq_objectForKey:@"status"] intValue];
-            if (status == 0) {
-                
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
                 [Dialog simpleToast:@"Verfication code sended"];
+                NSString *token = [responseObject hq_objectForKey:@"token"];
+                SetUserDefault(token, kToken);
             }else{
                 [self destroyTimer];
                 [Dialog simpleToast:msg];
             }
-            
         }else{
             [self destroyTimer];
-            [Dialog simpleToast:@""];
         }
     }];
-     */
-    
 }
 #pragma mark - UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -206,7 +215,7 @@
     }
     
     if ([textField isEqual:_checkCodeTf]) {
-        if (textField.text.length >=6) {
+        if (textField.text.length >=kCheckCodeMaxLength) {
             return NO;
         }
     }

@@ -36,7 +36,6 @@
 }
 - (UIView *)tableFooterView{
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kZoomValue(185))];
-//    footer.backgroundColor = [UIColor redColor];
     /*
      *画虚线
      */

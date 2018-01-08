@@ -806,7 +806,7 @@ CGFloat SVProgressHUDRingThickness = 6;
     }
 #endif
     
-    return [UIFont boldSystemFontOfSize:16];
+    return [UIFont boldSystemFontOfSize:14];
 }
 
 - (UIImage *)hudSuccessImage {
