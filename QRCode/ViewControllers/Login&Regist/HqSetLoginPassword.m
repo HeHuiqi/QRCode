@@ -27,9 +27,11 @@
     CGFloat inputHeight = 45;
     CGFloat leftSpace = 20;
     
-    UILabel *infoLab = [[UILabel alloc] initWithFrame:CGRectMake(kZoomValue(leftSpace), CGRectGetMaxY(self.navBarView.frame)+40, SCREEN_WIDTH-60, 13)];
+    UILabel *infoLab = [[UILabel alloc] initWithFrame:CGRectMake(kZoomValue(leftSpace), CGRectGetMaxY(self.navBarView.frame)+40, SCREEN_WIDTH-60, 26)];
     infoLab.font = [UIFont systemFontOfSize:kZoomValue(12)];
-    infoLab.text = @"Please add your own card";
+    infoLab.textAlignment = NSTextAlignmentCenter;
+    infoLab.numberOfLines = 0;
+    infoLab.text = @"password must contain at least 6 characters \n including both letters and numbers";
     [contentView addSubview:infoLab];
 
     _passwordTf = [[HqInputView alloc] initWithPlacehoder:@"Password" leftIcon:@""];

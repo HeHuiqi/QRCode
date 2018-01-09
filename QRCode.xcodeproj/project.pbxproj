@@ -15,6 +15,7 @@
 		3334CD7C2000C69500C5EED8 /* HqAddCardInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */; };
 		8E5FCC3320034BF400B4740B /* HqHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC3220034BF400B4740B /* HqHttpUtil.m */; };
 		8E5FCC362003670A00B4740B /* HqSetLoginPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC352003670A00B4740B /* HqSetLoginPassword.m */; };
+		8E5FCC39200458E500B4740B /* LanuchScreenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC38200458E500B4740B /* LanuchScreenVC.m */; };
 		8EDE164E1FFF22FF0013DD41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE164D1FFF22FF0013DD41 /* AppDelegate.m */; };
 		8EDE16511FFF22FF0013DD41 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16501FFF22FF0013DD41 /* ViewController.m */; };
 		8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16521FFF22FF0013DD41 /* Main.storyboard */; };
@@ -104,6 +105,8 @@
 		8E5FCC3220034BF400B4740B /* HqHttpUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqHttpUtil.m; sourceTree = "<group>"; };
 		8E5FCC342003670900B4740B /* HqSetLoginPassword.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqSetLoginPassword.h; sourceTree = "<group>"; };
 		8E5FCC352003670A00B4740B /* HqSetLoginPassword.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqSetLoginPassword.m; sourceTree = "<group>"; };
+		8E5FCC37200458E500B4740B /* LanuchScreenVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanuchScreenVC.h; sourceTree = "<group>"; };
+		8E5FCC38200458E500B4740B /* LanuchScreenVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanuchScreenVC.m; sourceTree = "<group>"; };
 		8EDE16491FFF22FF0013DD41 /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDE164C1FFF22FF0013DD41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EDE164D1FFF22FF0013DD41 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -277,13 +280,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3375DFC020020EC200E35121 /* HqGesturePassword */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HqGesturePassword;
-			sourceTree = "<group>";
-		};
 		69FB2DBCE36FD642F2C00913 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +332,8 @@
 				8EDE16521FFF22FF0013DD41 /* Main.storyboard */,
 				8EDE16551FFF22FF0013DD41 /* Assets.xcassets */,
 				8EDE16571FFF22FF0013DD41 /* LaunchScreen.storyboard */,
+				8E5FCC37200458E500B4740B /* LanuchScreenVC.h */,
+				8E5FCC38200458E500B4740B /* LanuchScreenVC.m */,
 				8EDE165A1FFF22FF0013DD41 /* Info.plist */,
 				8EDE17081FFF24360013DD41 /* QRCode.pch */,
 				8EDE165B1FFF22FF0013DD41 /* main.m */,
@@ -357,7 +355,6 @@
 		8EDE16651FFF23C30013DD41 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3375DFC020020EC200E35121 /* HqGesturePassword */,
 				8EDE17411FFF86F30013DD41 /* HqCard */,
 				8EDE173D1FFF7A780013DD41 /* HqScanPay */,
 				8EDE17091FFF26830013DD41 /* SuperVC */,
@@ -894,6 +891,7 @@
 				8EDE173C1FFF72640013DD41 /* HqHomeCell.m in Sources */,
 				8EDE16F91FFF23C30013DD41 /* NSNumber+Extension.m in Sources */,
 				8EDE16F31FFF23C30013DD41 /* MBProgressHUD+Add.m in Sources */,
+				8E5FCC39200458E500B4740B /* LanuchScreenVC.m in Sources */,
 				8EDE16E11FFF23C30013DD41 /* SGQRCodeGenerateManager.m in Sources */,
 				8EDE17071FFF23C30013DD41 /* ProjectConst.m in Sources */,
 				8EDE16FF1FFF23C30013DD41 /* HqDateFormatter.m in Sources */,
