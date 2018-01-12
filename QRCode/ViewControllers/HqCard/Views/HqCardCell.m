@@ -50,15 +50,28 @@
     
     _cardNumberLab = [[UILabel alloc] init];
     _cardNumberLab.textColor = [UIColor whiteColor];
-    _cardNumberLab.font = [UIFont systemFontOfSize:kZoomValue(24)];
+
+        NSString *fontPath = [[NSBundle mainBundle] pathForResource:@"MSPMincho" ofType:@"ttf"];
+    _cardNumberLab.font = [UIFont customFontWithPath:fontPath size:kZoomValue(24)];
     [bgView addSubview:_cardNumberLab];
     [_cardNumberLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(bgView).offset(kZoomValue(20));
         make.centerX.equalTo(bgView);
     }];
+    
+    
 }
-
-
+- (void)setBankCard:(HqBankCard *)bankCard{
+    _bankCard = bankCard;
+    if (_bankCard) {
+        _bankNameLab.text = _bankCard.bankName;
+        
+    }
+}
+- (NSString *)formatterCardNum:(NSString *)cardNum{
+    cardNum = [cardNum stringByReplacingOccurrencesOfString:@"" withString:@""];
+    return cardNum;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

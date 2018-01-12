@@ -16,20 +16,20 @@
     return self;
 }
 - (void)setup{
-    _leftIcon = [[UIImageView alloc] init];
+    _leftIcon = [UIButton buttonWithType:UIButtonTypeSystem];
+    _leftIcon.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:_leftIcon];
-    _leftIcon.backgroundColor = [UIColor redColor];
     [_leftIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(kZoomValue(40));
+        make.left.equalTo(self.contentView).offset(kZoomValue(36));
         make.centerY.equalTo(self.contentView);
-        make.size.mas_equalTo(CGSizeMake(kZoomValue(30), kZoomValue(30)));
+        make.size.mas_equalTo(CGSizeMake(kZoomValue(13), kZoomValue(18)));
     }];
     
     _titleLab = [[UILabel alloc] init];
     _titleLab.font = [UIFont systemFontOfSize:15];
     [self.contentView addSubview:_titleLab];
     [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_leftIcon.mas_right).offset(kZoomValue(30));
+        make.left.equalTo(_leftIcon.mas_right).offset(kZoomValue(29));
         make.centerY.equalTo(self.contentView);
     }];
     
@@ -39,11 +39,15 @@
     [super awakeFromNib];
     // Initialization code
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
+    [super setHighlighted:highlighted animated:animated];
+    if (highlighted) {
+        _leftIcon.tintColor = [UIColor whiteColor];
+        _titleLab.textColor = [UIColor whiteColor];
+    }else{
+        _leftIcon.tintColor = COLOR(0, 159, 232, 1);
+        _titleLab.textColor = [UIColor blackColor];
+    }
 }
 
 @end

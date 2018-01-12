@@ -10,7 +10,7 @@
 
 @interface HqLeftViewCell : UITableViewCell
 
-@property (nonatomic,strong) UIImageView *leftIcon;
+@property (nonatomic,strong) UIButton *leftIcon;
 @property (nonatomic,strong) UILabel *titleLab;
 
 @end

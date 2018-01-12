@@ -9,6 +9,7 @@
 #import "HqAddCardVC.h"
 #import "HqInputView.h"
 #import "HqAddCardInfoVC.h"
+#import "HqGesturePasswordVC.h"
 
 @interface HqAddCardVC ()<UITextFieldDelegate>
 
@@ -100,6 +101,8 @@
     NSLog(@"2323236");
 }
 - (void)cardNextClick:(UIButton *)btn{
+    
+   
     HqAddCardInfoVC *addCardInfoVC = [[HqAddCardInfoVC alloc] init];
     Push(addCardInfoVC);
 }

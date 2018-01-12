@@ -7,6 +7,12 @@
 //
 
 #import "HqButton.h"
+@interface HqButton()
+
+@property (nonatomic,strong) UIButton *icon;
+@property (nonatomic,strong) UILabel *titleLab;
+
+@end
 
 @implementation HqButton
 
@@ -23,9 +29,10 @@
     return self;
 }
 - (void)setup{
-    _icon = [[UIImageView alloc] init];
+    _icon = [UIButton buttonWithType:UIButtonTypeSystem];
+    _icon.tintColor = [UIColor whiteColor];
     _icon.contentMode = UIViewContentModeScaleAspectFit;
-    _icon.backgroundColor = [UIColor whiteColor];
+    _icon.userInteractionEnabled = NO;
     [self addSubview:_icon];
     
     [_icon mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -42,17 +49,30 @@
         make.centerX.equalTo(self);
         make.bottom.equalTo(self).offset(-kZoomValue(10));
     }];
-    
 }
-
+- (void)setIconImage:(UIImage *)iconImage{
+    _iconImage = iconImage;
+    if (_iconImage) {
+        [_icon setImage:_iconImage forState:UIControlStateNormal];
+    }
+}
+- (void)setTitle:(NSString *)title{
+    _title = title;
+    if (_title) {
+        _titleLab.text = title;
+    }
+}
 - (void)setHighlighted:(BOOL)highlighted{
     
     if(highlighted){
         _titleLab.textColor = COLOR(55, 69, 74, 1);
-        _icon.backgroundColor = COLOR(55, 69, 74, 1);
+        _icon.tintColor = COLOR(55, 69, 74, 1);
+        NSLog(@"highlighted");
     }else{
         _titleLab.textColor = [UIColor whiteColor];
-        _icon.backgroundColor = [UIColor whiteColor];
+        _icon.tintColor = [UIColor whiteColor];
+        NSLog(@"no___highlighted");
+
     }
 }
 
@@ -61,11 +81,8 @@
     _titleLab.textColor = COLOR(55, 69, 74, 1);
     _icon.backgroundColor = COLOR(55, 69, 74, 1);
 }
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    _titleLab.textColor = [UIColor whiteColor];
-    _icon.backgroundColor = [UIColor whiteColor];
-}
-*/
+ */
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

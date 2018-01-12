@@ -63,6 +63,8 @@
     NSLog(@"ppppp= %@",[NSString sha1:@"aaa111"]);
     
     NSString *token = GetUserDefault(kToken);
+
+
     if(token.length){
         [AppDelegate setRootVC:HqSetRootVCHome];
     }else{

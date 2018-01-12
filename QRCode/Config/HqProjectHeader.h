@@ -28,6 +28,7 @@
 #import "HqHttpUtil.h"
 #import "HqString.h"
 #import "NSString+Public.h"
+#import "UIFont+HqCustomFont.h"
 
 
 

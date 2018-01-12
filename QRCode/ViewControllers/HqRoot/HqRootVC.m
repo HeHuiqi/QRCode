@@ -12,9 +12,12 @@
 #import "HqHomeCell.h"
 #import "HqScanPayVC.h"
 #import "HqCardsVC.h"
-#define LeftWidth (SCREEN_WIDTH - kZoomValue(100))
+
+#import "HqGesturePasswordVC.h"
+
+#define LeftWidth (SCREEN_WIDTH - kZoomValue(52))
 #define LeftAlpha 0.7
-@interface HqRootVC ()<UITableViewDelegate,UITableViewDataSource,HqLeftViewDelegate>
+@interface HqRootVC ()<UITableViewDelegate,UITableViewDataSource,HqLeftViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) HqLeftView *leftView;//左侧视图
 @property (nonatomic,strong) UIView *mainOverView;//覆盖视图
@@ -23,8 +26,6 @@
 
 @property (nonatomic,strong) UITableView *tableView;
 
-
-
 @end
 
 @implementation HqRootVC
@@ -32,8 +33,10 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self initData];
     self.title = @"Home";
+    self.leftBtnImageName = @"home_menu_icon";
     [self headerView];
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.tableHeaderView;
@@ -42,6 +45,8 @@
     [self.view addSubview:self.leftView];
     [self addGesture];
     
+    NSString *token = GetUserDefault(kToken);
+    NSLog(@"token==%@",token);
 }
 - (void)initData{
     self.isOpen = NO;
@@ -49,12 +54,13 @@
 - (void)headerView{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
     header.backgroundColor = AppMainColor;
-    NSArray *titles = @[@"Scan",@"Pay",@"Collect",@"Cards"];
+    NSArray *titles = @[@"Scan",@"Collect",@"Pay",@"Cards"];
+    NSArray *images = @[@"home_scan_icon",@"",@"home_pay_icon",@"home_cards_icon"];
     for (int i = 0; i<titles.count; i++) {
         CGFloat width = SCREEN_WIDTH/titles.count;
         HqButton *button = [[HqButton alloc] initWithFrame:CGRectMake(i*width, 0, width, kZoomValue(70))];
-//        button.backgroundColor = [UIColor clearColor];
-        button.titleLab.text = titles[i];
+        button.iconImage = [UIImage imageNamed:images[i]];
+        button.title = titles[i];
         [button addTarget:self action:@selector(headerClick:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = i+1;
         [header addSubview:button];
@@ -73,7 +79,10 @@
             break;
             case 2:
             {
-                [Dialog simpleToast:@"This feature is not complete yet"];
+//                [Dialog simpleToast:@"This feature is not complete yet"];
+                HqGesturePasswordVC *gesturePasswordVC = [[HqGesturePasswordVC alloc] init];
+                gesturePasswordVC.type = GestureViewControllerTypeLogin;
+                Push(gesturePasswordVC);
             }
             break;
             case 4:
@@ -89,6 +98,7 @@
 }
 - (void)addGesture{
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
+    pan.delegate = self;
     [self.view addGestureRecognizer:pan];
     UITapGestureRecognizer *overTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOver:)];
     [self.mainOverView addGestureRecognizer:overTap];
@@ -266,6 +276,15 @@
             break;
     }
     
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    BOOL isHqButton = [touch.view isKindOfClass: NSClassFromString(@"HqButton")];
+    if(isHqButton) {
+        return NO;
+    }
+    return  YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

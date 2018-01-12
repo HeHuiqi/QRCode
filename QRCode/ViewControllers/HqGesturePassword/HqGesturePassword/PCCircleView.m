@@ -282,7 +282,8 @@
 #pragma mark - 对数组中最后一个对象的处理
 - (void)circleSetLastObjectWithState:(CircleState)state
 {
-    [[self.circleSet lastObject] setState:state];
+    PCCircle *circle = [self.circleSet lastObject];
+    circle.state = state;
 }
 
 #pragma mark - 解锁类型：设置 手势路径的处理
@@ -364,19 +365,6 @@
 #pragma mark - 解锁类型：验证 手势路径的处理
 - (void)gestureEndByTypeVerifyWithGesture:(NSString *)gesture length:(CGFloat)length
 {
-    //    NSString *password = [CircleViewConst getGestureWithKey:gestureFinalSaveKey];
-    //
-    //    BOOL equal = [gesture isEqual:password];
-    //
-    //    if ([self.delegate respondsToSelector:@selector(circleView:type:didCompleteLoginGesture: result:)]) {
-    //        [self.delegate circleView:self type:self.type didCompleteLoginGesture:gesture result:equal];
-    //    }
-    //
-    //    if (equal) {
-    //
-    //    } else {
-    //        [self changeCircleInCircleSetWithState:CircleStateError];
-    //    }
     [self gestureEndByTypeLoginWithGesture:gesture length:length];
 }
 

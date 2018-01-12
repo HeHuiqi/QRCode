@@ -7,7 +7,6 @@
 //
 
 #import "SuperVC.h"
-
 @interface HqCardsVC : SuperVC
 
 @end

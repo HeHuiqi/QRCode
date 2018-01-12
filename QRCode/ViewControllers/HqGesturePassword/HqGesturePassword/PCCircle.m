@@ -100,18 +100,17 @@
  */
 - (void)drawSolidCircleWithContext:(CGContextRef)ctx rect:(CGRect)rect radio:(CGFloat)radio color:(UIColor *)color
 {
-    if (self.type ==CircleTypeInfo&&self.state ==CircleStateSelected ) {
-        color = [UIColor redColor];
-    }
     
     CGMutablePathRef circlePath = CGPathCreateMutable();
     CGPathAddEllipseInRect(circlePath, NULL, CGRectMake(rect.size.width/2 * (1 - radio) + CircleEdgeWidth, rect.size.height/2 * (1 - radio) + CircleEdgeWidth, rect.size.width * radio - CircleEdgeWidth * 2, rect.size.height * radio - CircleEdgeWidth * 2));
-    [color set];
     CGContextAddPath(ctx, circlePath);
-//    CGContextFillPath(ctx);
-    if (self.type ==CircleTypeInfo&&self.state ==CircleStateSelected ) {
+    
+    if (self.type ==CircleTypeInfo&&self.state ==CircleStateSelected) {
+        color = CircleStateSelectedOutsideColor;
+        [color set];
         CGContextStrokePath(ctx);
     }else{
+        [color set];
         CGContextFillPath(ctx);
     }
     CGPathRelease(circlePath);
@@ -153,6 +152,9 @@
 
 - (UIColor *)outCircleColor
 {
+    if (self.type == CircleTypeInfo) {
+        return [UIColor lightGrayColor];
+    }
     UIColor *color;
     switch (self.state) {
         case CircleStateNormal:

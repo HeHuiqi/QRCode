@@ -18,7 +18,7 @@
 }
 - (void)setup{
     _titleLab = [[UILabel alloc] init];
-    _titleLab.textColor = [UIColor blueColor];
+    _titleLab.textColor = COLORA(25, 118, 210);
     _titleLab.font = [UIFont systemFontOfSize:kZoomValue(16)];
     [self.contentView addSubview:_titleLab];
     [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -28,7 +28,7 @@
     
     
     _dateLab = [[UILabel alloc] init];
-    _dateLab.textColor = HqGrayColor;
+    _dateLab.textColor = COLOR(0, 0, 0, 0.3);
     _dateLab.font = [UIFont systemFontOfSize:kZoomValue(13)];
     [self.contentView addSubview:_dateLab];
     [_dateLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -38,15 +38,15 @@
     
     _dateIcon = [[UIImageView alloc] init];
     [self.contentView addSubview:_dateIcon];
-    _dateIcon.backgroundColor = [UIColor redColor];
+    _dateIcon.image = [UIImage imageNamed:@"home_time_icon"];
     [_dateIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(_dateLab.mas_left).offset(-kZoomValue(10));
-        make.top.equalTo(self.contentView).offset(kZoomValue(30));
-        make.size.mas_equalTo(CGSizeMake(20, 20));
+        make.right.equalTo(_dateLab.mas_left).offset(-kZoomValue(8));
+        make.bottom.equalTo(_dateLab.mas_bottom).offset(-3);
+        make.size.mas_equalTo(CGSizeMake(11, 11));
     }];
     
     _contentLab = [[UILabel alloc] init];
-    _contentLab.textColor = HqDeepGrayColor;
+    _contentLab.textColor = COLORA(97, 97, 97);
     _contentLab.font = [UIFont systemFontOfSize:kZoomValue(14)];
     [self.contentView addSubview:_contentLab];
     _contentLab.numberOfLines = 0;

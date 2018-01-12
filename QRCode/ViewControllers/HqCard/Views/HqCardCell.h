@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HqBankCard.h"
 
 @interface HqCardCell : UITableViewCell
 
 @property (nonatomic,strong) UILabel *bankNameLab;
 @property (nonatomic,strong) UILabel *cardTypeLab;
 @property (nonatomic,strong) UILabel *cardNumberLab;
+
+@property (nonatomic,strong) HqBankCard *bankCard;
 
 @end

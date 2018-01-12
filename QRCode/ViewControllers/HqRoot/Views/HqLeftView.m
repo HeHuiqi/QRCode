@@ -8,7 +8,7 @@
 
 #import "HqLeftView.h"
 #import "HqLeftViewCell.h"
-
+#define HqCellHeight 50
 @interface HqLeftView()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -20,6 +20,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
+        self.backgroundColor = [UIColor whiteColor];
         [self initData];
         [self initView];
     }
@@ -27,17 +28,23 @@
 
 }
 - (void)initData{
-    _titles = @[@{@"icon":@"",@"title":@"Home"},
+    _titles = @[@{@"icon":@"home_icon",@"title":@"Home"},
                 @{@"icon":@"",@"title":@"Settings"},
-                @{@"icon":@"",@"title":@"Contacts"},
-                @{@"icon":@"",@"title":@"Emergency"},
-                @{@"icon":@"",@"title":@"About"}];
+                @{@"icon":@"bill_icon",@"title":@"Contacts"},
+                @{@"icon":@"emergency_icon",@"title":@"Emergency"},
+                @{@"icon":@"about_icon",@"title":@"About"}];
 }
 - (void)initView{
-    CGRect rect = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height-kZoomValue(60));
-    _tableView = [[UITableView alloc]initWithFrame:rect style:UITableViewStyleGrouped];
+    UIView *topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 64)];
+    topBarView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self addSubview:topBarView];
+    CGFloat headerHeight = kZoomValue(120);
+    CGFloat tableHeight =  self.bounds.size.height-64-kZoomValue(55)-headerHeight;
+    CGRect rect = CGRectMake(0,headerHeight+64, self.bounds.size.width, tableHeight);
+    _tableView = [[UITableView alloc]initWithFrame:rect style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addSubview:_tableView];
     
     UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -50,7 +57,7 @@
         make.left.equalTo(self).offset(0);
         make.right.equalTo(self).offset(0);
         make.bottom.equalTo(self).offset(0);
-        make.height.mas_equalTo(kZoomValue(60));
+        make.height.mas_equalTo(kZoomValue(55));
 
     }];
     
@@ -79,7 +86,7 @@
     return _titles.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return kZoomValue(HqCellHeight);
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIndentfier = @"HqLeftViewCell";
@@ -88,17 +95,21 @@
         cell = [[HqLeftViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentfier];
     }
     NSDictionary *titleDic = _titles[indexPath.row];
-    cell.leftIcon.image = [UIImage imageNamed:titleDic[@"icon"]];
+    UIImage *image =  [UIImage imageNamed:titleDic[@"icon"]];
+    NSLog(@"image.size==%@",NSStringFromCGSize(image.size));
+//    cell.leftIcon.image = [UIImage imageNamed:titleDic[@"icon"]];
+                       [cell.leftIcon setImage:image forState:UIControlStateNormal];
     cell.titleLab.text = titleDic[@"title"];
+    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(self.delegate){
         [self.delegate hqLeftView:self index:indexPath.row];
     }
 }
-
 
 /*
 // Only override drawRect: if you perform custom drawing.

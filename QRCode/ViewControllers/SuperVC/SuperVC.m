@@ -8,6 +8,7 @@
 
 #import "SuperVC.h"
 #define BarHeight 64
+#define HqTitleColor COLORA(69, 90, 100)
 @interface SuperVC ()
 
 @end
@@ -35,11 +36,12 @@
 - (UILabel *)titelLab{
     if (!_titelLab) {
         _titelLab = [[UILabel alloc]init];
+        _titelLab.textColor = HqTitleColor;
         _titelLab.font = [UIFont boldSystemFontOfSize:kZoomValue(18)];
         [self.navBarView addSubview:_titelLab];
         [_titelLab mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.centerX.equalTo(self.navBarView.mas_centerX);
-            make.left.equalTo(self.navBarView).offset(kZoomValue(50));
+            make.centerX.equalTo(self.navBarView.mas_centerX);
+//            make.left.equalTo(self.navBarView).offset(kZoomValue(50));
             make.top.equalTo(_navBarView).offset(20);
             make.height.mas_equalTo(44);
         }];

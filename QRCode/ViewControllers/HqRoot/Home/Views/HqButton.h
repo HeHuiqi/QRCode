@@ -10,7 +10,7 @@
 
 @interface HqButton : UIControl
 
-@property (nonatomic,strong) UIImageView *icon;
-@property (nonatomic,strong) UILabel *titleLab;
+@property (nonatomic,strong) UIImage *iconImage;
+@property (nonatomic,strong) NSString *title;
 
 @end

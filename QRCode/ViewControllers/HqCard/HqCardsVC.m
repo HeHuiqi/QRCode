@@ -15,6 +15,7 @@
 @interface HqCardsVC ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) NSArray *cardList;
 
 @end
 
@@ -24,6 +25,25 @@
     [super viewDidLoad];
     self.title = @"Cards";
     [self initView];
+    [self requsetCardList];
+}
+- (void)requsetCardList{
+    NSDictionary *param = @{};
+    [HqHttpUtil hqGetShowHudTitle:nil param:param url:@"/cards" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"银行卡列表===%@",responseObject);
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                
+                
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
 }
 - (void)initView{
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
@@ -32,7 +52,6 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     _tableView.tableFooterView = [self tableFooterView];
-    
 }
 - (UIView *)tableFooterView{
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kZoomValue(185))];
@@ -95,7 +114,10 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.bankNameLab.text = @"Bla Bank";
     cell.cardTypeLab.text = @"Debit Card";
-    cell.cardNumberLab.text = @"1234 5678 8888 9890";
+//    cell.cardNumberLab.backgroundColor = [UIColor redColor];
+    
+//    NSMutableParagraphStyle
+    cell.cardNumberLab.text = @"**** **** **** 3897";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

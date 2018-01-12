@@ -84,6 +84,34 @@
 		8EDE17401FFF7A910013DD41 /* HqScanPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE173F1FFF7A910013DD41 /* HqScanPayVC.m */; };
 		8EDE17441FFF87080013DD41 /* HqCardsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE17431FFF87080013DD41 /* HqCardsVC.m */; };
 		8EDE17481FFF87A50013DD41 /* HqCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE17471FFF87A50013DD41 /* HqCardCell.m */; };
+		8EEFA7832005AFFC004C2254 /* PCCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEFA77F2005AFFC004C2254 /* PCCircle.m */; };
+		8EEFA7842005AFFC004C2254 /* PCCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEFA7802005AFFC004C2254 /* PCCircleView.m */; };
+		8EEFA7852005AFFC004C2254 /* PCCircleViewConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEFA7812005AFFC004C2254 /* PCCircleViewConst.m */; };
+		8EEFA78B2005B040004C2254 /* PCCircleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEFA7872005B040004C2254 /* PCCircleInfoView.m */; };
+		8EEFA78C2005B040004C2254 /* PCLockLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEFA78A2005B040004C2254 /* PCLockLabel.m */; };
+		8EEFA78F2005B18D004C2254 /* CALayer+Anim.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEFA78E2005B18D004C2254 /* CALayer+Anim.m */; };
+		8EEFA79B20085655004C2254 /* home_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA79920085655004C2254 /* home_icon@2x.png */; };
+		8EEFA79E20085A38004C2254 /* home_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA79D20085A38004C2254 /* home_icon@3x.png */; };
+		8EEFA7A520085BF1004C2254 /* emergency_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA79F20085BF0004C2254 /* emergency_icon@2x.png */; };
+		8EEFA7A620085BF1004C2254 /* about_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7A020085BF1004C2254 /* about_icon@3x.png */; };
+		8EEFA7A720085BF1004C2254 /* bill_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7A120085BF1004C2254 /* bill_icon@2x.png */; };
+		8EEFA7A820085BF1004C2254 /* about_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7A220085BF1004C2254 /* about_icon@2x.png */; };
+		8EEFA7A920085BF1004C2254 /* emergency_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7A320085BF1004C2254 /* emergency_icon@3x.png */; };
+		8EEFA7AA20085BF1004C2254 /* bill_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7A420085BF1004C2254 /* bill_icon@3x.png */; };
+		8EEFA7B120086A52004C2254 /* home_pay_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7AB20086A51004C2254 /* home_pay_icon@2x.png */; };
+		8EEFA7B220086A52004C2254 /* home_cards_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7AC20086A52004C2254 /* home_cards_icon@3x.png */; };
+		8EEFA7B320086A52004C2254 /* home_scan_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7AD20086A52004C2254 /* home_scan_icon@2x.png */; };
+		8EEFA7B420086A52004C2254 /* home_pay_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7AE20086A52004C2254 /* home_pay_icon@3x.png */; };
+		8EEFA7B520086A52004C2254 /* home_cards_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7AF20086A52004C2254 /* home_cards_icon@2x.png */; };
+		8EEFA7B620086A52004C2254 /* home_scan_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7B020086A52004C2254 /* home_scan_icon@3x.png */; };
+		8EEFA7E620088A69004C2254 /* home_time_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7E420088A69004C2254 /* home_time_icon@2x.png */; };
+		8EEFA7E720088A69004C2254 /* home_time_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7E520088A69004C2254 /* home_time_icon@3x.png */; };
+		8EEFA7EC20088C66004C2254 /* home_bill-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7E820088C66004C2254 /* home_bill-icon@3x.png */; };
+		8EEFA7ED20088C66004C2254 /* home_menu_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7E920088C66004C2254 /* home_menu_icon@3x.png */; };
+		8EEFA7EE20088C66004C2254 /* home_menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7EA20088C66004C2254 /* home_menu_icon@2x.png */; };
+		8EEFA7EF20088C66004C2254 /* home_bill-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7EB20088C66004C2254 /* home_bill-icon@2x.png */; };
+		8EEFA7F32008A76C004C2254 /* HqBankCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EEFA7F22008A76C004C2254 /* HqBankCard.m */; };
+		8EEFA7FC2008B951004C2254 /* MSPMincho.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EEFA7FB2008B950004C2254 /* MSPMincho.ttf */; };
 		EEA5C3276F85C54EE3923D6E /* libPods-QRCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A1F463273FB3E3E6DE6208B /* libPods-QRCode.a */; };
 /* End PBXBuildFile section */
 
@@ -242,6 +270,41 @@
 		8EDE17431FFF87080013DD41 /* HqCardsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardsVC.m; sourceTree = "<group>"; };
 		8EDE17461FFF87A50013DD41 /* HqCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqCardCell.h; sourceTree = "<group>"; };
 		8EDE17471FFF87A50013DD41 /* HqCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardCell.m; sourceTree = "<group>"; };
+		8EEFA77D2005AFFC004C2254 /* PCCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircle.h; sourceTree = "<group>"; };
+		8EEFA77E2005AFFC004C2254 /* PCCircleViewConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircleViewConst.h; sourceTree = "<group>"; };
+		8EEFA77F2005AFFC004C2254 /* PCCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCircle.m; sourceTree = "<group>"; };
+		8EEFA7802005AFFC004C2254 /* PCCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCircleView.m; sourceTree = "<group>"; };
+		8EEFA7812005AFFC004C2254 /* PCCircleViewConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCircleViewConst.m; sourceTree = "<group>"; };
+		8EEFA7822005AFFC004C2254 /* PCCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircleView.h; sourceTree = "<group>"; };
+		8EEFA7872005B040004C2254 /* PCCircleInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCircleInfoView.m; sourceTree = "<group>"; };
+		8EEFA7882005B040004C2254 /* PCLockLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCLockLabel.h; sourceTree = "<group>"; };
+		8EEFA7892005B040004C2254 /* PCCircleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCircleInfoView.h; sourceTree = "<group>"; };
+		8EEFA78A2005B040004C2254 /* PCLockLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCLockLabel.m; sourceTree = "<group>"; };
+		8EEFA78D2005B18D004C2254 /* CALayer+Anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Anim.h"; sourceTree = "<group>"; };
+		8EEFA78E2005B18D004C2254 /* CALayer+Anim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Anim.m"; sourceTree = "<group>"; };
+		8EEFA79920085655004C2254 /* home_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA79D20085A38004C2254 /* home_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA79F20085BF0004C2254 /* emergency_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emergency_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7A020085BF1004C2254 /* about_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7A120085BF1004C2254 /* bill_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bill_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7A220085BF1004C2254 /* about_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7A320085BF1004C2254 /* emergency_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emergency_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7A420085BF1004C2254 /* bill_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bill_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7AB20086A51004C2254 /* home_pay_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_pay_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7AC20086A52004C2254 /* home_cards_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_cards_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7AD20086A52004C2254 /* home_scan_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_scan_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7AE20086A52004C2254 /* home_pay_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_pay_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7AF20086A52004C2254 /* home_cards_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_cards_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7B020086A52004C2254 /* home_scan_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_scan_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7E420088A69004C2254 /* home_time_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_time_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7E520088A69004C2254 /* home_time_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_time_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7E820088C66004C2254 /* home_bill-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_bill-icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7E920088C66004C2254 /* home_menu_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_menu_icon@3x.png"; sourceTree = "<group>"; };
+		8EEFA7EA20088C66004C2254 /* home_menu_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_menu_icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7EB20088C66004C2254 /* home_bill-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_bill-icon@2x.png"; sourceTree = "<group>"; };
+		8EEFA7F12008A76C004C2254 /* HqBankCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqBankCard.h; sourceTree = "<group>"; };
+		8EEFA7F22008A76C004C2254 /* HqBankCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqBankCard.m; sourceTree = "<group>"; };
+		8EEFA7FB2008B950004C2254 /* MSPMincho.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MSPMincho.ttf; sourceTree = "<group>"; };
 		C227BA1B401DEABB839F3D8A /* Pods-QRCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRCode/Pods-QRCode.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,6 +366,7 @@
 		8E5FCC3A2004ACC000B4740B /* HqGesturePassword */ = {
 			isa = PBXGroup;
 			children = (
+				8EEFA7862005B002004C2254 /* Views */,
 				8E5FCC3B2004ACF300B4740B /* HqGesturePassword */,
 				8E5FCC3C2004AD7500B4740B /* HqGesturePasswordVC.h */,
 				8E5FCC3D2004AD7500B4740B /* HqGesturePasswordVC.m */,
@@ -313,6 +377,12 @@
 		8E5FCC3B2004ACF300B4740B /* HqGesturePassword */ = {
 			isa = PBXGroup;
 			children = (
+				8EEFA77D2005AFFC004C2254 /* PCCircle.h */,
+				8EEFA77F2005AFFC004C2254 /* PCCircle.m */,
+				8EEFA7822005AFFC004C2254 /* PCCircleView.h */,
+				8EEFA7802005AFFC004C2254 /* PCCircleView.m */,
+				8EEFA77E2005AFFC004C2254 /* PCCircleViewConst.h */,
+				8EEFA7812005AFFC004C2254 /* PCCircleViewConst.m */,
 			);
 			path = HqGesturePassword;
 			sourceTree = "<group>";
@@ -338,6 +408,7 @@
 		8EDE164B1FFF22FF0013DD41 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
+				8EEFA7F42008B53D004C2254 /* HqFont */,
 				8EDE17361FFF716D0013DD41 /* PublicViews */,
 				8EDE17131FFF27100013DD41 /* HqImages */,
 				8EDE16D11FFF23C30013DD41 /* Config */,
@@ -639,6 +710,7 @@
 		8EDE17131FFF27100013DD41 /* HqImages */ = {
 			isa = PBXGroup;
 			children = (
+				8EEFA79820085640004C2254 /* Home */,
 				8EDE17171FFF28590013DD41 /* back@2x.png */,
 				8EDE17181FFF28590013DD41 /* back@3x.png */,
 			);
@@ -729,6 +801,7 @@
 		8EDE17411FFF86F30013DD41 /* HqCard */ = {
 			isa = PBXGroup;
 			children = (
+				8EEFA7F02008A753004C2254 /* Models */,
 				3334CD752000AF0200C5EED8 /* HqPayPassword */,
 				8EDE17451FFF874B0013DD41 /* Views */,
 				8EDE17421FFF87080013DD41 /* HqCardsVC.h */,
@@ -752,6 +825,63 @@
 				3334CD642000650300C5EED8 /* HqIdInfoInputView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8EEFA7862005B002004C2254 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8EEFA78D2005B18D004C2254 /* CALayer+Anim.h */,
+				8EEFA78E2005B18D004C2254 /* CALayer+Anim.m */,
+				8EEFA7892005B040004C2254 /* PCCircleInfoView.h */,
+				8EEFA7872005B040004C2254 /* PCCircleInfoView.m */,
+				8EEFA7882005B040004C2254 /* PCLockLabel.h */,
+				8EEFA78A2005B040004C2254 /* PCLockLabel.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8EEFA79820085640004C2254 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8EEFA7EB20088C66004C2254 /* home_bill-icon@2x.png */,
+				8EEFA7E820088C66004C2254 /* home_bill-icon@3x.png */,
+				8EEFA7EA20088C66004C2254 /* home_menu_icon@2x.png */,
+				8EEFA7E920088C66004C2254 /* home_menu_icon@3x.png */,
+				8EEFA7E420088A69004C2254 /* home_time_icon@2x.png */,
+				8EEFA7E520088A69004C2254 /* home_time_icon@3x.png */,
+				8EEFA7AF20086A52004C2254 /* home_cards_icon@2x.png */,
+				8EEFA7AC20086A52004C2254 /* home_cards_icon@3x.png */,
+				8EEFA7AB20086A51004C2254 /* home_pay_icon@2x.png */,
+				8EEFA7AE20086A52004C2254 /* home_pay_icon@3x.png */,
+				8EEFA7AD20086A52004C2254 /* home_scan_icon@2x.png */,
+				8EEFA7B020086A52004C2254 /* home_scan_icon@3x.png */,
+				8EEFA7A220085BF1004C2254 /* about_icon@2x.png */,
+				8EEFA7A020085BF1004C2254 /* about_icon@3x.png */,
+				8EEFA7A120085BF1004C2254 /* bill_icon@2x.png */,
+				8EEFA7A420085BF1004C2254 /* bill_icon@3x.png */,
+				8EEFA79F20085BF0004C2254 /* emergency_icon@2x.png */,
+				8EEFA7A320085BF1004C2254 /* emergency_icon@3x.png */,
+				8EEFA79D20085A38004C2254 /* home_icon@3x.png */,
+				8EEFA79920085655004C2254 /* home_icon@2x.png */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8EEFA7F02008A753004C2254 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8EEFA7F12008A76C004C2254 /* HqBankCard.h */,
+				8EEFA7F22008A76C004C2254 /* HqBankCard.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8EEFA7F42008B53D004C2254 /* HqFont */ = {
+			isa = PBXGroup;
+			children = (
+				8EEFA7FB2008B950004C2254 /* MSPMincho.ttf */,
+			);
+			path = HqFont;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -816,14 +946,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EDE16E91FFF23C30013DD41 /* IQKeyboardManager.bundle in Resources */,
+				8EEFA7E620088A69004C2254 /* home_time_icon@2x.png in Resources */,
+				8EEFA7B220086A52004C2254 /* home_cards_icon@3x.png in Resources */,
 				8EDE17191FFF28590013DD41 /* back@2x.png in Resources */,
+				8EEFA79E20085A38004C2254 /* home_icon@3x.png in Resources */,
+				8EEFA7B620086A52004C2254 /* home_scan_icon@3x.png in Resources */,
+				8EEFA7FC2008B951004C2254 /* MSPMincho.ttf in Resources */,
+				8EEFA7E720088A69004C2254 /* home_time_icon@3x.png in Resources */,
+				8EEFA7B520086A52004C2254 /* home_cards_icon@2x.png in Resources */,
+				8EEFA7EC20088C66004C2254 /* home_bill-icon@3x.png in Resources */,
 				8EDE16F51FFF23C30013DD41 /* SVProgressHUD.bundle in Resources */,
 				8EDE16591FFF22FF0013DD41 /* LaunchScreen.storyboard in Resources */,
+				8EEFA7A820085BF1004C2254 /* about_icon@2x.png in Resources */,
+				8EEFA7A520085BF1004C2254 /* emergency_icon@2x.png in Resources */,
+				8EEFA7B120086A52004C2254 /* home_pay_icon@2x.png in Resources */,
+				8EEFA79B20085655004C2254 /* home_icon@2x.png in Resources */,
+				8EEFA7ED20088C66004C2254 /* home_menu_icon@3x.png in Resources */,
 				8EDE16561FFF22FF0013DD41 /* Assets.xcassets in Resources */,
 				8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */,
+				8EEFA7A920085BF1004C2254 /* emergency_icon@3x.png in Resources */,
+				8EEFA7EF20088C66004C2254 /* home_bill-icon@2x.png in Resources */,
 				8EDE16DC1FFF23C30013DD41 /* SGQRCode.bundle in Resources */,
 				8EDE16F71FFF23C30013DD41 /* MBProgressHUD.bundle in Resources */,
+				8EEFA7B320086A52004C2254 /* home_scan_icon@2x.png in Resources */,
+				8EEFA7B420086A52004C2254 /* home_pay_icon@3x.png in Resources */,
+				8EEFA7A620085BF1004C2254 /* about_icon@3x.png in Resources */,
+				8EEFA7A720085BF1004C2254 /* bill_icon@2x.png in Resources */,
+				8EEFA7EE20088C66004C2254 /* home_menu_icon@2x.png in Resources */,
 				8EDE171A1FFF28590013DD41 /* back@3x.png in Resources */,
+				8EEFA7AA20085BF1004C2254 /* bill_icon@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,10 +1044,12 @@
 				8EDE16EA1FFF23C30013DD41 /* IQKeyboardManager.m in Sources */,
 				8EDE17061FFF23C30013DD41 /* ProjectEnvironment.m in Sources */,
 				8EDE16FC1FFF23C30013DD41 /* HqString.m in Sources */,
+				8EEFA78C2005B040004C2254 /* PCLockLabel.m in Sources */,
 				8EDE17251FFF38A80013DD41 /* LoginVC.m in Sources */,
 				8EDE16EE1FFF23C30013DD41 /* IQUIScrollView+Additions.m in Sources */,
 				8EDE17001FFF23C30013DD41 /* UIFont+HqCustomFont.m in Sources */,
 				8EDE17291FFF38C80013DD41 /* RegistVC.m in Sources */,
+				8EEFA78B2005B040004C2254 /* PCCircleInfoView.m in Sources */,
 				8EDE16DD1FFF23C30013DD41 /* UIImage+ImageSize.m in Sources */,
 				8EDE17301FFF41F70013DD41 /* HqInputView.m in Sources */,
 				8EDE16FE1FFF23C30013DD41 /* NSString+Public.m in Sources */,
@@ -913,15 +1066,19 @@
 				8EDE16F91FFF23C30013DD41 /* NSNumber+Extension.m in Sources */,
 				8EDE16F31FFF23C30013DD41 /* MBProgressHUD+Add.m in Sources */,
 				8E5FCC39200458E500B4740B /* LanuchScreenVC.m in Sources */,
+				8EEFA7842005AFFC004C2254 /* PCCircleView.m in Sources */,
 				8EDE16E11FFF23C30013DD41 /* SGQRCodeGenerateManager.m in Sources */,
 				8EDE17071FFF23C30013DD41 /* ProjectConst.m in Sources */,
+				8EEFA7852005AFFC004C2254 /* PCCircleViewConst.m in Sources */,
 				8EDE16FF1FFF23C30013DD41 /* HqDateFormatter.m in Sources */,
+				8EEFA78F2005B18D004C2254 /* CALayer+Anim.m in Sources */,
 				8EDE16DB1FFF23C30013DD41 /* UITextView+Placeholder.m in Sources */,
 				8EDE17051FFF23C30013DD41 /* UIButton+EnlargeTouchArea.m in Sources */,
 				8EDE17441FFF87080013DD41 /* HqCardsVC.m in Sources */,
 				8EDE16EF1FFF23C30013DD41 /* IQUIView+Hierarchy.m in Sources */,
 				8E5FCC3320034BF400B4740B /* HqHttpUtil.m in Sources */,
 				8E5FCC362003670A00B4740B /* HqSetLoginPassword.m in Sources */,
+				8EEFA7832005AFFC004C2254 /* PCCircle.m in Sources */,
 				3334CD742000AE7D00C5EED8 /* HqPassWordView.m in Sources */,
 				3334CD652000650300C5EED8 /* HqIdInfoInputView.m in Sources */,
 				8EDE16E41FFF23C30013DD41 /* IQToolbar.m in Sources */,
@@ -935,6 +1092,7 @@
 				8EDE16FA1FFF23C30013DD41 /* UITextField+EnlargeTouchArea.m in Sources */,
 				8EDE17121FFF26830013DD41 /* SuperVC.m in Sources */,
 				8EDE16F41FFF23C30013DD41 /* SVProgressHUD.m in Sources */,
+				8EEFA7F32008A76C004C2254 /* HqBankCard.m in Sources */,
 				8EDE16DF1FFF23C30013DD41 /* SGQRCodeScanningView.m in Sources */,
 				8EDE17391FFF718F0013DD41 /* HqLineCell.m in Sources */,
 				8EDE16F61FFF23C30013DD41 /* Dialog.m in Sources */,
