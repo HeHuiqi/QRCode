@@ -20,13 +20,15 @@
  *  普通状态下外空心圆颜色
  */
 //#define CircleStateNormalOutsideColor rgba(241,241,241,1)
-#define CircleStateNormalOutsideColor rgba(34,178,246,1)
+#define CircleStateNormalOutsideColor rgba(0,159,232,1)
 
 
 /**
  *  选中状态下外空心圆颜色
  */
-#define CircleStateSelectedOutsideColor rgba(34,178,246,1)
+//#define CircleStateSelectedOutsideColor rgba(34,178,246,1)
+#define CircleStateSelectedOutsideColor rgba(0,159,232,1)
+
 
 /**
  *  错误状态下外空心圆颜色
@@ -101,7 +103,7 @@
 /**
  *  九宫格展示infoView 单个圆的半径
  */
-#define CircleInfoRadius 5
+#define CircleInfoRadius 7
 
 /**
  *  内部实心圆占空心圆的比例系数

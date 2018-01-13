@@ -25,23 +25,33 @@
     
     UIImageView *logoImageView = [[UIImageView alloc] init];
     [contentView addSubview:logoImageView];
-    logoImageView.backgroundColor = [UIColor redColor];
-    
+    logoImageView.image = [UIImage imageNamed:@"welcom_icon"];
     [logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contentView).offset(kZoomValue(150));
         make.centerX.equalTo(contentView);
-        make.size.mas_equalTo(CGSizeMake(kZoomValue(150), kZoomValue(200)));
+        make.size.mas_equalTo(CGSizeMake(kZoomValue(254), kZoomValue(234)));
     }];
     
+    UILabel *nameLab = [[UILabel alloc] init];
+    nameLab.text = @"QRcode";
+    nameLab.numberOfLines = 0;
+    nameLab.textColor = COLORA(83,187,255);
+    nameLab.textAlignment = NSTextAlignmentCenter;
+    nameLab.font = [UIFont systemFontOfSize:kZoomValue(36)];
+    [contentView addSubview:nameLab];
+    [nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(logoImageView.mas_bottom).offset(kZoomValue(23));
+        make.centerX.equalTo(contentView);
+    }];
     UILabel *infoLab = [[UILabel alloc] init];
-    infoLab.text = @"125215151\ndgjhadshjgsd dshgjds ";
+    infoLab.text = @"Laughing again, he brought the \n mirror away from Stephen's peering eyes.";
     infoLab.numberOfLines = 0;
-    infoLab.textColor = HqGrayColor;
+    infoLab.textColor = COLORA(119,119,119);
     infoLab.textAlignment = NSTextAlignmentCenter;
     infoLab.font = [UIFont systemFontOfSize:kZoomValue(14)];
     [contentView addSubview:infoLab];
     [infoLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(logoImageView.mas_bottom).offset(kZoomValue(80));
+        make.top.equalTo(nameLab.mas_bottom).offset(kZoomValue(43));
         make.centerX.equalTo(contentView);
     }];
     

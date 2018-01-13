@@ -61,14 +61,27 @@
     UIView *contentView = [[UIView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:contentView];
     
+    UIImageView *topBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"regist_top_bg"]];
+    topBg.contentMode = UIViewContentModeScaleAspectFill;
+    [contentView addSubview:topBg];
+    [topBg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(contentView).offset(0);
+        make.left.equalTo(contentView).offset(0);
+        make.right.equalTo(contentView).offset(0);
+        make.height.mas_equalTo(kZoomValue(277));
+    }];
+    
+    
     CGFloat inputHeight = 45;
     CGFloat leftSpace = 20;
-    _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@""];
+    _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@"hqphone_icon"];
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
+    _mobileTf.delegate = self;
     [contentView addSubview:_mobileTf];
     
-    _checkCodeTf = [[HqInputView alloc] initWithPlacehoder:@"Verfication code" leftIcon:@""];
+    _checkCodeTf = [[HqInputView alloc] initWithPlacehoder:@"Verfication code" leftIcon:@"hqcheck_code_icon"];
     _checkCodeTf.keyboardType = UIKeyboardTypeNumberPad;
+    _checkCodeTf.delegate = self;
     [contentView addSubview:_checkCodeTf];
     
     
@@ -119,8 +132,9 @@
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
 }
-
+#pragma mark - sign
 - (void)signApp:(UIButton *)btn{
+    
     
     if(_mobileTf.text.length==0){
         [Dialog simpleToast:@"The phone number can't be empty"];
@@ -157,6 +171,12 @@
             [Dialog simpleToast:kRequestError];
         }
     }];
+    /*
+    HqSetLoginPassword *setPasswordVC = [[HqSetLoginPassword alloc] init];
+    setPasswordVC.mobile = _mobileTf.text;
+    setPasswordVC.verficationCode = _checkCodeTf.text;
+    Push(setPasswordVC);
+    */
     
 }
 - (void)geCheckCode:(UIButton *)btn{
@@ -177,7 +197,6 @@
         btn.userInteractionEnabled = NO;
         _checkCodeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getCheckCodeTimer) userInfo:nil repeats:YES];
     }
-    
     NSString *url = [NSString stringWithFormat:@"/users/codes/%@",_mobileTf.text];
     [HqHttpUtil hqGetShowHudTitle:nil param:nil url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
         NSLog(@"获取验证码 = =%@",responseObject)

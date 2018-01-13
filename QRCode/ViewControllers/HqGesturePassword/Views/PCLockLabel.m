@@ -40,7 +40,7 @@
  */
 - (void)viewPrepare{
     
-    [self setFont:[UIFont systemFontOfSize:14.0f]];
+    [self setFont:[UIFont systemFontOfSize:kZoomValue(17)]];
     [self setTextAlignment:NSTextAlignmentCenter];
 }
 
@@ -51,7 +51,7 @@
 - (void)showNormalMsg:(NSString *)msg{
     
     [self setText:msg];
-    [self setTextColor:[UIColor lightGrayColor]];
+    [self setTextColor:COLORA(55,113,142)];
 }
 
 /*
@@ -60,7 +60,7 @@
 - (void)showWarnMsg:(NSString *)msg{
     
     [self setText:msg];
-    [self setTextColor:[UIColor lightGrayColor]];
+    [self setTextColor:COLORA(55,113,142)];
 }
 
 /*

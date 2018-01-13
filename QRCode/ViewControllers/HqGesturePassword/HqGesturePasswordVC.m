@@ -112,7 +112,7 @@
     [self.view addSubview:msgLabel];
     
     PCCircleInfoView *infoView = [[PCCircleInfoView alloc] init];
-    infoView.frame = CGRectMake(0, 0, CircleRadius * 2 * 0.6, CircleRadius * 2 * 0.6);
+    infoView.frame = CGRectMake(0, 0, CircleRadius * 2, CircleRadius * 2);
     infoView.center = CGPointMake(kScreenW/2, CGRectGetMinY(self.msgLabel.frame) - CGRectGetHeight(infoView.frame)/2 - 14);
     self.infoView = infoView;
     [self.view addSubview:infoView];

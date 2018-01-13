@@ -19,6 +19,7 @@
 - (void)setup{
     _titleLab = [[UILabel alloc] init];
     _titleLab.font = [UIFont systemFontOfSize:kZoomValue(12)];
+    _titleLab.textColor = HqGrayColor;
     [self addSubview:_titleLab];
     CGFloat leftSpace = 0;
     [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {

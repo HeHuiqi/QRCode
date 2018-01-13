@@ -45,8 +45,17 @@
     [self.view addSubview:self.leftView];
     [self addGesture];
     
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setImage:[UIImage imageNamed:@"home_bill_icon"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(homeBill:) forControlEvents:UIControlEventTouchUpInside];
+    self.rightBtn = rightBtn;
+    
+    
     NSString *token = GetUserDefault(kToken);
     NSLog(@"token==%@",token);
+}
+- (void)homeBill:(UIButton *)btn{
+    
 }
 - (void)initData{
     self.isOpen = NO;

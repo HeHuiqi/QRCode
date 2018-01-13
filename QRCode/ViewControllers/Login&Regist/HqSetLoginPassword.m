@@ -19,22 +19,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     [self initView];
+    self.title = @"Set login password";
+    [self initView];
 }
 - (void)initView{
-    
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.isShowBottomLine = YES;
     UIView *contentView = self.view;
     CGFloat inputHeight = 45;
     CGFloat leftSpace = 20;
     
-    UILabel *infoLab = [[UILabel alloc] initWithFrame:CGRectMake(kZoomValue(leftSpace), CGRectGetMaxY(self.navBarView.frame)+40, SCREEN_WIDTH-60, 26)];
+    UILabel *infoLab = [[UILabel alloc] initWithFrame:CGRectMake(kZoomValue(leftSpace), CGRectGetMaxY(self.navBarView.frame)+40, SCREEN_WIDTH-60, kZoomValue(30))];
     infoLab.font = [UIFont systemFontOfSize:kZoomValue(12)];
     infoLab.textAlignment = NSTextAlignmentCenter;
+    infoLab.textColor = HqGrayColor;
     infoLab.numberOfLines = 0;
     infoLab.text = @"password must contain at least 6 characters \n including both letters and numbers";
     [contentView addSubview:infoLab];
 
-    _passwordTf = [[HqInputView alloc] initWithPlacehoder:@"Password" leftIcon:@""];
+    _passwordTf = [[HqInputView alloc] initWithPlacehoder:@"Password" leftIcon:@"hqpassword_icon"];
     _passwordTf.secureTextEntry = YES;
     [contentView addSubview:_passwordTf];
     [_passwordTf mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -44,7 +47,7 @@
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     
-    _confirmPasswordTf = [[HqInputView alloc] initWithPlacehoder:@"Confirm Password" leftIcon:@""];
+    _confirmPasswordTf = [[HqInputView alloc] initWithPlacehoder:@"Confirm Password" leftIcon:@"hqpassword_icon"];
     _confirmPasswordTf.secureTextEntry = YES;
     [contentView addSubview:_confirmPasswordTf];
     

@@ -15,7 +15,7 @@
 @interface HqCardsVC ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) NSArray *cardList;
+@property (nonatomic,strong) NSMutableArray *cardList;
 
 @end
 
@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Cards";
+    _cardList = [[NSMutableArray alloc] init];
     [self initView];
     [self requsetCardList];
 }
@@ -35,7 +36,13 @@
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
-                
+                NSArray *cards = [responseObject hq_objectForKey:@"cards"];
+                [_cardList removeAllObjects];
+                for (NSDictionary *dic in cards) {
+                    HqBankCard *card = [HqBankCard mj_objectWithKeyValues:dic];
+                    [_cardList addObject:card];
+                }
+                [_tableView reloadData];
                 
             }else{
                 [Dialog simpleToast:msg];
@@ -60,10 +67,12 @@
      */
     UIButton *contentView = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, kZoomValue(185)-40)];
     [contentView addTarget:self action:@selector(addCards:) forControlEvents:UIControlEventTouchUpInside];
-    contentView.layer.cornerRadius = 2.0;
+    UIImage *linkCard = [UIImage imageNamed:@"cards_link"];
+    [contentView setImage:linkCard forState:UIControlStateNormal];    contentView.layer.cornerRadius = 2.0;
     [footer addSubview:contentView];
     CAShapeLayer *subLayer = [self dotteShapeLayer:contentView.bounds];
     [contentView.layer addSublayer:subLayer];
+    
     
     return footer;
 }
@@ -100,7 +109,7 @@
 }
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return _cardList.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return kZoomValue(185);
@@ -112,12 +121,12 @@
         cell = [[HqCardCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentfier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.bankNameLab.text = @"Bla Bank";
-    cell.cardTypeLab.text = @"Debit Card";
-//    cell.cardNumberLab.backgroundColor = [UIColor redColor];
-    
-//    NSMutableParagraphStyle
-    cell.cardNumberLab.text = @"**** **** **** 3897";
+    HqBankCard *card = _cardList[indexPath.row];
+    cell.bankCard = card;
+//    cell.bankNameLab.text = @"Bla Bank";
+//    cell.cardTypeLab.text = @"Debit Card";
+//
+//    cell.cardNumberLab.text = @"**** **** **** 3897";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -22,19 +22,20 @@
     bgView.backgroundColor = AppMainColor;
     bgView.layer.cornerRadius = 2.0;
     [self.contentView addSubview:bgView];
+    CGFloat leftSpace = kZoomValue(15);
     
     [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView ).offset(kZoomValue(20));
-        make.right.equalTo(self.contentView ).offset(-kZoomValue(20));
-        make.top.equalTo(self.contentView).offset(kZoomValue(20));
-        make.bottom.equalTo(self.contentView ).offset(-kZoomValue(20));
+        make.left.equalTo(self.contentView ).offset(leftSpace);
+        make.right.equalTo(self.contentView ).offset(-leftSpace);
+        make.top.equalTo(self.contentView).offset(leftSpace);
+        make.bottom.equalTo(self.contentView ).offset(-leftSpace);
     }];
     _bankNameLab = [[UILabel alloc] init];
     _bankNameLab.textColor = [UIColor whiteColor];
     _bankNameLab.font = [UIFont systemFontOfSize:kZoomValue(18)];
     [bgView addSubview:_bankNameLab];
     [_bankNameLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(bgView).offset(kZoomValue(15));
+        make.left.equalTo(bgView).offset(kZoomValue(29));
         make.top.equalTo(bgView).offset(kZoomValue(20));
     }];
     
@@ -44,7 +45,7 @@
     _cardTypeLab.font = [UIFont systemFontOfSize:kZoomValue(13)];
     [bgView addSubview:_cardTypeLab];
     [_cardTypeLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(bgView).offset(kZoomValue(15));
+        make.left.equalTo(bgView).offset(kZoomValue(29));
         make.top.equalTo(_bankNameLab.mas_bottom).offset(kZoomValue(5));
     }];
     
@@ -65,11 +66,22 @@
     _bankCard = bankCard;
     if (_bankCard) {
         _bankNameLab.text = _bankCard.bankName;
-        
+        if (_bankCard.type == 0 ) {
+            _cardTypeLab.text = @"Debit Card";
+        }else if(_bankCard.type == 1){
+            _cardTypeLab.text = @"Credit Card";
+        }else{
+            _cardTypeLab.text = @"Other";
+        }
+        _cardNumberLab.text = [self formatterCardNum:_bankCard.cardNumber];
     }
 }
 - (NSString *)formatterCardNum:(NSString *)cardNum{
-    cardNum = [cardNum stringByReplacingOccurrencesOfString:@"" withString:@""];
+    if (!cardNum) {
+        return @"";
+    }
+    NSString *lastFour = [cardNum substringWithRange:NSMakeRange(cardNum.length-4, 4)];
+    cardNum = [NSString stringWithFormat:@"**** **** **** %@",lastFour];
     return cardNum;
 }
 - (void)awakeFromNib {

@@ -16,11 +16,9 @@
         self.backgroundColor = [UIColor whiteColor];
         self.placeholder = placehoder;
         UIImage *image = [UIImage imageNamed:leftIcon];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kZoomValue(35), kZoomValue(45))];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.backgroundColor = [UIColor redColor];
-        imageView.image = image;
+        UIButton *imageView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kZoomValue(35), kZoomValue(20))];
         self.leftView = imageView;
+        [imageView setImage:image forState:UIControlStateNormal];
         self.leftViewMode = UITextFieldViewModeAlways;
         self.clearButtonMode=  UITextFieldViewModeWhileEditing;
     }

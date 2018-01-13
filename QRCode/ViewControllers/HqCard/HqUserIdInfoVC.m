@@ -34,6 +34,7 @@
     UILabel *infoLab = [[UILabel alloc] initWithFrame:CGRectMake(kZoomValue(20), CGRectGetMaxY(self.navBarView.frame)+40, SCREEN_WIDTH-60, 13)];
     infoLab.font = [UIFont systemFontOfSize:kZoomValue(12)];
     infoLab.text = @"Please fill in the bank reserver infomation";
+    infoLab.textColor = HqGrayColor;
     [contentView addSubview:infoLab];
     CGFloat cellHeight = kZoomValue(65);
     CGFloat ySpace = 20;

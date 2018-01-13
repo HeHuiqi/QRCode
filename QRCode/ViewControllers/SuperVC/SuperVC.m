@@ -111,7 +111,7 @@
     
     if (_isShowBottomLine) {
         UIView *xline = [[UIView alloc] init];
-        xline.backgroundColor = COLOR(229, 229, 229, 1);
+        xline.backgroundColor = COLOR(0,0,0,0.2);
         [_navBarView addSubview:xline];
         [xline mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(_navBarView).offset(0);

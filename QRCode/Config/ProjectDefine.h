@@ -41,9 +41,9 @@
 #define kCheckCodeMaxLength 6
 
 
-#define AppMainColor COLOR(17, 139, 226, 1)
+#define AppMainColor COLOR(0, 159, 232, 1)
 #define HqRedColor COLOR(248, 89, 76, 1)
-#define HqGrayColor COLOR(212, 212, 212, 1)
+#define HqGrayColor COLORA(181,186,188)
 #define HqGreenColor COLOR(18, 124, 3, 1)
 #define HqDeepGrayColor COLOR(102, 102, 102, 1)
 #define HqBlackColor COLOR(51, 51, 51, 1)

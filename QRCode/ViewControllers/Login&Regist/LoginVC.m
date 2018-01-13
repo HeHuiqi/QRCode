@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.view.backgroundColor = COLORA(205, 234, 248);
     [self initView];
     
     
@@ -29,16 +29,38 @@
     UIView *contentView = [[UIView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:contentView];
     
+    UIImageView *loginloginLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_bg"]];
+    loginloginLogo.contentMode = UIViewContentModeScaleAspectFill;
+    [contentView addSubview:loginloginLogo];
+    [loginloginLogo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(contentView).offset(0);
+        make.left.equalTo(contentView).offset(0);
+        make.right.equalTo(contentView).offset(-kZoomValue(43));
+        make.height.mas_equalTo(kZoomValue(391));
+    }];
+    
+    UIImageView *loginLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_logo"]];
+    loginLogo.contentMode = UIViewContentModeScaleAspectFill;
+    [contentView addSubview:loginLogo];
+    [loginLogo mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(contentView).offset(kZoomValue(161));
+        make.centerX.equalTo(contentView);
+        make.size.mas_equalTo(CGSizeMake(kZoomValue(118), kZoomValue(116)));
+    }];
+    
     CGFloat inputHeight = 45;
     CGFloat leftSpace = 20;
     
     
-    _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@""];
+    _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@"hqphone_icon"];
+    _mobileTf.delegate = self;
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
     [contentView addSubview:_mobileTf];
     
-    _passwordTf = [[HqInputView alloc] initWithPlacehoder:@"Password" leftIcon:@""];
+    _passwordTf = [[HqInputView alloc] initWithPlacehoder:@"Password" leftIcon:@"hqpassword_icon"];
+    _passwordTf.delegate = self;
     _passwordTf.secureTextEntry = YES;
+    
     [contentView addSubview:_passwordTf];
     
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
