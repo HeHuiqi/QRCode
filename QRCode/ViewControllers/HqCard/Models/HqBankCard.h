@@ -29,6 +29,12 @@
  "updateTime": "2017-12-07T00:28:07.000Z"
  }
  */
+typedef NS_ENUM(NSUInteger, HqBankcardType) {
+    HqBankcardTypeDebit,
+    HqBankcardTypeCredit,
+    HqBankcardTypeOther,
+};
+
 @interface HqBankCard : NSObject
 
 @property (nonatomic,copy) NSString *bankName;

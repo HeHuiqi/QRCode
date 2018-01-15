@@ -77,10 +77,14 @@
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     
-    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    loginBtn.tintColor = [UIColor whiteColor];
+    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    loginBtn.tintColor = [UIColor whiteColor];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_border"] forState:UIControlStateHighlighted];
     [loginBtn setTitle:@"Log In" forState:UIControlStateNormal];
-    loginBtn.backgroundColor = COLOR(17, 139, 226, 1);
+    [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [loginBtn setTitleColor:AppMainColor forState:UIControlStateHighlighted];
+//    loginBtn.backgroundColor = COLOR(17, 139, 226, 1);
     [loginBtn addTarget:self action:@selector(userOperate:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:loginBtn];
     loginBtn.layer.cornerRadius = 2.0;
@@ -91,7 +95,6 @@
         make.right.equalTo(contentView).offset(-kZoomValue(30));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
-
 }
 - (void)userOperate:(UIButton *)btn{
     

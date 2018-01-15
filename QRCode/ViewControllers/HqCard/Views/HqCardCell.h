@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HqBankCard.h"
 
 @interface HqCardCell : UITableViewCell
 

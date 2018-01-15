@@ -123,10 +123,6 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     HqBankCard *card = _cardList[indexPath.row];
     cell.bankCard = card;
-//    cell.bankNameLab.text = @"Bla Bank";
-//    cell.cardTypeLab.text = @"Debit Card";
-//
-//    cell.cardNumberLab.text = @"**** **** **** 3897";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -10,4 +10,7 @@
 
 @interface HqAddCardInfoVC : SuperVC
 
+
+@property (nonatomic,assign) HqBankcardType cardType;
+
 @end

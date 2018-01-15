@@ -30,6 +30,7 @@
 #import "NSString+Public.h"
 #import "UIFont+HqCustomFont.h"
 
+#import "HqBankCard.h"
 
 
 

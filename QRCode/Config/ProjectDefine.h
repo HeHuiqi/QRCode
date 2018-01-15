@@ -47,7 +47,7 @@
 #define HqGreenColor COLOR(18, 124, 3, 1)
 #define HqDeepGrayColor COLOR(102, 102, 102, 1)
 #define HqBlackColor COLOR(51, 51, 51, 1)
-
+#define HqBorderColor  COLORA(230,230,230)
 
 #define LineColor COLOR(229, 229, 229, 1)
 #define LineHeight (1.0/[UIScreen mainScreen].scale)

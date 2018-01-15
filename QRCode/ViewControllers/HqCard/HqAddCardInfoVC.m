@@ -19,6 +19,7 @@
 @property (nonatomic,strong) HqIdInfoInputView *expireView;//截止日期
 @property (nonatomic,strong) HqIdInfoInputView *mobileInputView;
 @property (nonatomic,strong) HqIdInfoInputView *checkCodeInputView;
+@property (nonatomic,copy) NSString *refCode;//用户绑卡的的参数
 
 @property (nonatomic,strong) UIButton *checkBtn;
 @property (nonatomic,strong) NSTimer *checkCodeTimer;
@@ -59,9 +60,8 @@
     
     UIButton *dateChooseBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     dateChooseBtn.frame =  CGRectMake(0, 0, 40, kZoomValue(45));
-    dateChooseBtn.tintColor = [UIColor whiteColor];
-    [dateChooseBtn setTitle:@"cho" forState:UIControlStateNormal];
-    dateChooseBtn.backgroundColor = COLOR(17, 139, 226, 1);
+    dateChooseBtn.tintColor = COLORA(159,162,164);
+    [dateChooseBtn setImage:[UIImage imageNamed:@"down_arrow_icon"] forState:UIControlStateNormal];
     [dateChooseBtn addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:dateChooseBtn];
     
@@ -138,7 +138,53 @@
     [super didReceiveMemoryWarning];
 
 }
-
+- (void)getCheckCode{
+    
+    /*
+    {
+        "success": true,
+        "code": 1,
+        "message": "Successful.",
+        "refCode": "R952748984642842624"
+    }
+    */
+    NSString *url = [NSString stringWithFormat:@"/cards/%@/codes/%@",@"cardNum",_mobileInputView.inputView.text];
+    [HqHttpUtil hqGetShowHudTitle:nil param:nil url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                _refCode = [responseObject hq_objectForKey:@"refCode"];
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+    
+}
+- (void)addCard{
+    NSDictionary *param = @{
+                            @"refCode": _refCode,
+                            @"cvv": @"",
+                            @"exp": @"string",
+                            @"otp": @"string"
+                            };
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/cards" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
 /*
 #pragma mark - Navigation
 

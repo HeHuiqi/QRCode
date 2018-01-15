@@ -55,6 +55,7 @@
     _infoLab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navBarView.frame)+kZoomValue(30), SCREEN_WIDTH, kZoomValue(13))];
     _infoLab.font = [UIFont systemFontOfSize:kZoomValue(13)];
     _infoLab.text = info;
+    _infoLab.textColor = HqGrayColor;
     _infoLab.textAlignment = NSTextAlignmentCenter;
     [contentView addSubview:_infoLab];
     
@@ -67,7 +68,7 @@
     password.squareWidth = passwprdHeight;
     password.pointRadius = 6;
     password.pointColor = [UIColor blackColor];
-    password.rectColor = [UIColor lightGrayColor];
+    password.rectColor = HqBorderColor;
     [contentView addSubview:password];
     _passwordView = password;
     
