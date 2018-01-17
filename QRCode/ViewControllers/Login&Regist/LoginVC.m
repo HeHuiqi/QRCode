@@ -138,6 +138,7 @@
             if (code==1) {
                 NSString *token = [responseObject hq_objectForKey:@"token"];
                 SetUserDefault(token, kToken);
+                SetUserDefault(@"1", kisLogin);
                 [AppDelegate setRootVC:HqSetRootVCHome];
                 
             }else{

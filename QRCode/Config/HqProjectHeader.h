@@ -17,7 +17,6 @@
 #import "Dialog.h"
 #import <SDImageCache.h>
 #import <UIImageView+WebCache.h>
-#import <MJRefresh.h>
 #import <MJExtension.h>
 
 #import "NSDictionary+isNULL.h"
@@ -31,6 +30,7 @@
 #import "UIFont+HqCustomFont.h"
 
 #import "HqBankCard.h"
+#import "HqUser.h"
 
 
 

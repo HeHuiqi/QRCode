@@ -20,7 +20,7 @@ extern NSString * const kPasswordCheckRegex;
 
 extern NSString * const kLoginSuccessNotification;
 extern NSString * const kRegistSuccessNotification;
-
+extern NSString * const kAddBankCardSuccess;
 
 
 

@@ -71,6 +71,7 @@
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
                 SetUserDefault(nil, kToken);
+                SetUserDefault(nil, kisLogin);
                 [AppDelegate setRootVC:HqSetRootVCLogin];
             }else{
                 [Dialog simpleToast:msg];

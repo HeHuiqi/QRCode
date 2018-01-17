@@ -91,7 +91,11 @@
 }
 - (void)passwordNextClick:(UIButton *)btn{
     HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
+    addCardVC.user = _user;
     Push(addCardVC);
+}
+- (void)backClick{
+    [self backToVC:@"HqCardsVC"];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

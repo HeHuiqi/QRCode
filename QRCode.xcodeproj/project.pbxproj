@@ -25,11 +25,13 @@
 		8E32E4FA200CBB89002701E1 /* btn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E32E4F6200CBB88002701E1 /* btn_bg@2x.png */; };
 		8E32E4FB200CBB89002701E1 /* btn_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E32E4F7200CBB88002701E1 /* btn_bg@3x.png */; };
 		8E32E4FC200CBB89002701E1 /* btn_border@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E32E4F8200CBB88002701E1 /* btn_border@3x.png */; };
-		8E32E4FF200CBCE8002701E1 /* HqCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E32E4FE200CBCE8002701E1 /* HqCustomButton.m */; };
+		8E36E613200DB46B00701378 /* HqCardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E36E612200DB46B00701378 /* HqCardDetailVC.m */; };
+		8E36E61D200DC26400701378 /* HqUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E36E61C200DC26400701378 /* HqUser.m */; };
 		8E5FCC3320034BF400B4740B /* HqHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC3220034BF400B4740B /* HqHttpUtil.m */; };
 		8E5FCC362003670A00B4740B /* HqSetLoginPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC352003670A00B4740B /* HqSetLoginPassword.m */; };
 		8E5FCC39200458E500B4740B /* LanuchScreenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC38200458E500B4740B /* LanuchScreenVC.m */; };
 		8E5FCC3E2004AD7500B4740B /* HqGesturePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC3D2004AD7500B4740B /* HqGesturePasswordVC.m */; };
+		8E9BA428200DA6860087262C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9BA427200DA6860087262C /* UIKit.framework */; };
 		8EBA54F52009D29E009AFEE1 /* login_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F12009D29E009AFEE1 /* login_bg@2x.png */; };
 		8EBA54F62009D29E009AFEE1 /* login_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F22009D29E009AFEE1 /* login_logo@3x.png */; };
 		8EBA54F72009D29E009AFEE1 /* login_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F32009D29E009AFEE1 /* login_logo@2x.png */; };
@@ -173,8 +175,10 @@
 		8E32E4F6200CBB88002701E1 /* btn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_bg@2x.png"; sourceTree = "<group>"; };
 		8E32E4F7200CBB88002701E1 /* btn_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_bg@3x.png"; sourceTree = "<group>"; };
 		8E32E4F8200CBB88002701E1 /* btn_border@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_border@3x.png"; sourceTree = "<group>"; };
-		8E32E4FD200CBCE8002701E1 /* HqCustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqCustomButton.h; sourceTree = "<group>"; };
-		8E32E4FE200CBCE8002701E1 /* HqCustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCustomButton.m; sourceTree = "<group>"; };
+		8E36E611200DB46B00701378 /* HqCardDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqCardDetailVC.h; sourceTree = "<group>"; };
+		8E36E612200DB46B00701378 /* HqCardDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardDetailVC.m; sourceTree = "<group>"; };
+		8E36E61B200DC26400701378 /* HqUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqUser.h; sourceTree = "<group>"; };
+		8E36E61C200DC26400701378 /* HqUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqUser.m; sourceTree = "<group>"; };
 		8E5FCC3120034BF400B4740B /* HqHttpUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqHttpUtil.h; sourceTree = "<group>"; };
 		8E5FCC3220034BF400B4740B /* HqHttpUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqHttpUtil.m; sourceTree = "<group>"; };
 		8E5FCC342003670900B4740B /* HqSetLoginPassword.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqSetLoginPassword.h; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 		8E5FCC38200458E500B4740B /* LanuchScreenVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanuchScreenVC.m; sourceTree = "<group>"; };
 		8E5FCC3C2004AD7500B4740B /* HqGesturePasswordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqGesturePasswordVC.h; sourceTree = "<group>"; };
 		8E5FCC3D2004AD7500B4740B /* HqGesturePasswordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqGesturePasswordVC.m; sourceTree = "<group>"; };
+		8E9BA427200DA6860087262C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8EBA54F12009D29E009AFEE1 /* login_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_bg@2x.png"; sourceTree = "<group>"; };
 		8EBA54F22009D29E009AFEE1 /* login_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_logo@3x.png"; sourceTree = "<group>"; };
 		8EBA54F32009D29E009AFEE1 /* login_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_logo@2x.png"; sourceTree = "<group>"; };
@@ -376,6 +381,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9BA428200DA6860087262C /* UIKit.framework in Frameworks */,
 				EEA5C3276F85C54EE3923D6E /* libPods-QRCode.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +418,7 @@
 		69FB2DBCE36FD642F2C00913 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E9BA427200DA6860087262C /* UIKit.framework */,
 				8A1F463273FB3E3E6DE6208B /* libPods-QRCode.a */,
 			);
 			name = Frameworks;
@@ -424,6 +431,15 @@
 				4BD802C28DBA1070B041B7DF /* Pods-QRCode.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8E36E610200DB44E00701378 /* CardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E36E611200DB46B00701378 /* HqCardDetailVC.h */,
+				8E36E612200DB46B00701378 /* HqCardDetailVC.m */,
+			);
+			path = CardDetail;
 			sourceTree = "<group>";
 		};
 		8E5FCC3A2004ACC000B4740B /* HqGesturePassword */ = {
@@ -858,8 +874,6 @@
 				3334CD712000AE7D00C5EED8 /* HqPassWordView */,
 				8EDE17381FFF718F0013DD41 /* HqLineCell.h */,
 				8EDE17371FFF718F0013DD41 /* HqLineCell.m */,
-				8E32E4FD200CBCE8002701E1 /* HqCustomButton.h */,
-				8E32E4FE200CBCE8002701E1 /* HqCustomButton.m */,
 			);
 			path = PublicViews;
 			sourceTree = "<group>";
@@ -876,6 +890,7 @@
 		8EDE17411FFF86F30013DD41 /* HqCard */ = {
 			isa = PBXGroup;
 			children = (
+				8E36E610200DB44E00701378 /* CardDetail */,
 				8EEFA7F02008A753004C2254 /* Models */,
 				3334CD752000AF0200C5EED8 /* HqPayPassword */,
 				8EDE17451FFF874B0013DD41 /* Views */,
@@ -947,6 +962,8 @@
 			children = (
 				8EEFA7F12008A76C004C2254 /* HqBankCard.h */,
 				8EEFA7F22008A76C004C2254 /* HqBankCard.m */,
+				8E36E61B200DC26400701378 /* HqUser.h */,
+				8E36E61C200DC26400701378 /* HqUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1194,6 +1211,7 @@
 				8EDE16DD1FFF23C30013DD41 /* UIImage+ImageSize.m in Sources */,
 				8EDE17301FFF41F70013DD41 /* HqInputView.m in Sources */,
 				8EDE16FE1FFF23C30013DD41 /* NSString+Public.m in Sources */,
+				8E36E61D200DC26400701378 /* HqUser.m in Sources */,
 				8EDE17351FFF64450013DD41 /* HqButton.m in Sources */,
 				8EDE16E61FFF23C30013DD41 /* IQBarButtonItem.m in Sources */,
 				8EDE17481FFF87A50013DD41 /* HqCardCell.m in Sources */,
@@ -1207,7 +1225,6 @@
 				8EDE16F91FFF23C30013DD41 /* NSNumber+Extension.m in Sources */,
 				8EDE16F31FFF23C30013DD41 /* MBProgressHUD+Add.m in Sources */,
 				8E5FCC39200458E500B4740B /* LanuchScreenVC.m in Sources */,
-				8E32E4FF200CBCE8002701E1 /* HqCustomButton.m in Sources */,
 				8EEFA7842005AFFC004C2254 /* PCCircleView.m in Sources */,
 				8EDE16E11FFF23C30013DD41 /* SGQRCodeGenerateManager.m in Sources */,
 				8EDE17071FFF23C30013DD41 /* ProjectConst.m in Sources */,
@@ -1239,6 +1256,7 @@
 				8EDE17391FFF718F0013DD41 /* HqLineCell.m in Sources */,
 				8EDE16F61FFF23C30013DD41 /* Dialog.m in Sources */,
 				8EDE17021FFF23C30013DD41 /* NSDictionary+isNULL.m in Sources */,
+				8E36E613200DB46B00701378 /* HqCardDetailVC.m in Sources */,
 				8EDE165C1FFF22FF0013DD41 /* main.m in Sources */,
 				8E5FCC3E2004AD7500B4740B /* HqGesturePasswordVC.m in Sources */,
 				8EDE171E1FFF2ED80013DD41 /* HqLeftView.m in Sources */,

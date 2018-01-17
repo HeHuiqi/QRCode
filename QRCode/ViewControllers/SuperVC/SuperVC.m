@@ -133,6 +133,14 @@
     [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)shareData{
+- (void)backToVC:(NSString *)vcName{
+    
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    for (UIViewController *vc in viewControllers) {
+        if ([vc isKindOfClass:NSClassFromString(vcName)]) {
+            [self.navigationController popToViewController:vc animated:YES];
+            break;
+        }
+    }
 }
 @end

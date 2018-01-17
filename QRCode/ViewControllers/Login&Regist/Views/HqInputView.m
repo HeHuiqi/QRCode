@@ -16,7 +16,9 @@
         self.backgroundColor = [UIColor whiteColor];
         self.placeholder = placehoder;
         UIImage *image = [UIImage imageNamed:leftIcon];
-        UIButton *imageView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kZoomValue(35), kZoomValue(20))];
+        UIButton *imageView = [UIButton buttonWithType:UIButtonTypeSystem];
+        imageView.frame = CGRectMake(0, 0, kZoomValue(35), kZoomValue(20));
+        imageView.tintColor = [UIColor blackColor];
         self.leftView = imageView;
         [imageView setImage:image forState:UIControlStateNormal];
         self.leftViewMode = UITextFieldViewModeAlways;

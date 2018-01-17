@@ -17,7 +17,9 @@
 
 @property (nonatomic,strong) UIButton *checkBtn;
 @property (nonatomic,strong) NSTimer *checkCodeTimer;
+@property (nonatomic,strong) UILabel *countLab;
 @property (nonatomic,assign) int totalTime;
+@property (nonatomic,strong) NSString *registToken;
 
 
 
@@ -37,24 +39,23 @@
 }
 - (void)getCheckCodeTimer{
     _totalTime--;
-    UIColor *btnColor = HqDeepGrayColor;
     NSString *title = [NSString stringWithFormat:@"Send(%ds)",_totalTime];
     if (_totalTime == 0)
     {
         [self destroyTimer];
         title = @"Send";
-        btnColor = AppMainColor;
-        _checkBtn.userInteractionEnabled = YES;
+        [self hidenBtnView:NO];
+    }else{
+        [self hidenBtnView:YES];
     }
-    [_checkBtn setTitleColor:btnColor forState:UIControlStateNormal];
-    [_checkBtn setTitle:title forState:UIControlStateNormal];
+    _countLab.text = title;
 }
 - (void)destroyTimer
 {
     [_checkCodeTimer invalidate];
     _checkCodeTimer = nil;
     _totalTime = Time;
-    _checkBtn.userInteractionEnabled = YES;
+    [self hidenBtnView:NO];
     
 }
 - (void)initView{
@@ -78,6 +79,7 @@
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
     _mobileTf.delegate = self;
     [contentView addSubview:_mobileTf];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:nil];
     
     _checkCodeTf = [[HqInputView alloc] initWithPlacehoder:@"Verfication code" leftIcon:@"hqcheck_code_icon"];
     _checkCodeTf.keyboardType = UIKeyboardTypeNumberPad;
@@ -86,16 +88,16 @@
     
     
     NSString *title = @"Send";
-    UIColor *titleColor = [UIColor darkTextColor];
-    UIButton *checkCodeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    checkCodeBtn.tintColor = titleColor;
-    checkCodeBtn.tintColor = AppMainColor;
-    checkCodeBtn.backgroundColor = [UIColor whiteColor];
+    UIButton *checkCodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [checkCodeBtn setTitle:title forState:UIControlStateNormal];
+    [checkCodeBtn setTitleColor:AppMainColor forState:UIControlStateNormal];
+    [checkCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [checkCodeBtn setBackgroundImage:[UIImage imageNamed:@"btn_border"] forState:UIControlStateNormal];
+    [checkCodeBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateHighlighted];
     [checkCodeBtn addTarget:self action:@selector(geCheckCode:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:checkCodeBtn];
-    
     self.checkBtn = checkCodeBtn;
+    self.checkBtn.hidden = YES;
     
     
     [_mobileTf mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -103,6 +105,19 @@
         make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
         make.top.equalTo(contentView.mas_centerY).offset(kZoomValue(20));
         make.height.mas_equalTo(kZoomValue(inputHeight));
+    }];
+    
+    _countLab = [[UILabel alloc] init];
+    _countLab.textAlignment = NSTextAlignmentCenter;
+    _countLab.text = @"Send";
+    _countLab.font = [UIFont systemFontOfSize:16];
+    _countLab.textColor  = HqGrayColor;
+    _countLab.backgroundColor = COLORA(241,245,247);
+    [contentView addSubview:_countLab];
+    [_countLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_mobileTf.mas_bottom).offset(kZoomValue(20));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
+        make.size.mas_equalTo(CGSizeMake(kZoomValue(80), kZoomValue(inputHeight)));
     }];
     
     [checkCodeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -194,7 +209,6 @@
     [self destroyTimer];
     if (_checkCodeTimer == nil)
     {
-        btn.userInteractionEnabled = NO;
         _checkCodeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getCheckCodeTimer) userInfo:nil repeats:YES];
     }
     NSString *url = [NSString stringWithFormat:@"/users/codes/%@",_mobileTf.text];
@@ -244,7 +258,14 @@
     [self.view endEditing:YES];
     return YES;
 }
-
+- (void)textChange{
+    BOOL isFull = _mobileTf.text.length==kMobileNumberLength;
+    [self hidenBtnView:!isFull];
+}
+- (void)hidenBtnView:(BOOL)hide{
+    _checkBtn.hidden = hide;
+    _countLab.hidden = !hide;
+}
 /*
 #pragma mark - Navigation
 

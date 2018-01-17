@@ -10,4 +10,6 @@
 
 @interface HqAddCardVC : SuperVC
 
+@property (nonatomic,strong) HqUser *user;
+
 @end

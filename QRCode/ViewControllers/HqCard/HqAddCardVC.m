@@ -45,7 +45,7 @@
     [self.view addSubview:contentView];
     
     _nameTf = [[HqInputView alloc] initWithPlacehoder:@"name" leftIcon:@"card_people_icon"];
-    _nameTf.text = @"";
+    _nameTf.text = _user.realName;
 //    _nameTf.delegate = self;
 //    _nameTf.userInteractionEnabled = NO;
     [contentView addSubview:_nameTf];
@@ -106,6 +106,7 @@
 - (void)cardNextClick:(UIButton *)btn{
     
     HqAddCardInfoVC *addCardInfoVC = [[HqAddCardInfoVC alloc] init];
+//    addCardInfoVC.cardType = HqBankcardTypeCredit;
     Push(addCardInfoVC);
     
     if (_nameTf.text.length==0) {
@@ -165,6 +166,9 @@
             [Dialog simpleToast:kRequestError];
         }
     }];
+}
+- (void)backClick{
+    [self backToVC:@"HqCardsVC"];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

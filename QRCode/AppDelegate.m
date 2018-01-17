@@ -60,12 +60,11 @@
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    NSLog(@"ppppp= %@",[NSString sha1:@"aaa111"]);
+//    NSLog(@"ppppp= %@",[NSString sha1:@"aaa111"]);
     
     NSString *token = GetUserDefault(kToken);
-
-
-    if(token.length){
+    NSString *isLogin = GetUserDefault(kisLogin);
+    if(token.length&&isLogin.boolValue){
         [AppDelegate setRootVC:HqSetRootVCHome];
     }else{
         [AppDelegate setRootVC:HqSetRootVCWecome];

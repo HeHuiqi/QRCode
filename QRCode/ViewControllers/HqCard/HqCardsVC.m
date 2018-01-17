@@ -27,6 +27,7 @@
     _cardList = [[NSMutableArray alloc] init];
     [self initView];
     [self requsetCardList];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requsetCardList) name:kAddBankCardSuccess object:nil];
 }
 - (void)requsetCardList{
     NSDictionary *param = @{};
@@ -65,7 +66,7 @@
     /*
      *画虚线
      */
-    UIButton *contentView = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, kZoomValue(185)-40)];
+    UIButton *contentView = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, SCREEN_WIDTH-40, kZoomValue(185)-40)];
     [contentView addTarget:self action:@selector(addCards:) forControlEvents:UIControlEventTouchUpInside];
     UIImage *linkCard = [UIImage imageNamed:@"cards_link"];
     [contentView setImage:linkCard forState:UIControlStateNormal];    contentView.layer.cornerRadius = 2.0;
@@ -102,11 +103,35 @@
 #pragma mark - 添加银行卡
 - (void)addCards:(UIButton *)btn{
     
-    HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
-    Push(passwordVC);
-//    HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
-//    Push(idUserVC);
+    [self requestUerInfo];
 }
+#pragma mark - 获取用户信息
+- (void)requestUerInfo{
+    
+    [HqHttpUtil hqGetShowHudTitle:nil param:nil url:@"/users"   complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSLog(@"用户信息==%@",responseObject);
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                HqUser *user = [HqUser mj_objectWithKeyValues:responseObject];
+                if (user.idNumber.length>0&&user.realName.length>0) {
+                    HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                    passwordVC.user = user;
+                    Push(passwordVC);
+                }else{
+                    HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
+                    Push(idUserVC);
+                }
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
+
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _cardList.count;

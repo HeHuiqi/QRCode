@@ -17,5 +17,6 @@ typedef NS_ENUM(NSUInteger, HqPayPasswordType) {
 @interface HqPayPasswordVC : SuperVC
 
 @property (nonatomic,assign) HqPayPasswordType payPasswordType;
+@property (nonatomic,strong) HqUser *user;
 
 @end

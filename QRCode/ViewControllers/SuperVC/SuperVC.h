@@ -20,6 +20,7 @@
 
 @property (nonatomic,assign) BOOL isShowBottomLine;
 @property (nonatomic,strong) UIView *bottomLine;
+
 -(void)backClick;
-- (void)shareData;
+- (void)backToVC:(NSString *)vcName;
 @end
