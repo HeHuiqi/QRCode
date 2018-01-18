@@ -14,6 +14,7 @@
 #import "HqCardsVC.h"
 
 #import "HqGesturePasswordVC.h"
+#import "PCCircleViewConst.h"
 
 #define LeftWidth (SCREEN_WIDTH - kZoomValue(52))
 #define LeftAlpha 0.7
@@ -25,6 +26,7 @@
 @property (nonatomic,strong) UIImageView *tableHeaderView;
 
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) HqUser *user;
 
 @end
 
@@ -59,6 +61,7 @@
 }
 - (void)initData{
     self.isOpen = NO;
+    [self requestUerInfo];
 }
 - (void)headerView{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
@@ -89,9 +92,6 @@
             case 2:
             {
 //                [Dialog simpleToast:@"This feature is not complete yet"];
-                HqGesturePasswordVC *gesturePasswordVC = [[HqGesturePasswordVC alloc] init];
-                gesturePasswordVC.type = GestureViewControllerTypeLogin;
-                Push(gesturePasswordVC);
             }
             break;
             case 4:
@@ -242,6 +242,36 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
+
+#pragma mark - 获取用户信息
+- (void)requestUerInfo{
+    
+    [HqHttpUtil hqGetShowHudTitle:nil param:nil url:@"/users"   complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSLog(@"用户信息==%@",responseObject);
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                 HqGesturePasswordVC *gesturePasswordVC = [[HqGesturePasswordVC alloc] init];
+                _user = [HqUser mj_objectWithKeyValues:responseObject];
+                NSString *gesturePassword = [PCCircleViewConst getGestureWithKey:gestureFinalSaveKey];
+                gesturePasswordVC.user = _user;
+                if (_user.hasGesture&&gesturePassword) {
+                    gesturePasswordVC.type = GestureViewControllerTypeLogin;
+                }else{
+                    gesturePasswordVC.type = GestureViewControllerTypeSetting;
+                }
+                Push(gesturePasswordVC);
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
+
+
 - (void)backClick{
     
     [self openLeftView];

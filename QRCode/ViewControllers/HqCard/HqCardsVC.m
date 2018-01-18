@@ -11,12 +11,15 @@
 #import "HqUserIdInfoVC.h"
 
 #import "HqPayPasswordVC.h"
+#import "HqCardDetailVC.h"
 
-@interface HqCardsVC ()<UITableViewDelegate, UITableViewDataSource>
+@interface HqCardsVC ()<UITableViewDelegate, UITableViewDataSource,HqCardDetailVCDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *cardList;
 
+@property (nonatomic,strong) HqBankCard *curretnSelectedCard;//当前选中的银行卡进入详情页
+@property (nonatomic,strong) HqBankCard *defaultCard;//默认卡
 @end
 
 @implementation HqCardsVC
@@ -41,6 +44,9 @@
                 [_cardList removeAllObjects];
                 for (NSDictionary *dic in cards) {
                     HqBankCard *card = [HqBankCard mj_objectWithKeyValues:dic];
+                    if (card.isDefault) {
+                        _defaultCard = card;
+                    }
                     [_cardList addObject:card];
                 }
                 [_tableView reloadData];
@@ -117,6 +123,12 @@
                 HqUser *user = [HqUser mj_objectWithKeyValues:responseObject];
                 if (user.idNumber.length>0&&user.realName.length>0) {
                     HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                    if (user.hasPin) {
+                        passwordVC.payPasswordType = HqPayPasswordInput;
+
+                    }else{
+                        passwordVC.payPasswordType = HqPayPasswordCreate;
+                    }
                     passwordVC.user = user;
                     Push(passwordVC);
                 }else{
@@ -152,8 +164,32 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    HqCardDetailVC *cardDetailVC = [[HqCardDetailVC alloc] init];
+    _curretnSelectedCard = _cardList[indexPath.row];
+    cardDetailVC.delegate = self;
+    cardDetailVC.bankCard = _curretnSelectedCard;
+    Push(cardDetailVC);
 }
-
+#pragma mark - HqCardDetailVCDelegate
+- (void)hqCardDetailVC:(HqCardDetailVC *)vc cardOperate:(HqCardOperate)operate{
+    switch (operate) {
+        case HqCardOperateDelete:
+            {
+                if (_curretnSelectedCard) {
+                    [_cardList removeObject:_curretnSelectedCard];
+                }
+            }
+            break;
+        case HqCardOperateSetDetault:
+        {
+            _curretnSelectedCard.isDefault = YES;
+            _defaultCard.isDefault = NO;
+            _defaultCard = _curretnSelectedCard;
+        }
+            break;
+    }
+    [_tableView reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

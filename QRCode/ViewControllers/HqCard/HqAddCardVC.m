@@ -105,10 +105,11 @@
 }
 - (void)cardNextClick:(UIButton *)btn{
     
-    HqAddCardInfoVC *addCardInfoVC = [[HqAddCardInfoVC alloc] init];
+//    HqAddCardInfoVC *addCardInfoVC = [[HqAddCardInfoVC alloc] init];
 //    addCardInfoVC.cardType = HqBankcardTypeCredit;
-    Push(addCardInfoVC);
-    
+//    Push(addCardInfoVC);
+    [self.view endEditing:YES];
+    _cardNumberTf.text = @"6228482316158625861";
     if (_nameTf.text.length==0) {
         [Dialog simpleToast:@"The name can't be empty!"];
         return;
@@ -129,10 +130,10 @@
 }
 */
 
-#pragma mark - 获取用户信息
+#pragma mark - 获取卡信息
 - (void)checkCardInfo{
     NSString *url = [NSString stringWithFormat:@"/cards/%@/checking",_cardNumberTf.text];
-    [HqHttpUtil hqGetShowHudTitle:nil param:nil url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+    [HqHttpUtil hqPostShowHudTitle:nil param:nil url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
         NSLog(@"检查卡是否已绑定===%@",responseObject);
         if (response.statusCode == 200) {
             NSString *msg = [responseObject hq_objectForKey:@"message"];
@@ -141,24 +142,8 @@
                  int cardType = [[responseObject hq_objectForKey:@"cardType"] intValue];
                 HqAddCardInfoVC *addCardInfoVC = [[HqAddCardInfoVC alloc] init];
                 addCardInfoVC.cardType = cardType;
+                addCardInfoVC.cardNumber = _cardNumberTf.text;
                 Push(addCardInfoVC);
-            }else{
-                [Dialog simpleToast:msg];
-            }
-        }else{
-            [Dialog simpleToast:kRequestError];
-        }
-    }];
-}
-#pragma mark - 获取用户信息
-- (void)requestUerInfo{
-    
-    [HqHttpUtil hqGetShowHudTitle:nil param:nil url:@"/users"   complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
-        if (response.statusCode == 200) {
-            NSString *msg = [responseObject hq_objectForKey:@"message"];
-            int code = [[responseObject hq_objectForKey:@"code"] intValue];
-            if (code==1) {
-                
             }else{
                 [Dialog simpleToast:msg];
             }

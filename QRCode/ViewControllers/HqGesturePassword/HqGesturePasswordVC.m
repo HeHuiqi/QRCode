@@ -184,7 +184,7 @@
         
         [self.msgLabel showWarnMsg:HqInputDrawPasswordSuccess];
         [PCCircleViewConst saveGesture:gesture Key:gestureFinalSaveKey];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+         [self uploadGesturePassword];
         
     } else {
         NSLog(@"两次手势不匹配！");
@@ -202,7 +202,7 @@
         if (equal) {
             NSLog(@"登陆成功！");
             [self.msgLabel showWarnMsg:HqInputDrawPasswordSuccess];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self uploadGesturePassword];
         } else {
             NSLog(@"密码错误！");
             [self.msgLabel showWarnMsgAndShake:HqInputDrawPasswordWrong];
@@ -214,7 +214,6 @@
             
         } else {
             NSLog(@"原手势密码输入错误！");
-            
         }
     }
 }
@@ -258,8 +257,31 @@
         self.navBarView.hidden = isLoginType;
     }
 }
-
-
+#pragma mark - 上传手势密码
+- (void)uploadGesturePassword{
+    
+    NSString *password = [PCCircleViewConst getGestureWithKey:gestureFinalSaveKey];
+    password = [NSString sha1:password];
+    NSDictionary *param = @{@"gesture": password};
+    
+    NSString *url = @"/users/gestures/checking";
+    if (_type == GestureViewControllerTypeSetting) {
+        url = @"/users/gestures";
+    }
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
 /*
 #pragma mark - Navigation
 

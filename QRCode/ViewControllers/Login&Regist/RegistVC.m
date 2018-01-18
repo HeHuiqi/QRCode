@@ -79,7 +79,7 @@
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
     _mobileTf.delegate = self;
     [contentView addSubview:_mobileTf];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:_mobileTf];
     
     _checkCodeTf = [[HqInputView alloc] initWithPlacehoder:@"Verfication code" leftIcon:@"hqcheck_code_icon"];
     _checkCodeTf.keyboardType = UIKeyboardTypeNumberPad;
@@ -258,9 +258,11 @@
     [self.view endEditing:YES];
     return YES;
 }
-- (void)textChange{
-    BOOL isFull = _mobileTf.text.length==kMobileNumberLength;
-    [self hidenBtnView:!isFull];
+- (void)textChange:(NSNotification *)notifi{
+    if ([notifi.object isEqual:_mobileTf]) {
+        BOOL isFull = _mobileTf.text.length==kMobileNumberLength;
+        [self hidenBtnView:!isFull];
+    }
 }
 - (void)hidenBtnView:(BOOL)hide{
     _checkBtn.hidden = hide;

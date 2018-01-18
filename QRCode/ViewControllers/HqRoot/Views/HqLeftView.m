@@ -97,9 +97,7 @@
     }
     NSDictionary *titleDic = _titles[indexPath.row];
     UIImage *image =  [UIImage imageNamed:titleDic[@"icon"]];
-    NSLog(@"image.size==%@",NSStringFromCGSize(image.size));
-//    cell.leftIcon.image = [UIImage imageNamed:titleDic[@"icon"]];
-                       [cell.leftIcon setImage:image forState:UIControlStateNormal];
+    [cell.leftIcon setImage:image forState:UIControlStateNormal];
     cell.titleLab.text = titleDic[@"title"];
     
     return cell;

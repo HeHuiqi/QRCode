@@ -8,6 +8,20 @@
 
 #import "SuperVC.h"
 
+typedef NS_ENUM(NSUInteger, HqCardOperate) {
+    HqCardOperateSetDetault,
+    HqCardOperateDelete,
+};
+@protocol HqCardDetailVCDelegate;
 @interface HqCardDetailVC : SuperVC
+
+@property (nonatomic,strong) HqBankCard *bankCard;
+@property (nonatomic,assign) id<HqCardDetailVCDelegate> delegate;
+
+@end
+
+@protocol HqCardDetailVCDelegate
+
+- (void)hqCardDetailVC:(HqCardDetailVC *)vc cardOperate:(HqCardOperate)operate;
 
 @end

@@ -67,12 +67,9 @@
     if(highlighted){
         _titleLab.textColor = COLOR(55, 69, 74, 1);
         _icon.tintColor = COLOR(55, 69, 74, 1);
-        NSLog(@"highlighted");
     }else{
         _titleLab.textColor = [UIColor whiteColor];
         _icon.tintColor = [UIColor whiteColor];
-        NSLog(@"no___highlighted");
-
     }
 }
 

@@ -27,6 +27,7 @@
 		8E32E4FC200CBB89002701E1 /* btn_border@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E32E4F8200CBB88002701E1 /* btn_border@3x.png */; };
 		8E36E613200DB46B00701378 /* HqCardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E36E612200DB46B00701378 /* HqCardDetailVC.m */; };
 		8E36E61D200DC26400701378 /* HqUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E36E61C200DC26400701378 /* HqUser.m */; };
+		8E36E621201053C000701378 /* HqCardDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E36E620201053C000701378 /* HqCardDetailCell.m */; };
 		8E5FCC3320034BF400B4740B /* HqHttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC3220034BF400B4740B /* HqHttpUtil.m */; };
 		8E5FCC362003670A00B4740B /* HqSetLoginPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC352003670A00B4740B /* HqSetLoginPassword.m */; };
 		8E5FCC39200458E500B4740B /* LanuchScreenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC38200458E500B4740B /* LanuchScreenVC.m */; };
@@ -179,6 +180,8 @@
 		8E36E612200DB46B00701378 /* HqCardDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardDetailVC.m; sourceTree = "<group>"; };
 		8E36E61B200DC26400701378 /* HqUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqUser.h; sourceTree = "<group>"; };
 		8E36E61C200DC26400701378 /* HqUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqUser.m; sourceTree = "<group>"; };
+		8E36E61F201053C000701378 /* HqCardDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqCardDetailCell.h; sourceTree = "<group>"; };
+		8E36E620201053C000701378 /* HqCardDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardDetailCell.m; sourceTree = "<group>"; };
 		8E5FCC3120034BF400B4740B /* HqHttpUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqHttpUtil.h; sourceTree = "<group>"; };
 		8E5FCC3220034BF400B4740B /* HqHttpUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqHttpUtil.m; sourceTree = "<group>"; };
 		8E5FCC342003670900B4740B /* HqSetLoginPassword.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqSetLoginPassword.h; sourceTree = "<group>"; };
@@ -436,10 +439,20 @@
 		8E36E610200DB44E00701378 /* CardDetail */ = {
 			isa = PBXGroup;
 			children = (
+				8E36E61E2010539A00701378 /* Views */,
 				8E36E611200DB46B00701378 /* HqCardDetailVC.h */,
 				8E36E612200DB46B00701378 /* HqCardDetailVC.m */,
 			);
 			path = CardDetail;
+			sourceTree = "<group>";
+		};
+		8E36E61E2010539A00701378 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E36E61F201053C000701378 /* HqCardDetailCell.h */,
+				8E36E620201053C000701378 /* HqCardDetailCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8E5FCC3A2004ACC000B4740B /* HqGesturePassword */ = {
@@ -1240,6 +1253,7 @@
 				8EEFA7832005AFFC004C2254 /* PCCircle.m in Sources */,
 				3334CD742000AE7D00C5EED8 /* HqPassWordView.m in Sources */,
 				3334CD652000650300C5EED8 /* HqIdInfoInputView.m in Sources */,
+				8E36E621201053C000701378 /* HqCardDetailCell.m in Sources */,
 				8EDE16E41FFF23C30013DD41 /* IQToolbar.m in Sources */,
 				8EDE16E71FFF23C30013DD41 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				8EDE16F11FFF23C30013DD41 /* IQKeyboardReturnKeyHandler.m in Sources */,

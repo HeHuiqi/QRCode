@@ -54,6 +54,14 @@
     _cardTypeView.inputView.placeholder = @"Card Type";
     [contentView addSubview:_cardTypeView];
     
+    if (_cardType == HqBankcardTypeDebit ) {
+        _cardTypeView.inputView.text = @"Debit Card";
+    }else if(_cardType == HqBankcardTypeCredit){
+        _cardTypeView.inputView.text = @"Credit Card";
+    }else{
+        _cardTypeView.inputView.text = @"Other";
+    }
+    
     CGRect mobileRect = CGRectZero;
     if (_cardType == HqBankcardTypeCredit) {
         _cvvInputView = [[HqIdInfoInputView alloc] initWithFrame:CGRectMake(xInput, CGRectGetMaxY(_cardTypeView.frame)+kZoomValue(ySpace), width, cellHeight)];
@@ -84,12 +92,14 @@
     _mobileInputView.titleLab.text = @"Phone";
     _mobileInputView.inputView.placeholder = @"Same as bank records";
     _mobileInputView.inputView.delegate = self;
+    _mobileInputView.inputView.keyboardType = UIKeyboardTypeNumberPad;
     [contentView addSubview:_mobileInputView];
     
     _checkCodeInputView = [[HqIdInfoInputView alloc] initWithFrame:CGRectMake(xInput, CGRectGetMaxY(_mobileInputView.frame)+kZoomValue(ySpace), width-kZoomValue(100), cellHeight)];
     _checkCodeInputView.titleLab.text = @"Verfication code";
     _checkCodeInputView.inputView.placeholder = @"Verfication code";
     _checkCodeInputView.inputView.delegate = self;
+    _checkCodeInputView.inputView.keyboardType = UIKeyboardTypeNumberPad;
     [contentView addSubview:_checkCodeInputView];
     
     
@@ -100,7 +110,7 @@
     [checkCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [checkCodeBtn setBackgroundImage:[UIImage imageNamed:@"btn_border"] forState:UIControlStateNormal];
     [checkCodeBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateHighlighted];
-
+    [checkCodeBtn addTarget:self action:@selector(geCheckCode:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:checkCodeBtn];
     self.checkBtn = checkCodeBtn;
     self.checkBtn.hidden = YES;
@@ -135,7 +145,7 @@
     nextBtn.layer.cornerRadius = 2.0;
     [nextBtn addTarget:self action:@selector(addCardInfoNextClick:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:nextBtn];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:_mobileInputView.inputView];
 
     
 }
@@ -160,9 +170,12 @@
     [self hidenBtnView:NO];
     
 }
-- (void)textChange{
-    BOOL isFull = _mobileInputView.inputView.text.length==kMobileNumberLength;
-    [self hidenBtnView:!isFull];
+#pragma mark - 输入变化通知方法
+- (void)textChange:(NSNotification *)nofit{
+    if ([nofit.object isEqual:_mobileInputView.inputView]) {
+        BOOL isFull = _mobileInputView.inputView.text.length==kMobileNumberLength;
+        [self hidenBtnView:!isFull];
+    }
 }
 - (void)hidenBtnView:(BOOL)hide{
     _checkBtn.hidden = hide;
@@ -175,16 +188,32 @@
 }
 - (void)addCardInfoNextClick:(UIButton *)btn{
     
-    [self backToVC:@"HqCardsVC"];
+//    [self backToVC:@"HqCardsVC"];
+    [self addCard];
 }
 - (void)geCheckCode:(UIButton *)btn{
     
+    if(_mobileInputView.inputView.text.length==0){
+        [Dialog simpleToast:@"The phone number can't be empty"];
+        return;
+    }
+    if(_mobileInputView.inputView.text.length<kMobileNumberLength){
+        [Dialog simpleToast:@"Incorrect phone number"];
+        return;
+    }
+    
+    [self destroyTimer];
+    if (_checkCodeTimer == nil)
+    {
+        _checkCodeTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getCheckCodeTimer) userInfo:nil repeats:YES];
+    }
+    [self requestCheckCode];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
 }
-- (void)getCheckCode{
+- (void)requestCheckCode{
     
     /*
     {
@@ -194,22 +223,26 @@
         "refCode": "R952748984642842624"
     }
     */
-    NSString *url = [NSString stringWithFormat:@"/cards/%@/codes/%@",@"cardNum",_mobileInputView.inputView.text];
+    NSString *url = [NSString stringWithFormat:@"/cards/%@/codes/%@",_cardNumber,_mobileInputView.inputView.text];
     [HqHttpUtil hqGetShowHudTitle:nil param:nil url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        
         if (response.statusCode == 200) {
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
                 _refCode = [responseObject hq_objectForKey:@"refCode"];
             }else{
+                [self destroyTimer];
                 [Dialog simpleToast:msg];
             }
         }else{
             [Dialog simpleToast:kRequestError];
+            [self destroyTimer];
         }
     }];
     
 }
+#pragma mark - 开始添加
 - (void)addCard{
     if(_mobileInputView.inputView.text.length==0){
         [Dialog simpleToast:@"The phone number can't be empty"];
@@ -229,20 +262,37 @@
         return;
     }
     NSString *otp = _checkCodeInputView.inputView.text;
-    NSString *exp = _expireView.inputView.text;
-    NSString *cvv = _cvvInputView.inputView.text;
+
     NSDictionary *param = @{
                             @"refCode": _refCode,
-                            @"cvv": cvv,
-                            @"exp": exp,
                             @"otp": otp
                             };
+    if (_cardType == HqBankcardTypeCredit) {
+        
+        NSString *exp = _expireView.inputView.text;
+        NSString *cvv = _cvvInputView.inputView.text;
+        if (!exp) {
+            exp = @"";
+        }
+        if (!cvv) {
+            cvv = @"";
+        }
+        param = @{
+                  @"refCode": _refCode,
+                  @"cvv": cvv,
+                  @"exp": exp,
+                  @"otp": otp
+                  };
+    }
+   
     [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/cards" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
         if (response.statusCode == 200) {
+            NSLog(@"添加银行卡===%@",responseObject);
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kAddBankCardSuccess object:nil];
+                [self backToVC:@"HqCardsVC"];
             }else{
                 [Dialog simpleToast:msg];
             }

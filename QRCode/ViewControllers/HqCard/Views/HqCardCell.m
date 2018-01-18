@@ -16,6 +16,12 @@
     }
     return self;
 }
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        [self setup];
+    }
+    return self;
+}
 - (void)setup{
     
     UIView *bgView = [[UIView alloc] init];

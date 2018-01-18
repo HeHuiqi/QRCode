@@ -14,6 +14,8 @@
 
 @property (nonatomic,strong) UILabel *infoLab;
 @property (nonatomic,strong) HqPassWordView *passwordView;
+@property (nonatomic,strong) UIButton *nextBtn;
+
 
 @end
 
@@ -71,12 +73,18 @@
     password.rectColor = HqBorderColor;
     [contentView addSubview:password];
     _passwordView = password;
+    [_passwordView becomeFirstResponder];
     
     CGFloat space = 20;
 
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     nextBtn.tintColor = [UIColor whiteColor];
-    [nextBtn setTitle:@"Next" forState:UIControlStateNormal];
+    if (_payPasswordType == HqPayPasswordConfirm) {
+        [nextBtn setTitle:@"Finish" forState:UIControlStateNormal];
+    }else{
+        [nextBtn setTitle:@"Next" forState:UIControlStateNormal];
+
+    }
     nextBtn.backgroundColor = COLOR(17, 139, 226, 1);
     nextBtn.layer.cornerRadius = 2.0;
     [nextBtn addTarget:self action:@selector(passwordNextClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -90,9 +98,58 @@
     }];
 }
 - (void)passwordNextClick:(UIButton *)btn{
-    HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
-    addCardVC.user = _user;
-    Push(addCardVC);
+    [self.view endEditing:YES];
+    if (_passwordView.textStore.length != 6) {
+        [Dialog toastCenter:@"The payment password invalid"];
+        [_passwordView becomeFirstResponder];
+        return;
+    }
+    if (_payPasswordType == HqPayPasswordCreate) {
+        HqPayPasswordVC  *confirmVC = [[HqPayPasswordVC alloc] init];
+        confirmVC.payPasswordType = HqPayPasswordConfirm;
+        confirmVC.lastInpuPayPassword = _passwordView.textStore;
+        confirmVC.user = _user;
+        Push(confirmVC);
+        return;
+    }
+    if (_payPasswordType == HqPayPasswordConfirm) {
+        if (![_lastInpuPayPassword isEqualToString:_passwordView.textStore]) {
+            [Dialog toastCenter:@"Inconsistent input twice"];
+            [_passwordView becomeFirstResponder];
+        }else{
+            NSLog(@"_createPayPassword==%@",_passwordView.textStore);
+             [self checkPaypassword];
+        }
+        return;
+    }
+    [self checkPaypassword];
+//    HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
+//    addCardVC.user = _user;
+//    Push(addCardVC);
+}
+#pragma mark - 输入支付密码
+- (void)checkPaypassword{
+    NSString *url = @"/users/pins";
+    if (_payPasswordType == HqPayPasswordInput) {
+        url = @"/users/pins/checking";
+    }
+    NSString *pin = [NSString sha1:_passwordView.textStore];
+    NSDictionary *param = @{@"pin": pin};
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
+                addCardVC.user = _user;
+                Push(addCardVC);
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
 }
 - (void)backClick{
     [self backToVC:@"HqCardsVC"];
