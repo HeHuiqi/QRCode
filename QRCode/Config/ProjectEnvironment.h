@@ -14,24 +14,24 @@
 
 #elif Qa
 
-#define SERVER      @"https://qawsm.xwf-id.com:4433"
+#define SERVER      @"https://demo.tsp.eveus.com"
 
 #elif Pre
 
-#define SERVER      @"https://prewsm.xwf-id.com"
+#define SERVER      @"https://demo.tsp.eveus.com"
 
 #elif Prm
 
-#define SERVER      @"https://prmwsm.xwf-id.com"
+#define SERVER      @"https://demo.tsp.eveus.com"
 
 #elif Prd
 
-#define SERVER      @"https://prdwsm.xwf-id.com"
+#define SERVER      @"https://demo.tsp.eveus.com"
 
 #else
 
 //prd
-#define SERVER      @"https://prdwsm.xwf-id.com"
+#define SERVER      @"https://demo.tsp.eveus.com"
 
 #endif
 

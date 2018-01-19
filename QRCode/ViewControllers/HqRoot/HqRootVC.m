@@ -11,11 +11,12 @@
 #import "HqButton.h"
 #import "HqHomeCell.h"
 #import "HqScanPayVC.h"
+#import "HqScanPayAndCodeVC.h"
 #import "HqCardsVC.h"
 
 #import "HqGesturePasswordVC.h"
 #import "PCCircleViewConst.h"
-
+#import "HqTradeRecordVC.h"
 #define LeftWidth (SCREEN_WIDTH - kZoomValue(52))
 #define LeftAlpha 0.7
 @interface HqRootVC ()<UITableViewDelegate,UITableViewDataSource,HqLeftViewDelegate,UIGestureRecognizerDelegate>
@@ -56,12 +57,14 @@
     NSString *token = GetUserDefault(kToken);
     NSLog(@"token==%@",token);
 }
+#pragma mark - Bill
 - (void)homeBill:(UIButton *)btn{
-    
+    HqTradeRecordVC *recordVC = [[HqTradeRecordVC alloc] init];
+    Push(recordVC);
 }
 - (void)initData{
     self.isOpen = NO;
-    [self requestUerInfo];
+    //    [self requestUerInfo];
 }
 - (void)headerView{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
@@ -83,22 +86,29 @@
 - (void)headerClick:(HqButton *)btn{
     NSLog(@"btn= %@",@(btn.tag));
     switch (btn.tag) {
-            case 1:
-            {
-                HqScanPayVC *scanVC = [[HqScanPayVC alloc] init];
-                Push(scanVC);
-            }
+        case 1:
+        {
+            HqScanPayVC *scanVC = [[HqScanPayVC alloc] init];
+            Push(scanVC);
+            
+        }
             break;
-            case 2:
-            {
-//                [Dialog simpleToast:@"This feature is not complete yet"];
-            }
+        case 2:
+        {
+            [Dialog simpleToast:@"This feature is not complete yet"];
+        }
             break;
-            case 4:
-            {
-                HqCardsVC *cardsVC = [[HqCardsVC alloc] init];
-                Push(cardsVC);
-            }
+        case 3:
+        {
+            HqScanPayAndCodeVC *payScanCodeVC = [[HqScanPayAndCodeVC alloc] init];
+            Push(payScanCodeVC);
+        }
+            break;
+        case 4:
+        {
+            HqCardsVC *cardsVC = [[HqCardsVC alloc] init];
+            Push(cardsVC);
+        }
             break;
             
         default:
@@ -141,10 +151,10 @@
     }
     
     switch (panGesture.state) {
-            case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateBegan:
             
             break;
-            case UIGestureRecognizerStateChanged:
+        case UIGestureRecognizerStateChanged:
         {
             
             if (xOffset>=LeftWidth) {
@@ -166,22 +176,22 @@
         }
             
             break;
-            case UIGestureRecognizerStateEnded:{
-                self.view.userInteractionEnabled = YES;
-                
-                [UIView animateWithDuration:0.1 animations:^{
-                    if (self.leftView.frame.origin.x>-LeftWidth/2.0) {
-                        self.leftView.frame = CGRectMake(0, 0, LeftWidth, self.view.frame.size.height);
-                        self.mainOverView.alpha = LeftAlpha;
-                        self.isOpen = YES;
-                    }else{
-                        self.leftView.frame = CGRectMake(-LeftWidth, 0, LeftWidth, self.view.frame.size.height);
-                        self.mainOverView.alpha = 0.0;
-                        self.isOpen = NO;
-                    }
-                }];
-                
-            }
+        case UIGestureRecognizerStateEnded:{
+            self.view.userInteractionEnabled = YES;
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                if (self.leftView.frame.origin.x>-LeftWidth/2.0) {
+                    self.leftView.frame = CGRectMake(0, 0, LeftWidth, self.view.frame.size.height);
+                    self.mainOverView.alpha = LeftAlpha;
+                    self.isOpen = YES;
+                }else{
+                    self.leftView.frame = CGRectMake(-LeftWidth, 0, LeftWidth, self.view.frame.size.height);
+                    self.mainOverView.alpha = 0.0;
+                    self.isOpen = NO;
+                }
+            }];
+            
+        }
             break;
             
         default:
@@ -240,7 +250,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
 }
 
 #pragma mark - 获取用户信息
@@ -252,7 +262,7 @@
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
-                 HqGesturePasswordVC *gesturePasswordVC = [[HqGesturePasswordVC alloc] init];
+                HqGesturePasswordVC *gesturePasswordVC = [[HqGesturePasswordVC alloc] init];
                 _user = [HqUser mj_objectWithKeyValues:responseObject];
                 NSString *gesturePassword = [PCCircleViewConst getGestureWithKey:gestureFinalSaveKey];
                 gesturePasswordVC.user = _user;
@@ -285,27 +295,27 @@
     NSLog(@"index==%@",@(index));
     
     switch (index) {
-            case 0:
+        case 0:
         {
             
         }
             break;
-            case 1:
+        case 1:
         {
             
         }
             break;
-            case 2:
+        case 2:
         {
             
         }
             break;
-            case 3:
+        case 3:
         {
             
         }
             break;
-            case 4:
+        case 4:
         {
             
         }
@@ -325,6 +335,9 @@
     }
     return  YES;
 }
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

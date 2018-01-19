@@ -12,5 +12,7 @@
 
 @property (nonatomic,strong) UIImage *iconImage;
 @property (nonatomic,strong) NSString *title;
+@property (nonatomic,assign) BOOL isSetHighlighted;
+@property (nonatomic,assign) CGSize iconSize;
 
 @end

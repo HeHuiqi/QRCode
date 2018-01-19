@@ -22,7 +22,7 @@
     [_leftIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(kZoomValue(36));
         make.centerY.equalTo(self.contentView);
-        make.size.mas_equalTo(CGSizeMake(kZoomValue(13), kZoomValue(18)));
+        make.size.mas_equalTo(CGSizeMake(kZoomValue(32), kZoomValue(32)));
     }];
     
     _titleLab = [[UILabel alloc] init];
