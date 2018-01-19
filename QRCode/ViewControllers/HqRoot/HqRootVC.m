@@ -307,7 +307,8 @@
             break;
         case 2:
         {
-            
+            HqTradeRecordVC *tradeVC = [[HqTradeRecordVC alloc] init];
+            Push(tradeVC);
         }
             break;
         case 3:

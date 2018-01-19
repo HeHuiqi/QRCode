@@ -30,7 +30,7 @@
 - (void)initData{
     _titles = @[@{@"icon":@"home_icon",@"title":@"Home"},
                 @{@"icon":@"home_set_icon",@"title":@"Settings"},
-                @{@"icon":@"bill_icon",@"title":@"Contacts"},
+                @{@"icon":@"bill_icon",@"title":@"Bill"},
                 @{@"icon":@"emergency_icon",@"title":@"Emergency"},
                 @{@"icon":@"about_icon",@"title":@"About"}];
 }
