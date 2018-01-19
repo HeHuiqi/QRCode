@@ -67,7 +67,7 @@
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
     header.backgroundColor = AppMainColor;
     NSArray *titles = @[@"Scan",@"Collect",@"Pay",@"Cards"];
-    NSArray *images = @[@"home_scan_icon",@"",@"home_pay_icon",@"home_cards_icon"];
+    NSArray *images = @[@"home_scan_icon",@"home_collect_icon",@"home_pay_icon",@"home_cards_icon"];
     for (int i = 0; i<titles.count; i++) {
         CGFloat width = SCREEN_WIDTH/titles.count;
         HqButton *button = [[HqButton alloc] initWithFrame:CGRectMake(i*width, 0, width, kZoomValue(70))];

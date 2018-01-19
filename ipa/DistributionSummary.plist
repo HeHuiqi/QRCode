@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>QRCode.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>69CAA4EAD5EE9E55D23C5880E73C6436DDBC08A3</string>
+				<key>dateExpires</key>
+				<string>2018/6/2</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>34AC3PEMF7.com.hhq.QRCode</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>34AC3PEMF7</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>34AC3PEMF7.com.hhq.QRCode</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>QRCode.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>c2905da8-55eb-4830-be3a-ec9d10ced587</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>34AC3PEMF7</string>
+				<key>name</key>
+				<string>IRAID Finance Info &amp; Tech (Shanghai) Co., Ltd.</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
