@@ -67,12 +67,10 @@
 }
 
 + (void)tokenInvalid{
-    
-   
   // 登录失效 断开连接
-    SetUserDefault(@"", kToken);
-    SetUserDefault(@"", kUserBankCardNumber);
-//    [AppDelegate setRootVCIsLogin:NO];
+    SetUserDefault(nil, kToken);
+    SetUserDefault(nil, kisLogin)
+    [AppDelegate setRootVC:HqSetRootVCLogin];
     
 }
 
@@ -211,7 +209,7 @@
     }else{
         if (response.statusCode >= 500) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [Dialog simpleToast:@"服务开小差"];
+                [Dialog simpleToast:@"server is busy!"];
             });
             
         }
