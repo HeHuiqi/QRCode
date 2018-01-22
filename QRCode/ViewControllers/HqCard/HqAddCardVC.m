@@ -109,7 +109,7 @@
 //    addCardInfoVC.cardType = HqBankcardTypeCredit;
 //    Push(addCardInfoVC);
     [self.view endEditing:YES];
-    _cardNumberTf.text = @"6228482316158625861";
+//    _cardNumberTf.text = @"6228482316158625861";
     if (_nameTf.text.length==0) {
         [Dialog simpleToast:@"The name can't be empty!"];
         return;

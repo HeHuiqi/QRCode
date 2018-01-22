@@ -8,6 +8,7 @@
 
 #import "HqScanPayVC.h"
 #import "SGQRCode.h"
+#import "HqPayVC.h"
 
 @interface HqScanPayVC ()<SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate>
 
@@ -91,7 +92,7 @@
 //扫描读取
 #pragma mark - - - SGQRCodeScanManagerDelegate
 - (void)QRCodeScanManager:(SGQRCodeScanManager *)scanManager didOutputMetadataObjects:(NSArray *)metadataObjects {
-    NSLog(@"metadataObjects - - %@", metadataObjects);
+    NSLog(@"识别到的metadataObjects - - %@", metadataObjects);
     if (metadataObjects != nil && metadataObjects.count > 0) {
         [scanManager palySoundName:@"SGQRCode.bundle/sound.caf"];
         [scanManager stopRunning];
@@ -99,10 +100,15 @@
         
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
       
-        NSLog(@"obj===%@",obj.stringValue);
-        
+        NSLog(@"识别到的=obj.stringValue==%@",obj.stringValue);
+        if (obj.stringValue) {
+            [self scanSuccess:obj.stringValue];
+        }else{
+            [Dialog simpleToast:@"Scan Fail!"];
+        }
     } else {
         NSLog(@"暂未识别出扫描的二维码");
+//         [Dialog simpleToast:@"Scan Fail!"];
     }
 }
 - (void)QRCodeScanManager:(SGQRCodeScanManager *)scanManager brightnessValue:(CGFloat)brightnessValue {
@@ -169,5 +175,10 @@
     });
 }
 
-
+#pragma mark - 扫码成功
+- (void)scanSuccess:(NSString *)code{
+    HqPayVC *payVC = [[HqPayVC alloc] init];
+    payVC.code = code;
+    Push(payVC);
+}
 @end

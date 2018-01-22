@@ -54,6 +54,8 @@
 		8EBA54F82009D29F009AFEE1 /* login_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F42009D29E009AFEE1 /* login_bg@3x.png */; };
 		8EBA54FB2009D35E009AFEE1 /* hqpassword_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F92009D35E009AFEE1 /* hqpassword_icon@2x.png */; };
 		8EBA54FC2009D35E009AFEE1 /* hqpassword_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54FA2009D35E009AFEE1 /* hqpassword_icon@3x.png */; };
+		8ED6CCE12015E0020001393A /* HqPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6CCE02015E0020001393A /* HqPayVC.m */; };
+		8ED6CCE42015E2FF0001393A /* HqPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6CCE32015E2FF0001393A /* HqPayView.m */; };
 		8EDE164E1FFF22FF0013DD41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE164D1FFF22FF0013DD41 /* AppDelegate.m */; };
 		8EDE16511FFF22FF0013DD41 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16501FFF22FF0013DD41 /* ViewController.m */; };
 		8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16521FFF22FF0013DD41 /* Main.storyboard */; };
@@ -233,6 +235,10 @@
 		8EBA54F42009D29E009AFEE1 /* login_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_bg@3x.png"; sourceTree = "<group>"; };
 		8EBA54F92009D35E009AFEE1 /* hqpassword_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hqpassword_icon@2x.png"; sourceTree = "<group>"; };
 		8EBA54FA2009D35E009AFEE1 /* hqpassword_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hqpassword_icon@3x.png"; sourceTree = "<group>"; };
+		8ED6CCDF2015E0020001393A /* HqPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqPayVC.h; sourceTree = "<group>"; };
+		8ED6CCE02015E0020001393A /* HqPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqPayVC.m; sourceTree = "<group>"; };
+		8ED6CCE22015E2FF0001393A /* HqPayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqPayView.h; sourceTree = "<group>"; };
+		8ED6CCE32015E2FF0001393A /* HqPayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqPayView.m; sourceTree = "<group>"; };
 		8EDE16491FFF22FF0013DD41 /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDE164C1FFF22FF0013DD41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EDE164D1FFF22FF0013DD41 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -527,6 +533,8 @@
 			children = (
 				8E36E6722011EF3F00701378 /* HqMyPayCodeView.h */,
 				8E36E6732011EF3F00701378 /* HqMyPayCodeView.m */,
+				8ED6CCE22015E2FF0001393A /* HqPayView.h */,
+				8ED6CCE32015E2FF0001393A /* HqPayView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -981,6 +989,8 @@
 				8EDE173F1FFF7A910013DD41 /* HqScanPayVC.m */,
 				8E36E6622011E02D00701378 /* HqScanPayAndCodeVC.h */,
 				8E36E6632011E02D00701378 /* HqScanPayAndCodeVC.m */,
+				8ED6CCDF2015E0020001393A /* HqPayVC.h */,
+				8ED6CCE02015E0020001393A /* HqPayVC.m */,
 			);
 			path = HqScanPay;
 			sourceTree = "<group>";
@@ -1331,6 +1341,7 @@
 				8EDE17481FFF87A50013DD41 /* HqCardCell.m in Sources */,
 				8EDE16EC1FFF23C30013DD41 /* IQUIWindow+Hierarchy.m in Sources */,
 				3334CD682000743600C5EED8 /* HqAddCardVC.m in Sources */,
+				8ED6CCE12015E0020001393A /* HqPayVC.m in Sources */,
 				8EDE17041FFF23C30013DD41 /* UITextField+LimitInput.m in Sources */,
 				8EDE16EB1FFF23C30013DD41 /* IQNSArray+Sort.m in Sources */,
 				8EDE17401FFF7A910013DD41 /* HqScanPayVC.m in Sources */,
@@ -1391,6 +1402,7 @@
 				8EDE16E31FFF23C30013DD41 /* IQTextView.m in Sources */,
 				8EDE16E81FFF23C30013DD41 /* IQPreviousNextView.m in Sources */,
 				8EDE16F21FFF23C30013DD41 /* MBProgressHUD.m in Sources */,
+				8ED6CCE42015E2FF0001393A /* HqPayView.m in Sources */,
 				3334CD7C2000C69500C5EED8 /* HqAddCardInfoVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
