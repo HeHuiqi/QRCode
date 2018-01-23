@@ -10,8 +10,8 @@
 #import "HqInputView.h"
 #import "HqAddCardInfoVC.h"
 #import "HqGesturePasswordVC.h"
-
-@interface HqAddCardVC ()<UITextFieldDelegate>
+#import <CardIO/CardIO.h>
+@interface HqAddCardVC ()<UITextFieldDelegate,CardIOPaymentViewControllerDelegate>
 
 @property (nonatomic,strong) HqInputView *nameTf;
 @property (nonatomic,strong) HqInputView *cardNumberTf;
@@ -101,7 +101,7 @@
     }];
 }
 - (void)photo:(UIButton *)btn{
-    NSLog(@"2323236");
+    [self startScanCard];
 }
 - (void)cardNextClick:(UIButton *)btn{
     
@@ -169,5 +169,30 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)startScanCard{
+    CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
+    scanViewController.disableManualEntryButtons = YES;//不显示右边按钮
+    scanViewController.suppressScanConfirmation = YES;//立即返回
+    // 进行简单的设置
+    scanViewController.hideCardIOLogo = YES;
+    scanViewController.collectCVV = NO;
+    scanViewController.guideColor = AppMainColor;
+    scanViewController.collectExpiry = NO;
+    [self presentViewController:scanViewController animated:YES completion:nil];
+}
+#pragma mark - CardIOPaymentViewControllerDelegate
+- (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)paymentViewController{
+    [paymentViewController dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)userDidProvideCreditCardInfo:(CardIOCreditCardInfo *)cardInfo inPaymentViewController:(CardIOPaymentViewController *)paymentViewController{
+    //扫描结果
+    //    NSLog(@"Received card info. Number: %@, expiry: %02ld/%ld, cvv: %@-%@", cardInfo.cardNumber, (unsigned long)cardInfo.expiryMonth, (unsigned long)cardInfo.expiryYear, cardInfo.cvv);
+    NSLog(@"cardNumber == %@",cardInfo.cardNumber);
+    _cardNumberTf.text = cardInfo.cardNumber;
+    // 这里可以自己进行一些处理
+    ///
+    [paymentViewController dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

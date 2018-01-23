@@ -23,12 +23,16 @@
     [view addGestureRecognizer:tap];
 }
 - (void)tapGesture:(UITapGestureRecognizer *)tap{
+    [self startScanCard];
+}
+- (void)startScanCard{
     CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
     scanViewController.disableManualEntryButtons = YES;//不显示右边按钮
     scanViewController.suppressScanConfirmation = YES;//立即返回
     // 进行简单的设置
     scanViewController.hideCardIOLogo = YES;
     scanViewController.collectCVV = NO;
+    scanViewController.guideColor = AppMainColor;
     scanViewController.collectExpiry = NO;
     [self presentViewController:scanViewController animated:YES completion:nil];
 }
