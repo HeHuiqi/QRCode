@@ -10,6 +10,8 @@
 #import "SGQRCode.h"
 #import "HqMyPayCodeView.h"
 #import "HqButton.h"
+#import "HqPayVC.h"
+
 #define HqBottomHeight  kZoomValue(80)
 @interface HqScanPayAndCodeVC ()<SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate>
 
@@ -37,6 +39,7 @@
     [self.scanningView removeTimer];
     [self removeFlashlightBtn];
     [_manager cancelSampleBufferDelegate];
+    
 }
 - (HqMyPayCodeView *)payCodeView{
     if (!_payCodeView) {
@@ -61,9 +64,9 @@
     [self.view addSubview:self.flashlightBtn];
 
     [self.view addSubview:self.payCodeView];
-    self.payCodeView.payCodeInfo = @"124125215125";
     self.payCodeView.hidden = YES;
     [self bottomView];
+    [self getPayCode];
 }
 
 
@@ -113,6 +116,9 @@
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
         
         NSLog(@"obj===%@",obj.stringValue);
+        if (obj.stringValue) {
+            [self scanSuccess:obj.stringValue];
+        }
         
     } else {
         NSLog(@"暂未识别出扫描的二维码");
@@ -181,7 +187,6 @@
         [self.flashlightBtn removeFromSuperview];
     });
 }
-
 - (void)bottomView{
     CGFloat viewHeight = HqBottomHeight;
     UIView *bottom = [[UIView alloc] init];
@@ -227,5 +232,32 @@
     }
     
     
+}
+#pragma mark - 扫码成功
+- (void)scanSuccess:(NSString *)code{
+    HqPayVC *payVC = [[HqPayVC alloc] init];
+    payVC.code = code;
+    Push(payVC);
+}
+- (void)getPayCode{
+    
+    [HqHttpUtil hqPost:nil url:@"/transactions/codes" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"==%@",responseObject);
+        
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                NSString *payCode = [responseObject hq_objectForKey:@"payCode"];
+                if (payCode.length>0) {
+                    self.payCodeView.payCodeInfo = payCode;
+                }
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
 }
 @end

@@ -4,5 +4,6 @@ target 'QRCode' do
     pod 'AFNetworking'
     pod 'SDWebImage'
     pod 'MJExtension', '~> 3.0.13'
+    pod 'PayPal-iOS-SDK'
     
 end

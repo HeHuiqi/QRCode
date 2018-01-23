@@ -7,7 +7,7 @@
 //
 
 #import "HqPayPasswordVC.h"
-#import "HqPassWordView.h"
+
 #import "HqAddCardVC.h"
 
 @interface HqPayPasswordVC ()

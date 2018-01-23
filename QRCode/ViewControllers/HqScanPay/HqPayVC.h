@@ -8,8 +8,14 @@
 
 #import "SuperVC.h"
 
+typedef NS_ENUM(NSInteger,HqTradeType){
+    HqTradeTypeTransfer,//转账
+    HqTradeTypeScanPay,//扫码
+};
+
 @interface HqPayVC : SuperVC
 
 @property (nonatomic,copy) NSString *code;
+@property (nonatomic,assign) NSInteger tradeType;
 
 @end

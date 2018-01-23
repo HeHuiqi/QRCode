@@ -17,6 +17,10 @@
 #import "HqGesturePasswordVC.h"
 #import "PCCircleViewConst.h"
 #import "HqTradeRecordVC.h"
+
+//test
+#import "HqPayVC.h"
+#import "HqScanCardVC.h"
 #define LeftWidth (SCREEN_WIDTH - kZoomValue(52))
 #define LeftAlpha 0.7
 @interface HqRootVC ()<UITableViewDelegate,UITableViewDataSource,HqLeftViewDelegate,UIGestureRecognizerDelegate>
@@ -88,8 +92,13 @@
     switch (btn.tag) {
         case 1:
         {
-            HqScanPayVC *scanVC = [[HqScanPayVC alloc] init];
-            Push(scanVC);
+//            HqScanPayVC *scanVC = [[HqScanPayVC alloc] init];
+//            Push(scanVC);
+//            HqPayVC *payVC = [[HqPayVC alloc] init];
+//            payVC.code = code;
+//            Push(payVC);
+            HqScanCardVC *scanCardVC = [[HqScanCardVC alloc] init];
+            Push(scanCardVC);
             
         }
             break;

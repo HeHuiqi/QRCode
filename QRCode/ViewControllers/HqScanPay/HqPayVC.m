@@ -8,12 +8,16 @@
 
 #import "HqPayVC.h"
 #import "HqInputView.h"
-@interface HqPayVC ()
+#import "HqConfirmPayView.h"
+#import "HqPaySuccessVC.h"
+@interface HqPayVC ()<HqConfirmPayViewDelegate>
 
 @property (nonatomic,strong) UIImageView *userPhoto;
 @property (nonatomic,strong) UILabel *userNamelab;
 @property (nonatomic,strong) UITextField *amountInput;
 @property (nonatomic,strong) HqInputView *markInput;
+@property (nonatomic,strong) HqConfirmPayView *confirmPayView;
+@property (nonatomic,strong) HqBill *bill;
 
 @end
 
@@ -22,6 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+}
+- (HqConfirmPayView *)confirmPayView{
+    
+    if (!_confirmPayView) {
+        _confirmPayView = [[HqConfirmPayView alloc] init];
+        _confirmPayView.delegate = self;
+    }
+    return _confirmPayView;
 }
 - (void)initView{
     self.title = @"Transfer Accounts";
@@ -81,13 +93,21 @@
     UITextField *amountInput = [[UITextField alloc] init];
     amountInput.font = [UIFont systemFontOfSize:kZoomValue(40)];
     amountInput.borderStyle = UITextBorderStyleNone;
-    amountInput.placeholder = @"Please input money";
+    NSString *placehoder = @"Please input money";
+    NSMutableAttributedString *attp = [[NSMutableAttributedString alloc] initWithString:placehoder];
+    [attp addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, placehoder.length)];
+    amountInput.attributedPlaceholder = attp;
+//    amountInput.KeyBoardStyle = TextFiledKeyBoardStyleMoney;
     amountInput.keyboardType = UIKeyboardTypeDecimalPad;
     [payView addSubview:amountInput];
+//    if (_tradeType == HqTradeTypeScanPay) {
+//        amountInput.userInteractionEnabled = NO;
+//    }
     
     [moneyLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(payView).offset(kZoomValue(14));
         make.centerY.equalTo(amountInput.mas_centerY).offset(0);
+        make.width.mas_equalTo(kZoomValue(30));
     }];
     amountInput.leftView = moneyLab;
     amountInput.leftViewMode = UITextFieldViewModeAlways;
@@ -132,13 +152,28 @@
         make.size.mas_equalTo(CGSizeMake(payWidth, kZoomValue(45)));
     }];
     
-//    [self getOrderInfo];
+   
+    
+    [self getOrderInfo];
     
 }
 - (void)pay:(UIButton *)btn{
     
+    if ([_amountInput.text floatValue]==0) {
+        [Dialog toastCenter:@"Enter valid numbers"];
+        [_amountInput becomeFirstResponder];
+        return;
+    }
+    if (_bill.collectCode.length==0) {
+        [Dialog toastCenter:@"Please Re-scan code"];
+        return;
+    }
+    [self.confirmPayView showPayView];
 }
 - (void)getOrderInfo{
+    if (!_code) {
+        return;
+    }
     NSDictionary *param = @{@"collectCode": _code};
     [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/transactions/collectCodes/getOrder" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
         NSLog(@"获取订单信息==%@",responseObject);
@@ -147,11 +182,44 @@
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
                 NSDictionary *orderDic = [responseObject hq_objectForKey:@"orderInfo"];
-                HqBill *bill = [HqBill mj_objectWithKeyValues:orderDic];
+                _bill = [HqBill mj_objectWithKeyValues:orderDic];
 //                [_userPhoto sd_setImageWithURL:nil placeholderImage:nil]
-                _userNamelab.text = bill.merchantName;
-                _amountInput.text = [NSString stringWithFormat:@"%0.2f",bill.amount];
+                _userNamelab.text = _bill.merchantName;
+                _amountInput.text = [NSString stringWithFormat:@"%0.2f",_bill.amount];
                 
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
+#pragma mark - HqConfirmPayViewDelegate
+- (void)hqConfirmPayView:(HqConfirmPayView *)payView password:(NSString *)password{
+    [payView dismissPayView];
+    NSLog(@"password == %@",password);
+//    HqPaySuccessVC *paySuccess = [[HqPaySuccessVC alloc] init];
+//    Push(paySuccess);
+    [self confirmPay:password];
+}
+- (void)confirmPay:(NSString *)password{
+    password = [NSString sha1:password];
+    NSDictionary *param = @{
+                            @"collectCode": _bill.collectCode,
+                            @"pin": password,
+                            @"amount": @(_bill.amount),
+                            @"currency": _bill.currency
+                            };
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/transactions/collectCodes" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"支付结果==%@",responseObject);
+        
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                HqPaySuccessVC *paySuccess = [[HqPaySuccessVC alloc] init];
+                Push(paySuccess);
             }else{
                 [Dialog simpleToast:msg];
             }
