@@ -67,7 +67,6 @@
 		8ED6CCFE2016DE800001393A /* HqPaySuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6CCFD2016DE800001393A /* HqPaySuccessVC.m */; };
 		8ED6CD02201733D70001393A /* HqScanCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6CD01201733D70001393A /* HqScanCardVC.m */; };
 		8EDE164E1FFF22FF0013DD41 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE164D1FFF22FF0013DD41 /* AppDelegate.mm */; };
-		8EDE16511FFF22FF0013DD41 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE16501FFF22FF0013DD41 /* ViewController.m */; };
 		8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16521FFF22FF0013DD41 /* Main.storyboard */; };
 		8EDE16561FFF22FF0013DD41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16551FFF22FF0013DD41 /* Assets.xcassets */; };
 		8EDE16591FFF22FF0013DD41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16571FFF22FF0013DD41 /* LaunchScreen.storyboard */; };
@@ -266,8 +265,6 @@
 		8EDE16491FFF22FF0013DD41 /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDE164C1FFF22FF0013DD41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EDE164D1FFF22FF0013DD41 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		8EDE164F1FFF22FF0013DD41 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8EDE16501FFF22FF0013DD41 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8EDE16531FFF22FF0013DD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EDE16551FFF22FF0013DD41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EDE16581FFF22FF0013DD41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -643,8 +640,6 @@
 				8EDE16651FFF23C30013DD41 /* ViewControllers */,
 				8EDE164C1FFF22FF0013DD41 /* AppDelegate.h */,
 				8EDE164D1FFF22FF0013DD41 /* AppDelegate.mm */,
-				8EDE164F1FFF22FF0013DD41 /* ViewController.h */,
-				8EDE16501FFF22FF0013DD41 /* ViewController.m */,
 				8EDE16521FFF22FF0013DD41 /* Main.storyboard */,
 				8EDE16551FFF22FF0013DD41 /* Assets.xcassets */,
 				8EDE16571FFF22FF0013DD41 /* LaunchScreen.storyboard */,
@@ -1406,7 +1401,6 @@
 				8EDE16EB1FFF23C30013DD41 /* IQNSArray+Sort.m in Sources */,
 				8ED6CCF32016C5EF0001393A /* ZPNumberKeyboard.m in Sources */,
 				8EDE17401FFF7A910013DD41 /* HqScanPayVC.m in Sources */,
-				8EDE16511FFF22FF0013DD41 /* ViewController.m in Sources */,
 				8EDE173C1FFF72640013DD41 /* HqHomeCell.m in Sources */,
 				8EDE16F91FFF23C30013DD41 /* NSNumber+Extension.m in Sources */,
 				8EDE16F31FFF23C30013DD41 /* MBProgressHUD+Add.m in Sources */,
