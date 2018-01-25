@@ -45,6 +45,7 @@
     [self headerView];
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.tableHeaderView;
+    self.tableHeaderView.image = [UIImage imageNamed:@"home_header_bg"];
     
     [self.view addSubview:self.mainOverView];
     [self.view addSubview:self.leftView];

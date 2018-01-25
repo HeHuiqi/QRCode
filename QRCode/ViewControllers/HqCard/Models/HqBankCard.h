@@ -42,5 +42,8 @@ typedef NS_ENUM(NSUInteger, HqBankcardType) {
 @property (nonatomic,copy) NSString *realName;//持卡人姓名
 @property (nonatomic,assign) BOOL isDefault;//是否为默认卡
 @property (nonatomic,assign) NSInteger type;//卡类型
+@property (nonatomic,copy) NSString *cvv;
+@property (nonatomic,copy) NSString *exp;
+
 
 @end

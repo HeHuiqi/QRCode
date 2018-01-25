@@ -36,4 +36,6 @@
 #import "HqNoContentView.h"
 //#import "UITextField+ZPNumberKeyboard.h"
 #import "HqPassWordView.h"
+#import "HqAlertView.h"
+
 #endif /* HqProjectHeader_h */

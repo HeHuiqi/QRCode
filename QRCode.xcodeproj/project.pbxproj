@@ -66,6 +66,12 @@
 		8ED6CCFB2016D0ED0001393A /* pay_close_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6CCF92016D0ED0001393A /* pay_close_icon@2x.png */; };
 		8ED6CCFE2016DE800001393A /* HqPaySuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6CCFD2016DE800001393A /* HqPaySuccessVC.m */; };
 		8ED6CD02201733D70001393A /* HqScanCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6CD01201733D70001393A /* HqScanCardVC.m */; };
+		8ED6CD31201974690001393A /* delete_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6CD2F201974690001393A /* delete_icon@3x.png */; };
+		8ED6CD32201974690001393A /* delete_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6CD30201974690001393A /* delete_icon@2x.png */; };
+		8ED6CD35201976050001393A /* HqCardInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6CD34201976050001393A /* HqCardInfoView.m */; };
+		8ED6CD38201983B40001393A /* home_header_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6CD36201983B30001393A /* home_header_bg@2x.png */; };
+		8ED6CD39201983B40001393A /* home_header_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ED6CD37201983B40001393A /* home_header_bg@3x.png */; };
+		8ED6CD3D201986D10001393A /* HqAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED6CD3C201986D10001393A /* HqAlertView.m */; };
 		8EDE164E1FFF22FF0013DD41 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8EDE164D1FFF22FF0013DD41 /* AppDelegate.mm */; };
 		8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16521FFF22FF0013DD41 /* Main.storyboard */; };
 		8EDE16561FFF22FF0013DD41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EDE16551FFF22FF0013DD41 /* Assets.xcassets */; };
@@ -262,6 +268,14 @@
 		8ED6CCFD2016DE800001393A /* HqPaySuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqPaySuccessVC.m; sourceTree = "<group>"; };
 		8ED6CD00201733D70001393A /* HqScanCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqScanCardVC.h; sourceTree = "<group>"; };
 		8ED6CD01201733D70001393A /* HqScanCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqScanCardVC.m; sourceTree = "<group>"; };
+		8ED6CD2F201974690001393A /* delete_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_icon@3x.png"; sourceTree = "<group>"; };
+		8ED6CD30201974690001393A /* delete_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_icon@2x.png"; sourceTree = "<group>"; };
+		8ED6CD33201976050001393A /* HqCardInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqCardInfoView.h; sourceTree = "<group>"; };
+		8ED6CD34201976050001393A /* HqCardInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardInfoView.m; sourceTree = "<group>"; };
+		8ED6CD36201983B30001393A /* home_header_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_header_bg@2x.png"; sourceTree = "<group>"; };
+		8ED6CD37201983B40001393A /* home_header_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_header_bg@3x.png"; sourceTree = "<group>"; };
+		8ED6CD3B201986D10001393A /* HqAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqAlertView.h; sourceTree = "<group>"; };
+		8ED6CD3C201986D10001393A /* HqAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqAlertView.m; sourceTree = "<group>"; };
 		8EDE16491FFF22FF0013DD41 /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDE164C1FFF22FF0013DD41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EDE164D1FFF22FF0013DD41 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -506,6 +520,8 @@
 			children = (
 				8E36E61F201053C000701378 /* HqCardDetailCell.h */,
 				8E36E620201053C000701378 /* HqCardDetailCell.m */,
+				8ED6CD33201976050001393A /* HqCardInfoView.h */,
+				8ED6CD34201976050001393A /* HqCardInfoView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -606,6 +622,15 @@
 				8ED6CD01201733D70001393A /* HqScanCardVC.m */,
 			);
 			path = HqScanCard;
+			sourceTree = "<group>";
+		};
+		8ED6CD3A201986B80001393A /* HqAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				8ED6CD3B201986D10001393A /* HqAlertView.h */,
+				8ED6CD3C201986D10001393A /* HqAlertView.m */,
+			);
+			path = HqAlertView;
 			sourceTree = "<group>";
 		};
 		8EDE16401FFF22FF0013DD41 = {
@@ -931,6 +956,10 @@
 		8EDE17131FFF27100013DD41 /* HqImages */ = {
 			isa = PBXGroup;
 			children = (
+				8ED6CD36201983B30001393A /* home_header_bg@2x.png */,
+				8ED6CD37201983B40001393A /* home_header_bg@3x.png */,
+				8ED6CD30201974690001393A /* delete_icon@2x.png */,
+				8ED6CD2F201974690001393A /* delete_icon@3x.png */,
 				8ED6CCF92016D0ED0001393A /* pay_close_icon@2x.png */,
 				8ED6CCF82016D0EC0001393A /* pay_close_icon@3x.png */,
 				8E36E6692011ED1700701378 /* pay_code_icon@2x.png */,
@@ -1019,6 +1048,7 @@
 		8EDE17361FFF716D0013DD41 /* PublicViews */ = {
 			isa = PBXGroup;
 			children = (
+				8ED6CD3A201986B80001393A /* HqAlertView */,
 				8ED6CCE52016C5EF0001393A /* HqCustomerKeyboard */,
 				3334CD712000AE7D00C5EED8 /* HqPassWordView */,
 				8EDE17381FFF718F0013DD41 /* HqLineCell.h */,
@@ -1237,6 +1267,7 @@
 				8E36E65020118E2600701378 /* pkg.sh in Resources */,
 				8E36E64D20118D0500701378 /* home_collect_icon@3x.png in Resources */,
 				8E32E4FC200CBB89002701E1 /* btn_border@3x.png in Resources */,
+				8ED6CD39201983B40001393A /* home_header_bg@3x.png in Resources */,
 				8EDE16E91FFF23C30013DD41 /* IQKeyboardManager.bundle in Resources */,
 				8EEFA7E620088A69004C2254 /* home_time_icon@2x.png in Resources */,
 				8EEFA7B220086A52004C2254 /* home_cards_icon@3x.png in Resources */,
@@ -1277,6 +1308,7 @@
 				8EEFA7ED20088C66004C2254 /* home_menu_icon@3x.png in Resources */,
 				8EEFA8062009C6AE004C2254 /* welcom_icon@2x.png in Resources */,
 				8ED6CCFB2016D0ED0001393A /* pay_close_icon@2x.png in Resources */,
+				8ED6CD31201974690001393A /* delete_icon@3x.png in Resources */,
 				8EDE16561FFF22FF0013DD41 /* Assets.xcassets in Resources */,
 				8E36E64C20118D0500701378 /* home_set_icon@2x.png in Resources */,
 				8E32E4EF200C4FF8002701E1 /* card_people_icon@3x.png in Resources */,
@@ -1302,9 +1334,11 @@
 				8EEFA7EE20088C66004C2254 /* home_menu_icon@2x.png in Resources */,
 				8ED6CCF22016C5EF0001393A /* delete@3x.png in Resources */,
 				8EDE171A1FFF28590013DD41 /* back@3x.png in Resources */,
+				8ED6CD38201983B40001393A /* home_header_bg@2x.png in Resources */,
 				8EEFA8182009CA51004C2254 /* hqphone_icon@3x.png in Resources */,
 				8ED6CCFA2016D0ED0001393A /* pay_close_icon@3x.png in Resources */,
 				8E36E66D2011ED1700701378 /* pay_code_icon@2x.png in Resources */,
+				8ED6CD32201974690001393A /* delete_icon@2x.png in Resources */,
 				8E32E4ED200C4FF8002701E1 /* card_photo_icon@2x.png in Resources */,
 				8E36E66A2011ED1700701378 /* pay_scan_icon@2x.png in Resources */,
 				8E32E4FA200CBB89002701E1 /* btn_bg@2x.png in Resources */,
@@ -1390,6 +1424,7 @@
 				8E36E65C2011C9C700701378 /* HqBill.m in Sources */,
 				8EDE17301FFF41F70013DD41 /* HqInputView.m in Sources */,
 				8EDE16FE1FFF23C30013DD41 /* NSString+Public.m in Sources */,
+				8ED6CD3D201986D10001393A /* HqAlertView.m in Sources */,
 				8E36E61D200DC26400701378 /* HqUser.m in Sources */,
 				8EDE17351FFF64450013DD41 /* HqButton.m in Sources */,
 				8EDE16E61FFF23C30013DD41 /* IQBarButtonItem.m in Sources */,
@@ -1452,6 +1487,7 @@
 				8EDE16D81FFF23C30013DD41 /* HqAFHttpClient.m in Sources */,
 				3334CD792000AF3B00C5EED8 /* HqPayPasswordVC.m in Sources */,
 				8EDE16E21FFF23C30013DD41 /* SGQRCodeAlbumManager.m in Sources */,
+				8ED6CD35201976050001393A /* HqCardInfoView.m in Sources */,
 				3334CD622000630000C5EED8 /* HqUserIdInfoVC.m in Sources */,
 				8EDE16E01FFF23C30013DD41 /* SGQRCodeScanManager.m in Sources */,
 				8EDE17011FFF23C30013DD41 /* UIImage+HqImageCategory.m in Sources */,
