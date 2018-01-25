@@ -23,7 +23,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.navBarView];
-    self.navBarView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//    self.navBarView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.navBarView.backgroundColor  = COLOR(241,245,247,1);
     [self titelLab];
     
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];;

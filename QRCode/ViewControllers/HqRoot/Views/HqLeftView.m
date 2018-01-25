@@ -48,7 +48,7 @@
 - (void)initView{
     
     UIView *topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 64)];
-    topBarView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    topBarView.backgroundColor = COLOR(241,245,247,1);
     [self addSubview:topBarView];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeSystem];;
