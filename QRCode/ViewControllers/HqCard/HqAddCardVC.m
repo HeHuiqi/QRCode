@@ -117,6 +117,7 @@
         [Dialog simpleToast:@"The card number can't be empty!"];
         return;
     }
+    
     [self checkCardInfo];
 }
 #pragma mark - UITextFieldDelegate

@@ -48,6 +48,9 @@
 		8E5FCC39200458E500B4740B /* LanuchScreenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC38200458E500B4740B /* LanuchScreenVC.m */; };
 		8E5FCC3E2004AD7500B4740B /* HqGesturePasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCC3D2004AD7500B4740B /* HqGesturePasswordVC.m */; };
 		8E6C7C142019CB83003A9B78 /* HqHomeNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C7C132019CB83003A9B78 /* HqHomeNews.m */; };
+		8E6C7C172019D21E003A9B78 /* HqPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6C7C162019D21E003A9B78 /* HqPickerView.m */; };
+		8E6C7C1A2019DF70003A9B78 /* bill_temp_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6C7C182019DF6F003A9B78 /* bill_temp_icon@3x.png */; };
+		8E6C7C1B2019DF70003A9B78 /* bill_temp_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6C7C192019DF70003A9B78 /* bill_temp_icon@2x.png */; };
 		8E9BA428200DA6860087262C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9BA427200DA6860087262C /* UIKit.framework */; };
 		8EBA54F52009D29E009AFEE1 /* login_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F12009D29E009AFEE1 /* login_bg@2x.png */; };
 		8EBA54F62009D29E009AFEE1 /* login_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F22009D29E009AFEE1 /* login_logo@3x.png */; };
@@ -246,6 +249,10 @@
 		8E5FCC3D2004AD7500B4740B /* HqGesturePasswordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqGesturePasswordVC.m; sourceTree = "<group>"; };
 		8E6C7C122019CB83003A9B78 /* HqHomeNews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqHomeNews.h; sourceTree = "<group>"; };
 		8E6C7C132019CB83003A9B78 /* HqHomeNews.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqHomeNews.m; sourceTree = "<group>"; };
+		8E6C7C152019D21D003A9B78 /* HqPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HqPickerView.h; sourceTree = "<group>"; };
+		8E6C7C162019D21E003A9B78 /* HqPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HqPickerView.m; sourceTree = "<group>"; };
+		8E6C7C182019DF6F003A9B78 /* bill_temp_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bill_temp_icon@3x.png"; sourceTree = "<group>"; };
+		8E6C7C192019DF70003A9B78 /* bill_temp_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bill_temp_icon@2x.png"; sourceTree = "<group>"; };
 		8E9BA427200DA6860087262C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8EBA54F12009D29E009AFEE1 /* login_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_bg@2x.png"; sourceTree = "<group>"; };
 		8EBA54F22009D29E009AFEE1 /* login_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_logo@3x.png"; sourceTree = "<group>"; };
@@ -969,6 +976,8 @@
 		8EDE17131FFF27100013DD41 /* HqImages */ = {
 			isa = PBXGroup;
 			children = (
+				8E6C7C192019DF70003A9B78 /* bill_temp_icon@2x.png */,
+				8E6C7C182019DF6F003A9B78 /* bill_temp_icon@3x.png */,
 				8ED6CD36201983B30001393A /* home_header_bg@2x.png */,
 				8ED6CD37201983B40001393A /* home_header_bg@3x.png */,
 				8ED6CD30201974690001393A /* delete_icon@2x.png */,
@@ -1061,6 +1070,8 @@
 		8EDE17361FFF716D0013DD41 /* PublicViews */ = {
 			isa = PBXGroup;
 			children = (
+				8E6C7C152019D21D003A9B78 /* HqPickerView.h */,
+				8E6C7C162019D21E003A9B78 /* HqPickerView.m */,
 				8ED6CD3A201986B80001393A /* HqAlertView */,
 				8ED6CCE52016C5EF0001393A /* HqCustomerKeyboard */,
 				3334CD712000AE7D00C5EED8 /* HqPassWordView */,
@@ -1328,6 +1339,7 @@
 				8E32E4F3200C5336002701E1 /* down_arrow_icon@2x.png in Resources */,
 				8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */,
 				8E36E64B20118D0500701378 /* home_set_icon@3x.png in Resources */,
+				8E6C7C1A2019DF70003A9B78 /* bill_temp_icon@3x.png in Resources */,
 				8E36E64E20118D0500701378 /* home_collect_icon@2x.png in Resources */,
 				8E32E4EE200C4FF8002701E1 /* link_card_icon@2x.png in Resources */,
 				8EBA54F62009D29E009AFEE1 /* login_logo@3x.png in Resources */,
@@ -1345,6 +1357,7 @@
 				8EEFA7A720085BF1004C2254 /* bill_icon@2x.png in Resources */,
 				8E36E66C2011ED1700701378 /* pay_scan_icon@3x.png in Resources */,
 				8EEFA7EE20088C66004C2254 /* home_menu_icon@2x.png in Resources */,
+				8E6C7C1B2019DF70003A9B78 /* bill_temp_icon@2x.png in Resources */,
 				8ED6CCF22016C5EF0001393A /* delete@3x.png in Resources */,
 				8EDE171A1FFF28590013DD41 /* back@3x.png in Resources */,
 				8ED6CD38201983B40001393A /* home_header_bg@2x.png in Resources */,
@@ -1420,6 +1433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6C7C172019D21E003A9B78 /* HqPickerView.m in Sources */,
 				8EDE17111FFF26830013DD41 /* SuperNavigationVC.m in Sources */,
 				8EDE17161FFF27A20013DD41 /* HqRootVC.m in Sources */,
 				8EDE16EA1FFF23C30013DD41 /* IQKeyboardManager.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "HqAddCardInfoVC.h"
 #import "HqIdInfoInputView.h"
-
+#import "HqPickerView.h"
 #define SmsTime 60
 
 @interface HqAddCardInfoVC ()
@@ -183,8 +183,35 @@
 }
 
 - (void)chooseDate:(UIButton *)btn{
-    
-    
+    HqPickerView *pick = [[HqPickerView alloc]init];
+    pick.isSetYearMonth = YES;
+    pick.monthData = @[@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12];
+    pick.yearData = [self years];
+    pick.title = @"Choose Date";
+    pick.cancelTitle = @"Cancel";
+    pick.confirmTitle = @"Confirm";
+    [pick.pickerView selectRow:pick.yearData.count/2 inComponent:0 animated:NO];
+    [pick.pickerView selectRow:pick.monthData.count/2 inComponent:1 animated:NO];
+    [pick showPikerViewWithBlock:^(NSString *text) {
+        NSLog(@"text = %@",text);
+        _expireView.inputView.text = [self showDate:text];
+    }];
+}
+- (NSString *)showDate:(NSString *)date{
+    HqDateFormatter *dateFormat = [HqDateFormatter shareInstance];
+    date = [dateFormat dateString:date orginalFormat:@"yyyy-MM" resultFormat:@"MMyy"];
+    return date;
+}
+- (NSArray *)years{
+    HqDateFormatter *dateFormat = [HqDateFormatter shareInstance];
+    NSString *currentStr =  [dateFormat dateStringWithFormat:@"yyyy" date:[NSDate date]];
+    NSMutableArray *myYears = [NSMutableArray array];
+    for (int i = currentStr.intValue; i<=currentStr.intValue+100; i++) {
+        @autoreleasepool {
+            [myYears addObject:@(i)];
+        }
+    }
+    return myYears;
 }
 - (void)addCardInfoNextClick:(UIButton *)btn{
     

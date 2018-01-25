@@ -18,13 +18,14 @@
 - (void)setup{
     _leftIcon = [[UIImageView alloc] init];
     [self addSubview:_leftIcon];
-    _leftIcon.backgroundColor = [UIColor redColor];
-    _leftIcon.layer.cornerRadius = kZoomValue(51)/2.0;
     [_leftIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(kZoomValue(15));
         make.centerY.equalTo(self);
         make.size.mas_equalTo(CGSizeMake(kZoomValue(51), kZoomValue(51)));
     }];
+    _leftIcon.clipsToBounds = YES;
+    _leftIcon.layer.cornerRadius = kZoomValue(51)/2.0;
+
     
     _merchantNameLab = [[UILabel alloc] init];
     _merchantNameLab.font = [UIFont systemFontOfSize:kZoomValue(16)];
@@ -58,6 +59,9 @@
 - (void)setBill:(HqBill *)bill{
     _bill = bill;
     if (_bill) {
+        //temp
+        _leftIcon.image = [UIImage imageNamed:@"bill_temp_icon"];
+        
         _merchantNameLab.text = _bill.merchantName;
         HqDateFormatter *date = [HqDateFormatter shareInstance];
         NSString *dateStr = [date dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss" timeInterval:_bill.payTime/1000.0];

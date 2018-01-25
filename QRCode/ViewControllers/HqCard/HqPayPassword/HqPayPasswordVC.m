@@ -144,7 +144,9 @@
                 addCardVC.user = _user;
                 Push(addCardVC);
             }else{
-                [Dialog simpleToast:msg];
+                [_passwordView becomeFirstResponder];
+                
+                [Dialog toastCenter:msg];
             }
         }else{
             [Dialog simpleToast:kRequestError];
