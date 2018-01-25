@@ -106,7 +106,7 @@
     [self.view addSubview:lockView];
     
     PCLockLabel *msgLabel = [[PCLockLabel alloc] init];
-    msgLabel.bounds = CGRectMake(0, 0, kScreenW, 15);
+    msgLabel.bounds = CGRectMake(0, 0, kScreenW, kZoomValue(20));
     msgLabel.center = CGPointMake(kScreenW/2, CGRectGetMinY(lockView.frame) - 30);
     self.msgLabel = msgLabel;
     [self.view addSubview:msgLabel];
@@ -184,7 +184,7 @@
         
         [self.msgLabel showWarnMsg:HqInputDrawPasswordSuccess];
         [PCCircleViewConst saveGesture:gesture Key:gestureFinalSaveKey];
-         [self uploadGesturePassword];
+         [self uploadGesturePassword:gesture];
         
     } else {
         NSLog(@"两次手势不匹配！");
@@ -199,10 +199,15 @@
 
     // 此时的type有两种情况 Login or verify
     if (type == CircleViewTypeLogin) {
+        if (gesture.length<4) {
+            NSLog(@"密码长度不合法%@", gesture);
+            [self.msgLabel showWarnMsgAndShake:HqDrawLest];
+            return;
+        }
+        //注意CircleViewTypeLogin此时始终相等，任意输入，去服务器验证,PCCircleView中
+        //equal始终为YES
         if (equal) {
-            NSLog(@"登陆成功！");
-            [self.msgLabel showWarnMsg:HqInputDrawPasswordSuccess];
-            [self uploadGesturePassword];
+            [self uploadGesturePassword:gesture];
         } else {
             NSLog(@"密码错误！");
             [self.msgLabel showWarnMsgAndShake:HqInputDrawPasswordWrong];
@@ -258,9 +263,9 @@
     }
 }
 #pragma mark - 上传手势密码
-- (void)uploadGesturePassword{
-    
-    NSString *password = [PCCircleViewConst getGestureWithKey:gestureFinalSaveKey];
+- (void)uploadGesturePassword:(NSString *)password{
+    NSLog(@"gesture--password == %@",password);
+    password = [NSString stringWithFormat:@"null%@",password];
     password = [NSString sha1:password];
     NSDictionary *param = @{@"gesture": password};
     
@@ -269,13 +274,23 @@
         url = @"/users/gestures";
     }
     [HqHttpUtil hqPostShowHudTitle:nil param:param url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"手势密码==%@",responseObject);
         if (response.statusCode == 200) {
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
+                [self.msgLabel showWarnMsg:HqInputDrawPasswordSuccess];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }else{
                 [Dialog simpleToast:msg];
+
+                int remainRetries = [[responseObject hq_objectForKey:@"remainRetries"] intValue];
+                if (remainRetries == 0) {
+                    SetUserDefault(nil, kToken);
+                    SetUserDefault(nil, kisLogin)
+                    [AppDelegate setRootVC:HqSetRootVCLogin];
+                }
+
             }
         }else{
             [Dialog simpleToast:kRequestError];

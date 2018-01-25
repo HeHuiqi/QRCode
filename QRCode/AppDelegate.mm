@@ -18,8 +18,12 @@
 @end
 
 @implementation AppDelegate
++ (AppDelegate *)shareApp{
+     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    return app;
+}
 + (void)setRootVC:(HqSetRootVC)type{
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegate *app = [AppDelegate shareApp];
     [app _setRootVC:type];
 }
 - (void)_setRootVC:(HqSetRootVC)type{
@@ -67,6 +71,7 @@
     NSString *token = GetUserDefault(kToken);
     NSString *isLogin = GetUserDefault(kisLogin);
     if(token.length&&isLogin.boolValue){
+        _isInputGesturePassword = YES;
         [AppDelegate setRootVC:HqSetRootVCHome];
     }else{
         [AppDelegate setRootVC:HqSetRootVCWecome];

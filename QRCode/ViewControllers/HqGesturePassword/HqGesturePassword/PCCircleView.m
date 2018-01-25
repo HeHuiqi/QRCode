@@ -122,7 +122,8 @@
         CGRect frame = CGRectMake(x, y, itemViewWH, itemViewWH);
         
         // 设置tag -> 密码记录的单元
-        subview.tag = idx + 1;
+//        subview.tag = idx + 1;
+        subview.tag =  idx;
         
         subview.frame = frame;
     }];
@@ -348,11 +349,15 @@
 {
     NSString *password = [PCCircleViewConst getGestureWithKey:gestureFinalSaveKey];
     
-    BOOL equal = [gesture isEqual:password];
     
+    BOOL equal = [gesture isEqual:password];
+    //设置不做本地判断
+    equal = YES;
+
     if ([self.delegate respondsToSelector:@selector(circleView:type:didCompleteLoginGesture:result:)]) {
         [self.delegate circleView:self type:self.type didCompleteLoginGesture:gesture result:equal];
     }
+    
     
     if (equal) {
         

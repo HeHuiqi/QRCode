@@ -18,7 +18,10 @@ typedef NS_ENUM(NSUInteger, HqSetRootVC) {
 
 @property (strong, nonatomic) UIWindow *window;
 
++ (AppDelegate *)shareApp;
 + (void)setRootVC:(HqSetRootVC)type;
+
+@property (nonatomic,assign) BOOL isInputGesturePassword;
 
 @end
 

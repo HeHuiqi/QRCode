@@ -132,6 +132,7 @@
     NSDictionary *param = @{@"username": _mobileTf.text,
                             @"password": password};
     [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/users/sessions" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"登录===%@",responseObject);
         if (response.statusCode == 200) {
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
@@ -139,8 +140,10 @@
                 NSString *token = [responseObject hq_objectForKey:@"token"];
                 SetUserDefault(token, kToken);
                 SetUserDefault(@"1", kisLogin);
-                [AppDelegate setRootVC:HqSetRootVCHome];
                 
+                AppDelegate *app = [AppDelegate shareApp];
+                app.isInputGesturePassword = NO;
+                [AppDelegate setRootVC:HqSetRootVCHome];
             }else{
                 [Dialog simpleToast:msg];
             }

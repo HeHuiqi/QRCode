@@ -18,6 +18,8 @@
 #import "PCCircleViewConst.h"
 #import "HqTradeRecordVC.h"
 
+#import "HqHomeNews.h"
+
 #define LeftWidth (SCREEN_WIDTH - kZoomValue(52))
 #define LeftAlpha 0.7
 
@@ -30,6 +32,8 @@
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) HqUser *user;
+
+@property (nonatomic,strong) NSMutableArray *homeDatas;
 
 @end
 
@@ -67,7 +71,22 @@
 }
 - (void)initData{
     self.isOpen = NO;
-    //    [self requestUerInfo];
+    if ([AppDelegate shareApp].isInputGesturePassword) {
+        [self requestUerInfo];
+    }
+    _homeDatas = [[NSMutableArray alloc] init];
+    HqHomeNews *hms = [[HqHomeNews alloc] init];
+    hms.bankName = @"Main Bank";
+    hms.introduce = @"Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cra";
+    hms.date =  @"September, 19";
+    
+    HqHomeNews *hms1 = [[HqHomeNews alloc] init];
+    hms1.bankName = @"Offers";
+    hms1.introduce = @"Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim";
+    hms1.date =  @"september-12";
+    [_homeDatas addObject:hms];
+    [_homeDatas addObject:hms1];
+
 }
 - (void)headerView{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
@@ -234,7 +253,7 @@
     return _tableView;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return _homeDatas.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return kZoomValue(137);
@@ -245,9 +264,10 @@
     if (!cell) {
         cell = [[HqHomeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentfier];
     }
-    cell.titleLab.text = @"Main Bank";
-    cell.dateLab.text  = @"September, 19";
-    cell.contentLab.text = @"Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cra";
+    HqHomeNews *hms = _homeDatas[indexPath.row];
+    cell.titleLab.text = hms.bankName;
+    cell.dateLab.text  = hms.date;
+    cell.contentLab.text = hms.introduce;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -266,13 +286,17 @@
             if (code==1) {
                 HqGesturePasswordVC *gesturePasswordVC = [[HqGesturePasswordVC alloc] init];
                 _user = [HqUser mj_objectWithKeyValues:responseObject];
-                NSString *gesturePassword = [PCCircleViewConst getGestureWithKey:gestureFinalSaveKey];
+//                NSString *gesturePassword = [PCCircleViewConst getGestureWithKey:gestureFinalSaveKey];
                 gesturePasswordVC.user = _user;
-                if (_user.hasGesture&&gesturePassword) {
+                if (_user.hasGesture) {
                     gesturePasswordVC.type = GestureViewControllerTypeLogin;
                 }else{
                     gesturePasswordVC.type = GestureViewControllerTypeSetting;
                 }
+                
+//                gesturePasswordVC.type = GestureViewControllerTypeSetting;
+
+
                 Push(gesturePasswordVC);
             }else{
                 [Dialog simpleToast:msg];
@@ -287,7 +311,6 @@
 - (void)backClick{
     
     [self openLeftView];
-    
 }
 
 #pragma mark - HqLeftViewDelegate
