@@ -12,7 +12,7 @@
 
 #import "HqPayPasswordVC.h"
 #import "HqCardDetailVC.h"
-
+#import "HqAddCardVC.h"
 @interface HqCardsVC ()<UITableViewDelegate, UITableViewDataSource,HqCardDetailVCDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -123,31 +123,57 @@
             if (code==1) {
                 
                 HqUser *user = [HqUser mj_objectWithKeyValues:responseObject];
-                HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
-                passwordVC.user = user;
-                if (user.hasPin) {
-                    passwordVC.payPasswordType = HqPayPasswordInput;
-                }else{
-                    passwordVC.payPasswordType = HqPayPasswordCreate;
-                }
-                Push(passwordVC);
                 
-                /*
-                if (user.idNumber.length>0&&user.realName.length>0) {
+                if (_cardList.count==0) {
+                    if (user.idNumber.length>0&&user.realName.length>0) {
+                        if (user.hasPin) {
+                            HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                            passwordVC.user = user;
+                            passwordVC.isFromAddCardInfo = 0;
+                            passwordVC.payPasswordType = HqPayPasswordInput;
+                            Push(passwordVC);
+                        }else{
+                            HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
+                            addCardVC.user = user;
+                            Push(addCardVC);
+                        }
+                    }else{
+                        HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
+                        Push(idUserVC);
+                    }
+                }else{
                     HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                    passwordVC.user = user;
                     if (user.hasPin) {
                         passwordVC.payPasswordType = HqPayPasswordInput;
-
+                        passwordVC.isFromAddCardInfo = 0;
                     }else{
                         passwordVC.payPasswordType = HqPayPasswordCreate;
+                        passwordVC.isFromAddCardInfo = 0;
                     }
-                    passwordVC.user = user;
                     Push(passwordVC);
-                }else{
-                    HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
-                    Push(idUserVC);
                 }
-                */
+                /*
+                if (user.hasPin&&user.idNumber.length>0&&user.realName.length>0) {
+                    HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                    passwordVC.user = user;
+                    passwordVC.payPasswordType = HqPayPasswordInput;
+                    Push(passwordVC);
+
+                }else{
+                    if (user.idNumber.length==0&&user.realName.length==0) {
+                        HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                        if (user.hasPin) {
+                            passwordVC.payPasswordType = HqPayPasswordInput;
+                            
+                        }else{
+                            passwordVC.payPasswordType = HqPayPasswordCreate;
+                        }
+                        passwordVC.user = user;
+                        Push(passwordVC);
+                    }
+                }*/
+                
             }else{
                 [Dialog simpleToast:msg];
             }

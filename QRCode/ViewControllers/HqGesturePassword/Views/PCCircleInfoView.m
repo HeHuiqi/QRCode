@@ -63,8 +63,8 @@
         CGRect frame = CGRectMake(x, y, itemViewWH, itemViewWH);
         
         // 设置tag -> 密码记录的单元
-        subview.tag = idx + 1;
-        
+//        subview.tag = idx + 1;
+        subview.tag = idx;
         subview.frame = frame;
     }];
 }

@@ -145,6 +145,7 @@
                  int cardType = [[responseObject hq_objectForKey:@"cardType"] intValue];
                 HqAddCardInfoVC *addCardInfoVC = [[HqAddCardInfoVC alloc] init];
                 addCardInfoVC.cardType = cardType;
+                addCardInfoVC.user = _user;
                 addCardInfoVC.cardNumber = _cardNumberTf.text;
                 Push(addCardInfoVC);
             }else{

@@ -109,6 +109,7 @@
         confirmVC.payPasswordType = HqPayPasswordConfirm;
         confirmVC.lastInpuPayPassword = _passwordView.textStore;
         confirmVC.user = _user;
+        confirmVC.isFromAddCardInfo = _isFromAddCardInfo;
         Push(confirmVC);
         return;
     }
@@ -140,19 +141,20 @@
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
-                
-                if (_user.idNumber.length>0&&_user.realName.length>0) {
-                    HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
-                    addCardVC.user = _user;
-                    Push(addCardVC);
+                if (_isFromAddCardInfo) {
+                    [self backToVC:@"HqCardsVC"];
                 }else{
-                    HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
-                    Push(idUserVC);
+                    if (_user.idNumber.length>0&&_user.realName.length>0) {
+                        HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
+                        addCardVC.user = _user;
+                        Push(addCardVC);
+                    }else{
+                        HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
+                        Push(idUserVC);
+                    }
                 }
-                
             }else{
                 [_passwordView becomeFirstResponder];
-                
                 [Dialog toastCenter:msg];
             }
         }else{
@@ -161,7 +163,10 @@
     }];
 }
 - (void)backClick{
-    [self backToVC:@"HqCardsVC"];
+    
+    if (_isFromAddCardInfo !=1 && _payPasswordType != HqPayPasswordConfirm) {
+         [self backToVC:@"HqCardsVC"];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

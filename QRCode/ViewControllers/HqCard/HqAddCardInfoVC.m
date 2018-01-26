@@ -10,6 +10,8 @@
 #import "HqIdInfoInputView.h"
 #import "HqPickerView.h"
 #define SmsTime 60
+#import "HqPayPasswordVC.h"
+
 
 @interface HqAddCardInfoVC ()
 <UITextFieldDelegate>
@@ -319,7 +321,14 @@
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kAddBankCardSuccess object:nil];
-                [self backToVC:@"HqCardsVC"];
+                if (!_user.hasPin) {
+                    HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                    passwordVC.payPasswordType = HqPayPasswordCreate;
+                    passwordVC.isFromAddCardInfo = 1;
+                    Push(passwordVC);
+                }else{
+                    [self backToVC:@"HqCardsVC"];
+                }
             }else{
                 [Dialog simpleToast:msg];
             }

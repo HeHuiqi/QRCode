@@ -20,4 +20,6 @@ typedef NS_ENUM(NSUInteger, HqPayPasswordType) {
 @property (nonatomic,strong) HqUser *user;
 @property (nonatomic,strong) NSString *lastInpuPayPassword;//上次输入的密码
 
+@property (nonatomic,assign) int isFromAddCardInfo;
+
 @end

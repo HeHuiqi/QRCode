@@ -13,5 +13,7 @@
 
 @property (nonatomic,assign) HqBankcardType cardType;
 @property (nonatomic,copy) NSString *cardNumber;
+@property (nonatomic,strong) HqUser *user;
+
 
 @end

@@ -104,16 +104,16 @@
         }else{
             _cardTypeLab.text = @"Other";
         }
-        if (_bankCard.exp.length==0) {
-            _bankCard.exp = @"--";
+        NSString *exp = _bankCard.exp;
+        if (exp.length==0) {
+            exp = @"--";
         }else{
             NSString *month = [_bankCard.exp substringWithRange:NSMakeRange(0, 2)];
             NSString *year = [_bankCard.exp substringWithRange:NSMakeRange(2, 2)];
-            NSString *exp = [NSString stringWithFormat:@"%@/%@",month,year];
-            _bankCard.exp = exp;
+            exp = [NSString stringWithFormat:@"%@/%@",month,year];
         }
         _dateView.leftLab.text = @"VALID THRU";
-        _dateView.rightLab.text = _bankCard.exp;
+        _dateView.rightLab.text = exp;
         _cvvView.leftLab.text = @"CVV";
         if (_bankCard.cvv.length==0) {
             _bankCard.cvv = @"--";

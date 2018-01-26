@@ -234,8 +234,9 @@
         if (circle.state == CircleStateSelected || circle.state == CircleStateLastOneSelected) {
             
             for (PCCircle *infoCircle in self.infoView.subviews) {
-
                 if (infoCircle.tag == circle.tag) {
+                    NSLog(@"iiii--%@",@(infoCircle.tag));
+
                     [infoCircle setState:CircleStateSelected];
                 }
             }
@@ -267,6 +268,7 @@
     NSLog(@"gesture--password == %@",password);
     password = [NSString stringWithFormat:@"null%@",password];
     password = [NSString sha1:password];
+//    return;
     NSDictionary *param = @{@"gesture": password};
     
     NSString *url = @"/users/gestures/checking";
