@@ -28,7 +28,7 @@
     }];
     _inputView = [[HqInputView alloc] initWithPlacehoder:@"Name"];
     _inputView.layer.borderWidth = 1.0;
-    _inputView.layer.cornerRadius = 2.0;
+    _inputView.layer.cornerRadius = kHqCornerRadius;
     _inputView.backgroundColor = [UIColor whiteColor];
     _inputView.layer.borderColor = HqBorderColor.CGColor;
     [self addSubview:_inputView];

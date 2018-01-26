@@ -55,12 +55,14 @@
     _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@"hqphone_icon"];
     _mobileTf.delegate = self;
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
+    _mobileTf.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:_mobileTf];
     
     _passwordTf = [[HqInputView alloc] initWithPlacehoder:@"Password" leftIcon:@"hqpassword_icon"];
     _passwordTf.delegate = self;
     _passwordTf.secureTextEntry = YES;
-    
+    _passwordTf.layer.cornerRadius = kHqCornerRadius;
+
     [contentView addSubview:_passwordTf];
     
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -68,6 +70,7 @@
     [loginBtn setTitle:@"Log In" forState:UIControlStateNormal];
     loginBtn.backgroundColor = COLOR(17, 139, 226, 1);
     [loginBtn addTarget:self action:@selector(loginApp:) forControlEvents:UIControlEventTouchUpInside];
+    loginBtn.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:loginBtn];
     
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {

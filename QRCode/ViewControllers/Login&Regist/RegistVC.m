@@ -79,11 +79,13 @@
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
     _mobileTf.delegate = self;
     [contentView addSubview:_mobileTf];
+    _mobileTf.layer.cornerRadius = kHqCornerRadius;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:_mobileTf];
     
     _checkCodeTf = [[HqInputView alloc] initWithPlacehoder:@"Verfication code" leftIcon:@"hqcheck_code_icon"];
     _checkCodeTf.keyboardType = UIKeyboardTypeNumberPad;
     _checkCodeTf.delegate = self;
+    _checkCodeTf.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:_checkCodeTf];
     
     
@@ -96,6 +98,7 @@
     [checkCodeBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateHighlighted];
     [checkCodeBtn addTarget:self action:@selector(geCheckCode:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:checkCodeBtn];
+    checkCodeBtn.layer.cornerRadius = kHqCornerRadius;
     self.checkBtn = checkCodeBtn;
     self.checkBtn.hidden = YES;
     
@@ -138,6 +141,7 @@
     [registBtn setTitle:@"Sign Up" forState:UIControlStateNormal];
     registBtn.backgroundColor = COLOR(17, 139, 226, 1);
     [registBtn addTarget:self action:@selector(signApp:) forControlEvents:UIControlEventTouchUpInside];
+    registBtn.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:registBtn];
     
     [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {

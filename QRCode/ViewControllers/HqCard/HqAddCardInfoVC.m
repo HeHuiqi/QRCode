@@ -142,7 +142,7 @@
     nextBtn.frame = CGRectMake(xInput, CGRectGetMaxY(_checkCodeInputView.frame)+kZoomValue(ySpace), width, kZoomValue(45));
     [nextBtn setTitle:@"Next" forState:UIControlStateNormal];
     nextBtn.backgroundColor = COLOR(17, 139, 226, 1);
-    nextBtn.layer.cornerRadius = 2.0;
+    nextBtn.layer.cornerRadius = kHqCornerRadius;
     [nextBtn addTarget:self action:@selector(addCardInfoNextClick:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:nextBtn];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange:) name:UITextFieldTextDidChangeNotification object:_mobileInputView.inputView];

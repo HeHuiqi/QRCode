@@ -23,6 +23,8 @@
     [view addGestureRecognizer:tap];
 }
 - (void)tapGesture:(UITapGestureRecognizer *)tap{
+    
+    
     [self startScanCard];
 }
 - (void)startScanCard{

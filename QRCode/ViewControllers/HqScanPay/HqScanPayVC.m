@@ -9,7 +9,6 @@
 #import "HqScanPayVC.h"
 #import "SGQRCode.h"
 #import "HqPayVC.h"
-
 @interface HqScanPayVC ()<SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate>
 
 @property (nonatomic, strong) SGQRCodeScanManager *manager;
@@ -25,6 +24,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    
     [self.scanningView addTimer];
     [_manager resetSampleBufferDelegate];
 }
@@ -45,12 +46,22 @@
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor clearColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        NSLog(@"%@",granted ? @"相机准许":@"相机不准许");
+        if (granted) {
+            [self setupQRCodeScanning];
+        }else{
+            HqAlertView *alert = [[HqAlertView alloc] initWithTitle:@"Open Camera" message:nil];
+            alert.btnTitles = @[@"Cancel",];
+        }
+        
+    }];
     [self.view addSubview:self.scanningView];
-    [self setupQRCodeScanning];
     [self.view addSubview:self.promptLabel];
     [self.view addSubview:self.flashlightBtn];
     self.title = @"Scan";
+    
+    
 
 }
 

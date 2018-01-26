@@ -39,7 +39,9 @@
 
     _passwordTf = [[HqInputView alloc] initWithPlacehoder:@"Password" leftIcon:@"hqpassword_icon"];
     _passwordTf.secureTextEntry = YES;
+    _passwordTf.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:_passwordTf];
+    
     [_passwordTf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
         make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
@@ -49,6 +51,7 @@
     
     _confirmPasswordTf = [[HqInputView alloc] initWithPlacehoder:@"Confirm Password" leftIcon:@"hqpassword_icon"];
     _confirmPasswordTf.secureTextEntry = YES;
+    _confirmPasswordTf.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:_confirmPasswordTf];
     
 
@@ -65,7 +68,7 @@
     registBtn.backgroundColor = COLOR(17, 139, 226, 1);
     [registBtn addTarget:self action:@selector(registAppComplete:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:registBtn];
-    
+    registBtn.layer.cornerRadius = kHqCornerRadius;
     [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_confirmPasswordTf.mas_bottom).offset(kZoomValue(30));
         make.left.equalTo(contentView).offset(kZoomValue(leftSpace));

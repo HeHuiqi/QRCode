@@ -73,7 +73,7 @@
     nextBtn.tintColor = [UIColor whiteColor];
     [nextBtn setTitle:@"Next" forState:UIControlStateNormal];
     nextBtn.backgroundColor = COLOR(17, 139, 226, 1);
-    nextBtn.layer.cornerRadius = 2.0;
+    nextBtn.layer.cornerRadius = kHqCornerRadius;
     [nextBtn addTarget:self action:@selector(nextClick:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:nextBtn];
     

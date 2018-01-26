@@ -9,7 +9,7 @@
 #import "HqPayPasswordVC.h"
 
 #import "HqAddCardVC.h"
-
+#import "HqUserIdInfoVC.h"
 @interface HqPayPasswordVC ()
 
 @property (nonatomic,strong) UILabel *infoLab;
@@ -86,7 +86,7 @@
 
     }
     nextBtn.backgroundColor = COLOR(17, 139, 226, 1);
-    nextBtn.layer.cornerRadius = 2.0;
+    nextBtn.layer.cornerRadius = kHqCornerRadius;
     [nextBtn addTarget:self action:@selector(passwordNextClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextBtn];
     
@@ -140,9 +140,16 @@
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
-                HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
-                addCardVC.user = _user;
-                Push(addCardVC);
+                
+                if (_user.idNumber.length>0&&_user.realName.length>0) {
+                    HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
+                    addCardVC.user = _user;
+                    Push(addCardVC);
+                }else{
+                    HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
+                    Push(idUserVC);
+                }
+                
             }else{
                 [_passwordView becomeFirstResponder];
                 

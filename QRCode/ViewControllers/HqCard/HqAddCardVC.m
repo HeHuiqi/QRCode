@@ -89,7 +89,7 @@
     nextBtn.tintColor = [UIColor whiteColor];
     [nextBtn setTitle:@"Next" forState:UIControlStateNormal];
     nextBtn.backgroundColor = COLOR(17, 139, 226, 1);
-    nextBtn.layer.cornerRadius = 2.0;
+    nextBtn.layer.cornerRadius = kHqCornerRadius;
     [nextBtn addTarget:self action:@selector(cardNextClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextBtn];
     
@@ -108,6 +108,9 @@
 //    HqAddCardInfoVC *addCardInfoVC = [[HqAddCardInfoVC alloc] init];
 //    addCardInfoVC.cardType = HqBankcardTypeCredit;
 //    Push(addCardInfoVC);
+    
+//    _cardNumberTf.text = @"6228480402564890018";
+    
     [self.view endEditing:YES];
     if (_nameTf.text.length==0) {
         [Dialog simpleToast:@"The name can't be empty!"];

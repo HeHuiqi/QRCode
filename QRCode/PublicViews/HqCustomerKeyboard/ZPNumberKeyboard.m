@@ -76,7 +76,7 @@
         }else if (x == 10){
             //数字0
             NumBtn.tag = 0;
-            [NumBtn setTitle:[NSString stringWithFormat:@"%ld",NumBtn.tag] forState:UIControlStateNormal];
+            [NumBtn setTitle:[NSString stringWithFormat:@"%@",@(NumBtn.tag)] forState:UIControlStateNormal];
         }
         
         [NumBtn setBackgroundColor:[UIColor clearColor]];

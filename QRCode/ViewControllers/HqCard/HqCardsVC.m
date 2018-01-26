@@ -75,7 +75,8 @@
     UIButton *contentView = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, SCREEN_WIDTH-40, kZoomValue(185)-40)];
     [contentView addTarget:self action:@selector(addCards:) forControlEvents:UIControlEventTouchUpInside];
     UIImage *linkCard = [UIImage imageNamed:@"cards_link"];
-    [contentView setImage:linkCard forState:UIControlStateNormal];    contentView.layer.cornerRadius = 2.0;
+    contentView.layer.cornerRadius = kHqCornerRadius;
+    [contentView setImage:linkCard forState:UIControlStateNormal];
     [footer addSubview:contentView];
     CAShapeLayer *subLayer = [self dotteShapeLayer:contentView.bounds];
     [contentView.layer addSublayer:subLayer];
@@ -120,7 +121,18 @@
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
+                
                 HqUser *user = [HqUser mj_objectWithKeyValues:responseObject];
+                HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                passwordVC.user = user;
+                if (user.hasPin) {
+                    passwordVC.payPasswordType = HqPayPasswordInput;
+                }else{
+                    passwordVC.payPasswordType = HqPayPasswordCreate;
+                }
+                Push(passwordVC);
+                
+                /*
                 if (user.idNumber.length>0&&user.realName.length>0) {
                     HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
                     if (user.hasPin) {
@@ -135,6 +147,7 @@
                     HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
                     Push(idUserVC);
                 }
+                */
             }else{
                 [Dialog simpleToast:msg];
             }

@@ -39,6 +39,7 @@
 #define kPasswordMaxLength 14
 #define kPsswordMinLength 6
 #define kCheckCodeMaxLength 6
+#define kHqCornerRadius 3.0
 
 
 #define AppMainColor COLOR(0, 159, 232, 1)
