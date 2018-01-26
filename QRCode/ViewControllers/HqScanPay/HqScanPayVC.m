@@ -9,6 +9,8 @@
 #import "HqScanPayVC.h"
 #import "SGQRCode.h"
 #import "HqPayVC.h"
+#import "HqScanResultVC.h"
+
 @interface HqScanPayVC ()<SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate>
 
 @property (nonatomic, strong) SGQRCodeScanManager *manager;
@@ -16,7 +18,8 @@
 @property (nonatomic, strong) UIButton *flashlightBtn;
 @property (nonatomic, strong) UILabel *promptLabel;
 @property (nonatomic, assign) BOOL isSelectedFlashlightBtn;
-@property (nonatomic, strong) UIView *bottomView;
+
+@property (nonatomic,assign) BOOL isReaded;//已经读取成功
 
 @end
 
@@ -24,10 +27,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    
     [self.scanningView addTimer];
-    [_manager resetSampleBufferDelegate];
+    if (self.manager) {
+        [_manager resetSampleBufferDelegate];
+        [_manager startRunning];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -43,8 +47,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = [UIColor clearColor];
+
+    self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         NSLog(@"%@",granted ? @"相机准许":@"相机不准许");
@@ -68,9 +72,7 @@
     [self.view addSubview:self.scanningView];
     [self.view addSubview:self.promptLabel];
     [self.view addSubview:self.flashlightBtn];
-    
-    
-
+    self.isReaded = NO;
 }
 
 
@@ -112,7 +114,11 @@
 #pragma mark - - - SGQRCodeScanManagerDelegate
 - (void)QRCodeScanManager:(SGQRCodeScanManager *)scanManager didOutputMetadataObjects:(NSArray *)metadataObjects {
     NSLog(@"识别到的metadataObjects - - %@", metadataObjects);
+    if (self.isReaded) {
+        return;
+    }
     if (metadataObjects != nil && metadataObjects.count > 0) {
+        self.isReaded = YES;
         [scanManager palySoundName:@"SGQRCode.bundle/sound.caf"];
         [scanManager stopRunning];
         [scanManager videoPreviewLayerRemoveFromSuperlayer];
@@ -195,9 +201,31 @@
 }
 
 #pragma mark - 扫码成功
-- (void)scanSuccess:(NSString *)code{
-    HqPayVC *payVC = [[HqPayVC alloc] init];
-    payVC.code = code;
-    Push(payVC);
+- (void)scanSuccess:(NSString *)collectCode{
+   
+    NSDictionary *param = @{@"collectCode": collectCode};
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/transactions/collectCodes/getOrder" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"获取订单信息==%@",responseObject);
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                NSDictionary *orderDic = [responseObject hq_objectForKey:@"orderInfo"];
+                HqBill *bill = [HqBill mj_objectWithKeyValues:orderDic];
+                HqPayVC *payVC = [[HqPayVC alloc] init];
+                payVC.code = collectCode;
+                payVC.isFromScan = 1;
+                payVC.bill = bill;
+                Push(payVC);
+            }else{
+                [Dialog simpleToast:msg];
+                HqScanResultVC *resultVC = [[HqScanResultVC alloc] init];
+                resultVC.result = collectCode;
+                Push(resultVC);
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
 }
 @end

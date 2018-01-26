@@ -153,27 +153,6 @@
                     }
                     Push(passwordVC);
                 }
-                /*
-                if (user.hasPin&&user.idNumber.length>0&&user.realName.length>0) {
-                    HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
-                    passwordVC.user = user;
-                    passwordVC.payPasswordType = HqPayPasswordInput;
-                    Push(passwordVC);
-
-                }else{
-                    if (user.idNumber.length==0&&user.realName.length==0) {
-                        HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
-                        if (user.hasPin) {
-                            passwordVC.payPasswordType = HqPayPasswordInput;
-                            
-                        }else{
-                            passwordVC.payPasswordType = HqPayPasswordCreate;
-                        }
-                        passwordVC.user = user;
-                        Push(passwordVC);
-                    }
-                }*/
-                
             }else{
                 [Dialog simpleToast:msg];
             }

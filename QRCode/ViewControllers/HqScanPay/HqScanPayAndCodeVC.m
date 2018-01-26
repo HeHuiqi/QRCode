@@ -11,7 +11,7 @@
 #import "HqMyPayCodeView.h"
 #import "HqButton.h"
 #import "HqPayVC.h"
-
+#import "HqScanResultVC.h"
 #define HqBottomHeight  kZoomValue(80)
 @interface HqScanPayAndCodeVC ()<SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate>
 
@@ -23,6 +23,8 @@
 
 @property (nonatomic,strong) HqButton *selectBtn;//选中btn
 @property (nonatomic,strong) HqMyPayCodeView *payCodeView;
+@property (nonatomic,assign) BOOL isReaded;//已经读取成功
+
 
 @end
 
@@ -85,6 +87,7 @@
     self.payCodeView.hidden = YES;
     [self bottomView];
     [self getPayCode];
+    self.isReaded = NO;
 }
 
 
@@ -126,11 +129,14 @@
 #pragma mark - - - SGQRCodeScanManagerDelegate
 - (void)QRCodeScanManager:(SGQRCodeScanManager *)scanManager didOutputMetadataObjects:(NSArray *)metadataObjects {
     NSLog(@"metadataObjects - - %@", metadataObjects);
+    if (self.isReaded) {
+        return;
+    }
     if (metadataObjects != nil && metadataObjects.count > 0) {
         [scanManager palySoundName:@"SGQRCode.bundle/sound.caf"];
         [scanManager stopRunning];
         [scanManager videoPreviewLayerRemoveFromSuperlayer];
-        
+        self.isReaded = YES;
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
         
         NSLog(@"obj===%@",obj.stringValue);
@@ -252,10 +258,35 @@
     
 }
 #pragma mark - 扫码成功
-- (void)scanSuccess:(NSString *)code{
-    HqPayVC *payVC = [[HqPayVC alloc] init];
-    payVC.code = code;
-    Push(payVC);
+- (void)scanSuccess:(NSString *)collectCode{
+//    HqPayVC *payVC = [[HqPayVC alloc] init];
+//    payVC.code = collectCode;
+//    payVC.isFromScan = 1;
+//    Push(payVC);
+    NSDictionary *param = @{@"collectCode": collectCode};
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/transactions/collectCodes/getOrder" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"获取订单信息==%@",responseObject);
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                NSDictionary *orderDic = [responseObject hq_objectForKey:@"orderInfo"];
+                HqBill *bill = [HqBill mj_objectWithKeyValues:orderDic];
+                HqPayVC *payVC = [[HqPayVC alloc] init];
+                payVC.code = collectCode;
+                payVC.isFromScan = 1;
+                payVC.bill = bill;
+                Push(payVC);
+            }else{
+                [Dialog simpleToast:msg];
+                HqScanResultVC *resultVC = [[HqScanResultVC alloc] init];
+                resultVC.result = collectCode;
+                Push(resultVC);
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
 }
 - (void)getPayCode{
     

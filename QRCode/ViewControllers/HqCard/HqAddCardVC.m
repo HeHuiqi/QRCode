@@ -11,6 +11,7 @@
 #import "HqAddCardInfoVC.h"
 #import "HqGesturePasswordVC.h"
 #import <CardIO/CardIO.h>
+#import <AVFoundation/AVFoundation.h>
 @interface HqAddCardVC ()<UITextFieldDelegate,CardIOPaymentViewControllerDelegate>
 
 @property (nonatomic,strong) HqInputView *nameTf;
@@ -101,7 +102,22 @@
     }];
 }
 - (void)photo:(UIButton *)btn{
-    [self startScanCard];
+    
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        NSLog(@"%@",granted ? @"相机准许":@"相机不准许");
+        if (granted) {
+            [self startScanCard];
+        }else{
+            HqAlertView *alert = [[HqAlertView alloc] initWithTitle:@"Request Open Camera" message:nil];
+            alert.btnTitles = @[@"Cancel",@"Confirm"];
+            [alert showVC:self callBack:^(UIAlertAction *action, int index) {
+                if (index == 1) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                }
+            }];
+        }
+        
+    }];
 }
 - (void)cardNextClick:(UIButton *)btn{
     

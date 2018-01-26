@@ -113,7 +113,7 @@
                     [self.delegate hqCardDetailVC:self cardOperate:HqCardOperateSetDetault];
                 }
                 [Dialog simpleToast:@"Operate Success!"];
-                [self backClick];
+//                [self backClick];
 
             }else{
                 [Dialog simpleToast:msg];

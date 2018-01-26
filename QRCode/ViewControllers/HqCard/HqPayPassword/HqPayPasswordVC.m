@@ -163,9 +163,10 @@
     }];
 }
 - (void)backClick{
-    
-    if (_isFromAddCardInfo !=1 && _payPasswordType != HqPayPasswordConfirm) {
-         [self backToVC:@"HqCardsVC"];
+    if (_isFromAddCardInfo == 1 && _payPasswordType == HqPayPasswordConfirm) {
+        [super backClick];
+    }else{
+        [self backToVC:@"HqCardsVC"];
     }
 }
 - (void)didReceiveMemoryWarning {

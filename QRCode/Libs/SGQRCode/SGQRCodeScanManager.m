@@ -114,6 +114,9 @@ static SGQRCodeScanManager *_instance;
 
 #pragma mark - - - AVCaptureMetadataOutputObjectsDelegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
+    if (metadataObjects.count>0) {
+        [self.session stopRunning];
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(QRCodeScanManager:didOutputMetadataObjects:)]) {
         [self.delegate QRCodeScanManager:self didOutputMetadataObjects:metadataObjects];
     }

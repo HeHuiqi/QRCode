@@ -17,7 +17,6 @@
 @property (nonatomic,strong) UITextField *amountInput;
 @property (nonatomic,strong) HqInputView *markInput;
 @property (nonatomic,strong) HqConfirmPayView *confirmPayView;
-@property (nonatomic,strong) HqBill *bill;
 
 @end
 
@@ -45,7 +44,9 @@
     UIImageView *userPhoto = [[UIImageView alloc] init];
     [contentView addSubview:userPhoto];
     
-    userPhoto.backgroundColor = [UIColor blueColor];
+    userPhoto.backgroundColor = [UIColor grayColor];
+    userPhoto.image = [UIImage imageNamed:@"bill_temp_icon"];
+    userPhoto.clipsToBounds = YES;
     userPhoto.layer.cornerRadius = kZoomValue(64)/2.0;
     [userPhoto mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
@@ -151,11 +152,13 @@
         make.top.equalTo(payView.mas_bottom).offset(kZoomValue(30));
         make.size.mas_equalTo(CGSizeMake(payWidth, kZoomValue(45)));
     }];
-    
-   
-    
-    [self getOrderInfo];
-    
+    if (_bill) {
+//        [_userPhoto sd_setImageWithURL:nil placeholderImage:nil]
+        _userNamelab.text = _bill.merchantName;
+        _amountInput.text = [NSString stringWithFormat:@"%0.2f",_bill.amount];
+    }else{
+        [self getOrderInfo];
+    }
 }
 - (void)pay:(UIButton *)btn{
     
@@ -231,6 +234,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)backClick{
+    if (_isFromScan) {
+        BackRoot();
+    }else{
+        [super backClick];
+    }
 }
 
 /*

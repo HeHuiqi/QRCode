@@ -32,8 +32,8 @@
     self.avc = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
 }
 - (void)setBtnTitles:(NSArray *)btnTitles{
-    _btnTitles = btnTitles;
     
+    _btnTitles = btnTitles;
     if (_btnTitles) {
         int index = 0;
         for (NSString *myTitle in _btnTitles) {

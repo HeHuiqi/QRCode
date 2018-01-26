@@ -16,6 +16,9 @@ typedef NS_ENUM(NSInteger,HqTradeType){
 @interface HqPayVC : SuperVC
 
 @property (nonatomic,copy) NSString *code;
-@property (nonatomic,assign) NSInteger tradeType;
+@property (nonatomic,assign) HqTradeType tradeType;
+@property (nonatomic,assign) BOOL isFromScan;
+@property (nonatomic,strong) HqBill *bill;
+
 
 @end
