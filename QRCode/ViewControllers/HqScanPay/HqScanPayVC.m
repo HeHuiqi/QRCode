@@ -51,15 +51,23 @@
         if (granted) {
             [self setupQRCodeScanning];
         }else{
-            HqAlertView *alert = [[HqAlertView alloc] initWithTitle:@"Open Camera" message:nil];
-            alert.btnTitles = @[@"Cancel",];
+            HqAlertView *alert = [[HqAlertView alloc] initWithTitle:@"Request Open Camera" message:nil];
+            alert.btnTitles = @[@"Cancel",@"Confirm"];
+            [alert showVC:self callBack:^(UIAlertAction *action, int index) {
+                if (index == 1) {
+                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                }else{
+                    Back();
+                }
+               
+            }];
         }
         
     }];
+    self.title = @"Scan";
     [self.view addSubview:self.scanningView];
     [self.view addSubview:self.promptLabel];
     [self.view addSubview:self.flashlightBtn];
-    self.title = @"Scan";
     
     
 

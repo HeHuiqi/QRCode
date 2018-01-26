@@ -59,11 +59,29 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.view addSubview:self.scanningView];
-    [self setupQRCodeScanning];
+    
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        NSLog(@"%@",granted ? @"相机准许":@"相机不准许");
+        if (granted) {
+            [self setupQRCodeScanning];
+        }else{
+            HqAlertView *alert = [[HqAlertView alloc] initWithTitle:@"Request Open Camera" message:nil];
+            alert.btnTitles = @[@"Cancel",@"Confirm"];
+            [alert showVC:self callBack:^(UIAlertAction *action, int index) {
+                if (index == 1) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                }else{
+//                    Back();
+                }
+                
+            }];
+        }
+        
+    }];
     [self.view addSubview:self.promptLabel];
     [self.view addSubview:self.flashlightBtn];
-
     [self.view addSubview:self.payCodeView];
+    
     self.payCodeView.hidden = YES;
     [self bottomView];
     [self getPayCode];

@@ -39,6 +39,7 @@
         for (NSString *myTitle in _btnTitles) {
             if (index==0) {
                 [self addBtnsWithTitle:myTitle type:UIAlertActionStyleCancel];
+                index = 1;
             }else{
                 [self addBtnsWithTitle:myTitle type:UIAlertActionStyleDefault];
             }            

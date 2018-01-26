@@ -55,7 +55,6 @@
     _tempCount++;
     if (_tempCount==60) {
         _tempCount =0;
-        [self getPayCode];
     }
     NSLog(@"+++==%d",_tempCount);
 }
@@ -71,7 +70,7 @@
         make.size.mas_equalTo(CGSizeMake(kZoomValue(290), kZoomValue(290)));
     }];
     _payCodeImageView = [[UIImageView alloc]init];
-    _payCodeImageView.backgroundColor = [UIColor redColor];
+    _payCodeImageView.backgroundColor = [UIColor grayColor];
     [_contentView addSubview:_payCodeImageView];
     [_payCodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_contentView);
@@ -105,33 +104,7 @@
         [self generateCode];
     }
 }
-#pragma mark - 获取支付码
-- (void)getPayCode{
-    
-    [SVProgressHUD showWithStatus:@"获取新支付码"];
-    [HqAFHttpClient starRequestWithHeaders:nil withURLString:@"/card/dimecode" withParam:nil requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Get requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
-        if (response.statusCode == 200) {
-            
-            NSString *payCode = [responseObject hq_objectForKey:@"data"];
-            if (payCode.length>0) {
-                NSString *code = [payCode substringToIndex:12];
-                NSString *password = [payCode substringFromIndex:12];
-                NSLog(@"code = %@,password = %@",code,password);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.payCodeInfo = payCode;
-                    self.code = code;
-                    self.password = password;
-                    [self generateCode];
-                });
-                
-            }else{
-                [Dialog simpleToast:@"获取支付码失败"];
-            }
-            
-        }
-        [SVProgressHUD dismiss];
-    }];
-}
+
 - (void)queryPayStatusWithCode:(NSString *)code{
     /*NSString *url = [NSString stringWithFormat:@"%@",code];
 

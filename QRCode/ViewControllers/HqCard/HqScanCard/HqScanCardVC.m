@@ -8,6 +8,7 @@
 
 #import "HqScanCardVC.h"
 #import <CardIO/CardIO.h>
+#import <AVFoundation/AVFoundation.h>
 @interface HqScanCardVC ()<CardIOPaymentViewControllerDelegate>
 
 @end
@@ -23,9 +24,25 @@
     [view addGestureRecognizer:tap];
 }
 - (void)tapGesture:(UITapGestureRecognizer *)tap{
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        NSLog(@"%@",granted ? @"相机准许":@"相机不准许");
+        if (granted) {
+            [self startScanCard];
+        }else{
+            HqAlertView *alert = [[HqAlertView alloc] initWithTitle:@"Request Open Camera" message:nil];
+            alert.btnTitles = @[@"Cancel",@"Confirm"];
+            [alert showVC:self callBack:^(UIAlertAction *action, int index) {
+                if (index == 1) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                }else{
+                    Back();
+                }
+                
+            }];
+        }
+        
+    }];
     
-    
-    [self startScanCard];
 }
 - (void)startScanCard{
     CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];

@@ -89,6 +89,8 @@
                 NSString *token = [responseObject hq_objectForKey:@"token"];
                 SetUserDefault(token, kToken);
                 SetUserDefault(@"1", kisLogin);
+                AppDelegate *app = [AppDelegate shareApp];
+                app.isInputGesturePassword = YES;
                 [AppDelegate setRootVC:HqSetRootVCHome];
             }else{
                 [Dialog simpleToast:msg];
