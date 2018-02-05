@@ -191,6 +191,8 @@
 */
 
 - (void)startScanCard{
+    
+    
     CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];
     scanViewController.disableManualEntryButtons = YES;//不显示右边按钮
     scanViewController.suppressScanConfirmation = YES;//立即返回
@@ -199,7 +201,10 @@
     scanViewController.collectCVV = NO;
     scanViewController.guideColor = AppMainColor;
     scanViewController.collectExpiry = NO;
-    [self presentViewController:scanViewController animated:YES completion:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:scanViewController animated:YES completion:nil];
+    });
+    
 }
 #pragma mark - CardIOPaymentViewControllerDelegate
 - (void)userDidCancelPaymentViewController:(CardIOPaymentViewController *)paymentViewController{

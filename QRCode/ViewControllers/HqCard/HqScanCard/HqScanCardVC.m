@@ -17,13 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self tapView:self.view];
+    [self initCamera];
 }
 - (void)tapView:(UIView *)view{
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
     [view addGestureRecognizer:tap];
 }
 - (void)tapGesture:(UITapGestureRecognizer *)tap{
+    
+    
+}
+- (void)initCamera{
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         NSLog(@"%@",granted ? @"相机准许":@"相机不准许");
         if (granted) {
@@ -42,7 +46,6 @@
         }
         
     }];
-    
 }
 - (void)startScanCard{
     CardIOPaymentViewController *scanViewController = [[CardIOPaymentViewController alloc] initWithPaymentDelegate:self];

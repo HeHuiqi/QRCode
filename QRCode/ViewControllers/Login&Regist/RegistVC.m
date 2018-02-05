@@ -159,7 +159,8 @@
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileTf.text.length<kMobileNumberLength){
+    BOOL isNumber = [NSString isMobileNumber:_mobileTf.text];
+    if(_mobileTf.text.length<kMobileNumberMinLength||!isNumber){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
     }
@@ -205,7 +206,8 @@
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileTf.text.length<kMobileNumberLength){
+    BOOL isNumber = [NSString isMobileNumber:_mobileTf.text];
+    if(_mobileTf.text.length<kMobileNumberMinLength||!isNumber){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
     }
@@ -264,7 +266,8 @@
 }
 - (void)textChange:(NSNotification *)notifi{
     if ([notifi.object isEqual:_mobileTf]) {
-        BOOL isFull = _mobileTf.text.length==kMobileNumberLength;
+//        BOOL isFull = (_mobileTf.text.length==kMobileNumberLength || _mobileTf.text.length==kMobileNumberMinLength);
+        BOOL isFull = [NSString isMobileNumber:_mobileTf.text];
         [self hidenBtnView:!isFull];
     }
 }

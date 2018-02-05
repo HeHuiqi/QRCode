@@ -119,7 +119,8 @@
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileTf.text.length<kMobileNumberLength){
+    BOOL isNumber = [NSString isMobileNumber:_mobileTf.text];
+    if(_mobileTf.text.length<kMobileNumberMinLength||!isNumber){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
     }

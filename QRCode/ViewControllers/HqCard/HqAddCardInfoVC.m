@@ -175,7 +175,8 @@
 #pragma mark - 输入变化通知方法
 - (void)textChange:(NSNotification *)nofit{
     if ([nofit.object isEqual:_mobileInputView.inputView]) {
-        BOOL isFull = _mobileInputView.inputView.text.length==kMobileNumberLength;
+//        BOOL isFull = _mobileInputView.inputView.text.length==kMobileNumberLength;
+        BOOL isFull = [NSString isMobileNumber:_mobileInputView.inputView.text];
         [self hidenBtnView:!isFull];
     }
 }
@@ -226,7 +227,8 @@
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileInputView.inputView.text.length<kMobileNumberLength){
+    BOOL isNumber = [NSString isMobileNumber:_mobileInputView.inputView.text];
+    if(_mobileInputView.inputView.text.length<kMobileNumberMinLength||!isNumber){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
     }
@@ -277,7 +279,9 @@
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileInputView.inputView.text.length<kMobileNumberLength){
+    
+    BOOL isNumber = [NSString isMobileNumber:_mobileInputView.inputView.text];
+    if(_mobileInputView.inputView.text.length<kMobileNumberMinLength||!isNumber){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
     }

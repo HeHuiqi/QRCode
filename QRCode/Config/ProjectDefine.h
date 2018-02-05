@@ -36,6 +36,7 @@
 #define kRequestError @"Sorry,Request Fail!"
 
 #define kMobileNumberLength 11
+#define kMobileNumberMinLength 10
 #define kPasswordMaxLength 14
 #define kPsswordMinLength 6
 #define kCheckCodeMaxLength 6
