@@ -26,6 +26,7 @@
 //    self.navBarView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.navBarView.backgroundColor  = COLOR(241,245,247,1);
     [self titelLab];
+   
     
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];;
     self.leftBtn.tintColor = COLOR(102, 102, 102, 1);
