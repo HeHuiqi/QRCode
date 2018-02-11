@@ -66,10 +66,14 @@
         HqDateFormatter *date = [HqDateFormatter shareInstance];
         NSString *dateStr = [date dateStringWithFormat:@"yyyy-MM-dd HH:mm:ss" timeInterval:_bill.payTime/1000.0];
         _payTimeLab.text = dateStr;
-        NSString *count = [NSString stringWithFormat:@"-%0.2f₫",_bill.amount];
-        if (_bill.status==0) {
-           count = [NSString stringWithFormat:@"%0.2f₫",_bill.amount];
+        NSString *count = nil;
+        CGFloat money = _bill.amount*-1;
+        if (money>0) {
+            count = [NSString stringWithFormat:@"+%0.2f₫",money];
+        }else{
+            count = [NSString stringWithFormat:@"-%0.2f₫",_bill.amount];
         }
+
         _payamountLab.text = count;
     }
 }

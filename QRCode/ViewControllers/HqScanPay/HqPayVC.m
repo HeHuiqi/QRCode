@@ -7,9 +7,10 @@
 //
 
 #import "HqPayVC.h"
-#import "HqInputView.h"
 #import "HqConfirmPayView.h"
 #import "HqPaySuccessVC.h"
+#import "HqTransferVC.h"
+
 @interface HqPayVC ()<HqConfirmPayViewDelegate>
 
 @property (nonatomic,strong) UIImageView *userPhoto;
@@ -152,24 +153,35 @@
         make.top.equalTo(payView.mas_bottom).offset(kZoomValue(30));
         make.size.mas_equalTo(CGSizeMake(payWidth, kZoomValue(45)));
     }];
-    if (_bill) {
-//        [_userPhoto sd_setImageWithURL:nil placeholderImage:nil]
+    if (_transferType ==3) {
+        //        [_userPhoto sd_setImageWithURL:nil placeholderImage:nil]
         _userNamelab.text = _bill.merchantName;
         _amountInput.text = [NSString stringWithFormat:@"%0.2f",_bill.amount];
     }else{
-        [self getOrderInfo];
+        //        [_userPhoto sd_setImageWithURL:nil placeholderImage:nil]
+        if (_transferType == 1) {
+            _userNamelab.text = _transfer.payee;
+            
+        }else{
+            _userNamelab.text = _transfer.payer;
+            
+        }
+//        _amountInput.text = [NSString stringWithFormat:@"%0.2f",_transfer.amount];
+        
     }
 }
 - (void)pay:(UIButton *)btn{
     
-    if ([_amountInput.text floatValue]==0) {
-        [Dialog toastCenter:@"Enter valid numbers"];
-        [_amountInput becomeFirstResponder];
-        return;
-    }
-    if (_bill.collectCode.length==0) {
-        [Dialog toastCenter:@"Please Re-scan code"];
-        return;
+    if (_transferType != 2) {
+        if ([_amountInput.text floatValue]==0) {
+            [Dialog toastCenter:@"Enter valid numbers"];
+            [_amountInput becomeFirstResponder];
+            return;
+        }
+        if (_code.length==0) {
+            [Dialog toastCenter:@"Please Re-scan code"];
+            return;
+        }
     }
     [self.confirmPayView showPayView];
 }
@@ -208,13 +220,41 @@
 }
 - (void)confirmPay:(NSString *)password{
     password = [NSString sha1:password];
-    NSDictionary *param = @{
-                            @"collectCode": _bill.collectCode,
-                            @"pin": password,
-                            @"amount": @(_bill.amount),
-                            @"currency": _bill.currency
-                            };
-    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/transactions/collectCodes" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+    NSDictionary *param = nil;
+    NSString *url = nil;
+    if ([_amountInput.text floatValue]>10000) {
+        [Dialog simpleToast:@"Input Number too large!"];
+        return;
+    }
+    if (_transferType == 3) {
+        param = @{
+                  @"collectCode": _code,
+                  @"pin": password,
+                  @"amount": @(_bill.amount),
+                  @"currency": _bill.currency
+                  };
+        url = @"/transactions/collectCodes";
+    }else if (_transferType == 2){
+        
+        HqTransferVC *transferVC = [[HqTransferVC alloc] init];
+        transferVC.pesonTransferType = 2;
+        HqTransfer *transfer = [[HqTransfer alloc] init];
+        transfer.amount = [_amountInput.text floatValue];
+        transfer.pin = password;
+        transferVC.transfer = transfer;
+        
+        Push(transferVC);
+        return;
+    }else{
+        param = @{
+                  @"transferCode": _code,
+                  @"pin": password,
+                  @"amount":@([_amountInput.text floatValue]),
+                  @"currency": @"VND"
+                  };
+        url = @"/transactions/transfers/complete";
+    }
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
         NSLog(@"支付结果==%@",responseObject);
         
         if (response.statusCode == 200) {

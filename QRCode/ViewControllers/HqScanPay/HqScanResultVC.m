@@ -7,7 +7,6 @@
 //
 
 #import "HqScanResultVC.h"
-
 @interface HqScanResultVC ()
 
 @end
@@ -31,6 +30,8 @@
 - (void)backClick{
     BackRoot();
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -7,7 +7,6 @@
 //
 
 #import "HqAddCardVC.h"
-#import "HqInputView.h"
 #import "HqAddCardInfoVC.h"
 #import "HqGesturePasswordVC.h"
 #import <CardIO/CardIO.h>

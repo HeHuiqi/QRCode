@@ -10,9 +10,7 @@
 
 @interface HqMyPayCodeView : UIView
 
-@property (nonatomic,copy) NSString *payCodeInfo;
-@property (nonatomic,copy) NSString *code;
-@property (nonatomic,copy) NSString *password;
-
+- (void)startGetPayCode;
+- (void)stopGetPayCode;
 
 @end

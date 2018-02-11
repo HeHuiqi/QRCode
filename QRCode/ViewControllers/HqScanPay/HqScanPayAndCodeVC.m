@@ -52,6 +52,8 @@
 }
 - (void)dealloc {
     [self removeScanningView];
+    [self.payCodeView stopGetPayCode];
+
 }
 
 - (void)viewDidLoad {
@@ -86,7 +88,8 @@
     
     self.payCodeView.hidden = YES;
     [self bottomView];
-    [self getPayCode];
+//    [self getPayCode];
+    [self.payCodeView startGetPayCode];
     self.isReaded = NO;
 }
 
@@ -288,6 +291,7 @@
         }
     }];
 }
+/*
 - (void)getPayCode{
     
     [HqHttpUtil hqPost:nil url:@"/transactions/codes" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
@@ -308,5 +312,5 @@
             [Dialog simpleToast:kRequestError];
         }
     }];
-}
+}*/
 @end

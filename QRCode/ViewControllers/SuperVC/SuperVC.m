@@ -39,12 +39,11 @@
     if (!_titelLab) {
         _titelLab = [[UILabel alloc]init];
         _titelLab.textColor = HqTitleColor;
-        _titelLab.font = [UIFont boldSystemFontOfSize:kZoomValue(18)];
+        _titelLab.font = [UIFont boldSystemFontOfSize:HqTitleFontsize];
         [self.navBarView addSubview:_titelLab];
         [_titelLab mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.navBarView.mas_centerX);
-//            make.left.equalTo(self.navBarView).offset(kZoomValue(50));
-            make.top.equalTo(_navBarView).offset(20);
+            make.bottom.equalTo(_navBarView).offset(0);
             make.height.mas_equalTo(44);
         }];
     }
@@ -60,7 +59,7 @@
     [_leftBtn addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [_leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_navBarView).offset(0);
-        make.top.equalTo(_navBarView).offset(20);
+        make.bottom.equalTo(_navBarView).offset(0);
         make.size.mas_equalTo(CGSizeMake(50, 44));
     }];
 }
@@ -86,7 +85,7 @@
     }
     [_rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(_navBarView).offset(0);
-        make.top.equalTo(_navBarView).offset(20);
+        make.bottom.equalTo(_navBarView).offset(0);
         make.size.mas_equalTo(CGSizeMake(50, 44));
     }];
 }
@@ -102,7 +101,13 @@
 }
 -(UIView *)navBarView{
     if (!_navBarView) {
-        _navBarView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, BarHeight)];
+        BOOL device = IS_NOT_IPHONE_X;
+        CGFloat barHeight = 64;
+        if (!device) {
+            barHeight = 88;
+        }
+        self.navBarheight = barHeight;
+        _navBarView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.navBarheight)];
         _navBarView.backgroundColor = [UIColor whiteColor];
     }
     
@@ -123,6 +128,11 @@
         }];
         _bottomLine = xline;
     }
+}
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    
+    _navBarView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.navBarheight);
 }
 - (void)didReceiveMemoryWarning
 {

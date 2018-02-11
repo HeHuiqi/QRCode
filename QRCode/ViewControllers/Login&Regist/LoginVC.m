@@ -7,7 +7,6 @@
 //
 
 #import "LoginVC.h"
-#import "HqInputView.h"
 
 @interface LoginVC ()<UITextFieldDelegate>
 

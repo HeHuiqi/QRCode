@@ -7,7 +7,6 @@
 //
 
 #import "HqAddCardInfoVC.h"
-#import "HqIdInfoInputView.h"
 #import "HqPickerView.h"
 #define SmsTime 60
 #import "HqPayPasswordVC.h"

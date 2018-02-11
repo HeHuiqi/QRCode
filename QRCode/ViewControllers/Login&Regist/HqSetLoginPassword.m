@@ -7,7 +7,6 @@
 //
 
 #import "HqSetLoginPassword.h"
-#import "HqInputView.h"
 @interface HqSetLoginPassword ()
 
 @property (nonatomic,strong) HqInputView *passwordTf;

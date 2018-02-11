@@ -53,6 +53,12 @@
 		8E6C7C1B2019DF70003A9B78 /* bill_temp_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E6C7C192019DF70003A9B78 /* bill_temp_icon@2x.png */; };
 		8E8A97E0201B294F006709DF /* HqScanResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8A97DF201B294F006709DF /* HqScanResultVC.m */; };
 		8E9BA428200DA6860087262C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9BA427200DA6860087262C /* UIKit.framework */; };
+		8E9D037F202FF69F00C78B79 /* HqTransferVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D037E202FF69F00C78B79 /* HqTransferVC.m */; };
+		8E9D038220300AF800C78B79 /* HqPayCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D038120300AF800C78B79 /* HqPayCodeView.m */; };
+		8E9D03862030159600C78B79 /* HqTransferView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D03852030159600C78B79 /* HqTransferView.m */; };
+		8E9D0389203016B400C78B79 /* HqTransferInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D0388203016B400C78B79 /* HqTransferInfoView.m */; };
+		8E9D038C20301CF200C78B79 /* HqTransferSetMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D038B20301CF200C78B79 /* HqTransferSetMoneyVC.m */; };
+		8E9D0390203033F900C78B79 /* HqTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D038F203033F900C78B79 /* HqTransfer.m */; };
 		8EBA54F52009D29E009AFEE1 /* login_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F12009D29E009AFEE1 /* login_bg@2x.png */; };
 		8EBA54F62009D29E009AFEE1 /* login_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F22009D29E009AFEE1 /* login_logo@3x.png */; };
 		8EBA54F72009D29E009AFEE1 /* login_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EBA54F32009D29E009AFEE1 /* login_logo@2x.png */; };
@@ -257,6 +263,18 @@
 		8E8A97DE201B294F006709DF /* HqScanResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqScanResultVC.h; sourceTree = "<group>"; };
 		8E8A97DF201B294F006709DF /* HqScanResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqScanResultVC.m; sourceTree = "<group>"; };
 		8E9BA427200DA6860087262C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8E9D037D202FF69F00C78B79 /* HqTransferVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqTransferVC.h; sourceTree = "<group>"; };
+		8E9D037E202FF69F00C78B79 /* HqTransferVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqTransferVC.m; sourceTree = "<group>"; };
+		8E9D038020300AF800C78B79 /* HqPayCodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqPayCodeView.h; sourceTree = "<group>"; };
+		8E9D038120300AF800C78B79 /* HqPayCodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqPayCodeView.m; sourceTree = "<group>"; };
+		8E9D03842030159600C78B79 /* HqTransferView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqTransferView.h; sourceTree = "<group>"; };
+		8E9D03852030159600C78B79 /* HqTransferView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqTransferView.m; sourceTree = "<group>"; };
+		8E9D0387203016B400C78B79 /* HqTransferInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqTransferInfoView.h; sourceTree = "<group>"; };
+		8E9D0388203016B400C78B79 /* HqTransferInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqTransferInfoView.m; sourceTree = "<group>"; };
+		8E9D038A20301CF200C78B79 /* HqTransferSetMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqTransferSetMoneyVC.h; sourceTree = "<group>"; };
+		8E9D038B20301CF200C78B79 /* HqTransferSetMoneyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqTransferSetMoneyVC.m; sourceTree = "<group>"; };
+		8E9D038E203033F900C78B79 /* HqTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqTransfer.h; sourceTree = "<group>"; };
+		8E9D038F203033F900C78B79 /* HqTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqTransfer.m; sourceTree = "<group>"; };
 		8EBA54F12009D29E009AFEE1 /* login_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_bg@2x.png"; sourceTree = "<group>"; };
 		8EBA54F22009D29E009AFEE1 /* login_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_logo@3x.png"; sourceTree = "<group>"; };
 		8EBA54F32009D29E009AFEE1 /* login_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_logo@2x.png"; sourceTree = "<group>"; };
@@ -575,6 +593,8 @@
 			children = (
 				8E36E6722011EF3F00701378 /* HqMyPayCodeView.h */,
 				8E36E6732011EF3F00701378 /* HqMyPayCodeView.m */,
+				8E9D038020300AF800C78B79 /* HqPayCodeView.h */,
+				8E9D038120300AF800C78B79 /* HqPayCodeView.m */,
 				8ED6CCF52016C9220001393A /* HqConfirmPayView.h */,
 				8ED6CCF62016C9220001393A /* HqConfirmPayView.m */,
 			);
@@ -610,6 +630,39 @@
 			children = (
 				8E6C7C122019CB83003A9B78 /* HqHomeNews.h */,
 				8E6C7C132019CB83003A9B78 /* HqHomeNews.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8E9D037C202FF67900C78B79 /* HqP2P */ = {
+			isa = PBXGroup;
+			children = (
+				8E9D038D203033E400C78B79 /* Models */,
+				8E9D03832030157E00C78B79 /* Views */,
+				8E9D037D202FF69F00C78B79 /* HqTransferVC.h */,
+				8E9D037E202FF69F00C78B79 /* HqTransferVC.m */,
+				8E9D038A20301CF200C78B79 /* HqTransferSetMoneyVC.h */,
+				8E9D038B20301CF200C78B79 /* HqTransferSetMoneyVC.m */,
+			);
+			path = HqP2P;
+			sourceTree = "<group>";
+		};
+		8E9D03832030157E00C78B79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E9D03842030159600C78B79 /* HqTransferView.h */,
+				8E9D03852030159600C78B79 /* HqTransferView.m */,
+				8E9D0387203016B400C78B79 /* HqTransferInfoView.h */,
+				8E9D0388203016B400C78B79 /* HqTransferInfoView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8E9D038D203033E400C78B79 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E9D038E203033F900C78B79 /* HqTransfer.h */,
+				8E9D038F203033F900C78B79 /* HqTransfer.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -728,6 +781,7 @@
 		8EDE16661FFF23C30013DD41 /* HqRoot */ = {
 			isa = PBXGroup;
 			children = (
+				8E9D037C202FF67900C78B79 /* HqP2P */,
 				8E6C7C112019CB02003A9B78 /* Models */,
 				8EDE17311FFF620F0013DD41 /* Home */,
 				8EDE171B1FFF2EBB0013DD41 /* Views */,
@@ -1439,11 +1493,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E6C7C172019D21E003A9B78 /* HqPickerView.m in Sources */,
+				8E9D0390203033F900C78B79 /* HqTransfer.m in Sources */,
 				8EDE17111FFF26830013DD41 /* SuperNavigationVC.m in Sources */,
 				8EDE17161FFF27A20013DD41 /* HqRootVC.m in Sources */,
 				8EDE16EA1FFF23C30013DD41 /* IQKeyboardManager.m in Sources */,
 				8E36E6582011C98C00701378 /* HqBillCell.m in Sources */,
 				8EDE17061FFF23C30013DD41 /* ProjectEnvironment.m in Sources */,
+				8E9D0389203016B400C78B79 /* HqTransferInfoView.m in Sources */,
 				8EDE16FC1FFF23C30013DD41 /* HqString.m in Sources */,
 				8E6C7C142019CB83003A9B78 /* HqHomeNews.m in Sources */,
 				8EEFA78C2005B040004C2254 /* PCLockLabel.m in Sources */,
@@ -1467,6 +1523,7 @@
 				8ED6CCE12015E0020001393A /* HqPayVC.m in Sources */,
 				8EDE17041FFF23C30013DD41 /* UITextField+LimitInput.m in Sources */,
 				8EDE16EB1FFF23C30013DD41 /* IQNSArray+Sort.m in Sources */,
+				8E9D037F202FF69F00C78B79 /* HqTransferVC.m in Sources */,
 				8ED6CCF32016C5EF0001393A /* ZPNumberKeyboard.m in Sources */,
 				8EDE17401FFF7A910013DD41 /* HqScanPayVC.m in Sources */,
 				8EDE173C1FFF72640013DD41 /* HqHomeCell.m in Sources */,
@@ -1484,9 +1541,11 @@
 				8EDE17441FFF87080013DD41 /* HqCardsVC.m in Sources */,
 				8EDE16EF1FFF23C30013DD41 /* IQUIView+Hierarchy.m in Sources */,
 				8E5FCC3320034BF400B4740B /* HqHttpUtil.m in Sources */,
+				8E9D03862030159600C78B79 /* HqTransferView.m in Sources */,
 				8E5FCC362003670A00B4740B /* HqSetLoginPassword.m in Sources */,
 				8E36E6742011EF3F00701378 /* HqMyPayCodeView.m in Sources */,
 				8EEFA7832005AFFC004C2254 /* PCCircle.m in Sources */,
+				8E9D038C20301CF200C78B79 /* HqTransferSetMoneyVC.m in Sources */,
 				8E8A97E0201B294F006709DF /* HqScanResultVC.m in Sources */,
 				8ED6CCF42016C5EF0001393A /* UITextField+ZPNumberKeyboard.m in Sources */,
 				8ED6CD02201733D70001393A /* HqScanCardVC.m in Sources */,
@@ -1504,6 +1563,7 @@
 				8EDE17211FFF31790013DD41 /* HqLeftViewCell.m in Sources */,
 				8EDE16F01FFF23C30013DD41 /* IQUIViewController+Additions.m in Sources */,
 				8EDE16FA1FFF23C30013DD41 /* UITextField+EnlargeTouchArea.m in Sources */,
+				8E9D038220300AF800C78B79 /* HqPayCodeView.m in Sources */,
 				8EDE17121FFF26830013DD41 /* SuperVC.m in Sources */,
 				8EDE16F41FFF23C30013DD41 /* SVProgressHUD.m in Sources */,
 				8EEFA7F32008A76C004C2254 /* HqBankCard.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 #import "HqUserIdInfoVC.h"
-#import "HqIdInfoInputView.h"
 #import "HqAddCardVC.h"
 
 

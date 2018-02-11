@@ -16,6 +16,12 @@
     }
     return self;
 }
+- (instancetype)init{
+    if (self = [super init]) {
+        [self setup];
+    }
+    return self;
+}
 - (void)setup{
     _titleLab = [[UILabel alloc] init];
     _titleLab.font = [UIFont systemFontOfSize:kZoomValue(12)];
@@ -35,7 +41,7 @@
     [_inputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLab.mas_bottom).offset(kZoomValue(5));
         make.left.equalTo(self).offset(0);
-        make.right.equalTo(self).offset(-1.0);
+        make.right.equalTo(self).offset(0);
         make.height.mas_equalTo(kZoomValue(45));
     }];
 }

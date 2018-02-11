@@ -17,6 +17,7 @@
 #import "HqGesturePasswordVC.h"
 #import "PCCircleViewConst.h"
 #import "HqTradeRecordVC.h"
+#import "HqTransferVC.h"
 
 #import "HqHomeNews.h"
 
@@ -91,7 +92,7 @@
 - (void)headerView{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
     header.backgroundColor = AppMainColor;
-    NSArray *titles = @[@"Scan",@"Collect",@"Pay",@"Cards"];
+    NSArray *titles = @[@"Scan",@"Transfer",@"Pay",@"Cards"];
     NSArray *images = @[@"home_scan_icon",@"home_collect_icon",@"home_pay_icon",@"home_cards_icon"];
     for (int i = 0; i<titles.count; i++) {
         CGFloat width = SCREEN_WIDTH/titles.count;
@@ -116,7 +117,9 @@
             break;
         case 2:
         {
-            [Dialog simpleToast:@"This feature is not complete yet"];
+//            [Dialog simpleToast:@"This feature is not complete yet"];
+            HqTransferVC *transferVC = [[HqTransferVC alloc] init];
+            Push(transferVC);
         }
             break;
         case 3:
