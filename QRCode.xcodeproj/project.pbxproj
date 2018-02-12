@@ -667,6 +667,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8E9D03912031217B00C78B79 /* HqScanPayUtil */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HqScanPayUtil;
+			sourceTree = "<group>";
+		};
 		8ED6CCE52016C5EF0001393A /* HqCustomerKeyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1141,6 +1148,7 @@
 		8EDE173D1FFF7A780013DD41 /* HqScanPay */ = {
 			isa = PBXGroup;
 			children = (
+				8E9D03912031217B00C78B79 /* HqScanPayUtil */,
 				8E36E6712011EEC300701378 /* Views */,
 				8EDE173E1FFF7A910013DD41 /* HqScanPayVC.h */,
 				8EDE173F1FFF7A910013DD41 /* HqScanPayVC.m */,

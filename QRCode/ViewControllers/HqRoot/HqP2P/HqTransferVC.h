@@ -14,3 +14,5 @@
 @property (nonatomic,strong) HqTransfer *transfer;
 
 @end
+
+

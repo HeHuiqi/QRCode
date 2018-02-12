@@ -13,6 +13,8 @@
 @property (nonatomic,copy) NSString *userName;
 @property (nonatomic,copy) NSString *userIconUrl;
 @property (nonatomic,strong) NSDictionary *params;
+@property (nonatomic,assign) CGFloat transferMoney;//转账金额
+
 
 - (void)startGetPayCode;
 - (void)stopGetPayCode;

@@ -12,7 +12,7 @@
 #import "HqTransferSetMoneyVC.h"
 #import "HqPayVC.h"
 
-@interface HqTransferVC ()
+@interface HqTransferVC ()<HqPayVCDelegate>
 
 @property (nonatomic,strong) HqTransferView *transferView;
 @property (nonatomic,strong) HqTransferInfoView *transferInfoView;
@@ -42,10 +42,11 @@
     if (_pesonTransferType == 2) {
         self.transferView.params = @{
                                      @"transferType": @"passive",
-                                @"pin":@"7c4a8d09ca3762af61e59520943dc26494f8941b",
+                                     @"pin":_transfer.pin,
                                      @"amount": @(_transfer.amount),
                                      @"currency": @"VND"
                                      };
+        self.transferView.transferMoney = _transfer.amount;
 
     }else{
         self.transferView.params = @{@"transferType": @"active"};
@@ -63,11 +64,14 @@
     [self.transferView startGetPayCode];
 }
 - (void)setPayMoney{
-    HqPayVC *payVC = [[HqPayVC alloc] init];
-    payVC.transferType = 2;
-    Push(payVC);
-//    HqTransferSetMoneyVC *setMoneyVC = [[HqTransferSetMoneyVC alloc] init];
-//    Push(setMoneyVC);
+    
+//    HqPayVC *payVC = [[HqPayVC alloc] init];
+//    payVC.transferType = 2;
+//    payVC.delegate = self;
+//    Push(payVC);
+    
+    HqTransferSetMoneyVC *setMoneyVC = [[HqTransferSetMoneyVC alloc] init];
+    Push(setMoneyVC);
 }
 - (HqTransferView *)transferView{
     if (!_transferView) {
@@ -93,7 +97,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+#pragma mark - HqPayVCDelegate
+- (void)hqPayVC:(HqPayVC *)vc transfer:(HqTransfer *)transfer{
+    self.transferView.params = @{
+                                 @"transferType": @"passive",
+                                 @"pin":transfer.pin,
+                                 @"amount": @(transfer.amount),
+                                 @"currency": @"VND"
+                                 };
+    self.transferView.transferMoney = transfer.amount;
+    [self.transferView startGetPayCode];
+}
 /*
 #pragma mark - Navigation
 

@@ -33,10 +33,10 @@
         make.top.equalTo(self).offset(0);
     }];
     _inputView = [[HqInputView alloc] initWithPlacehoder:@"Name"];
-    _inputView.layer.borderWidth = 1.0;
-    _inputView.layer.cornerRadius = kHqCornerRadius;
-    _inputView.backgroundColor = [UIColor whiteColor];
-    _inputView.layer.borderColor = HqBorderColor.CGColor;
+//    _inputView.layer.borderWidth = 1.0;
+//    _inputView.layer.cornerRadius = kHqCornerRadius;
+    _inputView.backgroundColor = [UIColor greenColor];
+//    _inputView.layer.borderColor = HqBorderColor.CGColor;
     [self addSubview:_inputView];
     [_inputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_titleLab.mas_bottom).offset(kZoomValue(5));

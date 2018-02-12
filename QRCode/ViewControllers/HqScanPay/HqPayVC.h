@@ -12,9 +12,10 @@
 //    HqTradeTypeTransfer,//转账
 //    HqTradeTypeScanPay,//扫码
 //};
-
+@protocol HqPayVCDelegate;
 @interface HqPayVC : SuperVC
 
+@property (nonatomic,assign) id<HqPayVCDelegate> delegate;
 @property (nonatomic,copy) NSString *code;
 @property (nonatomic,assign) BOOL isFromScan;
 @property (nonatomic,strong) HqBill *bill;
@@ -22,4 +23,12 @@
 
 @property (nonatomic,assign) NSInteger transferType;//1个人被动，2个人主动，3商户
 
+
 @end
+
+@protocol HqPayVCDelegate
+
+- (void)hqPayVC:(HqPayVC *)vc transfer:(HqTransfer *)transfer;
+
+@end
+

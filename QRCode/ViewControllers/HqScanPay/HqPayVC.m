@@ -236,14 +236,18 @@
         url = @"/transactions/collectCodes";
     }else if (_transferType == 2){
         
-        HqTransferVC *transferVC = [[HqTransferVC alloc] init];
-        transferVC.pesonTransferType = 2;
         HqTransfer *transfer = [[HqTransfer alloc] init];
         transfer.amount = [_amountInput.text floatValue];
         transfer.pin = password;
+        /*
+        HqTransferVC *transferVC = [[HqTransferVC alloc] init];
+        transferVC.pesonTransferType = 2;
         transferVC.transfer = transfer;
-        
-        Push(transferVC);
+        Push(transferVC);*/
+        if (self.delegate) {
+            [self.delegate hqPayVC:self transfer:transfer];
+            Back();
+        }
         return;
     }else{
         param = @{

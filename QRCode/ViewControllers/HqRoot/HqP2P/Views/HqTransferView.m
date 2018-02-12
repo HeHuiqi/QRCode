@@ -16,6 +16,10 @@
 @property (nonatomic,strong) HqTransferInfoView *transferInfoView;
 @property (nonatomic,strong) HqPayCodeView *payCodeView;
 
+@property (nonatomic,strong) UILabel *titleLab;
+@property (nonatomic,strong) UILabel *moneyLab;
+
+
 
 @property (nonatomic,assign) BOOL isPaying;//是否正在支付
 
@@ -64,6 +68,15 @@
         make.height.mas_equalTo(kZoomValue(40));
     }];
     
+    _titleLab = [[UILabel alloc] init];
+    _titleLab.text = @"Scan to pay me";
+    _titleLab.hidden = YES;
+    [_contentView addSubview:_titleLab];
+    [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_contentView);
+        make.top.equalTo(_transferInfoView.mas_bottom).offset(kZoomValue(10));
+    }];
+    
     _payCodeView = [[HqPayCodeView alloc]init];
     _payCodeView.backgroundColor = [UIColor grayColor];
     _payCodeView.payCodeType = HqPayCodeTypeTransfer;
@@ -75,6 +88,15 @@
         make.size.mas_equalTo(CGSizeMake(kZoomValue(240), kZoomValue(240)));
     }];
     
+    _moneyLab = [[UILabel alloc] init];
+    _moneyLab.text = @"₫0";
+    _moneyLab.hidden = YES;
+    [_contentView addSubview:_moneyLab];
+    [_moneyLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(_contentView);
+        make.top.equalTo(_payCodeView.mas_bottom).offset(kZoomValue(10));
+    }];
+    
 }
 - (void)setUserName:(NSString *)userName{
     _transferInfoView.titleLab.text = userName;
@@ -84,6 +106,14 @@
 }
 - (void)setParams:(NSDictionary *)params{
     _payCodeView.params = params;
+}
+- (void)setTransferMoney:(CGFloat)transferMoney{
+    _transferMoney = transferMoney;
+    if (_transferMoney>0) {
+        _titleLab.hidden = NO;
+        _moneyLab.hidden = NO;
+        _moneyLab.text = [NSString stringWithFormat:@"₫%0.2f",_transferMoney];
+    }
 }
 - (void)startGetPayCode{
     [_payCodeView startGetPayCode];

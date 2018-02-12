@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self initView];
 }
 - (void)initView{
@@ -29,8 +30,10 @@
     CGFloat leftSpace = 20;
     
     _amountTf = [[HqIdInfoInputView alloc] init];
-    _amountTf.titleLab.text = @"Amount";
+    _amountTf.backgroundColor = [UIColor redColor];
+    _amountTf.titleLab.text = @"Account";
     _amountTf.inputView.delegate = self;
+    _amountTf.inputView.placeholder = @"account";
     _amountTf.inputView.keyboardType = UIKeyboardTypeNumberPad;
     _amountTf.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:_amountTf];
@@ -38,10 +41,18 @@
     [_amountTf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
         make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
-        make.top.equalTo(contentView).offset(64+kZoomValue(80));
+        make.top.equalTo(contentView).offset(64+kZoomValue(20));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     
+    
+    HqInputView *input = [[HqInputView alloc] initWithPlacehoder:@"1232"];
+    [self.view addSubview:input];
+    [input mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left
+    }];
+    
+    /*
     _markTf = [[HqIdInfoInputView alloc] init];
     _markTf.titleLab.text = @"Mark";
     _markTf.inputView.delegate = self;
@@ -54,13 +65,25 @@
         make.top.equalTo(_amountTf.mas_top).offset(kZoomValue(leftSpace));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
-    [self tapView:self.view];
+    */
+    
+    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    loginBtn.tintColor = [UIColor whiteColor];
+    [loginBtn setTitle:@"Confirm" forState:UIControlStateNormal];
+    loginBtn.backgroundColor = AppMainColor;
+    [loginBtn addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
+    loginBtn.layer.cornerRadius = kHqCornerRadius;
+    [contentView addSubview:loginBtn];
+    
+    [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
+        make.top.equalTo(_amountTf.mas_bottom).offset(kZoomValue(30));
+        make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
+        make.height.mas_equalTo(kZoomValue(45));
+    }];
+    
 }
-- (void)tapView:(UIView *)view{
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
-    [view addGestureRecognizer:tap];
-}
-- (void)tapGesture:(UITapGestureRecognizer *)tap{
+- (void)confirm:(UIButton *)btn{
     
     HqTransferVC *transferVC = [[HqTransferVC alloc] init];
     transferVC.pesonTransferType = 2;
