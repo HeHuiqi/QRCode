@@ -39,7 +39,7 @@
 }
 + (void)hqGetShowHudTitle:(NSString *)title param:(NSDictionary *)param url:(NSString *)url complete:(HqHttpUtilResultBlock)block{
     if (!title) {
-        title = @"请稍后";
+        title = @"Please wait";
     }
     [SVProgressHUD showWithStatus:title];
     [HqAFHttpClient starRequestWithHeaders:nil withURLString:url withParam:param requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Get requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
@@ -50,7 +50,7 @@
 
 + (void)hqPostShowHudTitle:(NSString *)title param:(NSDictionary *)param url:(NSString *)url complete:(HqHttpUtilResultBlock)block{
     if (!title) {
-        title = @"请稍后";
+        title = @"Please wait";
     }
     [SVProgressHUD showWithStatus:title];
     [HqAFHttpClient starRequestWithHeaders:nil withURLString:url withParam:param requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Post requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
@@ -60,7 +60,7 @@
 }
 + (void)hqPutShowHudTitle:(NSString *)title param:(NSDictionary *)param url:(NSString *)url complete:(HqHttpUtilResultBlock)block{
     if (!title) {
-        title = @"请稍后";
+        title = @"Please wait";
     }
     [SVProgressHUD showWithStatus:title];
     [HqAFHttpClient starRequestWithHeaders:nil withURLString:url withParam:param requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Put requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
@@ -70,7 +70,7 @@
 }
 + (void)hqDeleteShowHudTitle:(NSString *)title param:(NSDictionary *)param url:(NSString *)url complete:(HqHttpUtilResultBlock)block{
     if (!title) {
-        title = @"请稍后";
+        title = @"Please wait";
     }
     [SVProgressHUD showWithStatus:title];
     [HqAFHttpClient starRequestWithHeaders:nil withURLString:url withParam:param requestIsNeedJson:YES responseIsNeedJson:YES requestMethod:Delete requestCompleBlock:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {

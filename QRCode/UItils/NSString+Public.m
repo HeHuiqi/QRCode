@@ -12,7 +12,10 @@
 
 + (BOOL)isMobileNumber:(NSString *)mobileNum
 {
+    //中国手机号
     NSString * phoneRegex = @"^(0|86|17951)?(13[0-9]|15[012356789]|17[35678]|18[0-9]|14[57])[0-9]{8}$";
+    //越南手机号
+    phoneRegex = @"^(1[345789][0-9]{9}|01[0-9]{9}|08[0-9]{8}|09[0-9]{8})$";
     NSRegularExpression * regular = [[NSRegularExpression alloc]initWithPattern:phoneRegex options:NSRegularExpressionCaseInsensitive error:nil];
     return [regular numberOfMatchesInString:mobileNum options:NSMatchingReportCompletion range:NSMakeRange(0, mobileNum.length)];
 }

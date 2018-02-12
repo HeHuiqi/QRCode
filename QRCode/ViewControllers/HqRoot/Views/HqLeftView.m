@@ -29,15 +29,52 @@
 }
 - (void)initData{
     _titles = @[@{@"icon":@"home_icon",@"title":@"Home"},
-                @{@"icon":@"",@"title":@"Settings"},
-                @{@"icon":@"bill_icon",@"title":@"Contacts"},
+                @{@"icon":@"home_set_icon",@"title":@"Settings"},
+                @{@"icon":@"bill_icon",@"title":@"Bill"},
                 @{@"icon":@"emergency_icon",@"title":@"Emergency"},
                 @{@"icon":@"about_icon",@"title":@"About"}];
 }
+- (void)backClick{
+    if(self.delegate){
+        [self.delegate hqLeftView:self index:100];
+    }
+}
+- (UILabel *)titelLab{
+    UILabel * leftTitle = [[UILabel alloc]init];
+    leftTitle.textColor = COLORA(69, 90, 100);
+    leftTitle.font = [UIFont boldSystemFontOfSize:kZoomValue(18)];
+    return leftTitle;
+}
 - (void)initView{
+    
     UIView *topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 64)];
-    topBarView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    topBarView.backgroundColor = COLOR(241,245,247,1);
     [self addSubview:topBarView];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeSystem];;
+    backBtn.tintColor = COLOR(102, 102, 102, 1);
+    UIImage *image = [UIImage imageNamed:@"back"];
+    [backBtn setImage:image forState:UIControlStateNormal];
+    
+    [backBtn addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    [topBarView addSubview:backBtn];
+//    [backBtn setTitle:@"Menu" forState:UIControlStateNormal];
+    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(topBarView).offset(0);
+        make.top.equalTo(topBarView).offset(20);
+        make.size.mas_equalTo(CGSizeMake(50, 44));
+    }];
+    
+    UILabel *leftTitle = [self titelLab];
+    leftTitle.text = @"Menu";
+    [topBarView addSubview:leftTitle];
+    [leftTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(topBarView.mas_centerX);
+        make.left.equalTo(topBarView).offset(kZoomValue(50));
+        make.top.equalTo(topBarView).offset(20);
+        make.height.mas_equalTo(44);
+    }];
+    
     CGFloat headerHeight = kZoomValue(120);
     CGFloat tableHeight =  self.bounds.size.height-64-kZoomValue(55)-headerHeight;
     CGRect rect = CGRectMake(0,headerHeight+64, self.bounds.size.width, tableHeight);
@@ -64,6 +101,9 @@
 }
 #pragma mark - 退出登录
 - (void)logout:(UIButton *)btn{
+    if(self.delegate){
+        [self.delegate hqLeftView:self index:100];
+    }
     NSLog(@"logout");
     [HqHttpUtil hqDeleteShowHudTitle:nil param:nil url:@"/users/sessions" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
         if (response.statusCode == 200) {
@@ -71,6 +111,7 @@
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
                 SetUserDefault(nil, kToken);
+                SetUserDefault(nil, kisLogin);
                 [AppDelegate setRootVC:HqSetRootVCLogin];
             }else{
                 [Dialog simpleToast:msg];
@@ -96,9 +137,7 @@
     }
     NSDictionary *titleDic = _titles[indexPath.row];
     UIImage *image =  [UIImage imageNamed:titleDic[@"icon"]];
-    NSLog(@"image.size==%@",NSStringFromCGSize(image.size));
-//    cell.leftIcon.image = [UIImage imageNamed:titleDic[@"icon"]];
-                       [cell.leftIcon setImage:image forState:UIControlStateNormal];
+    [cell.leftIcon setImage:image forState:UIControlStateNormal];
     cell.titleLab.text = titleDic[@"title"];
     
     return cell;

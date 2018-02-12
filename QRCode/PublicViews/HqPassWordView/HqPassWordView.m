@@ -41,7 +41,10 @@ static NSString  * const MONEYNUMBERS = @"0123456789";
 - (UIKeyboardType)keyboardType {
     return UIKeyboardTypeNumberPad;
 }
-
+- (void)reInput{
+    [self.textStore setString:@""];
+    [self setNeedsLayout];
+}
 /**
  *  设置密码的位数
  */

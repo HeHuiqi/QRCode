@@ -7,7 +7,6 @@
 //
 
 #import "HqUserIdInfoVC.h"
-#import "HqIdInfoInputView.h"
 #import "HqAddCardVC.h"
 
 
@@ -50,9 +49,8 @@
     
     UIButton *certChooseBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     certChooseBtn.frame =  CGRectMake(0, 0, 40, kZoomValue(45));
-    certChooseBtn.tintColor = [UIColor whiteColor];
-    [certChooseBtn setTitle:@"cho" forState:UIControlStateNormal];
-    certChooseBtn.backgroundColor = COLOR(17, 139, 226, 1);
+    certChooseBtn.tintColor = COLORA(159,162,164);
+    [certChooseBtn setImage:[UIImage imageNamed:@"down_arrow_icon"] forState:UIControlStateNormal];
     [certChooseBtn addTarget:self action:@selector(chooseCert:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:certChooseBtn];
     
@@ -74,7 +72,7 @@
     nextBtn.tintColor = [UIColor whiteColor];
     [nextBtn setTitle:@"Next" forState:UIControlStateNormal];
     nextBtn.backgroundColor = COLOR(17, 139, 226, 1);
-    nextBtn.layer.cornerRadius = 2.0;
+    nextBtn.layer.cornerRadius = kHqCornerRadius;
     [nextBtn addTarget:self action:@selector(nextClick:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:nextBtn];
     
@@ -91,8 +89,45 @@
 }
 - (void)nextClick:(UIButton *)btn{
     
-    HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
-    Push(addCardVC);
+    [self updateUserInfo];
+}
+- (void)updateUserInfo{
+    
+    if (_nameInputView.inputView.text.length==0) {
+        [Dialog simpleToast:@"The name can't be empty!"];
+        return;
+    }
+    if (_idInputView.inputView.text.length==0) {
+        [Dialog simpleToast:@"The idNumber can't be empty!"];
+        return;
+    }
+    if (_idInputView.inputView.text.length<18) {
+        [Dialog simpleToast:@"The idNumber invalidate"];
+        return;
+    }
+    
+    NSDictionary *param = @{ @"realName": _nameInputView.inputView.text,
+                             @"idType": @"01",
+                             @"idNumber": _idInputView.inputView.text};
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/users/identities" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSLog(@"上传个人证件信息==%@",responseObject)
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                HqUser *user = [[HqUser alloc] init];
+                user.idNumber = _idInputView.inputView.text;
+                user.realName = _nameInputView.inputView.text;
+                HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
+                addCardVC.user = user;
+                Push(addCardVC);
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
 }
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -101,9 +136,11 @@
     }
     return YES;
 }
+- (void)backClick{
+    [self backToVC:@"HqCardsVC"];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

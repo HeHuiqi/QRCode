@@ -16,6 +16,8 @@ NSString * const kisFirsUse = @"isFirsUse";
 NSString * const kUserId = @"UserId";
 NSString * const kUserBankCardNumber = @"UserBankCardNumber";
 NSString * const kUserPhoneNumber = @"UserPhoneNumber";
+NSString * const kAddBankCardSuccess = @"kAddBankCardSuccess";
+
 
 //            @"^[a-zA-Z0-9_-]{6,16}$" 6-16密码
 //            @"^(?=.*[a-zA-Z])(?=.*\\d).{6,16}$" 6-16字符加数字密码

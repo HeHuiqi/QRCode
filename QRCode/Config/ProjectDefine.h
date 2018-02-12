@@ -36,9 +36,11 @@
 #define kRequestError @"Sorry,Request Fail!"
 
 #define kMobileNumberLength 11
+#define kMobileNumberMinLength 10
 #define kPasswordMaxLength 14
 #define kPsswordMinLength 6
 #define kCheckCodeMaxLength 6
+#define kHqCornerRadius 3.0
 
 
 #define AppMainColor COLOR(0, 159, 232, 1)
@@ -47,7 +49,7 @@
 #define HqGreenColor COLOR(18, 124, 3, 1)
 #define HqDeepGrayColor COLOR(102, 102, 102, 1)
 #define HqBlackColor COLOR(51, 51, 51, 1)
-
+#define HqBorderColor  COLORA(230,230,230)
 
 #define LineColor COLOR(229, 229, 229, 1)
 #define LineHeight (1.0/[UIScreen mainScreen].scale)

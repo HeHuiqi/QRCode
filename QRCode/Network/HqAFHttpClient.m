@@ -67,12 +67,10 @@
 }
 
 + (void)tokenInvalid{
-    
-   
-  // 登录失效 断开连接
-    SetUserDefault(@"", kToken);
-    SetUserDefault(@"", kUserBankCardNumber);
-//    [AppDelegate setRootVCIsLogin:NO];
+  // 登录失效
+    SetUserDefault(nil, kToken);
+    SetUserDefault(nil, kisLogin)
+    [AppDelegate setRootVC:HqSetRootVCLogin];
     
 }
 
@@ -176,15 +174,15 @@
     NSLog(@"http-statusCode == %d",(int)response.statusCode);
     if ([responseObject isKindOfClass:[NSDictionary class]])
     {
-        int status = [[responseObject hq_objectForKey:@"status"] intValue];
-        if (status >=4001 && status<=4005 && ![response.URL.absoluteString hasSuffix:@"login"] ) {
+        int code = [[responseObject hq_objectForKey:@"code"] intValue];
+        if (code == 3102 ) {
+            NSLog(@"tokenInvalid==%@",responseObject);
             [self tokenInvalid];
+//            NSDictionary *dic = @{@"message":@"The user is offline"};
             block(nil,nil,nil);
         }else{
             block(response,responseObject,nil);
         }
-        
-        
     }
     else
     {
@@ -211,14 +209,10 @@
     }else{
         if (response.statusCode >= 500) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [Dialog simpleToast:@"服务开小差"];
+                [Dialog simpleToast:@"server is busy!"];
             });
-            
         }
     }
     block(response,nil,error);
-    
 }
-
-
 @end

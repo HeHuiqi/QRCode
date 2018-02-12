@@ -11,12 +11,15 @@
 #import "HqUserIdInfoVC.h"
 
 #import "HqPayPasswordVC.h"
-
-@interface HqCardsVC ()<UITableViewDelegate, UITableViewDataSource>
+#import "HqCardDetailVC.h"
+#import "HqAddCardVC.h"
+@interface HqCardsVC ()<UITableViewDelegate, UITableViewDataSource,HqCardDetailVCDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *cardList;
 
+@property (nonatomic,strong) HqBankCard *curretnSelectedCard;//当前选中的银行卡进入详情页
+@property (nonatomic,strong) HqBankCard *defaultCard;//默认卡
 @end
 
 @implementation HqCardsVC
@@ -27,6 +30,7 @@
     _cardList = [[NSMutableArray alloc] init];
     [self initView];
     [self requsetCardList];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requsetCardList) name:kAddBankCardSuccess object:nil];
 }
 - (void)requsetCardList{
     NSDictionary *param = @{};
@@ -40,6 +44,9 @@
                 [_cardList removeAllObjects];
                 for (NSDictionary *dic in cards) {
                     HqBankCard *card = [HqBankCard mj_objectWithKeyValues:dic];
+                    if (card.isDefault) {
+                        _defaultCard = card;
+                    }
                     [_cardList addObject:card];
                 }
                 [_tableView reloadData];
@@ -65,10 +72,11 @@
     /*
      *画虚线
      */
-    UIButton *contentView = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH-40, kZoomValue(185)-40)];
+    UIButton *contentView = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, SCREEN_WIDTH-40, kZoomValue(185)-40)];
     [contentView addTarget:self action:@selector(addCards:) forControlEvents:UIControlEventTouchUpInside];
     UIImage *linkCard = [UIImage imageNamed:@"cards_link"];
-    [contentView setImage:linkCard forState:UIControlStateNormal];    contentView.layer.cornerRadius = 2.0;
+    contentView.layer.cornerRadius = kHqCornerRadius;
+    [contentView setImage:linkCard forState:UIControlStateNormal];
     [footer addSubview:contentView];
     CAShapeLayer *subLayer = [self dotteShapeLayer:contentView.bounds];
     [contentView.layer addSublayer:subLayer];
@@ -102,11 +110,58 @@
 #pragma mark - 添加银行卡
 - (void)addCards:(UIButton *)btn{
     
-    HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
-    Push(passwordVC);
-//    HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
-//    Push(idUserVC);
+    [self requestUerInfo];
 }
+#pragma mark - 获取用户信息
+- (void)requestUerInfo{
+    
+    [HqHttpUtil hqGetShowHudTitle:nil param:nil url:@"/users"   complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSLog(@"用户信息==%@",responseObject);
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                
+                HqUser *user = [HqUser mj_objectWithKeyValues:responseObject];
+                
+                if (_cardList.count==0) {
+                    if (user.idNumber.length>0&&user.realName.length>0) {
+                        if (user.hasPin) {
+                            HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                            passwordVC.user = user;
+                            passwordVC.isFromAddCardInfo = 0;
+                            passwordVC.payPasswordType = HqPayPasswordInput;
+                            Push(passwordVC);
+                        }else{
+                            HqAddCardVC *addCardVC = [[HqAddCardVC alloc] init];
+                            addCardVC.user = user;
+                            Push(addCardVC);
+                        }
+                    }else{
+                        HqUserIdInfoVC *idUserVC = [[HqUserIdInfoVC alloc] init];
+                        Push(idUserVC);
+                    }
+                }else{
+                    HqPayPasswordVC *passwordVC = [[HqPayPasswordVC alloc] init];
+                    passwordVC.user = user;
+                    if (user.hasPin) {
+                        passwordVC.payPasswordType = HqPayPasswordInput;
+                        passwordVC.isFromAddCardInfo = 0;
+                    }else{
+                        passwordVC.payPasswordType = HqPayPasswordCreate;
+                        passwordVC.isFromAddCardInfo = 0;
+                    }
+                    Push(passwordVC);
+                }
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
+
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _cardList.count;
@@ -123,16 +178,36 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     HqBankCard *card = _cardList[indexPath.row];
     cell.bankCard = card;
-//    cell.bankNameLab.text = @"Bla Bank";
-//    cell.cardTypeLab.text = @"Debit Card";
-//
-//    cell.cardNumberLab.text = @"**** **** **** 3897";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    HqCardDetailVC *cardDetailVC = [[HqCardDetailVC alloc] init];
+    _curretnSelectedCard = _cardList[indexPath.row];
+    cardDetailVC.delegate = self;
+    cardDetailVC.bankCard = _curretnSelectedCard;
+    Push(cardDetailVC);
 }
-
+#pragma mark - HqCardDetailVCDelegate
+- (void)hqCardDetailVC:(HqCardDetailVC *)vc cardOperate:(HqCardOperate)operate{
+    switch (operate) {
+        case HqCardOperateDelete:
+            {
+                if (_curretnSelectedCard) {
+                    [_cardList removeObject:_curretnSelectedCard];
+                }
+            }
+            break;
+        case HqCardOperateSetDetault:
+        {
+            _curretnSelectedCard.isDefault = YES;
+            _defaultCard.isDefault = NO;
+            _defaultCard = _curretnSelectedCard;
+        }
+            break;
+    }
+    [_tableView reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -59,15 +59,19 @@
     
     CGFloat inputHeight = 45;
     
-    UIButton *registBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    registBtn.tintColor = AppMainColor;
+    UIButton *registBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [registBtn setTitle:@"Sign Up" forState:UIControlStateNormal];
-    registBtn.backgroundColor = [UIColor whiteColor];
+    [registBtn setTitleColor:AppMainColor forState:UIControlStateNormal];
+    [registBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [registBtn setBackgroundImage:[UIImage imageNamed:@"btn_border"] forState:UIControlStateNormal];
+    [registBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateHighlighted];
+    
     [registBtn addTarget:self action:@selector(userOperate:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:registBtn];
-    registBtn.layer.borderWidth = 1.0;
-    registBtn.layer.borderColor = AppMainColor.CGColor;
-    registBtn.layer.cornerRadius = 2.0;
+//    registBtn.layer.borderWidth = 1.0;
+//    registBtn.layer.borderColor = AppMainColor.CGColor;
+//    registBtn.layer.cornerRadius = 2.0;
     registBtn.tag = 1;
     
     [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -77,13 +81,14 @@
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     
-    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    loginBtn.tintColor = [UIColor whiteColor];
+    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg"] forState:UIControlStateNormal];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"btn_border"] forState:UIControlStateHighlighted];
     [loginBtn setTitle:@"Log In" forState:UIControlStateNormal];
-    loginBtn.backgroundColor = COLOR(17, 139, 226, 1);
+    [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [loginBtn setTitleColor:AppMainColor forState:UIControlStateHighlighted];
     [loginBtn addTarget:self action:@selector(userOperate:) forControlEvents:UIControlEventTouchUpInside];
     [contentView addSubview:loginBtn];
-    loginBtn.layer.cornerRadius = 2.0;
 
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(infoLab.mas_bottom).offset(kZoomValue(40));
@@ -91,7 +96,6 @@
         make.right.equalTo(contentView).offset(-kZoomValue(30));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
-
 }
 - (void)userOperate:(UIButton *)btn{
     

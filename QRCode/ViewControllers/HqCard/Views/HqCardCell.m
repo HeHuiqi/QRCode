@@ -16,11 +16,17 @@
     }
     return self;
 }
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        [self setup];
+    }
+    return self;
+}
 - (void)setup{
     
     UIView *bgView = [[UIView alloc] init];
     bgView.backgroundColor = AppMainColor;
-    bgView.layer.cornerRadius = 2.0;
+    bgView.layer.cornerRadius = kHqCornerRadius;
     [self.contentView addSubview:bgView];
     CGFloat leftSpace = kZoomValue(15);
     

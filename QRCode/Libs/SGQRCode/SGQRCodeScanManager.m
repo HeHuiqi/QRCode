@@ -114,6 +114,9 @@ static SGQRCodeScanManager *_instance;
 
 #pragma mark - - - AVCaptureMetadataOutputObjectsDelegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
+    if (metadataObjects.count>0) {
+        [self.session stopRunning];
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(QRCodeScanManager:didOutputMetadataObjects:)]) {
         [self.delegate QRCodeScanManager:self didOutputMetadataObjects:metadataObjects];
     }
@@ -128,7 +131,7 @@ static SGQRCodeScanManager *_instance;
     NSDictionary *exifMetadata = [[metadata objectForKey:(NSString *)kCGImagePropertyExifDictionary] mutableCopy];
     float brightnessValue = [[exifMetadata objectForKey:(NSString *)kCGImagePropertyExifBrightnessValue] floatValue];
     
-    NSLog(@"%f",brightnessValue);
+//    NSLog(@"%f",brightnessValue);
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(QRCodeScanManager:brightnessValue:)]) {
         [self.delegate QRCodeScanManager:self brightnessValue:brightnessValue];

@@ -11,12 +11,19 @@
 #import "HqButton.h"
 #import "HqHomeCell.h"
 #import "HqScanPayVC.h"
+#import "HqScanPayAndCodeVC.h"
 #import "HqCardsVC.h"
 
 #import "HqGesturePasswordVC.h"
+#import "PCCircleViewConst.h"
+#import "HqTradeRecordVC.h"
+#import "HqTransferVC.h"
+
+#import "HqHomeNews.h"
 
 #define LeftWidth (SCREEN_WIDTH - kZoomValue(52))
 #define LeftAlpha 0.7
+
 @interface HqRootVC ()<UITableViewDelegate,UITableViewDataSource,HqLeftViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) HqLeftView *leftView;//左侧视图
@@ -25,6 +32,9 @@
 @property (nonatomic,strong) UIImageView *tableHeaderView;
 
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) HqUser *user;
+
+@property (nonatomic,strong) NSMutableArray *homeDatas;
 
 @end
 
@@ -40,6 +50,7 @@
     [self headerView];
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.tableHeaderView;
+    self.tableHeaderView.image = [UIImage imageNamed:@"home_header_bg"];
     
     [self.view addSubview:self.mainOverView];
     [self.view addSubview:self.leftView];
@@ -54,17 +65,35 @@
     NSString *token = GetUserDefault(kToken);
     NSLog(@"token==%@",token);
 }
+#pragma mark - Bill
 - (void)homeBill:(UIButton *)btn{
-    
+    HqTradeRecordVC *recordVC = [[HqTradeRecordVC alloc] init];
+    Push(recordVC);
 }
 - (void)initData{
     self.isOpen = NO;
+    if ([AppDelegate shareApp].isInputGesturePassword) {
+        [self requestUerInfo];
+    }
+    _homeDatas = [[NSMutableArray alloc] init];
+    HqHomeNews *hms = [[HqHomeNews alloc] init];
+    hms.bankName = @"Main Bank";
+    hms.introduce = @"Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cra";
+    hms.date =  @"September, 19";
+    
+    HqHomeNews *hms1 = [[HqHomeNews alloc] init];
+    hms1.bankName = @"Offers";
+    hms1.introduce = @"Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim";
+    hms1.date =  @"september-12";
+    [_homeDatas addObject:hms];
+    [_homeDatas addObject:hms1];
+
 }
 - (void)headerView{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
     header.backgroundColor = AppMainColor;
-    NSArray *titles = @[@"Scan",@"Collect",@"Pay",@"Cards"];
-    NSArray *images = @[@"home_scan_icon",@"",@"home_pay_icon",@"home_cards_icon"];
+    NSArray *titles = @[@"Scan",@"Transfer",@"Pay",@"Cards"];
+    NSArray *images = @[@"home_scan_icon",@"home_collect_icon",@"home_pay_icon",@"home_cards_icon"];
     for (int i = 0; i<titles.count; i++) {
         CGFloat width = SCREEN_WIDTH/titles.count;
         HqButton *button = [[HqButton alloc] initWithFrame:CGRectMake(i*width, 0, width, kZoomValue(70))];
@@ -80,25 +109,30 @@
 - (void)headerClick:(HqButton *)btn{
     NSLog(@"btn= %@",@(btn.tag));
     switch (btn.tag) {
-            case 1:
-            {
-                HqScanPayVC *scanVC = [[HqScanPayVC alloc] init];
-                Push(scanVC);
-            }
+        case 1:
+        {
+            HqScanPayVC *scanVC = [[HqScanPayVC alloc] init];
+            Push(scanVC);
+        }
             break;
-            case 2:
-            {
-//                [Dialog simpleToast:@"This feature is not complete yet"];
-                HqGesturePasswordVC *gesturePasswordVC = [[HqGesturePasswordVC alloc] init];
-                gesturePasswordVC.type = GestureViewControllerTypeLogin;
-                Push(gesturePasswordVC);
-            }
+        case 2:
+        {
+//            [Dialog simpleToast:@"This feature is not complete yet"];
+            HqTransferVC *transferVC = [[HqTransferVC alloc] init];
+            Push(transferVC);
+        }
             break;
-            case 4:
-            {
-                HqCardsVC *cardsVC = [[HqCardsVC alloc] init];
-                Push(cardsVC);
-            }
+        case 3:
+        {
+            HqScanPayAndCodeVC *payScanCodeVC = [[HqScanPayAndCodeVC alloc] init];
+            Push(payScanCodeVC);
+        }
+            break;
+        case 4:
+        {
+            HqCardsVC *cardsVC = [[HqCardsVC alloc] init];
+            Push(cardsVC);
+        }
             break;
             
         default:
@@ -141,10 +175,10 @@
     }
     
     switch (panGesture.state) {
-            case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateBegan:
             
             break;
-            case UIGestureRecognizerStateChanged:
+        case UIGestureRecognizerStateChanged:
         {
             
             if (xOffset>=LeftWidth) {
@@ -166,22 +200,22 @@
         }
             
             break;
-            case UIGestureRecognizerStateEnded:{
-                self.view.userInteractionEnabled = YES;
-                
-                [UIView animateWithDuration:0.1 animations:^{
-                    if (self.leftView.frame.origin.x>-LeftWidth/2.0) {
-                        self.leftView.frame = CGRectMake(0, 0, LeftWidth, self.view.frame.size.height);
-                        self.mainOverView.alpha = LeftAlpha;
-                        self.isOpen = YES;
-                    }else{
-                        self.leftView.frame = CGRectMake(-LeftWidth, 0, LeftWidth, self.view.frame.size.height);
-                        self.mainOverView.alpha = 0.0;
-                        self.isOpen = NO;
-                    }
-                }];
-                
-            }
+        case UIGestureRecognizerStateEnded:{
+            self.view.userInteractionEnabled = YES;
+            
+            [UIView animateWithDuration:0.1 animations:^{
+                if (self.leftView.frame.origin.x>-LeftWidth/2.0) {
+                    self.leftView.frame = CGRectMake(0, 0, LeftWidth, self.view.frame.size.height);
+                    self.mainOverView.alpha = LeftAlpha;
+                    self.isOpen = YES;
+                }else{
+                    self.leftView.frame = CGRectMake(-LeftWidth, 0, LeftWidth, self.view.frame.size.height);
+                    self.mainOverView.alpha = 0.0;
+                    self.isOpen = NO;
+                }
+            }];
+            
+        }
             break;
             
         default:
@@ -222,7 +256,7 @@
     return _tableView;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return _homeDatas.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return kZoomValue(137);
@@ -233,19 +267,53 @@
     if (!cell) {
         cell = [[HqHomeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentfier];
     }
-    cell.titleLab.text = @"Main Bank";
-    cell.dateLab.text  = @"September, 19";
-    cell.contentLab.text = @"Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cra";
+    HqHomeNews *hms = _homeDatas[indexPath.row];
+    cell.titleLab.text = hms.bankName;
+    cell.dateLab.text  = hms.date;
+    cell.contentLab.text = hms.introduce;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
 }
+
+#pragma mark - 获取用户信息
+- (void)requestUerInfo{
+    
+    [HqHttpUtil hqGetShowHudTitle:nil param:nil url:@"/users"   complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        if (response.statusCode == 200) {
+            NSLog(@"用户信息==%@",responseObject);
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                HqGesturePasswordVC *gesturePasswordVC = [[HqGesturePasswordVC alloc] init];
+                _user = [HqUser mj_objectWithKeyValues:responseObject];
+//                NSString *gesturePassword = [PCCircleViewConst getGestureWithKey:gestureFinalSaveKey];
+                gesturePasswordVC.user = _user;
+                if (_user.hasGesture) {
+                    gesturePasswordVC.type = GestureViewControllerTypeLogin;
+                }else{
+                    gesturePasswordVC.type = GestureViewControllerTypeSetting;
+                }
+                
+//                gesturePasswordVC.type = GestureViewControllerTypeSetting;
+
+
+                Push(gesturePasswordVC);
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
+
+
 - (void)backClick{
     
     [self openLeftView];
-    
 }
 
 #pragma mark - HqLeftViewDelegate
@@ -255,27 +323,28 @@
     NSLog(@"index==%@",@(index));
     
     switch (index) {
-            case 0:
+        case 0:
         {
             
         }
             break;
-            case 1:
+        case 1:
         {
             
         }
             break;
-            case 2:
+        case 2:
+        {
+            HqTradeRecordVC *tradeVC = [[HqTradeRecordVC alloc] init];
+            Push(tradeVC);
+        }
+            break;
+        case 3:
         {
             
         }
             break;
-            case 3:
-        {
-            
-        }
-            break;
-            case 4:
+        case 4:
         {
             
         }
@@ -295,6 +364,9 @@
     }
     return  YES;
 }
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

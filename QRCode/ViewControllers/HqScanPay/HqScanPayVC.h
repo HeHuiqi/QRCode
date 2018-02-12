@@ -10,4 +10,6 @@
 
 @interface HqScanPayVC : SuperVC
 
+
+
 @end

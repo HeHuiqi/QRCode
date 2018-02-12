@@ -8,6 +8,9 @@
 
 #import "HqScanPayVC.h"
 #import "SGQRCode.h"
+#import "HqPayVC.h"
+#import "HqScanResultVC.h"
+#import "HqPaySuccessVC.h"
 
 @interface HqScanPayVC ()<SGQRCodeScanManagerDelegate, SGQRCodeAlbumManagerDelegate>
 
@@ -16,7 +19,8 @@
 @property (nonatomic, strong) UIButton *flashlightBtn;
 @property (nonatomic, strong) UILabel *promptLabel;
 @property (nonatomic, assign) BOOL isSelectedFlashlightBtn;
-@property (nonatomic, strong) UIView *bottomView;
+
+@property (nonatomic,assign) BOOL isReaded;//已经读取成功
 
 @end
 
@@ -25,7 +29,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.scanningView addTimer];
-    [_manager resetSampleBufferDelegate];
+    if (self.manager) {
+        [_manager resetSampleBufferDelegate];
+        [_manager startRunning];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -41,16 +48,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = [UIColor clearColor];
+
+    self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        NSLog(@"%@",granted ? @"相机准许":@"相机不准许");
+        if (granted) {
+            [self setupQRCodeScanning];
+        }else{
+            HqAlertView *alert = [[HqAlertView alloc] initWithTitle:@"Request Open Camera" message:nil];
+            alert.btnTitles = @[@"Cancel",@"Confirm"];
+            [alert showVC:self callBack:^(UIAlertAction *action, int index) {
+                if (index == 1) {
+                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                }else{
+                    Back();
+                }
+               
+            }];
+        }
+        
+    }];
+    self.title = @"Scan";
     [self.view addSubview:self.scanningView];
-    [self setupQRCodeScanning];
     [self.view addSubview:self.promptLabel];
     [self.view addSubview:self.flashlightBtn];
-    self.title = @"Scan";
-
+    self.isReaded = NO;
 }
 
 
@@ -91,18 +114,27 @@
 //扫描读取
 #pragma mark - - - SGQRCodeScanManagerDelegate
 - (void)QRCodeScanManager:(SGQRCodeScanManager *)scanManager didOutputMetadataObjects:(NSArray *)metadataObjects {
-    NSLog(@"metadataObjects - - %@", metadataObjects);
+    NSLog(@"识别到的metadataObjects - - %@", metadataObjects);
+    if (self.isReaded) {
+        return;
+    }
     if (metadataObjects != nil && metadataObjects.count > 0) {
+        self.isReaded = YES;
         [scanManager palySoundName:@"SGQRCode.bundle/sound.caf"];
         [scanManager stopRunning];
         [scanManager videoPreviewLayerRemoveFromSuperlayer];
         
         AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
       
-        NSLog(@"obj===%@",obj.stringValue);
-        
+        NSLog(@"识别到的=obj.stringValue==%@",obj.stringValue);
+        if (obj.stringValue) {
+            [self scanSuccess:obj.stringValue];
+        }else{
+            [Dialog simpleToast:@"Scan Fail!"];
+        }
     } else {
         NSLog(@"暂未识别出扫描的二维码");
+//         [Dialog simpleToast:@"Scan Fail!"];
     }
 }
 - (void)QRCodeScanManager:(SGQRCodeScanManager *)scanManager brightnessValue:(CGFloat)brightnessValue {
@@ -169,5 +201,98 @@
     });
 }
 
+#pragma mark - 扫码成功
+- (void)scanSuccess:(NSString *)resultCode{
 
+    NSDictionary *param = nil;
+    NSString *url = nil;
+    // hQVDUFY 个人码
+    //0002010 商户码
+    //hQVUQ0E 主动模式码
+    //hQVUQ1A 被动模式码
+    NSInteger transferType = 3;// 1主动，2被动 3商户
+    if ([resultCode hasPrefix:@"0002010"]) {
+        param = @{@"collectCode": resultCode};
+        url = @"/transactions/collectCodes/getOrder";
+    }else if ([resultCode hasPrefix:@"hQVUQ0E"]){
+        //主动模式码
+        transferType = 1;
+        url = @"/transactions/transfers/getInfo";
+        param = @{@"transferCode": resultCode};
+    }else if ([resultCode hasPrefix:@"hQVUQ1A"]){
+        //被动模式码
+        transferType = 2;
+        url = @"/transactions/transfers/getInfo";
+        param = @{@"transferCode": resultCode};
+    }else{
+        
+    }
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"获取订单信息==%@",responseObject);
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                if (transferType == 1) {
+                    NSDictionary *dataDic = [responseObject hq_objectForKey:@"data"];
+                    HqTransfer *transfer = [HqTransfer mj_objectWithKeyValues:dataDic];
+                    HqPayVC *payVC = [[HqPayVC alloc] init];
+                    payVC.code = resultCode;
+                    payVC.isFromScan = 1;
+                    payVC.transfer = transfer;
+                    payVC.transferType = transferType;
+                    Push(payVC);
+                    
+                } else if (transferType == 2){
+                    NSDictionary *dataDic = [responseObject hq_objectForKey:@"data"];
+                    HqTransfer *transfer = [HqTransfer mj_objectWithKeyValues:dataDic];
+                    [self confirmTransfer:transfer code:resultCode];
+                }
+                else{
+                    NSDictionary *orderDic = [responseObject hq_objectForKey:@"orderInfo"];
+                    HqBill *bill = [HqBill mj_objectWithKeyValues:orderDic];
+                    HqPayVC *payVC = [[HqPayVC alloc] init];
+                    payVC.code = resultCode;
+                    payVC.isFromScan = 1;
+                    payVC.transferType = transferType;
+                    payVC.bill = bill;
+                    Push(payVC);
+                }
+            }else{
+                [Dialog simpleToast:msg];
+                HqScanResultVC *resultVC = [[HqScanResultVC alloc] init];
+                resultVC.result = resultCode;
+                Push(resultVC);
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
+
+- (void)confirmTransfer:(HqTransfer *)transfer code:(NSString *)code{
+    NSDictionary *param = nil;
+    NSString *url = @"/transactions/transfers/complete";
+    param = @{
+              @"transferCode": code,
+              @"amount":@(transfer.amount),
+              @"currency": @"VND"
+              };
+    [HqHttpUtil hqPostShowHudTitle:nil param:param url:url complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"支付结果==%@",responseObject);
+        
+        if (response.statusCode == 200) {
+            NSString *msg = [responseObject hq_objectForKey:@"message"];
+            int code = [[responseObject hq_objectForKey:@"code"] intValue];
+            if (code==1) {
+                HqPaySuccessVC *paySuccess = [[HqPaySuccessVC alloc] init];
+                Push(paySuccess);
+            }else{
+                [Dialog simpleToast:msg];
+            }
+        }else{
+            [Dialog simpleToast:kRequestError];
+        }
+    }];
+}
 @end

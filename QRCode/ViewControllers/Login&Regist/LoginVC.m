@@ -7,7 +7,6 @@
 //
 
 #import "LoginVC.h"
-#import "HqInputView.h"
 
 @interface LoginVC ()<UITextFieldDelegate>
 
@@ -55,12 +54,14 @@
     _mobileTf = [[HqInputView alloc] initWithPlacehoder:@"Phone number" leftIcon:@"hqphone_icon"];
     _mobileTf.delegate = self;
     _mobileTf.keyboardType = UIKeyboardTypeNumberPad;
+    _mobileTf.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:_mobileTf];
     
     _passwordTf = [[HqInputView alloc] initWithPlacehoder:@"Password" leftIcon:@"hqpassword_icon"];
     _passwordTf.delegate = self;
     _passwordTf.secureTextEntry = YES;
-    
+    _passwordTf.layer.cornerRadius = kHqCornerRadius;
+
     [contentView addSubview:_passwordTf];
     
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -68,6 +69,7 @@
     [loginBtn setTitle:@"Log In" forState:UIControlStateNormal];
     loginBtn.backgroundColor = COLOR(17, 139, 226, 1);
     [loginBtn addTarget:self action:@selector(loginApp:) forControlEvents:UIControlEventTouchUpInside];
+    loginBtn.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:loginBtn];
     
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -116,7 +118,8 @@
         [Dialog simpleToast:@"The phone number can't be empty"];
         return;
     }
-    if(_mobileTf.text.length<kMobileNumberLength){
+    BOOL isNumber = [NSString isMobileNumber:_mobileTf.text];
+    if(_mobileTf.text.length<kMobileNumberMinLength||!isNumber){
         [Dialog simpleToast:@"Incorrect phone number"];
         return;
     }
@@ -132,14 +135,18 @@
     NSDictionary *param = @{@"username": _mobileTf.text,
                             @"password": password};
     [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/users/sessions" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+        NSLog(@"登录===%@",responseObject);
         if (response.statusCode == 200) {
             NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
                 NSString *token = [responseObject hq_objectForKey:@"token"];
                 SetUserDefault(token, kToken);
-                [AppDelegate setRootVC:HqSetRootVCHome];
+                SetUserDefault(@"1", kisLogin);
                 
+                AppDelegate *app = [AppDelegate shareApp];
+                app.isInputGesturePassword = NO;
+                [AppDelegate setRootVC:HqSetRootVCHome];
             }else{
                 [Dialog simpleToast:msg];
             }

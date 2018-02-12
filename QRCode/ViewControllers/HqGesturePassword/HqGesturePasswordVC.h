@@ -25,5 +25,6 @@ typedef enum{
  *  控制器来源类型
  */
 @property (nonatomic, assign) GestureViewControllerType type;
+@property (nonatomic,strong) HqUser *user;
 
 @end
