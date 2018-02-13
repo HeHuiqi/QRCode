@@ -10,9 +10,8 @@
 #import "HqTransferView.h"
 #import "HqTransferInfoView.h"
 #import "HqTransferSetMoneyVC.h"
-#import "HqPayVC.h"
 
-@interface HqTransferVC ()
+@interface HqTransferVC ()<HqTransferSetMoneyVCDelegate>
 
 @property (nonatomic,strong) HqTransferView *transferView;
 @property (nonatomic,strong) HqTransferInfoView *transferInfoView;
@@ -33,41 +32,43 @@
     [self.view addSubview:self.transferView];
     self.view.backgroundColor = AppMainColor;
     [self.transferView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(kZoomValue(40)+64);
+    make.top.equalTo(self.view).offset(kZoomValue(28)+self.navBarheight);
         make.left.equalTo(self.view).offset(0);
         make.right.equalTo(self.view).offset(0);
         make.height.mas_equalTo(kZoomValue(400));
     }];
-    self.transferView.userName = @"QR";
-    if (_pesonTransferType == 2) {
-        self.transferView.params = @{
-                                     @"transferType": @"passive",
-                                @"pin":@"7c4a8d09ca3762af61e59520943dc26494f8941b",
-                                     @"amount": @(_transfer.amount),
-                                     @"currency": @"VND"
-                                     };
 
-    }else{
-        self.transferView.params = @{@"transferType": @"active"};
-
-    }
+    
     [self.view addSubview:self.transferInfoView];
     [self.transferInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.transferView.mas_bottom).offset(kZoomValue(30));
+        make.top.equalTo(self.transferView.mas_bottom).offset(kZoomValue(15));
         make.left.equalTo(self.view).offset(kZoomValue(15));
         make.right.equalTo(self.view).offset(kZoomValue(-15));
         make.height.mas_equalTo(kZoomValue(40));
     }];
     [self.transferInfoView addTarget:self action:@selector(setPayMoney) forControlEvents:UIControlEventTouchUpInside];
+    self.transferInfoView.backgroundColor = COLOR(255,255,255,0.3);
+    self.transferInfoView.titleLab.textColor = [UIColor whiteColor];
+    self.transferInfoView.layer.cornerRadius = kHqCornerRadius;
+
+    //transferType为1
+    self.transferView.params = @{@"transferType": @"active"};
+    self.transferView.title = @"Personal collection";
+    self.transferView.titleIconName = @"shou_top_icon";
+    self.transferView.subCenterTitle = @"Scan to pay me";
+    self.transferInfoView.titleLab.text = @"Personal payment";
+    self.transferInfoView.leftIcon.image = [UIImage imageNamed:@"fu_bottom_icon"];
     
     [self.transferView startGetPayCode];
+    
+    
 }
 - (void)setPayMoney{
-    HqPayVC *payVC = [[HqPayVC alloc] init];
-    payVC.transferType = 2;
-    Push(payVC);
-//    HqTransferSetMoneyVC *setMoneyVC = [[HqTransferSetMoneyVC alloc] init];
-//    Push(setMoneyVC);
+   
+    HqTransferSetMoneyVC *setMoneyVC = [[HqTransferSetMoneyVC alloc] init];
+    setMoneyVC.delegate = self;
+    setMoneyVC.transferType = 2;
+    Push(setMoneyVC);
 }
 - (HqTransferView *)transferView{
     if (!_transferView) {
@@ -88,6 +89,28 @@
     }else{
         [super backClick];
     }
+}
+#pragma mark - HqTransferSetMoneyVCDelegate
+- (void)hqTransferSetMoneyVC:(HqTransferSetMoneyVC *)vc transfer:(HqTransfer *)transfer{
+     //transferType为2
+    self.transferView.params = @{
+                                 @"transferType": @"passive",
+                                 @"pin":transfer.pin,
+                                 @"amount": @(transfer.amount),
+                                 @"currency":transfer.currency
+                                 };
+    
+    self.transferView.title = @"Personal payment";
+    self.transferView.titleIconName = @"fu_top_icon";
+    self.transferView.subCenterTitle = @"Scan  to collect from me";
+    
+    self.transferInfoView.titleLab.text = @"Personal collection ";
+    self.transferInfoView.leftIcon.image = [UIImage imageNamed:@"shou_bottom_icon"];
+    self.transferView.money = transfer.amount;
+    
+    [self.transferView stopGetPayCode];
+    [self.transferView startGetPayCode];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -20,6 +20,5 @@
 @property (nonatomic,strong) HqBill *bill;
 @property (nonatomic,strong) HqTransfer *transfer;
 
-@property (nonatomic,assign) NSInteger transferType;//1个人被动，2个人主动，3商户
-
+@property (nonatomic,assign) NSInteger transferType;//1主动模式作为收款人，2被动模式作为付款人，3商户 
 @end

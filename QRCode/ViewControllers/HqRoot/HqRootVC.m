@@ -23,6 +23,11 @@
 
 #define LeftWidth (SCREEN_WIDTH - kZoomValue(52))
 #define LeftAlpha 0.7
+//test
+#import "HqTransferConfirmVC.h"
+#import "HqScanTransferResultVC.h"
+
+
 
 @interface HqRootVC ()<UITableViewDelegate,UITableViewDataSource,HqLeftViewDelegate,UIGestureRecognizerDelegate>
 
@@ -72,9 +77,9 @@
 }
 - (void)initData{
     self.isOpen = NO;
-    if ([AppDelegate shareApp].isInputGesturePassword) {
-        [self requestUerInfo];
-    }
+//    if ([AppDelegate shareApp].isInputGesturePassword) {
+//        [self requestUerInfo];
+//    }
     _homeDatas = [[NSMutableArray alloc] init];
     HqHomeNews *hms = [[HqHomeNews alloc] init];
     hms.bankName = @"Main Bank";
@@ -93,7 +98,7 @@
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
     header.backgroundColor = AppMainColor;
     NSArray *titles = @[@"Scan",@"Transfer",@"Pay",@"Cards"];
-    NSArray *images = @[@"home_scan_icon",@"home_collect_icon",@"home_pay_icon",@"home_cards_icon"];
+    NSArray *images = @[@"home_scan_icon",@"home_transfer",@"home_pay_icon",@"home_cards_icon"];
     for (int i = 0; i<titles.count; i++) {
         CGFloat width = SCREEN_WIDTH/titles.count;
         HqButton *button = [[HqButton alloc] initWithFrame:CGRectMake(i*width, 0, width, kZoomValue(70))];
@@ -275,6 +280,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    HqScanTransferResultVC *ss = [[HqScanTransferResultVC alloc] init];
+//    ss.transferStatus = 0;
+//    Push(ss);
     
 }
 

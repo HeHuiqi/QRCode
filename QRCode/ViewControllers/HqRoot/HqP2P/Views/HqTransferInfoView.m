@@ -17,12 +17,11 @@
 }
 - (void)setup{
     _leftIcon = [[UIImageView alloc] init];
-    _leftIcon.backgroundColor = [UIColor redColor];
     [self addSubview:_leftIcon];
     [_leftIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(kZoomValue(20), kZoomValue(20)));
+        make.size.mas_equalTo(CGSizeMake(kZoomValue(18), kZoomValue(19)));
         make.centerY.equalTo(self);
-        make.left.equalTo(self).offset(kZoomValue(15));
+        make.left.equalTo(self).offset(kZoomValue(14));
     }];
     
     _titleLab = [[UILabel alloc] init];
@@ -30,7 +29,7 @@
     [self addSubview:_titleLab];
     [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.left.equalTo(_leftIcon.mas_right).offset(kZoomValue(15));
+        make.left.equalTo(_leftIcon.mas_right).offset(kZoomValue(10));
     }];
     
 }

@@ -31,6 +31,7 @@
     [_titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(leftSpace);
         make.top.equalTo(self).offset(0);
+        make.height.mas_equalTo(kZoomValue(13));
     }];
     _inputView = [[HqInputView alloc] initWithPlacehoder:@"Name"];
     _inputView.layer.borderWidth = 1.0;

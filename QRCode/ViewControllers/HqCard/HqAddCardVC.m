@@ -123,7 +123,7 @@
 //    HqAddCardInfoVC *addCardInfoVC = [[HqAddCardInfoVC alloc] init];
 //    addCardInfoVC.cardType = HqBankcardTypeCredit;
 //    Push(addCardInfoVC);
-    
+//    
 //    _cardNumberTf.text = @"6228480402564890018";
     
     [self.view endEditing:YES];

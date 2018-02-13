@@ -16,6 +16,7 @@
 @property (nonatomic,assign) CGFloat amount;//金额
 @property (nonatomic,copy) NSString *currency;
 @property (nonatomic,copy) NSString *pin;
+@property (nonatomic,copy) NSString *code;
 
 
 //@property (nonatomic,assign) NSInteger status;

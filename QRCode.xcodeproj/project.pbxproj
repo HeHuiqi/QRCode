@@ -13,6 +13,25 @@
 		3334CD742000AE7D00C5EED8 /* HqPassWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD732000AE7D00C5EED8 /* HqPassWordView.m */; };
 		3334CD792000AF3B00C5EED8 /* HqPayPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */; };
 		3334CD7C2000C69500C5EED8 /* HqAddCardInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */; };
+		33F0143D20315EC700334123 /* success_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0143920315EC600334123 /* success_icon@2x.png */; };
+		33F0143E20315EC700334123 /* fail_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0143A20315EC600334123 /* fail_icon@2x.png */; };
+		33F0143F20315EC700334123 /* success_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0143B20315EC600334123 /* success_icon@3x.png */; };
+		33F0144020315EC700334123 /* fail_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0143C20315EC700334123 /* fail_icon@3x.png */; };
+		33F0144320315ED700334123 /* home_transfer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144120315ED700334123 /* home_transfer@2x.png */; };
+		33F0144420315ED700334123 /* home_transfer@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144220315ED700334123 /* home_transfer@3x.png */; };
+		33F0144E20316BF100334123 /* shou_top_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144620316BF100334123 /* shou_top_icon@2x.png */; };
+		33F0144F20316BF100334123 /* shou_bottom_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144720316BF100334123 /* shou_bottom_icon@3x.png */; };
+		33F0145020316BF100334123 /* shou_bottom_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144820316BF100334123 /* shou_bottom_icon@2x.png */; };
+		33F0145120316BF100334123 /* shou_top_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144920316BF100334123 /* shou_top_icon@3x.png */; };
+		33F0145220316BF100334123 /* fu_top_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144A20316BF100334123 /* fu_top_icon@3x.png */; };
+		33F0145320316BF100334123 /* fu_top_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144B20316BF100334123 /* fu_top_icon@2x.png */; };
+		33F0145420316BF100334123 /* fu_bottom_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144C20316BF100334123 /* fu_bottom_icon@2x.png */; };
+		33F0145520316BF100334123 /* fu_bottom_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0144D20316BF100334123 /* fu_bottom_icon@3x.png */; };
+		33F014592031796D00334123 /* HqScanPayUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F014582031796D00334123 /* HqScanPayUtil.m */; };
+		33F0145C20317F1C00334123 /* HqTransferConfirmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F0145B20317F1C00334123 /* HqTransferConfirmVC.m */; };
+		33F0146020318B1000334123 /* HqScanTransferResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F0145F20318B1000334123 /* HqScanTransferResultVC.m */; };
+		33F014632031A2B900334123 /* temp_user_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F014612031A2B900334123 /* temp_user_icon@2x.png */; };
+		33F014642031A2B900334123 /* temp_user_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F014622031A2B900334123 /* temp_user_icon@3x.png */; };
 		8E32E4EB200C4FF8002701E1 /* link_card_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E32E4E5200C4FF8002701E1 /* link_card_icon@3x.png */; };
 		8E32E4EC200C4FF8002701E1 /* card_peopele_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E32E4E6200C4FF8002701E1 /* card_peopele_icon@2x.png */; };
 		8E32E4ED200C4FF8002701E1 /* card_photo_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E32E4E7200C4FF8002701E1 /* card_photo_icon@2x.png */; };
@@ -30,8 +49,6 @@
 		8E36E621201053C000701378 /* HqCardDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E36E620201053C000701378 /* HqCardDetailCell.m */; };
 		8E36E64B20118D0500701378 /* home_set_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E36E64720118D0500701378 /* home_set_icon@3x.png */; };
 		8E36E64C20118D0500701378 /* home_set_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E36E64820118D0500701378 /* home_set_icon@2x.png */; };
-		8E36E64D20118D0500701378 /* home_collect_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E36E64920118D0500701378 /* home_collect_icon@3x.png */; };
-		8E36E64E20118D0500701378 /* home_collect_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E36E64A20118D0500701378 /* home_collect_icon@2x.png */; };
 		8E36E65020118E2600701378 /* pkg.sh in Resources */ = {isa = PBXBuildFile; fileRef = 8E36E64F20118E2500701378 /* pkg.sh */; };
 		8E36E6542011C91300701378 /* HqTradeRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E36E6532011C91300701378 /* HqTradeRecordVC.m */; };
 		8E36E6582011C98C00701378 /* HqBillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E36E6572011C98C00701378 /* HqBillCell.m */; };
@@ -205,6 +222,28 @@
 		3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqPayPasswordVC.m; sourceTree = "<group>"; };
 		3334CD7A2000C69400C5EED8 /* HqAddCardInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqAddCardInfoVC.h; sourceTree = "<group>"; };
 		3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqAddCardInfoVC.m; sourceTree = "<group>"; };
+		33F0143920315EC600334123 /* success_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success_icon@2x.png"; sourceTree = "<group>"; };
+		33F0143A20315EC600334123 /* fail_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fail_icon@2x.png"; sourceTree = "<group>"; };
+		33F0143B20315EC600334123 /* success_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success_icon@3x.png"; sourceTree = "<group>"; };
+		33F0143C20315EC700334123 /* fail_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fail_icon@3x.png"; sourceTree = "<group>"; };
+		33F0144120315ED700334123 /* home_transfer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_transfer@2x.png"; sourceTree = "<group>"; };
+		33F0144220315ED700334123 /* home_transfer@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_transfer@3x.png"; sourceTree = "<group>"; };
+		33F0144620316BF100334123 /* shou_top_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shou_top_icon@2x.png"; sourceTree = "<group>"; };
+		33F0144720316BF100334123 /* shou_bottom_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shou_bottom_icon@3x.png"; sourceTree = "<group>"; };
+		33F0144820316BF100334123 /* shou_bottom_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shou_bottom_icon@2x.png"; sourceTree = "<group>"; };
+		33F0144920316BF100334123 /* shou_top_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shou_top_icon@3x.png"; sourceTree = "<group>"; };
+		33F0144A20316BF100334123 /* fu_top_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fu_top_icon@3x.png"; sourceTree = "<group>"; };
+		33F0144B20316BF100334123 /* fu_top_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fu_top_icon@2x.png"; sourceTree = "<group>"; };
+		33F0144C20316BF100334123 /* fu_bottom_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fu_bottom_icon@2x.png"; sourceTree = "<group>"; };
+		33F0144D20316BF100334123 /* fu_bottom_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fu_bottom_icon@3x.png"; sourceTree = "<group>"; };
+		33F014572031796D00334123 /* HqScanPayUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqScanPayUtil.h; sourceTree = "<group>"; };
+		33F014582031796D00334123 /* HqScanPayUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqScanPayUtil.m; sourceTree = "<group>"; };
+		33F0145A20317F1C00334123 /* HqTransferConfirmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqTransferConfirmVC.h; sourceTree = "<group>"; };
+		33F0145B20317F1C00334123 /* HqTransferConfirmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqTransferConfirmVC.m; sourceTree = "<group>"; };
+		33F0145E20318B1000334123 /* HqScanTransferResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqScanTransferResultVC.h; sourceTree = "<group>"; };
+		33F0145F20318B1000334123 /* HqScanTransferResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqScanTransferResultVC.m; sourceTree = "<group>"; };
+		33F014612031A2B900334123 /* temp_user_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_user_icon@2x.png"; sourceTree = "<group>"; };
+		33F014622031A2B900334123 /* temp_user_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temp_user_icon@3x.png"; sourceTree = "<group>"; };
 		4BD802C28DBA1070B041B7DF /* Pods-QRCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCode/Pods-QRCode.release.xcconfig"; sourceTree = "<group>"; };
 		8A1F463273FB3E3E6DE6208B /* libPods-QRCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QRCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E32E4E5200C4FF8002701E1 /* link_card_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link_card_icon@3x.png"; sourceTree = "<group>"; };
@@ -227,8 +266,6 @@
 		8E36E620201053C000701378 /* HqCardDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqCardDetailCell.m; sourceTree = "<group>"; };
 		8E36E64720118D0500701378 /* home_set_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_set_icon@3x.png"; sourceTree = "<group>"; };
 		8E36E64820118D0500701378 /* home_set_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_set_icon@2x.png"; sourceTree = "<group>"; };
-		8E36E64920118D0500701378 /* home_collect_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_collect_icon@3x.png"; sourceTree = "<group>"; };
-		8E36E64A20118D0500701378 /* home_collect_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_collect_icon@2x.png"; sourceTree = "<group>"; };
 		8E36E64F20118E2500701378 /* pkg.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = pkg.sh; sourceTree = "<group>"; };
 		8E36E6522011C91300701378 /* HqTradeRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqTradeRecordVC.h; sourceTree = "<group>"; };
 		8E36E6532011C91300701378 /* HqTradeRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqTradeRecordVC.m; sourceTree = "<group>"; };
@@ -518,6 +555,39 @@
 			path = HqPayPassword;
 			sourceTree = "<group>";
 		};
+		33F0144520316BF100334123 /* Transfer */ = {
+			isa = PBXGroup;
+			children = (
+				33F0144620316BF100334123 /* shou_top_icon@2x.png */,
+				33F0144920316BF100334123 /* shou_top_icon@3x.png */,
+				33F0144720316BF100334123 /* shou_bottom_icon@3x.png */,
+				33F0144820316BF100334123 /* shou_bottom_icon@2x.png */,
+				33F0144A20316BF100334123 /* fu_top_icon@3x.png */,
+				33F0144B20316BF100334123 /* fu_top_icon@2x.png */,
+				33F0144C20316BF100334123 /* fu_bottom_icon@2x.png */,
+				33F0144D20316BF100334123 /* fu_bottom_icon@3x.png */,
+			);
+			path = Transfer;
+			sourceTree = "<group>";
+		};
+		33F014562031794C00334123 /* HqScanPayUtil */ = {
+			isa = PBXGroup;
+			children = (
+				33F014572031796D00334123 /* HqScanPayUtil.h */,
+				33F014582031796D00334123 /* HqScanPayUtil.m */,
+			);
+			path = HqScanPayUtil;
+			sourceTree = "<group>";
+		};
+		33F0145D20318ABD00334123 /* HqScanResult */ = {
+			isa = PBXGroup;
+			children = (
+				33F0145E20318B1000334123 /* HqScanTransferResultVC.h */,
+				33F0145F20318B1000334123 /* HqScanTransferResultVC.m */,
+			);
+			path = HqScanResult;
+			sourceTree = "<group>";
+		};
 		69FB2DBCE36FD642F2C00913 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,12 +707,15 @@
 		8E9D037C202FF67900C78B79 /* HqP2P */ = {
 			isa = PBXGroup;
 			children = (
+				33F0145D20318ABD00334123 /* HqScanResult */,
 				8E9D038D203033E400C78B79 /* Models */,
 				8E9D03832030157E00C78B79 /* Views */,
 				8E9D037D202FF69F00C78B79 /* HqTransferVC.h */,
 				8E9D037E202FF69F00C78B79 /* HqTransferVC.m */,
 				8E9D038A20301CF200C78B79 /* HqTransferSetMoneyVC.h */,
 				8E9D038B20301CF200C78B79 /* HqTransferSetMoneyVC.m */,
+				33F0145A20317F1C00334123 /* HqTransferConfirmVC.h */,
+				33F0145B20317F1C00334123 /* HqTransferConfirmVC.m */,
 			);
 			path = HqP2P;
 			sourceTree = "<group>";
@@ -1033,6 +1106,13 @@
 		8EDE17131FFF27100013DD41 /* HqImages */ = {
 			isa = PBXGroup;
 			children = (
+				33F014612031A2B900334123 /* temp_user_icon@2x.png */,
+				33F014622031A2B900334123 /* temp_user_icon@3x.png */,
+				33F0144520316BF100334123 /* Transfer */,
+				33F0143A20315EC600334123 /* fail_icon@2x.png */,
+				33F0143C20315EC700334123 /* fail_icon@3x.png */,
+				33F0143920315EC600334123 /* success_icon@2x.png */,
+				33F0143B20315EC600334123 /* success_icon@3x.png */,
 				8E6C7C192019DF70003A9B78 /* bill_temp_icon@2x.png */,
 				8E6C7C182019DF6F003A9B78 /* bill_temp_icon@3x.png */,
 				8ED6CD36201983B30001393A /* home_header_bg@2x.png */,
@@ -1141,6 +1221,7 @@
 		8EDE173D1FFF7A780013DD41 /* HqScanPay */ = {
 			isa = PBXGroup;
 			children = (
+				33F014562031794C00334123 /* HqScanPayUtil */,
 				8E36E6712011EEC300701378 /* Views */,
 				8EDE173E1FFF7A910013DD41 /* HqScanPayVC.h */,
 				8EDE173F1FFF7A910013DD41 /* HqScanPayVC.m */,
@@ -1203,8 +1284,8 @@
 		8EEFA79820085640004C2254 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				8E36E64A20118D0500701378 /* home_collect_icon@2x.png */,
-				8E36E64920118D0500701378 /* home_collect_icon@3x.png */,
+				33F0144120315ED700334123 /* home_transfer@2x.png */,
+				33F0144220315ED700334123 /* home_transfer@3x.png */,
 				8E36E64820118D0500701378 /* home_set_icon@2x.png */,
 				8E36E64720118D0500701378 /* home_set_icon@3x.png */,
 				8EEFA7EB20088C66004C2254 /* home_bill_icon@2x.png */,
@@ -1348,14 +1429,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E36E65020118E2600701378 /* pkg.sh in Resources */,
-				8E36E64D20118D0500701378 /* home_collect_icon@3x.png in Resources */,
 				8E32E4FC200CBB89002701E1 /* btn_border@3x.png in Resources */,
 				8ED6CD39201983B40001393A /* home_header_bg@3x.png in Resources */,
 				8EDE16E91FFF23C30013DD41 /* IQKeyboardManager.bundle in Resources */,
 				8EEFA7E620088A69004C2254 /* home_time_icon@2x.png in Resources */,
 				8EEFA7B220086A52004C2254 /* home_cards_icon@3x.png in Resources */,
+				33F0144E20316BF100334123 /* shou_top_icon@2x.png in Resources */,
 				8EDE17191FFF28590013DD41 /* back@2x.png in Resources */,
+				33F014632031A2B900334123 /* temp_user_icon@2x.png in Resources */,
 				8E36E66B2011ED1700701378 /* pay_code_icon@3x.png in Resources */,
+				33F0144020315EC700334123 /* fail_icon@3x.png in Resources */,
 				8EEFA79E20085A38004C2254 /* home_icon@3x.png in Resources */,
 				8EEFA7B620086A52004C2254 /* home_scan_icon@3x.png in Resources */,
 				8EEFA7FC2008B951004C2254 /* MSPMincho.ttf in Resources */,
@@ -1365,9 +1448,11 @@
 				8E32E4FB200CBB89002701E1 /* btn_bg@3x.png in Resources */,
 				8EEFA8142009CA51004C2254 /* regist_logo@3x.png in Resources */,
 				8EEFA7B520086A52004C2254 /* home_cards_icon@2x.png in Resources */,
+				33F0144420315ED700334123 /* home_transfer@3x.png in Resources */,
 				8E32E4EC200C4FF8002701E1 /* card_peopele_icon@2x.png in Resources */,
 				8EEFA8032009BEE8004C2254 /* cards_link@3x.png in Resources */,
 				8EBA54F52009D29E009AFEE1 /* login_bg@2x.png in Resources */,
+				33F0145020316BF100334123 /* shou_bottom_icon@2x.png in Resources */,
 				8EEFA8122009CA51004C2254 /* regist_top_bg@3x.png in Resources */,
 				8ED6CCF02016C5EF0001393A /* resign@2x.png in Resources */,
 				8EEFA7EC20088C66004C2254 /* home_bill_icon@3x.png in Resources */,
@@ -1385,6 +1470,7 @@
 				8EEFA7A520085BF1004C2254 /* emergency_icon@2x.png in Resources */,
 				8EEFA7B120086A52004C2254 /* home_pay_icon@2x.png in Resources */,
 				8EEFA8072009C6AE004C2254 /* welcom_icon@3x.png in Resources */,
+				33F0144F20316BF100334123 /* shou_bottom_icon@3x.png in Resources */,
 				8ED6CCF12016C5EF0001393A /* delete@2x.png in Resources */,
 				8EEFA79B20085655004C2254 /* home_icon@2x.png in Resources */,
 				8EBA54FB2009D35E009AFEE1 /* hqpassword_icon@2x.png in Resources */,
@@ -1399,9 +1485,10 @@
 				8EDE16541FFF22FF0013DD41 /* Main.storyboard in Resources */,
 				8E36E64B20118D0500701378 /* home_set_icon@3x.png in Resources */,
 				8E6C7C1A2019DF70003A9B78 /* bill_temp_icon@3x.png in Resources */,
-				8E36E64E20118D0500701378 /* home_collect_icon@2x.png in Resources */,
 				8E32E4EE200C4FF8002701E1 /* link_card_icon@2x.png in Resources */,
 				8EBA54F62009D29E009AFEE1 /* login_logo@3x.png in Resources */,
+				33F0143D20315EC700334123 /* success_icon@2x.png in Resources */,
+				33F014642031A2B900334123 /* temp_user_icon@3x.png in Resources */,
 				8E32E4EB200C4FF8002701E1 /* link_card_icon@3x.png in Resources */,
 				8EEFA8152009CA51004C2254 /* hqcheck_code_icon@3x.png in Resources */,
 				8EEFA8112009CA51004C2254 /* regist_top_bg@2x.png in Resources */,
@@ -1417,13 +1504,21 @@
 				8E36E66C2011ED1700701378 /* pay_scan_icon@3x.png in Resources */,
 				8EEFA7EE20088C66004C2254 /* home_menu_icon@2x.png in Resources */,
 				8E6C7C1B2019DF70003A9B78 /* bill_temp_icon@2x.png in Resources */,
+				33F0144320315ED700334123 /* home_transfer@2x.png in Resources */,
 				8ED6CCF22016C5EF0001393A /* delete@3x.png in Resources */,
 				8EDE171A1FFF28590013DD41 /* back@3x.png in Resources */,
 				8ED6CD38201983B40001393A /* home_header_bg@2x.png in Resources */,
+				33F0143F20315EC700334123 /* success_icon@3x.png in Resources */,
+				33F0145520316BF100334123 /* fu_bottom_icon@3x.png in Resources */,
 				8EEFA8182009CA51004C2254 /* hqphone_icon@3x.png in Resources */,
 				8ED6CCFA2016D0ED0001393A /* pay_close_icon@3x.png in Resources */,
+				33F0145420316BF100334123 /* fu_bottom_icon@2x.png in Resources */,
+				33F0145220316BF100334123 /* fu_top_icon@3x.png in Resources */,
 				8E36E66D2011ED1700701378 /* pay_code_icon@2x.png in Resources */,
+				33F0143E20315EC700334123 /* fail_icon@2x.png in Resources */,
 				8ED6CD32201974690001393A /* delete_icon@2x.png in Resources */,
+				33F0145120316BF100334123 /* shou_top_icon@3x.png in Resources */,
+				33F0145320316BF100334123 /* fu_top_icon@2x.png in Resources */,
 				8E32E4ED200C4FF8002701E1 /* card_photo_icon@2x.png in Resources */,
 				8E36E66A2011ED1700701378 /* pay_scan_icon@2x.png in Resources */,
 				8E32E4FA200CBB89002701E1 /* btn_bg@2x.png in Resources */,
@@ -1492,6 +1587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33F0146020318B1000334123 /* HqScanTransferResultVC.m in Sources */,
 				8E6C7C172019D21E003A9B78 /* HqPickerView.m in Sources */,
 				8E9D0390203033F900C78B79 /* HqTransfer.m in Sources */,
 				8EDE17111FFF26830013DD41 /* SuperNavigationVC.m in Sources */,
@@ -1499,6 +1595,7 @@
 				8EDE16EA1FFF23C30013DD41 /* IQKeyboardManager.m in Sources */,
 				8E36E6582011C98C00701378 /* HqBillCell.m in Sources */,
 				8EDE17061FFF23C30013DD41 /* ProjectEnvironment.m in Sources */,
+				33F0145C20317F1C00334123 /* HqTransferConfirmVC.m in Sources */,
 				8E9D0389203016B400C78B79 /* HqTransferInfoView.m in Sources */,
 				8EDE16FC1FFF23C30013DD41 /* HqString.m in Sources */,
 				8E6C7C142019CB83003A9B78 /* HqHomeNews.m in Sources */,
@@ -1517,6 +1614,7 @@
 				8E36E61D200DC26400701378 /* HqUser.m in Sources */,
 				8EDE17351FFF64450013DD41 /* HqButton.m in Sources */,
 				8EDE16E61FFF23C30013DD41 /* IQBarButtonItem.m in Sources */,
+				33F014592031796D00334123 /* HqScanPayUtil.m in Sources */,
 				8EDE17481FFF87A50013DD41 /* HqCardCell.m in Sources */,
 				8EDE16EC1FFF23C30013DD41 /* IQUIWindow+Hierarchy.m in Sources */,
 				3334CD682000743600C5EED8 /* HqAddCardVC.m in Sources */,

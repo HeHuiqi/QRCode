@@ -7,12 +7,14 @@
 //
 
 #import "HqTransferSetMoneyVC.h"
-#import "HqTransferVC.h"
-
-@interface HqTransferSetMoneyVC ()<UITextFieldDelegate>
+#import "HqTransferConfirmVC.h"
+@interface HqTransferSetMoneyVC ()<UITextFieldDelegate,HqConfirmPayViewDelegate>
 
 @property (nonatomic,strong) HqIdInfoInputView *amountTf;
 @property (nonatomic,strong) HqIdInfoInputView *markTf;
+@property (nonatomic,strong) HqConfirmPayView *confirmPayView;
+
+
 
 @end
 
@@ -22,15 +24,26 @@
     [super viewDidLoad];
     [self initView];
 }
+- (HqConfirmPayView *)confirmPayView{
+    
+    if (!_confirmPayView) {
+        _confirmPayView = [[HqConfirmPayView alloc] init];
+        _confirmPayView.delegate = self;
+    }
+    return _confirmPayView;
+}
 - (void)initView{
-    self.title = @"Transfer account";
+    self.title = @"Transfer amount";
     UIView *contentView = self.view;
     CGFloat inputHeight = 65;
     CGFloat leftSpace = 20;
+    contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.isShowBottomLine = YES;
     
     _amountTf = [[HqIdInfoInputView alloc] init];
     _amountTf.titleLab.text = @"Amount";
     _amountTf.inputView.delegate = self;
+    _amountTf.inputView.placeholder = @"Please input amount";
     _amountTf.inputView.keyboardType = UIKeyboardTypeNumberPad;
     _amountTf.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:_amountTf];
@@ -38,43 +51,65 @@
     [_amountTf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
         make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
-        make.top.equalTo(contentView).offset(64+kZoomValue(80));
+        make.top.equalTo(contentView).offset(64+kZoomValue(33));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     
-    _markTf = [[HqIdInfoInputView alloc] init];
-    _markTf.titleLab.text = @"Mark";
-    _markTf.inputView.delegate = self;
-    _markTf.layer.cornerRadius = kHqCornerRadius;
-    [contentView addSubview:_markTf];
+    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    loginBtn.tintColor = [UIColor whiteColor];
+    [loginBtn setTitle:@"Confirm" forState:UIControlStateNormal];
+    loginBtn.backgroundColor = COLOR(17, 139, 226, 1);
+    [loginBtn addTarget:self action:@selector(comfirm:) forControlEvents:UIControlEventTouchUpInside];
+    loginBtn.layer.cornerRadius = kHqCornerRadius;
+    [contentView addSubview:loginBtn];
     
-    [_markTf mas_makeConstraints:^(MASConstraintMaker *make) {
+    [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
+        make.top.equalTo(_amountTf.mas_bottom).offset(kZoomValue(15));
         make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
-        make.top.equalTo(_amountTf.mas_top).offset(kZoomValue(leftSpace));
-        make.height.mas_equalTo(kZoomValue(inputHeight));
+        make.height.mas_equalTo(kZoomValue(45));
     }];
-    [self tapView:self.view];
-}
-- (void)tapView:(UIView *)view{
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
-    [view addGestureRecognizer:tap];
-}
-- (void)tapGesture:(UITapGestureRecognizer *)tap{
     
-    HqTransferVC *transferVC = [[HqTransferVC alloc] init];
-    transferVC.pesonTransferType = 2;
-    HqTransfer *transfer = [[HqTransfer alloc] init];
-    transfer.amount = 50;
-    transfer.payer = @"哈哈哈哈";
-    transferVC.transfer = transfer;
-    Push(transferVC);
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+- (void)comfirm:(UIButton *)btn{
+    
+    if ([_amountTf.inputView.text floatValue]==0) {
+        [Dialog simpleToast:@"Please Input Correct Number!"];
+        return;
+    }
+    if ([_amountTf.inputView.text floatValue]>10000) {
+        [Dialog simpleToast:@"Input Number too large!"];
+        return;
+    }
+    if (_transferType == 1) {
+        _transfer.amount =  [_amountTf.inputView.text floatValue];
+        HqTransferConfirmVC *tcfVC = [[HqTransferConfirmVC alloc] init];
+        tcfVC.transfer = _transfer;
+        Push(tcfVC);
+        return;
+    }
+    if (_transferType == 2) {
+        [self.confirmPayView showPayView];
+    }
 
+}
+#pragma mark - HqConfirmPayViewDelegate
+- (void)hqConfirmPayView:(HqConfirmPayView *)payView password:(NSString *)password{
+    
+    [payView dismissPayView];
+    NSLog(@"password == %@",password);
+    password = [NSString sha1:password];
+    NSLog(@"password1 == %@",password);
+    
+    HqTransfer *transfer = [[HqTransfer alloc] init];
+    transfer.amount = [_amountTf.inputView.text floatValue];
+    transfer.pin = password;
+    transfer.currency = @"VND";
+    if (self.delegate) {
+        [self.delegate hqTransferSetMoneyVC:self transfer:transfer];
+        Back();
+    }
+}
 /*
 #pragma mark - Navigation
 

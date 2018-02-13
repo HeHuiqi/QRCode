@@ -52,6 +52,7 @@
     }];
     _payCodeView = [[HqPayCodeView alloc]init];
     _payCodeView.backgroundColor = [UIColor grayColor];
+    _payCodeView.payCodeType = HqPayCodeTypeMyself;
     [_contentView addSubview:_payCodeView];
     [_payCodeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_contentView);

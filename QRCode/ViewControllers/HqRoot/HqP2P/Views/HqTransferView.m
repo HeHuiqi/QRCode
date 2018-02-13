@@ -15,6 +15,10 @@
 
 @property (nonatomic,strong) HqTransferInfoView *transferInfoView;
 @property (nonatomic,strong) HqPayCodeView *payCodeView;
+@property (nonatomic,strong) UILabel *subCenterLab;
+@property (nonatomic,strong) UILabel *moneyLab;
+
+
 
 
 @property (nonatomic,assign) BOOL isPaying;//是否正在支付
@@ -50,18 +54,28 @@
         make.left.equalTo(self).offset(kZoomValue(15));
         make.right.equalTo(self).offset(kZoomValue(-15));
         make.height.mas_equalTo(kZoomValue(400));
-    }]; 
+    }];
+    _contentView.layer.cornerRadius = kHqCornerRadius;
+    _contentView.clipsToBounds = YES;
     
     _transferInfoView = [[HqTransferInfoView alloc]init];
-    _transferInfoView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    _transferInfoView.leftIcon = nil;
-    _transferInfoView.titleLab.text = _userName;
+    _transferInfoView.backgroundColor = COLORA(250,250,250);
+    _transferInfoView.titleLab.text = _title;
+    _transferInfoView.titleLab.textColor = COLORA(195,195,195);
+
     [_contentView addSubview:_transferInfoView];
     [_transferInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_contentView).offset(kZoomValue(0));
         make.left.equalTo(_contentView).offset(0);
         make.right.equalTo(_contentView).offset(0);
         make.height.mas_equalTo(kZoomValue(40));
+    }];
+    _subCenterLab = [[UILabel alloc] init];
+    _subCenterLab.text = _subCenterTitle;
+    [_contentView addSubview:_subCenterLab];
+    [_subCenterLab mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(_transferInfoView.mas_bottom).offset(kZoomValue(37));
+        make.centerX.equalTo(_contentView);
     }];
     
     _payCodeView = [[HqPayCodeView alloc]init];
@@ -72,15 +86,32 @@
     [_payCodeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_contentView);
         make.centerY.equalTo(_contentView);
-        make.size.mas_equalTo(CGSizeMake(kZoomValue(240), kZoomValue(240)));
+        make.size.mas_equalTo(CGSizeMake(kZoomValue(180), kZoomValue(180)));
+    }];
+    
+    _moneyLab = [[UILabel alloc] init];
+    _moneyLab.font = [UIFont systemFontOfSize:kZoomValue(30)];
+    [_contentView addSubview:_moneyLab];
+    _moneyLab.textColor = COLORA(72,90,101);
+    [_moneyLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_payCodeView.mas_bottom).offset(kZoomValue(12));
+        make.centerX.equalTo(_contentView);
     }];
     
 }
 - (void)setUserName:(NSString *)userName{
-    _transferInfoView.titleLab.text = userName;
 }
-- (void)setUserIconUrl:(NSString *)userIconUrl{
-    [_transferInfoView.leftIcon sd_setImageWithURL:[NSURL URLWithString:userIconUrl] placeholderImage:nil];
+- (void)setTitleIconName:(NSString *)titleIconName{
+    _transferInfoView.leftIcon.image = [UIImage imageNamed:titleIconName];
+}
+- (void)setTitle:(NSString *)title{
+    _transferInfoView.titleLab.text = title;
+}
+- (void)setSubCenterTitle:(NSString *)subCenterTitle{
+    _subCenterLab.text = subCenterTitle;
+}
+- (void)setMoney:(CGFloat)money{
+    _moneyLab.text = [NSString stringWithFormat:@"₫ %.2f",money];
 }
 - (void)setParams:(NSDictionary *)params{
     _payCodeView.params = params;
