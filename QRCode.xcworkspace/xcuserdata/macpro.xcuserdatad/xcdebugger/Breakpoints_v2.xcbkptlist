@@ -36,12 +36,12 @@
                   moduleName = "QRCode"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/HqDemo/QRCode/QRCode/ViewControllers/HqCard/HqAddCardVC.m"
-                  timestampString = "540094612.074182"
+                  timestampString = "540186624.472761"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
                   endingLineNumber = "105"
-                  offsetFromSymbolStart = "92">
+                  offsetFromSymbolStart = "71">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -51,12 +51,12 @@
                   moduleName = "QRCode"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/HqDemo/QRCode/QRCode/ViewControllers/HqCard/HqAddCardVC.m"
-                  timestampString = "540094612.076332"
+                  timestampString = "540186624.4765019"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
                   endingLineNumber = "106"
-                  offsetFromSymbolStart = "84">
+                  offsetFromSymbolStart = "62">
                </Location>
             </Locations>
          </BreakpointContent>

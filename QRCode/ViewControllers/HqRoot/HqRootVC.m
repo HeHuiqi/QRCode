@@ -77,9 +77,9 @@
 }
 - (void)initData{
     self.isOpen = NO;
-//    if ([AppDelegate shareApp].isInputGesturePassword) {
-//        [self requestUerInfo];
-//    }
+    if ([AppDelegate shareApp].isInputGesturePassword) {
+        [self requestUerInfo];
+    }
     _homeDatas = [[NSMutableArray alloc] init];
     HqHomeNews *hms = [[HqHomeNews alloc] init];
     hms.bankName = @"Main Bank";
@@ -95,7 +95,7 @@
 
 }
 - (void)headerView{
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, kZoomValue(70))];
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, self.navBarheight, SCREEN_WIDTH, kZoomValue(70))];
     header.backgroundColor = AppMainColor;
     NSArray *titles = @[@"Scan",@"Transfer",@"Pay",@"Cards"];
     NSArray *images = @[@"home_scan_icon",@"home_transfer",@"home_pay_icon",@"home_cards_icon"];
@@ -253,7 +253,7 @@
 }
 - (UITableView *)tableView{
     if(!_tableView){
-        CGFloat  y = kZoomValue(70)+64;
+        CGFloat  y = kZoomValue(70)+self.navBarheight;
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, y, self.view.bounds.size.width, self.view.bounds.size.height-y) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;

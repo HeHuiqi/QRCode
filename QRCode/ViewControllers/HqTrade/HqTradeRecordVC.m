@@ -51,13 +51,14 @@
     }];
 }
 - (void)initView{
+   
     self.isShowBottomLine = YES;
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH  , SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,  self.navBarheight, SCREEN_WIDTH  , SCREEN_HEIGHT- self.navBarheight) style:UITableViewStyleGrouped];
     _tableView.separatorColor = LineColor;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
-    _noContentView = [[HqNoContentView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH  , SCREEN_HEIGHT-64)];
+    _noContentView = [[HqNoContentView alloc] initWithFrame:CGRectMake(0,  self.navBarheight, SCREEN_WIDTH  , SCREEN_HEIGHT- self.navBarheight)];
     _noContentView.centerIcon.image = [UIImage imageNamed:@""];
     _noContentView.infoLab.text = @"no transcation record";
     [self.view addSubview:_noContentView];

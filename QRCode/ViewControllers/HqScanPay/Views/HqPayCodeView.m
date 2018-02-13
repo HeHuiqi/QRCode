@@ -74,13 +74,14 @@
         make.bottom.equalTo(self).offset(0);
 
     }];
+//    self.payCodeInfo = @"1251521251261612612hgjdhjsghdsjgdsjhgjds";
 }
 
 
 - (void)generateCode{
-    
-//    UIImage *codeImage = [SGQRCodeGenerateManager  generateWithLogoQRCodeData:self.payCodeInfo logoImageName:@"csjz_log" logoScaleToSuperView:0.2];
-    UIImage *codeImage = [SGQRCodeGenerateManager  generateWithDefaultQRCodeData:self.payCodeInfo imageViewWidth:kZoomValue(240)];
+
+    UIImage *codeImage = [SGQRCodeGenerateManager  generateWithLogoQRCodeData:self.payCodeInfo logoImageName:@"qrcode_icon" logoScaleToSuperView:0.2];
+//    UIImage *codeImage = [SGQRCodeGenerateManager  generateWithDefaultQRCodeData:self.payCodeInfo imageViewWidth:kZoomValue(240)];
     _payCodeImageView.image = codeImage;
 }
 - (void)setPayCodeInfo:(NSString *)payCodeInfo{

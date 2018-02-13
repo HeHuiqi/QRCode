@@ -36,9 +36,9 @@
 }
 - (void)initView{
     self.title = @"Transfer Accounts";
-    UIScrollView *contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navBarView.frame), SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    UIScrollView *contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navBarView.frame), SCREEN_WIDTH, SCREEN_HEIGHT- self.navBarheight)];
     contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    contentView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    contentView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT- self.navBarheight);
     [self.view addSubview:contentView];
     
     UIImageView *userPhoto = [[UIImageView alloc] init];
@@ -47,11 +47,11 @@
     userPhoto.backgroundColor = [UIColor grayColor];
     userPhoto.image = [UIImage imageNamed:@"bill_temp_icon"];
     userPhoto.clipsToBounds = YES;
-    userPhoto.layer.cornerRadius = kZoomValue(64)/2.0;
+    userPhoto.layer.cornerRadius = kZoomValue( self.navBarheight)/2.0;
     [userPhoto mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView);
         make.top.equalTo(contentView).offset(kZoomValue(50));
-        make.size.mas_equalTo(CGSizeMake(kZoomValue(64), kZoomValue(64)));
+        make.size.mas_equalTo(CGSizeMake(kZoomValue( self.navBarheight), kZoomValue( self.navBarheight)));
     }];
     self.userPhoto = userPhoto;
     

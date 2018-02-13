@@ -42,7 +42,6 @@
     self.isShowBottomLine = YES;
     
     _amountTf = [[HqIdInfoInputView alloc] init];
-    _amountTf.backgroundColor = [UIColor redColor];
     _amountTf.titleLab.text = @"Account";
     _amountTf.inputView.delegate = self;
 
@@ -55,7 +54,7 @@
     [_amountTf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(contentView).offset(kZoomValue(leftSpace));
         make.right.equalTo(contentView).offset(-kZoomValue(leftSpace));
-        make.top.equalTo(contentView).offset(64+kZoomValue(20));
+        make.top.equalTo(contentView).offset(self.navBarheight+kZoomValue(20));
         make.height.mas_equalTo(kZoomValue(inputHeight));
     }];
     
@@ -75,7 +74,7 @@
     }];
     
 }
-- (void)comfirm:(UIButton *)btn{
+- (void)confirm:(UIButton *)btn{
     
     if ([_amountTf.inputView.text floatValue]==0) {
         [Dialog simpleToast:@"Please Input Correct Number!"];

@@ -47,7 +47,12 @@
 }
 - (void)initView{
     
-    UIView *topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 64)];
+    BOOL device = IS_NOT_IPHONE_X;
+    CGFloat barHeight = 64;
+    if (!device) {
+        barHeight = 88;
+    }
+    UIView *topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, barHeight)];
     topBarView.backgroundColor = COLOR(241,245,247,1);
     [self addSubview:topBarView];
     
@@ -61,7 +66,7 @@
 //    [backBtn setTitle:@"Menu" forState:UIControlStateNormal];
     [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(topBarView).offset(0);
-        make.top.equalTo(topBarView).offset(20);
+        make.bottom.equalTo(topBarView).offset(0);
         make.size.mas_equalTo(CGSizeMake(50, 44));
     }];
     
@@ -71,13 +76,13 @@
     [leftTitle mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.centerX.equalTo(topBarView.mas_centerX);
         make.left.equalTo(topBarView).offset(kZoomValue(50));
-        make.top.equalTo(topBarView).offset(20);
+        make.bottom.equalTo(topBarView).offset(0);
         make.height.mas_equalTo(44);
     }];
     
     CGFloat headerHeight = kZoomValue(120);
-    CGFloat tableHeight =  self.bounds.size.height-64-kZoomValue(55)-headerHeight;
-    CGRect rect = CGRectMake(0,headerHeight+64, self.bounds.size.width, tableHeight);
+    CGFloat tableHeight =  self.bounds.size.height-barHeight-kZoomValue(55)-headerHeight;
+    CGRect rect = CGRectMake(0,headerHeight+barHeight, self.bounds.size.width, tableHeight);
     _tableView = [[UITableView alloc]initWithFrame:rect style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;

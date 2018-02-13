@@ -43,7 +43,7 @@
 }
 - (HqMyPayCodeView *)payCodeView{
     if (!_payCodeView) {
-        _payCodeView = [[HqMyPayCodeView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width,  self.view.frame.size.height-64-HqBottomHeight)];
+        _payCodeView = [[HqMyPayCodeView alloc] initWithFrame:CGRectMake(0,  self.navBarheight, self.view.frame.size.width,  self.view.frame.size.height- self.navBarheight-HqBottomHeight)];
         _payCodeView.backgroundColor = AppMainColor;
     }
     return _payCodeView;
@@ -93,7 +93,7 @@
 
 - (SGQRCodeScanningView *)scanningView {
     if (!_scanningView) {
-        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width,  self.view.frame.size.height-64-HqBottomHeight)];
+        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0,  self.navBarheight, self.view.frame.size.width,  self.view.frame.size.height- self.navBarheight-HqBottomHeight)];
         /*
          _scanningView.scanningImageName = @"SGQRCode.bundle/QRCodeScanningLineGrid";
          _scanningView.scanningAnimationStyle = ScanningAnimationStyleGrid;

@@ -76,7 +76,7 @@
 
 - (SGQRCodeScanningView *)scanningView {
     if (!_scanningView) {
-        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width,  self.view.frame.size.height-64)];
+        _scanningView = [[SGQRCodeScanningView alloc] initWithFrame:CGRectMake(0,  self.navBarheight, self.view.frame.size.width,  self.view.frame.size.height- self.navBarheight)];
         /*
         _scanningView.scanningImageName = @"SGQRCode.bundle/QRCodeScanningLineGrid";
         _scanningView.scanningAnimationStyle = ScanningAnimationStyleGrid;

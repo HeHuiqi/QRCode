@@ -27,7 +27,7 @@
 
 - (void)initView{
     self.isShowBottomLine = YES;
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navBarView.frame),SCREEN_WIDTH , SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navBarView.frame),SCREEN_WIDTH , SCREEN_HEIGHT- self.navBarheight) style:UITableViewStylePlain];
     _tableView.separatorColor = LineColor;
     _tableView.delegate = self;
     _tableView.dataSource = self;

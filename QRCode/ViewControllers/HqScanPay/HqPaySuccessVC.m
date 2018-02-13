@@ -26,7 +26,7 @@
     [self.view addSubview:logo];
     [logo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view.mas_centerX);
-        make.top.equalTo(self.view).offset(kZoomValue(64+48));
+        make.top.equalTo(self.view).offset(kZoomValue( self.navBarheight+48));
         make.size.mas_equalTo(CGSizeMake(kZoomValue(75), kZoomValue(75)));
     }];
     UILabel *infoLab = [[UILabel alloc] init];

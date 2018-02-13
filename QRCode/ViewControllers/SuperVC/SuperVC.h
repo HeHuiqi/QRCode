@@ -12,7 +12,7 @@
 
 #define  IS_NOT_IPHONE_X ((HqDeviceHeight < 812.0f) ? 1 : 0)
 
-#define HqTitleColor [UIColor blackColor]
+#define HqTitleColor COLORA(69, 90, 100)
 #define HqTitleFontsize 18
 
 #define HqNavBarColor [UIColor orangeColor]

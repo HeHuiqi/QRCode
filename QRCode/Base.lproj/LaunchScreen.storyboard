@@ -23,12 +23,13 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-aN-fIJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.2580120857" green="0.63709359219999995" blue="0.26075047550000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="UTJ-aN-fIJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="62a-RK-R97"/>
-                            <constraint firstItem="Ofl-0X-s6x" firstAttribute="top" secondItem="UTJ-aN-fIJ" secondAttribute="bottom" id="MXu-wv-0k3"/>
+                            <constraint firstAttribute="bottom" secondItem="UTJ-aN-fIJ" secondAttribute="bottom" id="MXu-wv-0k3"/>
                             <constraint firstItem="UTJ-aN-fIJ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="aum-bc-OB2"/>
                             <constraint firstItem="UTJ-aN-fIJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hCY-Yj-MnW"/>
                             <constraint firstItem="UTJ-aN-fIJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="jW1-DM-1WA"/>

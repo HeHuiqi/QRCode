@@ -8,7 +8,6 @@
 
 #import "SuperVC.h"
 #define BarHeight 64
-#define HqTitleColor COLORA(69, 90, 100)
 @interface SuperVC ()
 
 @end
