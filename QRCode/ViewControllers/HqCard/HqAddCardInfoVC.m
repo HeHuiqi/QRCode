@@ -169,7 +169,6 @@
     _checkCodeTimer = nil;
     _totalTime = 60;
     [self hidenBtnView:NO];
-    
 }
 #pragma mark - 输入变化通知方法
 - (void)textChange:(NSNotification *)nofit{

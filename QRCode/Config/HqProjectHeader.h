@@ -41,6 +41,8 @@
 #import "HqPayCodeView.h"
 #import "HqInputView.h"
 #import "HqIdInfoInputView.h"
+#import "HqConfirmPayView.h"
+#import "HqScanPayUtil.h"
 
 
 #endif /* HqProjectHeader_h */

@@ -7,7 +7,6 @@
 //
 
 #import "HqPayVC.h"
-#import "HqConfirmPayView.h"
 #import "HqPaySuccessVC.h"
 #import "HqTransferVC.h"
 
@@ -185,31 +184,7 @@
     }
     [self.confirmPayView showPayView];
 }
-- (void)getOrderInfo{
-    if (!_code) {
-        return;
-    }
-    NSDictionary *param = @{@"collectCode": _code};
-    [HqHttpUtil hqPostShowHudTitle:nil param:param url:@"/transactions/collectCodes/getOrder" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
-        NSLog(@"获取订单信息==%@",responseObject);
-        if (response.statusCode == 200) {
-            NSString *msg = [responseObject hq_objectForKey:@"message"];
-            int code = [[responseObject hq_objectForKey:@"code"] intValue];
-            if (code==1) {
-                NSDictionary *orderDic = [responseObject hq_objectForKey:@"orderInfo"];
-                _bill = [HqBill mj_objectWithKeyValues:orderDic];
-//                [_userPhoto sd_setImageWithURL:nil placeholderImage:nil]
-                _userNamelab.text = _bill.merchantName;
-                _amountInput.text = [NSString stringWithFormat:@"%0.2f",_bill.amount];
-                
-            }else{
-                [Dialog simpleToast:msg];
-            }
-        }else{
-            [Dialog simpleToast:kRequestError];
-        }
-    }];
-}
+
 #pragma mark - HqConfirmPayViewDelegate
 - (void)hqConfirmPayView:(HqConfirmPayView *)payView password:(NSString *)password{
     [payView dismissPayView];

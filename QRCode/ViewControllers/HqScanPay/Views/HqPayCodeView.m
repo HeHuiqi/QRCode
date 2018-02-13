@@ -8,7 +8,7 @@
 
 #import "HqPayCodeView.h"
 #import "SGQRCodeGenerateManager.h"
-
+#define HqAllCount 30
 @interface HqPayCodeView()
 
 @property (nonatomic,strong) NSTimer *codeAvailabilityTimer;
@@ -53,7 +53,7 @@
 }
 - (void)countTime{
     _tempCount++;
-    if (_tempCount==60) {
+    if (_tempCount==HqAllCount) {
         _tempCount =0;
         [self startGetPayCode];
     }
@@ -65,19 +65,21 @@
 - (void)setup{
     
     _payCodeImageView = [[UIImageView alloc]init];
-    _payCodeImageView.backgroundColor = [UIColor grayColor];
+    _payCodeImageView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_payCodeImageView];
     [_payCodeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self);
-        make.centerY.equalTo(self);
-        make.size.mas_equalTo(CGSizeMake(kZoomValue(240), kZoomValue(240)));
+        make.left.equalTo(self).offset(0);
+        make.top.equalTo(self).offset(0);
+        make.right.equalTo(self).offset(0);
+        make.bottom.equalTo(self).offset(0);
+
     }];
 }
 
 
 - (void)generateCode{
     
-    //    UIImage *codeImage = [SGQRCodeGenerateManager  generateWithLogoQRCodeData:self.payCodeInfo logoImageName:@"csjz_log" logoScaleToSuperView:0.2];
+//    UIImage *codeImage = [SGQRCodeGenerateManager  generateWithLogoQRCodeData:self.payCodeInfo logoImageName:@"csjz_log" logoScaleToSuperView:0.2];
     UIImage *codeImage = [SGQRCodeGenerateManager  generateWithDefaultQRCodeData:self.payCodeInfo imageViewWidth:kZoomValue(240)];
     _payCodeImageView.image = codeImage;
 }
@@ -112,12 +114,19 @@
             //            NSString *msg = [responseObject hq_objectForKey:@"message"];
             int code = [[responseObject hq_objectForKey:@"code"] intValue];
             if (code==1) {
-                NSString *payCode = [responseObject hq_objectForKey:@"transferCode"];
-                if (payCode.length>0) {
-                    self.payCodeInfo = payCode;
+                NSString *generateCode = nil;
+                if (self.payCodeType == HqPayCodeTypeMyself) {
+                    generateCode = [responseObject hq_objectForKey:@"payCode"];
+                }
+                if (self.payCodeType == HqPayCodeTypeTransfer) {
+                    generateCode = [responseObject hq_objectForKey:@"transferCode"];
+
+                }
+                if (generateCode.length>0) {
+                    self.payCodeInfo = generateCode;
                 }
             }else{
-                //                [Dialog simpleToast:msg];
+//                [Dialog simpleToast:msg];
             }
         }else{
             [Dialog simpleToast:kRequestError];
