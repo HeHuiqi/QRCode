@@ -44,7 +44,8 @@
     _amountTf.titleLab.text = @"Amount";
     _amountTf.inputView.delegate = self;
     _amountTf.inputView.placeholder = @"Please input amount";
-    _amountTf.inputView.keyboardType = UIKeyboardTypeNumberPad;
+    _amountTf.inputView.keyboardType = UIKeyboardTypeDecimalPad;
+
     _amountTf.layer.cornerRadius = kHqCornerRadius;
     [contentView addSubview:_amountTf];
     
