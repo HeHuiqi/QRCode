@@ -62,7 +62,10 @@
     
     [self.transferView startGetPayCode];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess) name:kPaySuccessNotification object:nil];
+}
+- (void)paySuccess{
+    BackRoot();
 }
 - (void)setPayMoney{
 

@@ -11,12 +11,16 @@
 @interface ProjectConst : NSObject
 
 extern NSString * const kToken;
+extern NSString * const kDeviceToken;
+
 extern NSString * const kisLogin;
 extern NSString * const kisFirsUse;
 extern NSString * const kUserId;
 extern NSString * const kUserPhoneNumber;
 extern NSString * const kUserBankCardNumber;
 extern NSString * const kPasswordCheckRegex;
+
+extern NSString * const kPaySuccessNotification;
 
 extern NSString * const kLoginSuccessNotification;
 extern NSString * const kRegistSuccessNotification;

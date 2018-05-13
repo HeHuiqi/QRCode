@@ -50,12 +50,19 @@
         make.right.equalTo(self.view).offset(-kZoomValue(20));
         make.height.mas_equalTo(kZoomValue(45));
     }];
+    [AppDelegate shareApp].isPayer = YES;
 }
 - (void)finish{
     [self backToVC:@"HqRootVC"];
+
 }
 - (void)backClick{
      [self backToVC:@"HqRootVC"];
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [AppDelegate shareApp].isPayer = NO;
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

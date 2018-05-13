@@ -10,6 +10,7 @@
 
 #ifdef DEBUG
 
+//#define SERVER      @"http://smartts-demo.dev.eveus.com"
 #define SERVER      @"https://demo.tsp.eveus.com"
 
 #elif Qa

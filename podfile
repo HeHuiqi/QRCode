@@ -5,5 +5,6 @@ target 'QRCode' do
     pod 'SDWebImage'
     pod 'MJExtension', '~> 3.0.13'
     pod 'PayPal-iOS-SDK'
+    pod 'JPush'
     
 end

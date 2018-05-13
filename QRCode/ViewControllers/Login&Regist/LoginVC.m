@@ -147,6 +147,7 @@
                 AppDelegate *app = [AppDelegate shareApp];
                 app.isInputGesturePassword = NO;
                 [AppDelegate setRootVC:HqSetRootVCHome];
+                [self uploadDeviceToken];
             }else{
                 [Dialog simpleToast:msg];
             }
@@ -155,6 +156,19 @@
         }
     }];
     
+    
+}
+- (void)uploadDeviceToken{
+    NSString *hqDevicetoken = GetUserDefault(kDeviceToken);
+    if (hqDevicetoken.length > 0) {
+        [HqHttpUtil hqPut:@{@"deviceType":@"iOS",@"token":hqDevicetoken} url:@"/users/tokens" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+            NSLog(@"上传PushToken==%@",responseObject);
+            if (response.statusCode==200) {
+                
+            }
+            
+        }];
+    }
     
 }
 - (void)forgotPassword:(UIButton *)btn{

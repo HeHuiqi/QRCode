@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
 
 typedef NS_ENUM(NSUInteger, HqSetRootVC) {
     HqSetRootVCWecome,
@@ -14,7 +17,7 @@ typedef NS_ENUM(NSUInteger, HqSetRootVC) {
     HqSetRootVCHome,
 };
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -22,6 +25,8 @@ typedef NS_ENUM(NSUInteger, HqSetRootVC) {
 + (void)setRootVC:(HqSetRootVC)type;
 
 @property (nonatomic,assign) BOOL isInputGesturePassword;
+@property (nonatomic,assign) BOOL isPayer;
+
 
 @end
 

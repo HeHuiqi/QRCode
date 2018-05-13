@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger,HqPayCodeType) {
 @property (nonatomic,copy) NSString *payCodeInfo;
 @property (nonatomic,copy) NSString *code;
 @property (nonatomic,copy) NSString *password;
+@property (nonatomic,assign) BOOL isAutoRefresh;//默认YES
+
 
 - (void)startGetPayCode;
 - (void)stopGetPayCode;

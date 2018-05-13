@@ -18,6 +18,7 @@
 #import <SDImageCache.h>
 #import <UIImageView+WebCache.h>
 #import <MJExtension.h>
+#import <JPUSHService.h>
 
 #import "NSDictionary+isNULL.h"
 #import "SuperNavigationVC.h"

@@ -112,20 +112,20 @@
 
     if (_transferStatus == 1) {
         statusImage = @"success_icon";
-        if (_transfer.type == 1) {
+        if (_transfer.type == 2) {
             info = @"Collect for success";
         }
-        if (_transfer.type  == 2) {
+        if (_transfer.type  == 1) {
             info = @"Pay for success";
         }
        
         
     }else{
         statusImage = @"fail_icon";
-        if (_transfer.type  == 1) {
+        if (_transfer.type  == 2) {
             info = @"Collect for fail";
         }
-        if (_transfer.type  == 2) {
+        if (_transfer.type  == 1) {
             info = @"Pay for fail";
         }
         [contentView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -139,6 +139,8 @@
     infoLab.text = info;
     
     statusIcon.image = [UIImage imageNamed:statusImage];
+    [AppDelegate shareApp].isPayer = YES;
+
 
 }
 - (void)finish:(UIButton *)btn{
@@ -146,6 +148,11 @@
 }
 - (void)backClick{
     BackRoot();
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [AppDelegate shareApp].isPayer = NO;
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -20,5 +20,8 @@
 @property (nonatomic,copy) NSString *collectCode;
 @property (nonatomic,assign) NSInteger status;//1支出，2收入
 @property (nonatomic,copy) NSString *currency;//货币种类
+//p2p转账
+@property (nonatomic,assign) NSInteger type;//1主动，2被动
+
 
 @end

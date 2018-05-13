@@ -131,7 +131,7 @@
         return;
     }else{
         HqAlertView *alert = [[HqAlertView alloc] initWithTitle:@"Confirm delete?" message:nil];
-        alert.btnTitles = @[@"Cancel",@"Comfrm"];
+        alert.btnTitles = @[@"Cancel",@"Confirm"];
         [alert showVC:self callBack:^(UIAlertAction *action, int index) {
             NSLog(@"index == %d",index);
             if (index == 1) {

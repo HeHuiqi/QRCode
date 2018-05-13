@@ -13,12 +13,14 @@
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *titleIconName;
 @property (nonatomic,strong) NSString *subCenterTitle;
+@property (nonatomic,strong) NSString *productInfo;//转账信息
+
 
 @property (nonatomic,assign) CGFloat money;
 
 @property (nonatomic,strong) NSDictionary *params;
 @property (nonatomic,assign) CGFloat transferMoney;//转账金额
-
+@property (nonatomic,copy) NSString *codeInfo;//二维码信息,直接显示信息
 
 
 - (void)startGetPayCode;

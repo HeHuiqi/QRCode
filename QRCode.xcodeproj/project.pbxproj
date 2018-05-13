@@ -13,6 +13,13 @@
 		3334CD742000AE7D00C5EED8 /* HqPassWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD732000AE7D00C5EED8 /* HqPassWordView.m */; };
 		3334CD792000AF3B00C5EED8 /* HqPayPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */; };
 		3334CD7C2000C69500C5EED8 /* HqAddCardInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */; };
+		33DDE2CA20A6731F00496F91 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DDE2C920A6731F00496F91 /* SystemConfiguration.framework */; };
+		33DDE2CC20A6732900496F91 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DDE2CB20A6732900496F91 /* Security.framework */; };
+		33DDE2CE20A6733400496F91 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DDE2CD20A6733400496F91 /* libz.tbd */; };
+		33DDE2D020A6733F00496F91 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DDE2CF20A6733F00496F91 /* UserNotifications.framework */; };
+		33DDE2D220A6734E00496F91 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DDE2D120A6734E00496F91 /* libresolv.tbd */; };
+		33DDE2E820A6E4FF00496F91 /* AppDelegate+HqPushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DDE2E620A6E4FF00496F91 /* AppDelegate+HqPushManager.m */; };
+		33DDE2EC20A6EBD800496F91 /* HqTransferReceiverSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 33DDE2EB20A6EBD800496F91 /* HqTransferReceiverSuccessVC.m */; };
 		33F0143D20315EC700334123 /* success_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0143920315EC600334123 /* success_icon@2x.png */; };
 		33F0143E20315EC700334123 /* fail_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0143A20315EC600334123 /* fail_icon@2x.png */; };
 		33F0143F20315EC700334123 /* success_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F0143B20315EC600334123 /* success_icon@3x.png */; };
@@ -224,6 +231,16 @@
 		3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqPayPasswordVC.m; sourceTree = "<group>"; };
 		3334CD7A2000C69400C5EED8 /* HqAddCardInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqAddCardInfoVC.h; sourceTree = "<group>"; };
 		3334CD7B2000C69400C5EED8 /* HqAddCardInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqAddCardInfoVC.m; sourceTree = "<group>"; };
+		33DDE2C920A6731F00496F91 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		33DDE2CB20A6732900496F91 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		33DDE2CD20A6733400496F91 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		33DDE2CF20A6733F00496F91 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		33DDE2D120A6734E00496F91 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		33DDE2D320A6736000496F91 /* QRCode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QRCode.entitlements; sourceTree = "<group>"; };
+		33DDE2E620A6E4FF00496F91 /* AppDelegate+HqPushManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+HqPushManager.m"; sourceTree = "<group>"; };
+		33DDE2E720A6E4FF00496F91 /* AppDelegate+HqPushManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+HqPushManager.h"; sourceTree = "<group>"; };
+		33DDE2EA20A6EBD800496F91 /* HqTransferReceiverSuccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HqTransferReceiverSuccessVC.h; sourceTree = "<group>"; };
+		33DDE2EB20A6EBD800496F91 /* HqTransferReceiverSuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HqTransferReceiverSuccessVC.m; sourceTree = "<group>"; };
 		33F0143920315EC600334123 /* success_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success_icon@2x.png"; sourceTree = "<group>"; };
 		33F0143A20315EC600334123 /* fail_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fail_icon@2x.png"; sourceTree = "<group>"; };
 		33F0143B20315EC600334123 /* success_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success_icon@3x.png"; sourceTree = "<group>"; };
@@ -533,6 +550,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33DDE2D220A6734E00496F91 /* libresolv.tbd in Frameworks */,
+				33DDE2D020A6733F00496F91 /* UserNotifications.framework in Frameworks */,
+				33DDE2CE20A6733400496F91 /* libz.tbd in Frameworks */,
+				33DDE2CC20A6732900496F91 /* Security.framework in Frameworks */,
+				33DDE2CA20A6731F00496F91 /* SystemConfiguration.framework in Frameworks */,
 				8E9BA428200DA6860087262C /* UIKit.framework in Frameworks */,
 				EEA5C3276F85C54EE3923D6E /* libPods-QRCode.a in Frameworks */,
 			);
@@ -557,6 +579,24 @@
 				3334CD782000AF3B00C5EED8 /* HqPayPasswordVC.m */,
 			);
 			path = HqPayPassword;
+			sourceTree = "<group>";
+		};
+		33DDE2D420A6741C00496F91 /* HqPushManager */ = {
+			isa = PBXGroup;
+			children = (
+				33DDE2E720A6E4FF00496F91 /* AppDelegate+HqPushManager.h */,
+				33DDE2E620A6E4FF00496F91 /* AppDelegate+HqPushManager.m */,
+			);
+			path = HqPushManager;
+			sourceTree = "<group>";
+		};
+		33DDE2E920A6EBB100496F91 /* HqReceiveSuccess */ = {
+			isa = PBXGroup;
+			children = (
+				33DDE2EA20A6EBD800496F91 /* HqTransferReceiverSuccessVC.h */,
+				33DDE2EB20A6EBD800496F91 /* HqTransferReceiverSuccessVC.m */,
+			);
+			path = HqReceiveSuccess;
 			sourceTree = "<group>";
 		};
 		33F0144520316BF100334123 /* Transfer */ = {
@@ -595,6 +635,11 @@
 		69FB2DBCE36FD642F2C00913 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				33DDE2D120A6734E00496F91 /* libresolv.tbd */,
+				33DDE2CF20A6733F00496F91 /* UserNotifications.framework */,
+				33DDE2CD20A6733400496F91 /* libz.tbd */,
+				33DDE2CB20A6732900496F91 /* Security.framework */,
+				33DDE2C920A6731F00496F91 /* SystemConfiguration.framework */,
 				8E9BA427200DA6860087262C /* UIKit.framework */,
 				8A1F463273FB3E3E6DE6208B /* libPods-QRCode.a */,
 			);
@@ -711,6 +756,7 @@
 		8E9D037C202FF67900C78B79 /* HqP2P */ = {
 			isa = PBXGroup;
 			children = (
+				33DDE2E920A6EBB100496F91 /* HqReceiveSuccess */,
 				33F0145D20318ABD00334123 /* HqScanResult */,
 				8E9D038D203033E400C78B79 /* Models */,
 				8E9D03832030157E00C78B79 /* Views */,
@@ -807,6 +853,10 @@
 		8EDE164B1FFF22FF0013DD41 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
+				8EDE164C1FFF22FF0013DD41 /* AppDelegate.h */,
+				8EDE164D1FFF22FF0013DD41 /* AppDelegate.mm */,
+				33DDE2D420A6741C00496F91 /* HqPushManager */,
+				33DDE2D320A6736000496F91 /* QRCode.entitlements */,
 				8EEFA7F42008B53D004C2254 /* HqFont */,
 				8EDE17361FFF716D0013DD41 /* PublicViews */,
 				8EDE17131FFF27100013DD41 /* HqImages */,
@@ -815,8 +865,6 @@
 				8EDE16621FFF23C30013DD41 /* Network */,
 				8EDE16B01FFF23C30013DD41 /* UItils */,
 				8EDE16651FFF23C30013DD41 /* ViewControllers */,
-				8EDE164C1FFF22FF0013DD41 /* AppDelegate.h */,
-				8EDE164D1FFF22FF0013DD41 /* AppDelegate.mm */,
 				8EDE16521FFF22FF0013DD41 /* Main.storyboard */,
 				8EDE16551FFF22FF0013DD41 /* Assets.xcassets */,
 				8EDE16571FFF22FF0013DD41 /* LaunchScreen.storyboard */,
@@ -1246,8 +1294,8 @@
 		8EDE17411FFF86F30013DD41 /* HqCard */ = {
 			isa = PBXGroup;
 			children = (
-				8ED6CCFF201733B80001393A /* HqScanCard */,
 				8E36E610200DB44E00701378 /* CardDetail */,
+				8ED6CCFF201733B80001393A /* HqScanCard */,
 				8EEFA7F02008A753004C2254 /* Models */,
 				3334CD752000AF0200C5EED8 /* HqPayPassword */,
 				8EDE17451FFF874B0013DD41 /* Views */,
@@ -1408,6 +1456,14 @@
 					8EDE16481FFF22FF0013DD41 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1601,6 +1657,7 @@
 				8EDE17111FFF26830013DD41 /* SuperNavigationVC.m in Sources */,
 				8EDE17161FFF27A20013DD41 /* HqRootVC.m in Sources */,
 				8EDE16EA1FFF23C30013DD41 /* IQKeyboardManager.m in Sources */,
+				33DDE2EC20A6EBD800496F91 /* HqTransferReceiverSuccessVC.m in Sources */,
 				8E36E6582011C98C00701378 /* HqBillCell.m in Sources */,
 				8EDE17061FFF23C30013DD41 /* ProjectEnvironment.m in Sources */,
 				33F0145C20317F1C00334123 /* HqTransferConfirmVC.m in Sources */,
@@ -1644,6 +1701,7 @@
 				8EEFA78F2005B18D004C2254 /* CALayer+Anim.m in Sources */,
 				8EDE16DB1FFF23C30013DD41 /* UITextView+Placeholder.m in Sources */,
 				8EDE17051FFF23C30013DD41 /* UIButton+EnlargeTouchArea.m in Sources */,
+				33DDE2E820A6E4FF00496F91 /* AppDelegate+HqPushManager.m in Sources */,
 				8EDE17441FFF87080013DD41 /* HqCardsVC.m in Sources */,
 				8EDE16EF1FFF23C30013DD41 /* IQUIView+Hierarchy.m in Sources */,
 				8E5FCC3320034BF400B4740B /* HqHttpUtil.m in Sources */,
@@ -1771,7 +1829,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1820,7 +1878,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1832,15 +1890,17 @@
 			baseConfigurationReference = C227BA1B401DEABB839F3D8A /* Pods-QRCode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QRCode/QRCode.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34AC3PEMF7;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 49LPZHKUL7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QRCode/QRCode.pch;
 				INFOPLIST_FILE = QRCode/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hhq.QRCode;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.mk.qrcode.demo.customer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1853,15 +1913,16 @@
 			baseConfigurationReference = 4BD802C28DBA1070B041B7DF /* Pods-QRCode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QRCode/QRCode.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34AC3PEMF7;
+				DEVELOPMENT_TEAM = 49LPZHKUL7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = QRCode/QRCode.pch;
 				INFOPLIST_FILE = QRCode/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hhq.QRCode;
+				PRODUCT_BUNDLE_IDENTIFIER = vn.mk.qrcode.demo.customer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -17,6 +17,7 @@
 @property (nonatomic,strong) HqPayCodeView *payCodeView;
 @property (nonatomic,strong) UILabel *subCenterLab;
 @property (nonatomic,strong) UILabel *moneyLab;
+@property (nonatomic,strong) UILabel *productInfoLab;
 
 
 
@@ -118,7 +119,18 @@
         make.centerX.equalTo(_contentView);
         make.top.equalTo(_payCodeView.mas_bottom).offset(kZoomValue(10));
     }];
-    
+    _productInfoLab = [[UILabel alloc] init];
+    _productInfoLab.hidden = YES;
+    _productInfoLab.backgroundColor = COLORA(250,250,250);
+    _productInfoLab.textColor = COLORA(72,90,101);
+    _productInfoLab.font = SetFont(kZoomValue(15));
+    _productInfoLab.textAlignment = NSTextAlignmentCenter;
+    [_contentView addSubview:_productInfoLab];
+    [_productInfoLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_contentView).offset(0);
+        make.left.equalTo(_contentView).offset(0);
+        make.right.equalTo(_contentView).offset(0);
+        make.height.mas_equalTo(kZoomValue(40));    }];
 }
 - (void)setUserName:(NSString *)userName{
 }
@@ -132,6 +144,7 @@
     _subCenterLab.text = subCenterTitle;
 }
 - (void)setMoney:(CGFloat)money{
+    _moneyLab.hidden = NO;
     _moneyLab.text = [NSString stringWithFormat:@"₫ %.2f",money];
 }
 - (void)setParams:(NSDictionary *)params{
@@ -140,13 +153,23 @@
 - (void)setTransferMoney:(CGFloat)transferMoney{
     _transferMoney = transferMoney;
     if (_transferMoney>0) {
-        _titleLab.hidden = NO;
+        _titleLab.hidden = YES;
         _moneyLab.hidden = NO;
         _moneyLab.text = [NSString stringWithFormat:@"₫%0.2f",_transferMoney];
     }
 }
+- (void)setProductInfo:(NSString *)productInfo{
+    _productInfo = productInfo;
+    if (_productInfo) {
+        _productInfoLab.hidden = NO;
+        _productInfoLab.text = _productInfo;
+    }
+}
 - (void)startGetPayCode{
     [_payCodeView startGetPayCode];
+}
+- (void)setCodeInfo:(NSString *)codeInfo{
+    _payCodeView.payCodeInfo = codeInfo;
 }
 - (void)queryPayStatusWithCode:(NSString *)code{
     

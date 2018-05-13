@@ -25,19 +25,19 @@
     if (self = [super initWithFrame:frame]) {
         _isPaying = YES;
         _isFirstLoad = YES;
-        
+        _isAutoRefresh = YES;
         [self setup];
     }
     return self;
 }
-- (instancetype)init{
-    if (self = [super init]) {
-        _isPaying = YES;
-        _isFirstLoad = YES;
-        [self setup];
-    }
-    return self;
-}
+//- (instancetype)init{
+//    if (self = [super init]) {
+//        _isPaying = YES;
+//        _isFirstLoad = YES;
+//        [self setup];
+//    }
+//    return self;
+//}
 - (NSTimer *)codeAvailabilityTimer{
     if (!_codeAvailabilityTimer) {
         _codeAvailabilityTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countTime) userInfo:nil repeats:YES];
@@ -91,7 +91,11 @@
     }
 }
 - (void)startGetPayCode{
-    [self codeAvailabilityTimer];
+    if (_isAutoRefresh) {
+        [self codeAvailabilityTimer];
+    }else{
+        
+    }
     NSString *url = @"/transactions/codes";
     NSString *title = nil;
     if (self.payCodeType == HqPayCodeTypeTransfer) {
