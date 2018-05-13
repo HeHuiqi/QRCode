@@ -90,6 +90,7 @@
                 SetUserDefault(@"1", kisLogin);
                 AppDelegate *app = [AppDelegate shareApp];
                 app.isInputGesturePassword = YES;
+                [self uploadDeviceToken];
                 [AppDelegate setRootVC:HqSetRootVCHome];
             }else{
                 [Dialog simpleToast:msg];
@@ -98,6 +99,21 @@
             [Dialog simpleToast:kRequestError];
         }
     }];
+}
+- (void)uploadDeviceToken{
+    NSString *hqDevicetoken = GetUserDefault(kDeviceToken);
+    if (hqDevicetoken.length > 0) {
+        [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+            [HqHttpUtil hqPut:@{@"deviceType":@"iOS",@"token":registrationID} url:@"/users/tokens" complete:^(NSHTTPURLResponse *response, id responseObject, NSError *error) {
+                NSLog(@"上传PushToken==%@",responseObject);
+                if (response.statusCode==200) {
+                    
+                }
+                
+            }];
+        }];
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
