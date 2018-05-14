@@ -35,7 +35,7 @@
     }];
 
     //transferType为1
-    CGFloat amount = self.bill.amount;
+    CGFloat amount = self.bill.amount*-1;
     if (amount>0) {
 //        self.transferView.params = @{@"transferType": @"active"};
         self.transferView.title = @"Personal collection";
